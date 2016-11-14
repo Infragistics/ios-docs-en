@@ -1,0 +1,39 @@
+﻿////
+
+|metadata|
+{
+    "name": "igoverlayview",
+    "controlName": ["IGOverlayView"],
+    "tags": ["Getting Started"],
+    "guid": "e26f8454-6ac5-4001-9447-1322bf4fce0a",  
+    "buildFlags": [],
+    "createdOn": "2013-05-21T13:22:43.5714053Z"
+}
+|metadata|
+////
+
+= IGOverlayView
+
+This section gives you an overview of the use of the  _IGOverlayView_™ control. It contains information ranging from what the control does to the step-by-step procedures on how to accomplish common tasks using the control.
+
+Click the links below to access important information about the  _IGOverlayView_   control.
+
+== About IGOverlayView
+
+image::images/What's_New_in_2013_Volume_2_9.png[]
+
+The  _IGOverlayView_   is a powerful and extremely flexible control for displaying any type of view that will overlay another view, with or without animation, when shown or dismissed. A total of 12 overlay animations are included, with 2 of these animation types allowing for custom animations limited by your imagination.
+
+Adding views to overlay another view is a cinch, but if you require more than a quick and simple solution, the  _IGOverlayView_   was also designed to be extended upon. By deriving from the  _IGOverlayView_   class, you can tap into your creative psyche while using the  _IGOverlayView_   to help push your app to the next level.
+
+== link:iggridview-adding-the-ig-framework-file.html[Adding the IG Framework File]
+
+This topic demonstrates how to add the IG framework file to a project.
+
+== link:igoverlayview-adding-overlay-view.html[Adding an Overlay to a View]
+
+This topic provides basic information about creating an instance of the  _IGOverlayView_   to help you get up and running with this control.
+
+== link:igoverlayview-configuring-igoverlayview.html[Configuring IGOverlayView]
+
+The topics in this group explain and demonstrate enabling, configuring, and using the  _IGOverlayView_   control’s supported features.

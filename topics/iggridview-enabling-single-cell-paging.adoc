@@ -1,0 +1,83 @@
+﻿////
+
+|metadata|
+{
+    "name": "iggridview-enabling-single-cell-paging",
+    "controlName": ["IGGridView"],
+    "tags": ["Grids","How Do I","Layouts"],
+    "guid": "f2a324b1-dbc3-4f82-b4ff-04caae3bbd18",  
+    "buildFlags": [],
+    "createdOn": "2012-07-16T14:30:21.5321342Z"
+}
+|metadata|
+////
+
+= Enabling Single Cell Paging
+
+== Topic Overview
+
+=== Purpose
+
+This topic provides a conceptual overview of using single cell paging in the  _IGGridView_™ control.
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref324841248, Single cell paging >>
+* <<_Ref327861013, Enable Single Cell Paging on the IGGridView >>
+* <<_Ref324841253, Related Content >>
+
+[[_Ref324841248]]
+== Single Cell Paging
+
+[[_Ref327859845]]
+
+=== Introduction
+
+The  _IGGridView’s_   single cell paging display mode makes each cell the size of the viewport. This optional mode is useful when you are displaying a photo or PDF viewer.
+
+[[_Ref327861013]]
+[[_Ref324841253]]
+== Enable Single Cell Paging on the  _IGGridView_
+
+[[_Ref326147531]]
+
+=== Description
+
+To use the single cell paging display mode on the  _IGGridView_  , you must first specify `IGGridViewStyleSingleCellPaging` as the style in the initializing method.
+
+*In Objective-C:*
+
+[source,csharp]
+----
+IGGridView *gridView = [[IGGridView alloc]initWithFrame:CGRectMake(0, 0, 500, 500) style:IGGridViewStyleSingleCellPaging];
+----
+
+*In Objective-C:*
+
+[source,csharp]
+----
+IGGridView gridView = new IGGridView(new RectangleF(0,0, this.View.Frame.Size.Width, this.View.Frame.Size.Height), IGGridViewStyle.IGGridViewStyleSingleCellPaging);
+----
+
+The  _IGGridViewDelegate’s_   `pageChanged` method only pertains to single cell paging.
+
+* `-(void)gridView:(IGGridView $$*$$)gridView pageChanged:(IGCellPath $$* $$)path`
+
+Use the `pageChanged` protocol method to notify you when displaying a new cell in the  _IGGridView_  .
+
+== Related Content
+
+=== Topics
+
+The following topic provides additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:iggridview-configuring-iggridview.html[Configuring IGGridView]
+|The topics in this group cover the enabling, configuring, and using the features supported by the _IGGridView_ control.
+
+|====

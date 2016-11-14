@@ -1,0 +1,136 @@
+﻿////
+
+|metadata|
+{
+    "name": "iggridview-fixed-columns",
+    "controlName": ["IGGridView"],
+    "tags": ["Grids","How Do I","Layouts"],
+    "guid": "b1f17d4c-339d-434e-a870-f728c4dd4bc1",  
+    "buildFlags": [],
+    "createdOn": "2013-02-11T19:38:18.5516179Z"
+}
+|metadata|
+////
+
+= Fixed Columns
+
+== Topic Overview
+
+=== Purpose
+
+This topic provides a conceptual overview, with code, on fixing columns to the left or right side of the  _IGGridView_™ control.
+
+=== Required background
+
+The following table lists the topics required as a prerequisite to understanding this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:iggridview-adding-the-ig-framework-file.html[Adding the Grid Framework File]
+|This topic explains how to add the grid framework file to the project.
+
+|====
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref324841248, Introduction >>
+* <<_Ref329330892, Inserting and Deleting a Fixed Column – Code Example >>
+
+** <<_Ref323199287,Description>>
+** <<_Ref329331375,Code>>
+
+* <<_Ref323199323, Related Content >>
+
+[[_Ref324841248]]
+[[_Ref323199279]]
+[[_Ref324505001]]
+[[_Ref323111244]]
+== Introduction
+
+[[_Ref327859845]]
+
+=== Fixed columns summary
+
+Fixed columns allow a column to stay in view on either the left or right side of the  _IGGridView_  , while allowing horizontal scrolling of the other columns. To specify how many columns to fix on the left or right of the  _IGGridView_  , and create those cells, the following methods are available through the  _IGGridViewDataSource_   protocol.
+
+* `-(int)numberOfFixedLeftColumnsInGridView:(IGGridView $$* $$)gridView`
+* `-(int)numberOfFixedRightColumnsInGridView:(IGGridView $$* $$)gridView`
+* `-(NSString $$*$$)gridView:(IGGridView $$* $$)gridView titleForHeaderInFixedLeftColumn:(int)column`
+* `-(NSString $$*$$)gridView:(IGGridView $$* $$)gridView titleForHeaderInFixedRightColumn:(int)column`
+* `-(IGGridViewCell $$*$$)gridView:(IGGridView $$*$$)gridView fixedLeftCellAt:(IGCellPath $$* $$)path`
+* `-(IGGridViewCell $$*$$)gridView:(IGGridView $$*$$)gridView fixedRightCellAt:(IGCellPath $$* $$)path`
+
+Additional methods are also available in the  _IGGridViewDelegate_   to customize fixed columns further.
+
+* `-(IGColumnWidth $$*$$)gridView:(IGGridView $$* $$)gridView widthForFixedLeftColumnAtIndex:(int)column`
+* `-(IGColumnWidth $$*$$)gridView:(IGGridView $$* $$)gridView widthForFixedRightColumnAtIndex:(int)column`
+* `-(void)gridView:(IGGridView $$*$$)gridView willDisplayFixedLeftCell:(IGGridViewCell $$*$$)cell forPath:(IGCellPath $$* $$)path`
+* `-(void)gridView:(IGGridView $$*$$)gridView willDisplayFixedRightCell:(IGGridViewCell $$*$$)cell forPath:(IGCellPath $$* $$)path`
+
+When you define a fixed column a separator is shown to separate the fixed columns from the normal columns and creates a clear delineation. The grid view offers these properties to style the separator.
+
+* `fixedLeftColumnSeparatorWidth`
+* `fixedRightColumnSeparatorWidth`
+* `fixedLeftColumnSeparatorColor`
+* `fixedRightColumnSeparatorColor`
+
+[[_Ref329330892]]
+== Inserting and Deleting a Fixed Column – Code Example
+
+[[_Ref323199287]]
+
+=== Description
+
+The following code example demonstrates how to insert and delete a fixed column on the left side of the  _IGGridView_  .
+
+[[_Ref323199293]]
+
+=== Code
+
+*In Objective-C:*
+
+[source,csharp]
+----
+//Insert left fixed column
+IGGridViewColumnDefinition* colLeft = [[IGGridViewColumnDefinition alloc]initWithKey:@"prop1"];
+colLeft.headerText = @"Fixed";
+[_dsh.fixedLeftColumns insertObject:colLeft atIndex:0];
+[_gridView insertFixedLeftColumnsAtIndexes:[NSArray arrayWithObject:[NSNumber numberWithInt:0]]];
+//Delete left fixed column
+[_dsh.fixedLeftColumns removeObjectAtIndex:0];
+[_gridView deleteFixedLeftColumnsAtIndexes:[NSArray arrayWithObject:@0]];
+----
+
+*In C#:*
+
+[source,csharp]
+----
+//Insert left fixed column
+IGGridViewColumnDefinition colLeft = new IGGridViewColumnDefinition("prop1");
+colLeft.HeaderText = "Fixed";
+dsh.FixedLeftColumns.Insert(colLeft, 0);
+grid.InsertFixedLeftColumns(new NSObject[]{new NSNumber(0)}); 
+//Delete left fixed column
+dsh.FixedLeftColumns.RemoveObject(0);
+grid.DeleteFixedLeftColumns(new NSObject[]{new NSNumber(0)});
+----
+
+[[_Ref323199323]]
+== Related Content
+
+=== Topics
+
+The following topics provide additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:iggridview.html[IGGridView]
+|This section serves as an introduction to the _IGGridView’s_ key features and functionalities.
+
+|====

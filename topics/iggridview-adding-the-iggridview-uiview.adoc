@@ -1,0 +1,240 @@
+﻿////
+
+|metadata|
+{
+    "name": "iggridview-adding-the-iggridview-uiview",
+    "controlName": ["IGGridView"],
+    "tags": ["Getting Started","Grids","How Do I"],
+    "guid": "53ca744a-79d5-4d76-90fb-1fee7567ca44",  
+    "buildFlags": [],
+    "createdOn": "2012-04-25T13:16:11.5840655Z"
+}
+|metadata|
+////
+
+= Adding the IGGridView to a UIView
+
+== Topic Overview
+
+=== Purpose
+
+This topic provides basic information about creating an instance of the  _IGGridView™_   and displaying data to help you get up and running with this control.
+
+=== Required background
+
+The following table lists the topics required as a prerequisite to understanding this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:iggridview-adding-the-ig-framework-file.html[Adding the Grid Framework File]
+|This topic explains the requirements for adding the grid framework file to an Xcode project; a requirement for using the _IGGridView™_ control.
+
+|====
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref323111244, Code Examples >>
+* <<_Ref323199279,Instantiating the  _IGGridView_   - Code Example>>
+
+** <<_Ref323199287,Description>>
+** <<_Ref323199293,Code>>
+
+* <<_Ref323199299,Displaying Data - Code Example>>
+
+** <<_Ref323199306,Description>>
+** <<_Ref328077899,Prerequisites>>
+** <<_Ref323199315,Code>>
+
+* <<_Ref323199323, Related Content >>
+
+[[_Ref323111244]]
+== Code Examples
+
+=== Code examples summary
+
+The following table lists the code examples included in this topic.
+
+[options="header", cols="a,a"]
+|====
+|Example|Description
+
+|<<_Ref323199279,Instantiating the IGGridView Code Example>>
+|To beginning to use the _IGGridView_ create an instance of it and addit to your view. The code in this example creates the instance by overriding the _UIViewController’s_ `viewDidLoad` method.
+
+|<<_Ref323199299,Data Binding Code Example>>
+|Once instantiated add you data to the _IGGridView_ . The code example implements the _IGGridViewDataSource_ protocol and demonstrates usage of the required selector methods.
+
+|====
+
+[[_Ref323199279]]
+== Instantiating the  _IGGridView_   – Code Example
+
+[[_Ref323199287]]
+
+=== Description
+
+To start using the  _IGGridView_  , it is necessary first to create an instance of it, and add it to your view.
+
+[[_Ref323199293]]
+
+=== Code
+
+The code below overrides the  _UIViewController’s_   `viewDidLoad` method to instantiate the  _IGGridView_  .
+
+*In Objective-C:*
+
+[source,csharp]
+----
+-(void)viewDidLoad
+{ 
+        [super viewDidLoad];
+ IGGridView* gridView = [[IGGridView alloc]initWithFrame:
+                CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)
+                style:IGGridViewStyleDefault];
+        gridView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+        [self.view addSubview:gridView];
+}
+----
+
+*In C#:*
+
+[source,csharp]
+----
+public override void ViewDidLoad ()
+{
+   base.ViewDidLoad ();
+ IGGridView gridView = new IGGridView(new RectangleF(0,0, this.View.Frame.Size.Width, this.View.Frame.Size.Height), IGGridViewStyle.IGGridViewStyleDefault);
+   gridView.AutoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleHeight;
+   this.View.AddSubview(gridView);
+}
+----
+
+[[_Ref323199299]]
+== Displaying Data – Code Example
+
+[[_Ref323199306]]
+
+=== Description
+
+Once instantiated, you can add data to an  _IGGridView_   following the same patterns as the  _UITableView_   control. The connection of data is very similar and adds another dimension to what you can display; namely columns.
+
+[[_Ref328077899]]
+
+=== Prerequisites
+
+Implementing the  _IGGridViewDataSource_   requires that you implement the following three selectors first:
+
+* `-(int) gridView:(IGGridView$$* $$)gridView numberOfRowsInSection:(int)section;`
+* `-(int) numberOfColumnsInGridView:(IGGridView$$* $$)gridView;`
+* `-(IGGridViewCell$$*$$)gridView:(IGGridView$$*$$)gridView cellAt:(IGCellPath$$* $$)path;`
+
+[[_Ref323199315]]
+
+=== Code
+
+To begin the process of displaying data, the  _UIViewController_   class needs to implement the  _IGGridViewDataSource_   protocol.
+
+*In Objective-C:*
+
+[source,csharp]
+----
+@interface TestViewController : UIViewController<IGGridViewDataSource>
+----
+
+*In C#:*
+
+[source,csharp]
+----
+public class DataProvider : IGGridViewDataSource
+----
+
+With the protocol implemented on the  _UIViewController_   class, the instantiated  _IGGridView_   needs to be told that the  _UIViewController_   contains the data source to use.
+
+*In Objective-C:*
+
+[source,csharp]
+----
+gridView.dataSource = self;
+----
+
+*In C#:*
+
+[source,csharp]
+----
+grid.WeakDataSource = new DataProvider();
+----
+
+The code example, which follows demonstrates general usage of these three required selectors using hardcoded data. Implementing this code results in the  _IGGridView_   displaying a 100 rows by 5 columns grid, where the text assigned to the cell is the cell’s identifying path.
+
+*In Objective-C:*
+
+[source,csharp]
+----
+-(int)gridView:(IGGridView *)gridView numberOfRowsInSection:(int)section
+{
+        return 100;
+}
+-(int)numberOfColumnsInGridView:(IGGridView *)gridView
+{
+        return 5;
+}
+-(IGGridViewCell *)gridView:(IGGridView *)gridView cellAt:(IGCellPath * )path
+{
+        IGGridViewCell* cell = [gridView dequeueReusableCellWithIdentifier:@"CELL"];
+        if(cell == nil)
+        {
+                cell = [[IGGridViewCell alloc]initWithReuseIdentifier:@"CELL"];
+        }
+        cell.textLabel.text = [NSString stringWithFormat:
+                @"Row: %d, Section: %d, Column:%d", 
+                path.rowIndex, path.sectionIndex, path.columnIndex];
+        return cell;
+}
+----
+
+*In C#:*
+
+[source,csharp]
+----
+public class DataProvider : IGGridViewDataSource
+{
+  public override int NumberOfRowsInSection (IGGridView grid, int sectionIndex)
+  {
+      return 100;
+  }
+public override int NumberOfColumns (IGGridView gridView)
+  {
+      return 5;
+  }
+  public override IGGridViewCell CreateCell (IGGridView grid, IGCellPath path)
+  {
+      IGGridViewCell cell = (IGGridViewCell)grid.DequeueReusableCell("Cell");
+      if(cell == null)
+         cell = new IGGridViewCell("Cell");
+cell.TextLabel.Text = path.RowIndex + "." + path.SectionIndex + "." + path.ColumnIndex;
+      return cell;
+  }
+}
+----
+
+The  _IGGridView_   only renders that which is currently in its viewport; anything visible on the screen. Once cells leave the viewport via scrolling, they are retained and queued up by the grid for later reuse. When a cell comes into view, its data source calls the `cellAt` method, and asks for a new cell to display. You can identify the requested cell via the `path` property, which contains the section, row index within the section, and the column of the cell within the row. Instead of creating a new cell each time this method is called, you must first call the `dequeReusableCellWithIdentifier` selector of the  _IGGridView_  . The identifier is the string used initially to create the cell. If no cell is returned, then a new cell should be created. However, you must initialize it with the  _initWithReuseIdentifier_   method, which is used later to dequeue the cell. Once created, you can prepare the cell to display the content you desire.
+
+[[_Ref323199323]]
+== Related Content
+
+=== Topics
+
+The following topics provide additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:iggridview.html[IGGridView]
+|This section serves as an introduction to the _IGGridView’s_ key features and functionalities.
+
+|====

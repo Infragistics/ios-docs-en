@@ -1,0 +1,146 @@
+﻿////
+
+|metadata|
+{
+    "name": "iggridview-enabling-configuring-context-menus",
+    "controlName": ["IGGridView"],
+    "tags": ["Commands","Grids","How Do I"],
+    "guid": "9b04faf7-0fa3-4776-938c-c6952c2bf007",  
+    "buildFlags": [],
+    "createdOn": "2012-07-16T14:17:15.5955484Z"
+}
+|metadata|
+////
+
+= Enabling and Configuring Context Menus
+
+== Topic Overview
+
+=== Purpose
+
+This topic provides a conceptual overview of using context menus with cells in the  _IGGridView_™ control.
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref324841248, Introduction >>
+* <<_Ref327861013, Creating a Context Menu and Handling Item Selection – Code Example >>
+
+** <<_Ref326147531,Description>>
+** <<_Ref326147537,Code>>
+
+* <<_Ref324841253, Related Content >>
+
+[[_Ref324841248]]
+== Introduction
+
+[[_Ref327859845]]
+
+=== Context menus configuration summary
+
+The  _IGGridView_   control allows you to specify a custom context menu for a cell that appears after a long-press. This is a notable distinction from the  _UITableView_   control, which does not allow this option.
+
+Here is how it works:
+
+You first access and add your item to the  _UIMenuController_  . When the user long-presses a cell, the  _IGGridView_   calls the  _IGGridViewDelegate’s_   `shouldShowMenuForCellAtPath` protocol method to determine whether to show the context menu. If the `shouldShowMenuForCellAtPath` protocol method returns `YES`, then the  _IGGridView_   calls the  _IGGridViewDelegate’s_   `canPerformAction` protocol method to determine whether the context menu can be shown at this time.
+
+[[_Ref327861013]]
+== Creating a Context Menu and Handling Item Selection – Code Example
+
+[[_Ref326147531]]
+
+=== Description
+
+The following code uses the  _IGGridViewDelegate_   to demonstrate how to create a context menu and handle a context menu selection.
+
+[[_Ref326147537]]
+
+=== Code
+
+*In Objective-C:*
+
+[source,csharp]
+----
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    // Code...
+    // Add your custom menu item to the Context Menu
+    UIMenuController *menu = [UIMenuController sharedMenuController];
+    UIMenuItem *testItem = [[UIMenuItem alloc] initWithTitle:@"Send Email" action:@selector(sendEmail:)]; 
+    [menu setMenuItems:[NSArray arrayWithObjects:testItem, nil]];
+    gridView.delegate = self;
+    // Code...
+}
+-(BOOL)gridView:(IGGridView*)gridView shouldShowMenuForCellAtPath:(IGCellPath* )path
+{
+    // Return yes, if a cell supports the menu being displayed
+    return YES;
+}
+-(BOOL)gridView:(IGGridView *)gridView canPerformAction:(SEL)action forCellAtPath:(IGCellPath * )path withSender:(id)sender
+{
+    // Return yes for every menu item that you want to be displayed, in this case, we just want our custom one.
+    return (action == @selector(sendEmail:)); 
+}
+-(void)gridView:(IGGridView *)gridView performAction:(SEL)action forCellAtPath:(IGCellPath * )path withSender:(id)sender
+{
+    if(action == @selector(sendEmail:))
+        [self sendEmail:path];
+}
+----
+
+*In C#:*
+
+[source,csharp]
+----
+public class MenuDelegate : IGGridViewDelegate
+ {
+  public override bool ShouldShowMenuForCell (IGGridView gridView, IGCellPath path)
+  {
+      return true;
+  }
+public override bool CanPerformActionForCell (IGGridView gridView, Selector action, IGCellPath path, NSObject sender)
+  {
+      return action == new Selector("sendEmail");
+  }
+public override void PerformActionForCell (IGGridView gridView, Selector action, IGCellPath path, NSObject sender)
+  {
+      if(action == new Selector("sendEmail"))
+      {
+         // Send E-mail
+      }
+  }
+ }
+public class ViewController : UIViewController
+ {
+  public override void ViewDidLoad ()
+  {
+      base.ViewDidLoad ();
+      IGGridView gridView = new IGGridView(new RectangleF(0,0, this.View.Frame.Size.Width, this.View.Frame.Size.Height), IGGridViewStyle.IGGridViewStyleDefault);
+      gridView.AutoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleHeight;
+      gridView.WeakDataSource = new DataProvider();
+      this.View.AddSubview(gridView);
+UIMenuController menu = UIMenuController.SharedMenuController;
+      UIMenuItem testItem = new UIMenuItem("Send E-mail", new Selector("sendEmail"));
+      menu.MenuItems = new UIMenuItem[]{testItem};
+gridView.WeakDelegate = new MenuDelegate();
+  }
+ }
+----
+
+[[_Ref324841253]]
+== Related Content
+
+=== Topics
+
+The following topic provides additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:iggridview-configuring-iggridview.html[Configuring IGGridView]
+|The topics in this group cover how to enable, configure, and use the features supported by the _IGGridView_™ control.
+
+|====

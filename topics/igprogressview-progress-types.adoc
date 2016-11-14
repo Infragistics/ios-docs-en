@@ -1,0 +1,97 @@
+﻿////
+
+|metadata|
+{
+    "name": "igprogressview-progress-types",
+    "tags": ["Getting Started","Styling"],
+    "controlName": ["IGProgressView"],
+    "guid": "ba730b72-a725-43c8-a9b3-2b4137d23be5",  
+    "buildFlags": [],
+    "createdOn": "2013-08-26T14:28:36.6120524Z"
+}
+|metadata|
+////
+
+= Progress Types
+
+== Topic Overview
+
+=== Purpose
+
+This topic provides an introduction to the progress bar types available with the  _IGProgressView_™ control.
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref231443148, Progress Types >>
+
+** <<_Ref329132134,Introduction>>
+** <<_Ref327864136,Progress types>>
+
+* <<_Ref231443183, Related Content >>
+
+[[_Ref231443148]]
+== Progress Types
+
+[[_Ref329132134]]
+
+=== Introduction
+
+The supported progress types shown in <<_Ref327864136,Progress types>> are set using the following initialization methods.
+
+* `initWithStyle:`
+* `initWithFrame:viewStyle:`
+
+.Note:
+[NOTE]
+====
+Initializing with the default constructor `init` defaults to the `IGProgressViewStyleStandardIndeterminate` progress type.
+====
+
+[[_Ref327864136]]
+
+=== Progress types
+
+The following table contains supported progress types and their corresponding type name.
+
+[options="header", cols="a,a"]
+|====
+|Progress Type|Preview
+
+|`IGProgressViewStyleStandardIndeterminate`
+|image::images/IGProgressView_-_Progress_Types_1.png[]
+
+|`IGProgressViewStyleStandard`
+|image::images/IGProgressView_-_Progress_Types_2.png[]
+
+|`IGProgressViewStyleRadialIndeterminate`
+|image::images/IGProgressView_-_Progress_Types_3.png[]
+
+|`IGProgressViewStyleRadial`
+|image::images/IGProgressView_-_Progress_Types_4.png[]
+
+|`IGProgressViewStyleCustom`
+|image::images/IGProgressView_-_Progress_Types_5.png[] 
+
+The above preview is an example of the `IGProgressViewStyleCustom`. The _CGPath_ you use determines what shape the progress takes.
+
+|====
+
+[[_Ref324841253]]
+
+[[_Ref231443183]]
+== Related Content
+
+=== Topics
+
+The following topic provides additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:igprogressview.html[IGProgressView]
+|This topic serves as a gateway to the features and functionality of the _IGProgressView_ control.
+
+|====

@@ -1,0 +1,138 @@
+﻿////
+
+|metadata|
+{
+    "name": "igsparklineview-markers",
+    "tags": ["Charting","Getting Started","How Do I","Styling"],
+    "controlName": ["IGSparklineView"],
+    "guid": "80fb7a33-15f6-41ee-a285-62738fd588ab",  
+    "buildFlags": [],
+    "createdOn": "2013-08-26T18:29:52.0684533Z"
+}
+|metadata|
+////
+
+= Markers
+
+== Topic Overview
+
+=== Purpose
+
+This topic provides an introductory overview of displaying markers on the  _IGSparklineView_™ control.
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref235492243, Markers >>
+
+** <<_Ref329132134,Introduction>>
+** <<_Ref327864136,Marker types>>
+
+* <<_Ref231443183, Related Content >>
+
+[[_Ref235492243]]
+== Markers
+
+[[_Ref329132134]]
+
+=== Introduction
+
+Markers are symbols (circular colored shapes) overlaid on the  _IGSparklineView_   indicating individual data points based on X/Y ordered pair coordinates.
+
+All markers are set to display, by default, and are customizable to appear in a variety of colors by setting the marker’s brush property to an  _IGBrush_  . Set the marker’s visibility property to `YES` or `NO` to toggle rendering of the marker on or off respectively.
+
+[[_Ref327864136]]
+
+=== Marker types
+
+The following table contains marker types, descriptions, configurable properties, and a preview of the marker type.
+
+[options="header", cols="a,a,a,a"]
+|====
+|Type|Description|Properties|Preview
+
+|Marker
+|The default for all markers.
+|
+* `markerVisibility` 
+
+* `markerBrush` 
+
+* `markerSize` 
+
+|image::images/IGSparklineView_-_Markers_1.png[]
+
+|First Marker
+|Displays a special marker on the first marker of the chart.
+|
+* `firstMarkerVisibility` 
+
+* `firstMarkerBrush` 
+
+* `firstMarkerSize` 
+
+|image::images/IGSparklineView_-_Markers_2.png[]
+
+|Last Marker
+|Displays a special marker on the last marker of the chart.
+|
+* `lastMarkerVisibility` 
+
+* `lastMarkerBrush` 
+
+* `lastMarkerSize` 
+
+|image::images/IGSparklineView_-_Markers_3.png[]
+
+|Highest Marker
+|Displays a special marker on the highest marker of the chart.
+|
+* `highMarkerVisibility` 
+
+* `highMarkerBrush` 
+
+* `highMarkerSize` 
+
+|image::images/IGSparklineView_-_Markers_4.png[]
+
+|Lowest Marker
+|Displays a special marker on the lowest marker of the chart.
+|
+* `lowMarkerVisibility` 
+
+* `lowMarkerBrush` 
+
+* `lowMarkerSize` 
+
+|image::images/IGSparklineView_-_Markers_5.png[]
+
+|Negative Marker
+|Displays a special marker on the negative markers of the chart.
+|
+* `negativeMarkerVisibility` 
+
+* `negativeMarkerBrush` 
+
+* `negativeMarkerSize` 
+
+|image::images/IGSparklineView_-_Markers_6.png[]
+
+|====
+
+[[_Ref324841253]]
+[[_Ref231443183]]
+== Related Content
+
+=== Topics
+
+The following topic provides additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:igsparklineview.html[IGSparklineView]
+|This topic serves as a gateway to the features and functionality of the _IGSparklineView_ control.
+
+|====

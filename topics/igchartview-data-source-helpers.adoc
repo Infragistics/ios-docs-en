@@ -1,0 +1,284 @@
+﻿////
+
+|metadata|
+{
+    "name": "igchartview-data-source-helpers",
+    "controlName": ["IGChartView"],
+    "tags": ["Charting","Data Binding","Getting Started"],
+    "guid": "b67edfaf-6417-4e57-b2bf-b859bf9dd4e7",  
+    "buildFlags": [],
+    "createdOn": "2012-07-25T17:35:37.2640932Z"
+}
+|metadata|
+////
+
+= Data Source Helpers
+
+== Topic Overview
+
+=== Purpose
+
+This topic provides a conceptual overview of the data source helpers used in the  _IGChartView_™ control.
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref329259269, Data Source Helpers Reference >>
+
+** <<_Ref329259278,Introduction>>
+** <<_Ref329259716,Data Source Helpers reference chart>>
+
+* <<_Ref324841253, Related Content >>
+
+[[_Ref329259269]]
+== Data Source Helpers Reference
+
+[[_Ref329259278]]
+
+=== Introduction
+
+Using the respective data source helper eliminates the need to implement any of the required protocol methods found in the  _IGSeriesDataSource_   class. Thus, allowing you to simplify the wiring up of data to the  _IGChartView_   control by using the data source helper specialized for that control.
+
+The  _IGChartView_   control employs several Data Source Helpers based on the chart series type. For details, refer to <<_Ref329259716,Data Source Helpers reference chart>>.
+
+[[_Ref329259716]]
+
+=== Data Source Helpers reference chart
+
+The table below maps Data Source Helpers related to the  _IGChartView_   control name along with the chart series for which they are used. Code snippets demonstrating how to use data source helpers are available in each of the link:igchartview-chart-series.html[Chart Series] topics.
+
+[options="header", cols="a,a"]
+|====
+|Data Source Helper Name|Chart Series Type
+
+| _IGBubbleSeriesDataSourceHelper_ 
+|
+* link:igchartview-bubble-series.html[Bubble Series] 
+
+| _IGCategorySeriesDataSourceHelper_ 
+|
+* link:igchartview-area-series.html[Area Series] 
+
+* link:igchartview-bar-series.html[Bar Series] 
+
+* link:igchartview-column-series.html[Column Series] 
+
+* link:igchartview-line-series.html[Line Series] 
+
+* link:igchartview-point-series.html[Point Series] 
+
+* link:igchartview-radial-column-series.html[Radial Column Series] 
+
+* link:igchartview-radial-line-series.html[Radial Line Series] 
+
+* link:igchartview-radial-pie-series.html[Radial Pie Series] 
+
+* link:igchartview-spline-area-series.html[Spline Area Series] 
+
+* link:igchartview-spline-series.html[Spline Series] 
+
+* link:igchartview-step-area-series.html[Step Area Series] 
+
+* link:igchartview-step-line-series.html[Step Line Series] 
+
+* link:igchartview-waterfall-series.html[Waterfall Series] 
+
+| _IGHighLowDateSeriesDataSourceHelper_ 
+|
+* link:igchartview-range-area-series.html[Range Area Series] 
+
+* link:igchartview-range-column-series.html[Range Column Series] 
+
+.Note: 
+
+[NOTE] 
+
+==== 
+
+The _IGHighLowDateSeriesDataSourceHelper_ is not recommended for use with the link:igchartview-range-column-series.html[Range Column Series]. 
+
+====
+
+| _IGHighLowSeriesDataSourceHelper_ 
+|
+* link:igchartview-range-area-series.html[Range Area Series] 
+
+* link:igchartview-range-column-series.html[Range Column Series] 
+
+| _IGOHLCSeriesDataSourceHelper_ 
+|
+* link:igchartview-absolute-volume-oscillator-indicator.html[Absolute Volume Oscillator Indicator] 
+
+* link:igchartview-accumulation-distribution-indicator.html[Accumulation Distribution Indicator] 
+
+* link:igchartview-average-true-range-indicator.html[Average True Range Indicator] 
+
+* link:igchartview-bollinger-band-overlay.html[Bollinger Band Overlay] 
+
+* link:igchartview-bollinger-band-width-indicator.html[Bollinger Band Width Indicator] 
+
+* link:igchartview-chaikin-oscillator-indicator.html[Chaikin Oscillator Indicator] 
+
+* link:igchartview-chaikin-volatility-indicator.html[Chaikin Volatility Indicator] 
+
+* link:igchartview-commodity-channel-index-indicator.html[Commodity Channel Index Indicator] 
+
+* link:igchartview-detrended-price-oscillator-indicator.html[Detrended Price Oscillator Indicator] 
+
+* link:igchartview-ease-of-movement-indicator.html[Ease Of Movement Indicator] 
+
+* link:igchartview-fast-stochastic-oscillator-indicator.html[Fast Stochastic Oscillator Indicator] 
+
+* link:igchartview-financial-price-series-candlestick.html[Financial Price Series in Candlestick Mode] 
+
+* link:igchartview-financial-price-series-ohlc.html[Financial Price Series in OHLC Mode] 
+
+* link:igchartview-force-index-indicator.html[Force Index Indicator] 
+
+* link:igchartview-full-stochastic-oscillator-indicator.html[Full Stochastic Oscillator Indicator] 
+
+* link:igchartview-market-facilitation-index-indicator.html[Market Facilitation Index Indicator] 
+
+* link:igchartview-mass-index-indicator.html[Mass Index Indicator] 
+
+* link:igchartview-median-price-indicator.html[Median Price Indicator] 
+
+* link:igchartview-money-flow-index-indicator.html[Money Flow Index Indicator] 
+
+* link:igchartview-moving-average-convergence-divergence-indicator.html[Moving Average Convergence Divergence Indicator] 
+
+* link:igchartview-negative-volume-index-indicator.html[Negative Volume Index Indicator] 
+
+* link:igchartview-on-balance-volume-indicator.html[On Balance Volume Indicator] 
+
+* link:igchartview-percentage-price-oscillator-indicator.html[Percentage Price Oscillator Indicator] 
+
+* link:igchartview-percentage-volume-oscillator-indicator.html[Percentage Volume Oscillator Indicator] 
+
+* link:igchartview-positive-volume-index-indicator.html[Positive Volume Index Indicator] 
+
+* link:igchartview-price-channel-overlay.html[Price Channel Overlay] 
+
+* link:igchartview-rate-change-momentum-indicator.html[Rate of Change and Momentum Indicator] 
+
+* link:igchartview-relative-strength-index-indicator.html[Relative Strength Index Indicator] 
+
+* link:igchartview-slow-stochastic-oscillator-indicator.html[Slow Stochastic Oscillator Indicator] 
+
+* link:igchartview-standard-deviation-indicator.html[Standard Deviation Indicator] 
+
+* link:igchartview-stochrsi-indicator.html[StochRSI Indicator] 
+
+* link:igchartview-trix-indicator.html[TRIX Indicator] 
+
+* link:igchartview-typical-price-indicator.html[Typical Price Indicator] 
+
+* link:igchartview-ultimate-oscillator-indicator.html[Ultimate Oscillator Indicator] 
+
+* link:igchartview-weighted-close-indicator.html[Weighted Close Indicator] 
+
+* link:igchartview-williams-percent-range-indicator.html[Williams Percent Range Indicator] 
+
+| _IGPolarSeriesDataSourceHelper_ 
+|
+* link:igchartview-polar-area-series.html[Polar Area Series] 
+
+* link:igchartview-polar-line-series.html[Polar Line Series] 
+
+* link:igchartview-polar-scatter-series.html[Polar Scatter Series] 
+
+* link:igchartview-polar-spline-area-series.html[Polar Spline Area Series] 
+
+* link:igchartview-polar-spline-series.html[Polar Spline Series] 
+
+| _IGScatterSeriesDataSourceHelper_ 
+|
+* link:igchartview-scatter-line-series.html[Scatter Line Series] 
+
+* link:igchartview-scatter-series-1.html[Scatter Series] 
+
+* link:igchartview-scatter-spline-series.html[Scatter Spline Series] 
+
+|IGStackedDateSeriesDataSourceHelper
+|
+* link:igchartview-stacked-100-area-series.html[Stacked 100 Area Series] 
+
+* link:igchartview-stacked-100-bar-series.html[Stacked 100 Bar Series] 
+
+* link:igchartview-stacked-100-column-series.html[Stacked 100 Column Series] 
+
+* link:igchartview-stacked-100-line-series.html[Stacked 100 Line Series] 
+
+* link:igchartview-stacked-100-spline-area-series.html[Stacked 100 Spline Area Series] 
+
+* link:igchartview-stacked-100-spline-series.html[Stacked 100 Spline Series] 
+
+* link:igchartview-stacked-area-series.html[Stacked Area Series] 
+
+* link:igchartview-stacked-bar-series.html[Stacked Bar Series] 
+
+* link:igchartview-stacked-column-series.html[Stacked Column Series] 
+
+* link:igchartview-stacked-line-series.html[Stacked Line Series] 
+
+* link:igchartview-stacked-spline-area-series.html[Stacked Spline Area Series] 
+
+* link:igchartview-stacked-spline-series.html[Stacked Spline Series] 
+
+.Note: 
+
+[NOTE] 
+
+==== 
+
+The _IGStackedDateSeriesDataSourceHelper_ is not recommended for use with the link:igchartview-stacked-100-column-series.html[Stacked 100 Column Series] or link:igchartview-stacked-column-series.html[Stacked Column Series]. 
+
+====
+
+|IGStackedSeriesDataSourceHelper
+|
+* link:igchartview-stacked-100-area-series.html[Stacked 100 Area Series] 
+
+* link:igchartview-stacked-100-bar-series.html[Stacked 100 Bar Series] 
+
+* link:igchartview-stacked-100-column-series.html[Stacked 100 Column Series] 
+
+* link:igchartview-stacked-100-line-series.html[Stacked 100 Line Series] 
+
+* link:igchartview-stacked-100-spline-area-series.html[Stacked 100 Spline Area Series] 
+
+* link:igchartview-stacked-100-spline-series.html[Stacked 100 Spline Series] 
+
+* link:igchartview-stacked-area-series.html[Stacked Area Series] 
+
+* link:igchartview-stacked-bar-series.html[Stacked Bar Series] 
+
+* link:igchartview-stacked-column-series.html[Stacked Column Series] 
+
+* link:igchartview-stacked-line-series.html[Stacked Line Series] 
+
+* link:igchartview-stacked-spline-area-series.html[Stacked Spline Area Series] 
+
+* link:igchartview-stacked-spline-series.html[Stacked Spline Series] 
+
+|====
+
+[[_Ref324841253]]
+== Related Content
+
+=== Topics
+
+The following topic provides additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:igchartview.html[IGChartView]
+|This topic serves as a gateway to the features and functionality of the _IGChartView_ control.
+
+| link:igchartview-chart-series.html[Chart Series]
+|This collection of topics explains each of the individual charts supported by the _IGChartView_ control.
+
+|====

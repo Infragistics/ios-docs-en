@@ -1,0 +1,113 @@
+﻿////
+
+|metadata|
+{
+    "name": "igtreemapview-data-source-helper",
+    "tags": ["Charting","Data Binding","Getting Started","How Do I"],
+    "controlName": ["IGTreemapView"],
+    "guid": "0a54ed35-cb30-46a8-97fb-91ba9689d20b",  
+    "buildFlags": [],
+    "createdOn": "2013-09-25T12:57:55.4307434Z"
+}
+|metadata|
+////
+
+= Data Source Helper
+
+== Topic Overview
+
+=== Purpose
+
+This topic provides a conceptual overview of the data source helper in the  _IGTreemapView_™ and demonstrates its configuration using a code example.
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref324841248, Introduction >>
+* <<_Ref327936206, IGTreemapView Data Source Helper – Code Example >>
+
+** <<_Ref327344209,Description>>
+** <<_Ref327523606,Prerequisites>>
+** <<_Ref327344217,Code>>
+
+* <<_Ref215823716, Related Content >>
+
+[[_Ref324841248]]
+== Introduction
+
+[[_Ref215796828]]
+
+=== Data source helper summary
+
+Using the  _IGTreemapViewDataSourceHelper_   eliminates the need to implement any of the required protocol methods found in the  _IGTreemapViewDataSource_   class. Thus, simplifying your wiring up of data to the  _IGTreemapView_   control by using the data source helper specialized for this control.
+
+The  _IGTreemapViewDataSourceHelper_   is extremely flexible in how the values, labels, and children load. The initialization method, `initWithData:treemapView:`, supports direct loading of your data arrays with an array of custom  _NSObjects_  . Additionally, you can initialize the  _IGTreemapViewDataSourceHelper_   using the generic `init` method, and depending on the use case, manually set the `data` and `treemapView` properties.
+
+The  _IGTreemapView_   can contain many nested levels. To add a level and connect your custom data object paths to the data source helper, use the `addLevelWithValuePath:labelPath:childSourcePath:` method.
+
+.Note:
+[NOTE]
+====
+Without adding at least 1 level, nothing will be rendered inside of the  _IGTreemapView_  .
+====
+
+[[_Ref327936206]]
+[[_Ref324841253]]
+== IGTreemapView Data Source Helper – Code Example
+
+[[_Ref327344209]]
+
+=== Description
+
+The code below demonstrates loading an  _NSMutableArray_   of  _NSObjects_   containing values for the tree map leaf node and the label properties. Once initialized, and after loading the values, labels, and children into the  _IGTreemapViewDataSourceHelper_   control, you can assign an instance of the data source helper to the  _IGTreemapView_   control’s `dataSource` property.
+
+[[_Ref327523606]]
+
+=== Prerequisites
+
+This code example requires the inclusion of the  _Chart_   framework, detail about how to add this framework can be found in the link:igchartview-adding-the-chart-framework-file.html[Adding the Chart Framework File] topic.
+
+[[_Ref327344217]]
+
+=== Code
+
+*In C#:*
+
+[source,csharp]
+----
+IGTreemapView treemapView = new IGTreemapView();
+NSMutableArray data = new NSMutableArray();
+// ...Add NSObjects to the array, the NSObject in this example must contain the property named “Value” and a property named “Label”. No children will be created.
+IGTreemapViewDataSourceHelper dataSourceHelper = new IGTreemapViewDataSourceHelper(data, treemapView);
+dataSourceHelper.AddLevel ("Value", "Label", String.Empty);
+treemapView.DataSource = dataSourceHelper;
+----
+
+*In Objective-C:*
+
+[source,csharp]
+----
+IGTreemapView *treemapView = [[IGTreemapView alloc]init];
+NSMutableArray *data = [[NSMutableArray alloc]init];
+// ...Add NSObjects to the array, the NSObject in this example must contain the property named “value” and a property named “label”. No children will be created.
+IGTreemapViewDataSourceHelper *dataSourceHelper = [[IGTreemapViewDataSourceHelper alloc]initWithData:_data treemapView:_treemapView];
+[_treemapViewDataSourceHelper addLevelWithValuePath:@"value" labelPath:@"label" childSourcePath:nil];
+treemapView.dataSource = dataSourceHelper;
+----
+
+[[_Ref215823716]]
+== Related Content
+
+=== Topics
+
+The following topics provide additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:igtreemapview.html[IGTreemapView]
+|This topic serves as a gateway to the features and functionality of the _IGTreemapView_ control.
+
+|====

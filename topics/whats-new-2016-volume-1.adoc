@@ -1,0 +1,87 @@
+﻿////
+
+|metadata|
+{
+    "name": "whats-new-2016-volume-1",
+    "controlName": [],
+    "tags": [],
+    "guid": "84adea1a-0829-4b3e-8442-d73bee856231",  
+    "buildFlags": [],
+    "createdOn": "2016-03-25T17:15:32.1510148Z"
+}
+|metadata|
+////
+
+= 2016 Volume 1
+
+== New Features Summary
+
+=== New features summary chart
+
+The following table summarizes the new features of the NucliOS 2016 Volume 1. Additional details are available following the summary table.
+
+[options="header", cols="a,a,a"]
+|====
+|Control|Feature|Description
+
+|<<_Ref223579032,IGCalendarView>>
+|<<_Ref320517942,Selected Appointment Color>>
+|The _IGCalendarView_ now allows for customizing the selected appointment color.
+
+|
+|<<_Ref320517949,Animated Navigate to Date>>
+|The _IGCalendarView_ has an updated method for navigating to a date with or without animation.
+
+|
+|<<_Ref320517955,Resolve the Position of Time>>
+|With 2016 Volume 1 the _IGCalendarView_ now includes a method for resolving the position of time in the day view.
+
+|
+|<<_Ref320517968,Appointment Pressed Delegate>>
+|In 2016 Volume 1 a delegate method was added to the IGCalendarView for detecting when an appointment has been tapped while in day view.
+
+|====
+
+[[_Ref223579032]]
+== IGCalendarView
+
+[[_Ref320517942]]
+
+=== Selected Appointment Color
+
+The  _IGCalendarView_   now allows for customizing the selected appointment color. When returning an  _IGCalendarAppointment_   object from your data source, you can access the selected appointment color from the `selectedColor` property.
+
+==== Related Topics:
+
+* link:igcalendarview-configuring-custom-appointment-color.html[Configuring a Custom Appointment Color]
+* link:igcalendarview-configuring-appointments.html[Configuring Appointments]
+
+[[_Ref320517949]]
+
+=== Animated Navigate to Date
+
+The  _IGCalendarView_   has an updated `navigateToDate``:forType:animate``:` method for navigating to a date with or without animation.
+
+==== Related Topics:
+
+* link:igcalendarview-navigating-calendar.html[Navigating the Calendar]
+
+[[_Ref320517955]]
+
+=== Resolve the Position of Time
+
+With 2016 Volume 1 the  _IGCalendarView_   now includes a method for resolving the position of time in the day view. By calling the `resolvePositionOfTimeInDayView``:` method returns the Y value for the time position or -1 when not in `dayView` or `weekView`.
+
+==== Related Topics:
+
+* link:igcalendarview-navigating-calendar.html[Navigating the Calendar]
+
+[[_Ref320517968]]
+
+=== Appointment Pressed Delegate
+
+In 2016 Volume 1 a `calendarView``:appointmentPressed:fromDataSource:withBounds:forDay:` delegate method was added to the  _IGCalendarViewDelegate_   for detecting when an appointment has been tapped while in day view.
+
+==== Related Topics:
+
+* link:igcalendarview-configuring-appointments.html[Configuring Appointments]

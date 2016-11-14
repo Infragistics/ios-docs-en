@@ -1,0 +1,134 @@
+﻿////
+
+|metadata|
+{
+    "name": "iggridview-data-helpers",
+    "controlName": ["IGGridView"],
+    "tags": ["Data Binding","Getting Started","Grids","How Do I"],
+    "guid": "caf8a4b9-f28d-475d-b7ef-21ff06532e70",  
+    "buildFlags": [],
+    "createdOn": "2012-07-16T14:12:13.9223841Z"
+}
+|metadata|
+////
+
+= Data Helpers
+
+== Topic Overview
+
+=== Purpose
+
+This topic provides a conceptual overview of how data helpers connect your data to the  _IGGridView_™ control.
+
+=== Required background
+
+The following table lists the topics required as a prerequisite to understanding this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:iggridview-adding-the-ig-framework-file.html[Adding the IG Framework File]
+|This topic explains the requirements for adding the grid framework file to an Xcode project; a requirement for using the _IGGridView™_ control.
+
+|====
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref324841248, Data Helpers >>
+* <<_Ref328640202,Adding Data to the IGGridView with  *IGGridViewDataSourceHelper*  - Code Example>>
+
+** <<_Ref323199287,Description>>
+** <<_Ref323199293,Code>>
+
+* <<_Ref323199323, Related Content >>
+
+[[_Ref324841248]]
+[[_Ref323199279]]
+[[_Ref324505001]]
+[[_Ref323111244]]
+== Data Helpers
+
+[[_Ref327859845]]
+
+=== Introduction
+
+Data helpers are useful when trying to display an array of objects without having to implement the  _IGGridViewDataSource_   protocol. When it actually becomes time to wire your data source to the  _IGGridView_   use any one of three different data source helpers listed in the following table. If these helpers are inadequate for handling how your data maps into grid cells, you can override any of the  _IGGridViewDataSource_   protocol methods, including the `normalizePath` method, to map a cell’s path back to your data.
+
+The  _IGGridView_   has three out of the box data helpers for connecting data.
+
+[options="header", cols="a,a"]
+|====
+|Data Helper|Description
+
+| _IGGridViewDataSourceHelper_ 
+|Treats each item in the array as a row, and every public property of the item as a column.
+
+| _IGGridViewSingleFieldMultiColumnDataSourceHelper_ 
+|Treats each cell in the grid as a column, which are then divided by the value of the `numberOfColumns` property and split into rows. 
+
+If a row does not have enough columns left over, a cell will not be created for that location.
+
+| _IGGridViewSingleRowSingleFieldDataSourceHelper_ 
+|Treats each row as a column and displays only one user assigned field in the underlying data, by using the `field` property and requires an _IGGridViewColumnDefinition_ type.
+
+| _IGGridViewSingleFieldDynamicColumnDataSourceHelper_ 
+|This class is a derivative of _IGGridViewSingleFieldMultiColumnDataSourceHelper_ and essentially figures out the `numberOfColumns` automatically instead of you having to specify. Set the `targetWidth` for the column and it will figure out how many columns can fit in a specific row automatically based on the width of the grid.
+
+|====
+
+[[_Ref328640202]]
+== Adding Data to the  _IGGridView_   with IGGridViewDataSourceHelper – Code Example
+
+[[_Ref323199287]]
+
+=== Description
+
+Using the  _IGGridViewDataSourceHelper_   to connect an array of objects to the  _IGGridView_   only requires assigning the `data` property instead of implementing all of the required members of the  _IGGridViewDataSource_   protocol.
+
+[[_Ref323199293]]
+
+=== Code
+
+The code below populates an  _NSArray_   with data and assigns it to the  _IGGridViewDataSourceHelper’s_   `data` property. The data source is then added to the  _IGGridView_   through the `dataSource` property.
+
+*In Objective-C:*
+
+[source,csharp]
+----
+NSArray* mydata = [self getData];
+IGGridViewDataSourceHelper* dataSource= [[IGGridViewDataSourceHelper alloc]init];
+dataSource.data = myData;
+gridView.dataSource = dataSource;
+----
+
+*In C#:*
+
+[source,csharp]
+----
+NSObject[] data = this.GetData();
+IGGridViewDataSourceHelper dataSource = new IGGridViewDataSourceHelper();
+dataSource.Data = data;
+gridView.WeakDataSource = dataSource;
+----
+
+[[_Ref323199323]]
+== Related Content
+
+=== Topics
+
+The following topics provide additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:iggridview-adding-the-iggridview-uiview.html[Adding the IGGridView to a UIView]
+|This topic provides basic information about creating an instance of the IGGridView™ and displaying data to help you get up and running with this control.
+
+| link:iggridview.html[IGGridView]
+|This section serves as an introduction to the _IGGridView’s_ key features and functionalities.
+
+|====

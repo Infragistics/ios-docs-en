@@ -1,0 +1,33 @@
+﻿////
+
+|metadata|
+{
+    "name": "igbarcodeview-configuring-igbarcodeview",
+    "tags": ["Getting Started","How Do I"],
+    "controlName": ["IGBarcodeView"],
+    "guid": "3e4ee7a4-69b8-43f4-a24b-fe6f89e2b0b4",  
+    "buildFlags": [],
+    "createdOn": "2014-03-18T15:24:46.9115851Z"
+}
+|metadata|
+////
+
+= Configuring IGBarcodeView
+
+=== Introduction
+
+The topics in this group cover enabling, configuring, and using the  _IGBarcodeView_™ control’s supported features.
+
+=== Topics
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:igbarcodeview-configuring-the-barcode-color.html[Configuring the Barcode Color]
+|This topic provides a conceptual overview of configuring the barcode color on the _IGBarcodeView_ control and demonstrates the procedure using a code example.
+
+| link:igbarcodeview-configuring-the-barcode-text.html[Configuring the Barcode Text]
+|This topic provides a conceptual overview of configuring the barcode text on the _IGBarcodeView_ control and demonstrates the procedure using a code example.
+
+|====

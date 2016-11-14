@@ -1,0 +1,297 @@
+﻿////
+
+|metadata|
+{
+    "name": "iggaugeview-needles",
+    "controlName": ["IGGaugeView"],
+    "tags": ["Charting","How Do I","Styling"],
+    "guid": "bd17f9aa-3a24-468e-a0ae-f178bd870905",  
+    "buildFlags": [],
+    "createdOn": "2013-02-13T14:30:49.1173536Z"
+}
+|metadata|
+////
+
+= Needles
+
+== Topic Overview
+
+=== Purpose
+
+This topic provides a conceptual overview of needle and needle pivot shapes available with the  _IGGaugeView_™ control.
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref222887277, Needles >>
+
+** <<_Ref329132134,Introduction>>
+** <<_Ref327864136,Needle shape types>>
+
+* <<_Ref324841253, Related Content >>
+
+[[_Ref222887277]]
+== Needles
+
+[[_Ref329132134]]
+
+=== Introduction
+
+A gauge needle is a visual element used to signify a gauge set value and consists of needle cap overlays or underlays; the gauge needle’s pivot point. The supported needle shapes and caps shown in <<_Ref327864136,Needle shape types>> are set using the following properties.
+
+* `needleShape`
+* `needlePivotShape`
+
+[[_Ref327864136]]
+
+=== Needle shape types
+
+The following table contains supported marker shapes and their associated type name.
+
+[options="header", cols="a,a,a"]
+|====
+|Needle Shape Name|Pivot Shape Name|Preview
+
+|`IGGaugeNeedleShapeNeedle`
+|(none)
+|image::images/IGGaugeView_-_Needles_1.png[]
+
+|
+|`IGGaugePivotShapeCircle`
+|image::images/IGGaugeView_-_Needles_2.png[]
+
+|
+|`IGGaugePivotShapeCircleOverlay`
+|image::images/IGGaugeView_-_Needles_3.png[]
+
+|
+|`IGGaugePivotShapeCircleOverlayWithHole`
+|image::images/IGGaugeView_-_Needles_4.png[]
+
+|
+|`IGGaugePivotShapeCircleUnderlay`
+|image::images/IGGaugeView_-_Needles_5.png[]
+
+|
+|`IGGaugePivotShapeCircleUnderlayWithHole`
+|image::images/IGGaugeView_-_Needles_6.png[]
+
+|
+|`IGGaugePivotShapeCircleWithHole`
+|image::images/IGGaugeView_-_Needles_7.png[]
+
+|`IGGaugeNeedleShapeNeedleWithBulb`
+|(none)
+|image::images/IGGaugeView_-_Needles_8.png[]
+
+|
+|`IGGaugePivotShapeCircle`
+|image::images/IGGaugeView_-_Needles_9.png[]
+
+|
+|`IGGaugePivotShapeCircleOverlay`
+|image::images/IGGaugeView_-_Needles_10.png[]
+
+|
+|`IGGaugePivotShapeCircleOverlayWithHole`
+|image::images/IGGaugeView_-_Needles_11.png[]
+
+|
+|`IGGaugePivotShapeCircleUnderlay`
+|image::images/IGGaugeView_-_Needles_12.png[]
+
+|
+|`IGGaugePivotShapeCircleUnderlayWithHole`
+|image::images/IGGaugeView_-_Needles_13.png[]
+
+|
+|`IGGaugePivotShapeCircleWithHole`
+|image::images/IGGaugeView_-_Needles_14.png[]
+
+|`IGGaugeNeedleShapeRectangle`
+|(none)
+|image::images/IGGaugeView_-_Needles_15.png[]
+
+|
+|`IGGaugePivotShapeCircle`
+|image::images/IGGaugeView_-_Needles_16.png[]
+
+|
+|`IGGaugePivotShapeCircleOverlay`
+|image::images/IGGaugeView_-_Needles_17.png[]
+
+|
+|`IGGaugePivotShapeCircleOverlayWithHole`
+|image::images/IGGaugeView_-_Needles_18.png[]
+
+|
+|`IGGaugePivotShapeCircleUnderlay`
+|image::images/IGGaugeView_-_Needles_19.png[]
+
+|
+|`IGGaugePivotShapeCircleUnderlayWithHole`
+|image::images/IGGaugeView_-_Needles_20.png[]
+
+|
+|`IGGaugePivotShapeCircleWithHole`
+|image::images/IGGaugeView_-_Needles_21.png[]
+
+|`IGGaugeNeedleShapeRectangleWithBulb`
+|(none)
+|image::images/IGGaugeView_-_Needles_22.png[]
+
+|
+|`IGGaugePivotShapeCircle`
+|image::images/IGGaugeView_-_Needles_23.png[]
+
+|
+|`IGGaugePivotShapeCircleOverlay`
+|image::images/IGGaugeView_-_Needles_24.png[]
+
+|
+|`IGGaugePivotShapeCircleOverlayWithHole`
+|image::images/IGGaugeView_-_Needles_25.png[]
+
+|
+|`IGGaugePivotShapeCircleUnderlay`
+|image::images/IGGaugeView_-_Needles_26.png[]
+
+|
+|`IGGaugePivotShapeCircleUnderlayWithHole`
+|image::images/IGGaugeView_-_Needles_27.png[]
+
+|
+|`IGGaugePivotShapeCircleWithHole`
+|image::images/IGGaugeView_-_Needles_28.png[]
+
+|`IGGaugeNeedleShapeTrapezoid`
+|(none)
+|image::images/IGGaugeView_-_Needles_29.png[]
+
+|
+|`IGGaugePivotShapeCircle`
+|image::images/IGGaugeView_-_Needles_30.png[]
+
+|
+|`IGGaugePivotShapeCircleOverlay`
+|image::images/IGGaugeView_-_Needles_31.png[]
+
+|
+|`IGGaugePivotShapeCircleOverlayWithHole`
+|image::images/IGGaugeView_-_Needles_32.png[]
+
+|
+|`IGGaugePivotShapeCircleUnderlay`
+|image::images/IGGaugeView_-_Needles_33.png[]
+
+|
+|`IGGaugePivotShapeCircleUnderlayWithHole`
+|image::images/IGGaugeView_-_Needles_34.png[]
+
+|
+|`IGGaugePivotShapeCircleWithHole`
+|image::images/IGGaugeView_-_Needles_35.png[]
+
+|`IGGaugeNeedleShapeTrapezoidWithBulb`
+|(none)
+|image::images/IGGaugeView_-_Needles_36.png[]
+
+|
+|`IGGaugePivotShapeCircle`
+|image::images/IGGaugeView_-_Needles_37.png[]
+
+|
+|`IGGaugePivotShapeCircleOverlay`
+|image::images/IGGaugeView_-_Needles_38.png[]
+
+|
+|`IGGaugePivotShapeCircleOverlayWithHole`
+|image::images/IGGaugeView_-_Needles_39.png[]
+
+|
+|`IGGaugePivotShapeCircleUnderlay`
+|image::images/IGGaugeView_-_Needles_40.png[]
+
+|
+|`IGGaugePivotShapeCircleUnderlayWithHole`
+|image::images/IGGaugeView_-_Needles_41.png[]
+
+|
+|`IGGaugePivotShapeCircleWithHole`
+|image::images/IGGaugeView_-_Needles_42.png[]
+
+|`IGGaugeNeedleShapeTriangle`
+|(none)
+|image::images/IGGaugeView_-_Needles_43.png[]
+
+|
+|`IGGaugePivotShapeCircle`
+|image::images/IGGaugeView_-_Needles_44.png[]
+
+|
+|`IGGaugePivotShapeCircleOverlay`
+|image::images/IGGaugeView_-_Needles_45.png[]
+
+|
+|`IGGaugePivotShapeCircleOverlayWithHole`
+|image::images/IGGaugeView_-_Needles_46.png[]
+
+|
+|`IGGaugePivotShapeCircleUnderlay`
+|image::images/IGGaugeView_-_Needles_47.png[]
+
+|
+|`IGGaugePivotShapeCircleUnderlayWithHole`
+|image::images/IGGaugeView_-_Needles_48.png[]
+
+|
+|`IGGaugePivotShapeCircleWithHole`
+|image::images/IGGaugeView_-_Needles_49.png[]
+
+|`IGGaugeNeedleShapeTriangleWithBulb`
+|(none)
+|image::images/IGGaugeView_-_Needles_50.png[]
+
+|
+|`IGGaugePivotShapeCircle`
+|image::images/IGGaugeView_-_Needles_51.png[]
+
+|
+|`IGGaugePivotShapeCircleOverlay`
+|image::images/IGGaugeView_-_Needles_52.png[]
+
+|
+|`IGGaugePivotShapeCircleOverlayWithHole`
+|image::images/IGGaugeView_-_Needles_53.png[]
+
+|
+|`IGGaugePivotShapeCircleUnderlay`
+|image::images/IGGaugeView_-_Needles_54.png[]
+
+|
+|`IGGaugePivotShapeCircleUnderlayWithHole`
+|image::images/IGGaugeView_-_Needles_55.png[]
+
+|
+|`IGGaugePivotShapeCircleWithHole`
+|image::images/IGGaugeView_-_Needles_56.png[]
+
+|====
+
+[[_Ref324841253]]
+
+== Related Content
+
+=== Topics
+
+The following topic provides additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:iggaugeview.html[IGGaugeView]
+|This topic serves as a gateway to the features and functionality of the _IGGaugeView_ control.
+
+|====

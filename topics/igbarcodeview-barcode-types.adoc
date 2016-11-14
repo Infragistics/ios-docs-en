@@ -1,0 +1,326 @@
+﻿////
+
+|metadata|
+{
+    "name": "igbarcodeview-barcode-types",
+    "tags": ["API","Getting Started","How Do I"],
+    "controlName": ["IGBarcodeView"],
+    "guid": "8e8a02b2-1ef3-4437-abcd-4f2806a31aa6",  
+    "buildFlags": [],
+    "createdOn": "2014-03-18T14:47:43.8184315Z"
+}
+|metadata|
+////
+
+= Barcode Types
+
+== Topic Overview
+
+=== Purpose
+
+This topic provides a conceptual overview of the barcode types available with the  _IGBarcodeView_™ control.
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref231443148,Barcode Types>>
+
+** <<_Ref329132134,Introduction>>
+** <<_Ref327864136,Barcode types>>
+
+* <<_Ref231443183,Related Content>>
+
+[[_Ref231443148]]
+== Barcode Types
+
+[[_Ref329132134]]
+
+=== Introduction
+
+The supported barcode types shown in <<_Ref327864136,Barcode types>> are set using the following initialization methods.
+
+* `initWithBarcode:`
+* `initWithFrame:barcodeType:`
+
+.Note:
+[NOTE]
+====
+Initializing with the default constructor `init` uses the `IGBarcodeTypeUPCA` barcode type.
+====
+
+Additionally, 2 static class methods are available for creating an  _IGBarcodeView_   instance.
+
+* `createBarcode:`
+* `createBarcode:frame:`
+
+[[_Ref327864136]]
+
+=== Barcode types
+
+Each of the supported barcode types simply render out the supplied value when that value meets the length and character requirements. No further validation is done to verify the value meets the specific barcode specification.
+
+The following table contains supported barcode types and their associated type name.
+
+[options="header", cols="a,a,a"]
+|====
+|Type|Features|Preview
+
+|`IGBarcodeTypeCodabar`
+|
+* Numeric (0-9) 
+
+* 6 special characters :$-+./ 
+
+* Valid length between 3 and 12 characters 
+
+|image::images/IGBarcodeView_-_Barcode_Types_1.png[]
+
+|`IGBarcodeTypeCode39`
+|
+* Numeric (0-9) 
+
+* Capital letters (A-Z) 
+
+* 7 special characters $-+/%.space 
+
+* Valid length greater than 0 characters 
+
+|image::images/IGBarcodeView_-_Barcode_Types_2.png[]
+
+|`IGBarcodeTypeCode39Ext`
+|
+* Numeric (0-9) 
+
+* Capital letters (A-Z) 
+
+* 33 special characters `&$$* $$@^:;,$!}{][)(#=>$$<-$$+%.|?"'\/space~_ 
+
+* 128 ASCII characters 
+
+* Valid length greater than 0 characters 
+
+|image::images/IGBarcodeView_-_Barcode_Types_3.png[]
+
+|`IGBarcodeTypeCode128`
+|
+* 128 ASCII characters 
+
+* Control characters 
+
+* Check digits 
+
+* High density 
+
+* Valid length greater than 4 characters 
+
+|image::images/IGBarcodeView_-_Barcode_Types_4.png[]
+
+|`IGBarcodeTypeEAN8`
+|
+* Numeric (0-9) 
+
+* Check digit 
+
+* Valid length of 8 characters 
+
+|image::images/IGBarcodeView_-_Barcode_Types_5.png[]
+
+|`IGBarcodeTypeEAN13`
+|
+* Numeric (0-9) 
+
+* Check digit 
+
+* Valid length of 13 characters 
+
+|image::images/IGBarcodeView_-_Barcode_Types_6.png[]
+
+|`IGBarcodeTypeInterleaved2Of5`
+|
+* Numeric (0-9) 
+
+* High density 
+
+* Valid length greater than 3 characters 
+
+|image::images/IGBarcodeView_-_Barcode_Types_7.png[]
+
+|`IGBarcodeTypePlanet`
+|
+* Numeric (0-9) 
+
+* Check digit 
+
+* Valid length of 11 or 13 characters 
+
+|image::images/IGBarcodeView_-_Barcode_Types_8.png[]
+
+|`IGBarcodeTypePostNet`
+|
+* Numeric (0-9) 
+
+* Check digit 
+
+* Valid length of 5, 9 or 11 characters 
+
+|image::images/IGBarcodeView_-_Barcode_Types_9.png[]
+
+|`IGBarcodeTypeStandard2Of5`
+|
+* Numeric (0-9) 
+
+* Valid length greater than 3 characters 
+
+|image::images/IGBarcodeView_-_Barcode_Types_10.png[]
+
+|`IGBarcodeTypeUPCA`
+|
+* Numeric (0-9) 
+
+* Valid length of 12 characters 
+
+|image::images/IGBarcodeView_-_Barcode_Types_11.png[]
+
+|`IGBarcodeTypeUPCE`
+|
+* Numeric (0-9) 
+
+* Check digit 
+
+* Valid length of 7, 8, 12 or 13 characters 
+
+.Note: 
+
+[NOTE] 
+
+==== 
+
+Values with 12 or 13 characters refer to UPC-A values and must be valid UPC-A codes for proper conversion and rendering to UPC-E. 
+
+====
+|image::images/IGBarcodeView_-_Barcode_Types_12.png[]
+
+|====
+
+The following table further details the supported barcode characters for codabar, code 39 and code 39 extended.
+
+[options="header", cols="a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a"]
+|====
+|‘|&|$$*$$|@|^|}|{|]|[|:|;|$|* |!|-|)|(|%|.|||+|#|?|“|‘|\|/|image::images/IGBarcodeView_-_Barcode_Types_13.png[]orimage::images/IGBarcodeView_-_Barcode_Types_13.png[]|~|_
+
+|`IGBarcodeTypeCodabar`
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|☒
+|
+|☒
+|
+|
+|☒
+|
+|
+|
+|☒
+|
+|☒
+|
+|
+|
+|
+|
+|☒
+|
+|
+|
+
+|☒
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|☒
+|
+|
+|☒
+|
+|
+|☒
+|☒
+|
+|☒
+|
+|
+|
+|
+|
+|☒
+|☒
+|
+|
+
+|`IGBarcodeTypeCode39Ext`
+|☒
+|☒
+|☒
+|☒
+|☒
+|☒
+|☒
+|☒
+|☒
+|☒
+|☒
+|☒
+|☒
+|☒
+|☒
+|☒
+|☒
+|☒
+|☒
+|☒
+|☒
+|☒
+|☒
+|☒
+|☒
+|
+|☒
+|☒
+|☒
+|☒
+
+|====
+
+[[_Ref324841253]]
+
+[[_Ref231443183]]
+== Related Content
+
+=== Topics
+
+The following topic provides additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:igbarcodeview.html[IGBarcodeView]
+|This topic serves as a gateway to the features and functionality of the _IGBarcodeView_ control.
+
+|====

@@ -1,0 +1,93 @@
+﻿////
+
+|metadata|
+{
+    "name": "igsparklineview-display-types",
+    "tags": ["Charting","Getting Started","How Do I","Styling"],
+    "controlName": ["IGSparklineView"],
+    "guid": "332cada3-121f-41bb-98fa-915801920bb9",  
+    "buildFlags": [],
+    "createdOn": "2013-08-26T18:27:23.3355815Z"
+}
+|metadata|
+////
+
+= Display Types
+
+== Topic Overview
+
+=== Purpose
+
+This topic explains and details how to define the  _IGSparklineView_™ type.
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref235237560, Introduction >>
+** <<_Ref235237568,Display types summary>>
+** <<_Ref327864136,Display types>>
+
+* <<_Ref324841253, Related Content >>
+
+[[_Ref235237560]]
+== Introduction
+
+[[_Ref235237568]]
+
+=== Display types summary
+
+The IGSparklineView supports the following display types.
+
+* Line (`IGSparklineDisplayTypeLine`)
+* Area (`IGSparklineDisplayTypeArea`)
+* Column (`IGSparklineDisplayTypeColumn`)
+* Win/Loss (`IGSparklineDisplayTypeWinLoss`)
+
+The type is defined by the `displayType` property; set by default to display the `IGSparklineDisplayTypeColumn`.
+
+.Note:
+[NOTE]
+====
+If the Win/Loss type is bound to the same data as the other types such as the Line type (which can be bound to a collection of numeric values), then  _IGSparklineView_   will select two values from the collection – the highest and the lowest – and will render the sparkline based on those values.
+====
+
+[[_Ref327864136]]
+
+=== Display types
+
+The following table contains the supported sparkline display types.
+
+[options="header", cols="a,a"]
+|====
+|Display Mode Enumeration|[[_Ref235237574]]Preview
+
+|`IGSparklineDisplayTypeLine`
+|image::images/IGSparklineView_-_Display_Types_1.png[]
+
+|`IGSparklineDisplayTypeArea`
+|image::images/IGSparklineView_-_Display_Types_2.png[]
+
+|`IGSparklineDisplayTypeColumn`
+|image::images/IGSparklineView_-_Display_Types_3.png[]
+
+|`IGSparklineDisplayTypeWinLoss`
+|image::images/IGSparklineView_-_Display_Types_4.png[]
+
+|====
+
+[[_Ref324841253]]
+== Related Content
+
+=== Topics
+
+The following topic provides additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:igsparklineview.html[IGSparklineView]
+|This topic serves as a gateway to the features and functionality of the _IGSparklineView_ control.
+
+|====

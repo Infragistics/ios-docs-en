@@ -1,0 +1,33 @@
+﻿////
+
+|metadata|
+{
+    "name": "iggaugeview-configuring-iggaugeview",
+    "controlName": ["IGGaugeView"],
+    "tags": ["Charting","Getting Started"],
+    "guid": "9b6abc2b-77e8-4a09-997e-a4df1b831283",  
+    "buildFlags": [],
+    "createdOn": "2013-02-13T14:29:27.8962323Z"
+}
+|metadata|
+////
+
+= Configuring IGGaugeView
+
+=== Introduction
+
+The topics in this group explain and demonstrate enabling, configuring, and using the  _IGGaugeView_™ control’s supported features.
+
+=== Topics
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:iggaugeview-configuring-gauge-interactions.html[Configuring Gauge Interactions]
+|This topic provides a conceptual overview of interacting with the _IGGaugeView_ control and demonstrates how to configure it using a code example.
+
+| link:iggaugeview-configuring-ranges.html[Configuring Ranges]
+|This topic provides a conceptual overview of ranges with the _IGGaugeView_ control and demonstrates how to configure them using a code example.
+
+|====

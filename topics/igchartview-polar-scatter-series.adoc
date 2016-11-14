@@ -1,0 +1,157 @@
+﻿////
+
+|metadata|
+{
+    "name": "igchartview-polar-scatter-series",
+    "controlName": ["IGChartView"],
+    "tags": ["Charting","How Do I"],
+    "guid": "46f679cb-5fcd-40bf-b16b-aae8fba67ebc",  
+    "buildFlags": [],
+    "createdOn": "2012-05-21T17:57:17.7166998Z"
+}
+|metadata|
+////
+
+= Polar Scatter Series
+
+== Topic Overview
+
+=== Purpose
+
+This topic provides a conceptual overview of the Polar Scatter series in the  _IGChartView_™ control and provides a code example showing you how to add it to the chart view.
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref324841248, Introduction >>
+
+** <<_Ref328668018,Polar Scatter series summary>>
+** <<_Ref326327864,Data requirements>>
+
+* <<_Ref328669612,Adding a Polar Scatter Series to the  _IGChartView –_   Code Example>>
+
+** <<_Ref326327873,Description>>
+** <<_Ref328669634,Prerequisites>>
+** <<_Ref326327877,Code>>
+
+* <<_Ref324841253, Related Content >>
+
+[[_Ref324841248]]
+== Introduction
+
+[[_Ref326327860]]
+
+=== Polar Scatter series summary
+
+The Polar Scatter series renders data as a collection of unconnected polar coordinates against a circular polar plot.
+
+image::images/IGChartView_-_Polar_Scatter_Series_1.png[]
+
+Using the same concepts of the link:igchartview-scatter-series.html[Scatter Series], the Polar Scatter series uses polar coordinates to wraps data points around a circular plot. Polar coordinates consist of an ordered pair with the values representing the data points distance from and the angle formed in relation to the center as opposed to stretching them along a Cartesian plane like the link:igchartview-scatter-series.html[Scatter Series]. As with other series types, multiple Polar Scatter series can be plotted on the same data chart, and they can overlay one another to show differences and similarities between data sets.
+
+[[_Ref326327864]]
+
+=== Data requirements
+
+While the  _IGChartView_   control allows for easy binding to your own data model, it is important that you supply the appropriate data amount and type of required by that series. If the data model does not meet the series’ minimum requirements, the  _IGChartView_   will appear blank.
+
+*Required –*  the bound data model must contain 2 numeric fields, one for each of the two polar coordinates (angle and radius) to render Polar Scatter data.
+
+[[_Ref324842387]]
+[[_Ref328669612]]
+== Adding a Polar Scatter Series to the  _IGChartView_    _–_   Code Example
+
+[[_Ref326327873]]
+
+=== Description
+
+The code below uses the link:igchartview-data-source-helpers.html[IGPolarSeriesDataSourceHelper] to supply randomly generated data to a polar scatter series that first gets added to the  _IGChartView_   instance, and then the  _IGChartView_   is added as a subview of the current  _UIView_  .
+
+[[_Ref328669634]]
+
+=== Prerequisites
+
+This code example requires the inclusion of the  _IGChartView_   framework, detail about how to add this framework can be found in the link:igchartview-adding-the-chart-framework-file.html[Adding the Chart Framework File] topic.
+
+[[_Ref326327877]]
+
+=== Code
+
+*In Objective-C:*
+
+[source,csharp]
+----
+ NSMutableArray *angle = [[NSMutableArray alloc] init];
+    for (int i = 0; i < 25; i++) {
+        [angle addObject:[[NSNumber alloc] initWithDouble:(i * 14)]];
+    }
+    NSMutableArray *radius = [[NSMutableArray alloc] init];
+    for (int i = 0; i < 25; i++) {
+        [radius addObject:[[NSNumber alloc] initWithDouble:(arc4random() % 100)]];
+    }
+    IGPolarSeriesDataSourceHelper *source = [[IGPolarSeriesDataSourceHelper alloc] init];
+    source.angleValues = angle;
+    source.radiusValues = radius;
+    IGChartView *infraChart = [[IGChartView alloc] initWithFrame:self.view.frame];
+    IGNumericAngleAxis *angleAxis = [[IGNumericAngleAxis alloc] initWithKey:@"angleAxis"];
+    IGNumericRadiusAxis *radiusAxis = [[IGNumericRadiusAxis alloc] initWithKey:@"radiusAxis"];
+    angleAxis.minimum = 0;
+    angleAxis.maximum = 360;
+    angleAxis.interval = 30;
+    [infraChart addAxis:angleAxis];
+    [infraChart addAxis:radiusAxis];
+    IGPolarScatterSeries *polarScatterSeries = [[IGPolarScatterSeries alloc] initWithKey:@"polarScatterSeries"];
+    polarScatterSeries.angleAxis = angleAxis;
+    polarScatterSeries.radiusAxis = radiusAxis;
+    polarScatterSeries.dataSource = source;
+    [infraChart addSeries:polarScatterSeries];
+    [self.view addSubview:infraChart];
+----
+
+*In C#:*
+
+[source,csharp]
+----
+List<NSObject> angle = new List<NSObject>();
+   Random r = new Random();
+   for(int i = 0; i < 25; i++)
+      angle.Add(new NSNumber(i*14));
+List<NSObject> radius= new List<NSObject>();
+   for(int i = 0; i < 25; i++)
+      radius.Add(new NSNumber(r.Next()% 100));
+ IGPolarSeriesDataSourceHelper source = new IGPolarSeriesDataSourceHelper ();
+   source.AngleValues =  angle.ToArray(); 
+  source.RadiusValues =  radius.ToArray();
+IGChartView chart = new IGChartView(this.View.Frame);
+   chart.AutoresizingMask = UIViewAutoresizing.FlexibleHeight | UIViewAutoresizing.FlexibleWidth;
+  this.View.AddSubview(chart);
+IGNumericAngleAxis angleAxis= new IGNumericAngleAxis ("xAxis");
+   IGNumericRadiusAxis radiusAxis= new IGNumericRadiusAxis ("yAxis");
+   chart.AddAxis(angleAxis);
+   chart.AddAxis(radiusAxis);
+angleAxis.minimum = 0;
+   angleAxis.maximum = 360;
+   angleAxis.interval = 30;
+IGPolarScatterSeries series= new IGPolarScatterSeries ("series");
+   series.AngleAxis= angleAxis;
+   series.RadiusAxis = radiusAxis;
+   series.DataSource = source;
+   chart.AddSeries(columnSeries);
+----
+
+[[_Ref324841253]]
+== Related Content
+
+=== Topics
+
+The following topics provide additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:igchartview-polar-series.html[Polar Series]
+|This is a group of topics explaining the various types of Polar series supported by the _IGChartView_ control.
+
+|====

@@ -1,0 +1,42 @@
+﻿////
+
+|metadata|
+{
+    "name": "igcalendarview-configuring-igcalendarview",
+    "tags": ["Getting Started","How Do I"],
+    "controlName": ["IGCalendarView"],
+    "guid": "ead46abc-40b8-446a-b7c3-ac9d3031c73b",  
+    "buildFlags": [],
+    "createdOn": "2013-09-25T13:08:14.4957434Z"
+}
+|metadata|
+////
+
+= Configuring IGCalendarView
+
+=== Introduction
+
+The topics in this collection cover enabling, configuring and using the  _IGCalendarView_™ control’s supported features.
+
+=== Topics
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:igcalendarview-configuring-custom-appointment-color.html[Configuring a Custom Appointment Color]
+|This topic provides a conceptual overview of configuring custom appointment color on the _IGCalendarView_ control and demonstrates the configuration using a code example.
+
+| link:igcalendarview-configuring-appointments.html[Configuring Appointments]
+|This topic provides an introductory overview of configuring appointments on the _IGCalendarView_ control and demonstrates how to configure it using a code example.
+
+| link:igcalendarview-configuring-localization.html[Configuring Localization]
+|This topic provides an introductory overview of localization on the _IGCalendarView_ control.
+
+| link:igcalendarview-configuring-title-bar.html[Configuring the Title Bar]
+|This topic provides an introductory overview of customizing the title bar on the _IGCalendarView_ control and demonstrates its configuration using a code example.
+
+| link:igcalendarview-navigating-calendar.html[Navigating the Calendar]
+|This topic provides an introductory overview of navigating the _IGCalendarView_ control and demonstrates how to configure it using a code example.
+
+|====

@@ -1,0 +1,19 @@
+﻿////
+
+|metadata|
+{
+    "name": "known-issues-breaking-changes",
+    "controlName": [],
+    "tags": ["Known Issues"],
+    "guid": "04c7ce4f-7def-42ce-aa59-2518c7275b14",  
+    "buildFlags": [],
+    "createdOn": "2013-03-04T18:45:11.4826604Z"
+}
+|metadata|
+////
+
+= Known Issues & Breaking Changes
+
+== IGChartView Category Series - Stacked Charts
+
+Stacked charts do not support animations when data has been replaced or updated.

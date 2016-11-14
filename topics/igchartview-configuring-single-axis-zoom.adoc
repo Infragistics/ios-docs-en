@@ -1,0 +1,64 @@
+﻿////
+
+|metadata|
+{
+    "name": "igchartview-configuring-single-axis-zoom",
+    "tags": ["Charting","Getting Started","How Do I"],
+    "controlName": ["IGChartView"],
+    "guid": "d9fd203e-3197-46ac-b885-f3e94f652319",  
+    "buildFlags": [],
+    "createdOn": "2013-08-26T17:18:27.8850778Z"
+}
+|metadata|
+////
+
+= Configuring Single Axis Zoom
+
+== Topic Overview
+
+=== Purpose
+
+This topic provides a conceptual overview of configuring single axis zoom on the  _IGChartView_™ control.
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref324841248, Introduction >>
+* <<_Ref215823716, Related Content >>
+
+[[_Ref324841248]]
+== Introduction
+
+[[_Ref215796828]]
+
+=== Single axis zoom summary
+
+Single axis zoom allows the  _IGChartView_   to restrict its zooming along either the vertical or horizontal axis. The  _IGChartView’s_   `zoomDisplayType` property can be set to one of the following  _IGChartZoom_   enumeration values.
+
+* `IGChartZoomBoth` - Default, allows zooming in both directions
+* `IGChartZoomHorizontal` – Allows horizontal zooming only
+* `IGChartZoomVertical` – Allows vertical zooming only
+* `IGChartZoomNone` – No zooming allowed
+
+Additionally, the  _IGChartViewDelegate_   has two optional protocol methods when the chart has been zoomed or scrolled.
+
+* `-(void)``chartViewDidZoom``:(``IGChartView``$$* $$)``chartView``;`
+* `-(void)``chartViewDidScroll``:(``IGChartView``$$* $$)``chartView``;`
+
+[[_Ref324841253]]
+[[_Ref215823716]]
+== Related Content
+
+=== Topics
+
+The following topic provides additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:igchartview.html[IGChartView]
+|The topics in this group cover enabling, configuring, and using the _IGChartView_ control’s supported features.
+
+|====

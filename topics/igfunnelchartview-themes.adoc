@@ -1,0 +1,108 @@
+﻿////
+
+|metadata|
+{
+    "name": "igfunnelchartview-themes",
+    "tags": ["Getting Started","How Do I","Styling"],
+    "controlName": ["IGFunnelChartView"],
+    "guid": "3ff4923f-d1ed-4d92-9058-445affce5888",  
+    "buildFlags": [],
+    "createdOn": "2013-09-10T15:03:50.6145102Z"
+}
+|metadata|
+////
+
+= Themes
+
+== Topic Overview
+
+=== Purpose
+
+This topic provides a conceptual overview of the supported themes available in the  _IGFunnelChartView_™ control.
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref324841248, Introduction >>
+
+** <<_Ref327859845,Theme summary>>
+** <<_Ref327864136,Theme types>>
+
+* <<_Ref324841253, Related Content >>
+
+[[_Ref324841248]]
+== Introduction
+
+[[_Ref327859845]]
+
+=== Theme summary
+
+Funnel themes allow you to give a gauge a consistent, color coordinated look and feel. Simply set the  _IGFunnelChartView_   `theme` property to one of the predefined themes shown below in the theme types.
+
+*In C#:*
+
+[source,csharp]
+----
+IGFunnelChartView theFunnel = new IGFunnelChartView();
+//configure the funnel...
+theFunnel.theme = new IGFunnelChartIGTheme();
+----
+
+*In Objective-C:*
+
+[source,csharp]
+----
+IGFunnelChartView *theFunnel = [[IGFunnelChartView alloc] init];
+//configure the funnel...
+theFunnel.theme = [[IGFunnelChartIGTheme alloc] init];
+----
+
+[[_Ref327864136]]
+
+=== Theme types
+
+The following table contains the supported themes and their associated type name.
+
+[options="header", cols="a,a"]
+|====
+|Theme Name|Preview
+
+| _IGFunnelChartDefaultTheme_ 
+|image::images/IGFunnelChartView_-_Themes_1.png[]
+
+| _IGFunnelChartIGTheme_ 
+|image::images/IGFunnelChartView_-_Themes_2.png[]
+
+| _IGFunnelChartIGThemeDark_ 
+|image::images/IGFunnelChartView_-_Themes_3.png[]
+
+| _IGFunnelChartDarkTheme1_ 
+|image::images/IGFunnelChartView_-_Themes_4.png[]
+
+| _IGFunnelChartDarkTheme2_ 
+|image::images/IGFunnelChartView_-_Themes_5.png[]
+
+| _IGFunnelChartDarkTheme3_ 
+|image::images/IGFunnelChartView_-_Themes_6.png[]
+
+| _IGFunnelChartDarkTheme4_ 
+|image::images/IGFunnelChartView_-_Themes_7.png[]
+
+|====
+
+[[_Ref324841253]]
+== Related Content
+
+=== Topics
+
+The following topic provides additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:igfunnelchartview.html[IGFunnelChartView]
+|This topic serves as a gateway to the features and functionality of the _IGFunnelChartView_ control.
+
+|====

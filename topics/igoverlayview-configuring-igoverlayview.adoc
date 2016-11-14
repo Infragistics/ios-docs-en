@@ -1,0 +1,33 @@
+﻿////
+
+|metadata|
+{
+    "name": "igoverlayview-configuring-igoverlayview",
+    "tags": ["Getting Started","How Do I"],
+    "controlName": ["IGOverlayView"],
+    "guid": "9bd52194-bef2-4ccd-861e-159f5a3d6c64",  
+    "buildFlags": [],
+    "createdOn": "2013-08-26T15:33:47.6931214Z"
+}
+|metadata|
+////
+
+= Configuring IGOverlayView
+
+=== Introduction
+
+The topics in this group cover enabling, configuring and using the  _IGOverlayView_™ control’s supported features.
+
+=== Topics
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:igoverlayview-configuring-animations.html[Configuring Animations]
+|This topic provides an introduction to the animations available for the _IGOverlayView_ control and using a code example, demonstrates how to configure them.
+
+| link:igoverlayview-configuring-custom-animations.html[Configuring Custom Animations]
+|This topic provides a conceptual overview of custom animations for the _IGOverlayView_ control.
+
+|====

@@ -1,0 +1,62 @@
+﻿////
+
+|metadata|
+{
+    "name": "iggridview-configuring-fixed-rows",
+    "controlName": [],
+    "tags": [],
+    "guid": "db6bda7e-1076-4dcd-b9a6-857bbddc59ca",  
+    "buildFlags": [],
+    "createdOn": "2015-03-31T12:00:34.3924454Z"
+}
+|metadata|
+////
+
+= Configuring Fixed Rows
+
+== Topic Overview
+
+=== Purpose
+
+This topic provides an introductory overview of configuring fixed rows on the  _IGGridView_™ control.
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref324841248, Introduction >>
+* <<_Ref215823716, Related Content >>
+
+[[_Ref324841248]]
+== Introduction
+
+=== Fixed rows summary
+
+Fixed rows allow end-users to pin rows to the top of the  _IGGridView_  . These rows will stay locked into position when the grid is scrolled. To implement fixed rows the  _IGGridViewDataSourceHelper_   contains two methods for adding or removing a fixed row on the  _IGGridView_  .
+
+* `-(void)gridView:(IGGridView$$*$$)gridView addFixedRowAtPath:(IGRowPath $$* $$)path;`
+* `-(void)gridView:(IGGridView$$*$$)gridView removeFixedRowAtPath:(IGRowPath $$* $$)path;`
+
+The  _IGRowPath_   instance contains an `isRowFixed` property that specifies if the row path is fixed or not by returning one of the following  _IGGridViewFixedRowDirection_   enumeration values.
+
+* `IGGridViewFixedRowDirectionNone`
+* `IGGridViewFixedRowDirectionTop`
+
+When adopting the  _IGGridViewDataSource_   protocol the `numberOfFixedRowsInGridView``:` method can be overridden to specify the number of fixed rows displayed in the  _IGGridView_  .
+
+[[_Ref324841253]]
+[[_Ref215823716]]
+== Related Content
+
+=== Topics
+
+The following topic provides additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:iggridview.html[IGGridView]
+|The topics in this group cover enabling, configuring, and using the _IGGridView_ control’s supported features.
+
+|====

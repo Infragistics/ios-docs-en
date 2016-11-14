@@ -1,0 +1,48 @@
+﻿////
+
+|metadata|
+{
+    "name": "igslidetabview-configuring-igslidetabview",
+    "tags": ["How Do I","Getting Started"],
+    "controlName": ["IGSlideTabView"],
+    "guid": "51459f4d-45f4-484b-a40d-a1d3e972c3d1",  
+    "buildFlags": [],
+    "createdOn": "2014-03-18T13:22:50.2720973Z"
+}
+|metadata|
+////
+
+= Configuring IGSlideTabView
+
+=== Introduction
+
+The topics in this group cover enabling, configuring, and using the  _IGSlideTabView_   control’s supported features.
+
+=== Topics
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:igslidetabview-configuring-tab-locations.html[Configuring Tab Locations]
+|This topic provides a conceptual overview of tab locations on the _IGSlideTabView_ control.
+
+| link:igslidetabview-configuring-tab-padding.html[Configuring Tab Padding]
+|This topic introduces tab padding on the _IGSlideTabView_ control.
+
+| link:igslidetabview-configuring-the-content-view.html[Configuring the Content View]
+|This topic provides a conceptual overview of configuring the content view on the _IGSlideTabView_ control and uses a code example to illustrate its operation.
+
+| link:igslidetabview-configuring-the-tab-view.html[Configuring the Tab View]
+|This topic provides a conceptual overview of configuring the tab view on the _IGSlideTabView_ control and demonstrates the usage using a code example.
+
+| link:igslidetabview-dragging-a-tab-item.html[Dragging a Tab Item]
+|This topic introduces dragging a tab item to a new position on the _IGSlideTabView_ control and uses a code example to demonstrate its usage.
+
+| link:igslidetabview-moving-a-tab-item.html[Moving a Tab Item]
+|This topic provides an informational overview of moving a tab item on the _IGSlideTabView_ control and demonstrates the usage using a code example.
+
+| link:igslidetabview-pulsing-a-tab-item.html[Pulsing a Tab Item]
+|This topic provides an overview of pulsing a tab item on the _IGSlideTabView_ control, and using a code example to demonstrate its usage.
+
+|====

@@ -1,0 +1,25 @@
+﻿////
+
+|metadata|
+{
+    "name": "whats-new-revision-history",
+    "controlName": [],
+    "tags": [],
+    "guid": "21f756c7-4796-410a-a1e8-0e63e80b23c0",  
+    "buildFlags": [],
+    "createdOn": "2013-08-29T12:49:01.8692811Z"
+}
+|metadata|
+////
+
+= Revision History
+
+This section makes it easy for you to track down all the new features and enhancements that were made to our NucliOS controls in the following volume releases.
+
+* link:whats-new-2016-volume-1.html[2016 Volume 1]
+* link:whats-new-2015-2.html[2015 Volume 2]
+* link:whats-new-2015-1.html[2015 Volume 1]
+* link:whats-new-2014-2.html[2014 Volume 2]
+* link:whats-new-2014-1.html[2014 Volume 1]
+* link:whats-new-2013-2.html[2013 Volume 2]
+* link:whats-new-2013-1.html[2013 Volume 1]

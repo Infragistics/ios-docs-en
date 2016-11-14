@@ -1,0 +1,200 @@
+﻿////
+
+|metadata|
+{
+    "name": "igoverlayview-adding-overlay-view",
+    "tags": ["Getting Started","How Do I"],
+    "controlName": ["IGOverlayView"],
+    "guid": "cb34dd00-fb9e-4dae-b744-7cde2d314bf7",  
+    "buildFlags": [],
+    "createdOn": "2013-08-26T15:30:07.6691212Z"
+}
+|metadata|
+////
+
+= Adding an Overlay to a View
+
+== Topic Overview
+
+=== Purpose
+
+This topic explains, with a code example how to create a basic instance of the  _IGOverlayView_™ control and display an overlay on a view.
+
+=== Required background
+
+The following table lists the prerequisite topics required to understanding this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:iggridview-adding-the-ig-framework-file.html[Adding the IG Framework File]
+|This topic explains how to add the IG framework file to a project.
+
+|====
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref328621638, Displaying an Overlay with   _IGOverlayView_    – Code Example >>
+
+** <<_Ref323199287,Description>>
+** <<_Ref357071611,Preview>>
+** <<_Ref323199293,Code>>
+
+* <<_Ref323199323, Related Content >>
+
+[[_Ref323199279]]
+[[_Ref328621638]]
+[[_Ref323111244]]
+== Displaying an Overlay with  _IGOverlayView_   – Code Example
+
+[[_Ref323199287]]
+
+=== Description
+
+The  _IGOverlayView’s_   power lies in the simple to use API to easily animate in and out views. In this code example you will:
+
+* Create an instance of the  _IGOverlayView_  
+* Add a UIView containing a label to the  _IGOverlayView_  
+* Animate the  _IGOverlayView_   into view
+
+[[_Ref357071611]]
+
+=== Preview
+
+The screenshot below shows how the IGOverlayView looks as it renders along the bottom edge of the device.
+
+image::images/IGOverlayView_-_Adding_the_IGOverlayView_to_a_UIView_1.png[]
+
+[[_Ref323199293]]
+
+=== Code
+
+To start, set the background color of the view controller’s view to white.
+
+*In Objective-C:*
+
+[source,csharp]
+----
+self.view.backgroundColor = [UIColor whiteColor];
+----
+
+*In C#:*
+
+[source,csharp]
+----
+this.View.BackgroundColor = UIColor.White;
+----
+
+Next, default constructors create an instance of the  _IGOverlayView_  .
+
+*In Objective-C:*
+
+[source,csharp]
+----
+IGOverlayView *overlayView = [[IGOverlayView alloc] init];
+----
+
+*In C#:*
+
+[source,csharp]
+----
+IGOverlayView overlayView = new IGOverlayView();
+----
+
+Having created the overlay instance, create the  _UIView_   to act as the message container.
+
+*In Objective-C:*
+
+[source,csharp]
+----
+UIView *messageView = [[UIView alloc] init];
+CGRect viewBounds = self.view.bounds;
+messageView.frame = CGRectMake((viewBounds.size.width / 2) - 125, viewBounds.size.height - 20, 250, 50);
+messageView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleRightMargin;
+messageView.backgroundColor = [UIColor blackColor];
+messageView.layer.cornerRadius = 8.0;
+messageView.layer.shadowOffset = CGSizeZero;
+messageView.layer.shadowOpacity = 0.5;
+[overlayView addSubview:messageView];
+----
+
+*In C#:*
+
+[source,csharp]
+----
+UIView messageView = new UIView();
+RectangleF viewBounds = this.View.Bounds;
+messageView.Frame = new RectangleF((viewBounds.Size.Width / 2) - 125, viewBounds.Size.Height - 20, 250, 50);
+messageView.AutoresizingMask = UIViewAutoresizing.FlexibleTopMargin | UIViewAutoresizing.FlexibleLeftMargin | UIViewAutoresizing.FlexibleRightMargin;
+messageView.BackgroundColor = UIColor.Black;
+messageView.Layer.CornerRadius = 8.0f;
+messageView.Layer.ShadowOffset = Size.Empty;
+messageView.Layer.ShadowOpacity = 0.5f;
+overlayView.Add(messageView);
+----
+
+Having added the message view to the overlay, add a label with your message to the message view.
+
+*In C#:*
+
+[source,csharp]
+----
+UILabel *label = [[UILabel alloc] init];
+label.frame = CGRectInset(messageView.bounds, 5, 5);
+label.backgroundColor = [UIColor clearColor];
+label.textColor = [UIColor whiteColor];
+label.font = [UIFont fontWithName:@"TrebuchetMS-Bold" size:17.0];
+label.textAlignment = NSTextAlignmentCenter;
+label.text = @"Overlay Message";
+[messageView addSubview:label];
+----
+
+*In Objective-C:*
+
+[source,csharp]
+----
+UILabel label = new UILabel();
+label.Frame = messageView.Bounds;
+label.Frame.Inflate (-5, -5);
+label.BackgroundColor = UIColor.Clear;
+label.TextColor = UIColor.White;
+label.Font = UIFont.FromName ("TrebuchetMS-Bold", 17.0f);
+label.TextAlignment = UITextAlignment.Center;
+label.Text = "Overlay Message";
+messageView.Add (label);
+----
+
+Lastly, on the overlay view, call the `showInView``:withAnimation``:` method to animate and show the message view.
+
+*In Objective-C:*
+
+[source,csharp]
+----
+[overlayView showInView:self.view withAnimation:IGOverlayAnimationSlideBottom];
+----
+
+*In C#:*
+
+[source,csharp]
+----
+overlayView.ShowInViewWithAnimation (this.View, IGOverlayAnimationType.IGOverlayAnimationSlideBottom);
+----
+
+[[_Ref323199323]]
+== Related Content
+
+=== Topics
+
+The following topic provides additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| _link:igoverlayview.html[IGOverlayView]_ 
+|This topic provides a conceptual overview of the _IGOverlayView_ control and its key features.
+
+|====

@@ -1,0 +1,74 @@
+﻿////
+
+|metadata|
+{
+    "name": "iggridview-enabling-infinite-scrolling",
+    "controlName": ["IGGridView"],
+    "tags": ["Grids","How Do I","Navigation"],
+    "guid": "a17be382-523d-4ec8-a405-62f103536535",  
+    "buildFlags": [],
+    "createdOn": "2013-02-11T19:35:41.7566179Z"
+}
+|metadata|
+////
+
+= Enabling Infinite Scrolling
+
+== Topic Overview
+
+=== Purpose
+
+This topic provides a conceptual overview of the  _IGGridView_™ control’s infinite scrolling capabilities along with information on configuring it in the grid view.
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref324841248, Introduction >>
+
+** <<_Ref215022102,Infinite scrolling summary>>
+** <<_Ref215022109,Limitations and requirements>>
+
+* <<_Ref324841253, Related Content >>
+
+[[_Ref324841248]]
+== Introduction
+
+[[_Ref215022102]]
+
+=== Infinite scrolling summary
+
+Infinite scrolling allows the grid to scroll the contents of the  _IGGridView_   continuously, without the need to scroll back to the top or left most cell. To enable this functionality, an enumeration of type  _IGGridViewInfiniteScrolling_   must be set on the `infiniteScrolling` property, which provides support for the following infinite scrolling enumerations.
+
+* `IGGridViewInfiniteScrollingNone` (default) – Scrolling continues until reaching the end of bottom or right most cell
+* `IGGridViewInfiniteScrollingHorizontal` – Continuous scrolling to the left or right
+* `IGGridViewInfiniteScrollingVertical` – Continuous scrolling to the top or bottom
+* `IGGridViewInfiniteScrollingBoth` – Continuous scrolling in both horizontal and vertical directions
+
+[[_Ref215022109]]
+
+=== Limitations and requirements
+
+When enabling the Infinite Scrolling feature the following limitations and requirements apply
+
+* Disables column, row, and cell reordering
+* Disables only the animation associated with inserting and deleting of rows, cells, and columns while still allowing you to insert and delete without the aid of visual animation
+* Using automatic column sizing on any column disables infinite scrolling
+* In order for infinite scrolling to work in a specific direction, the total width, height or both must be 1.5 times the viewport size. For example, an  _IGGridView_   with the size of 100px by 200px, would need a total column width equal to or greater than 150px, and the total of all row heights equal to or greater than 300px, for both vertical and horizontal infinite scrolling.
+
+[[_Ref324841253]]
+== Related Content
+
+=== Topics
+
+[[_Ref215021884]]
+The following topics provide additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:iggridview.html[IGGridView]
+|This section serves as an introduction to the _IGGridView’s_ key features and functionalities.
+
+|====

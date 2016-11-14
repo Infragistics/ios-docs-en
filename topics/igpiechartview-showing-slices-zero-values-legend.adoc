@@ -1,0 +1,90 @@
+﻿////
+
+|metadata|
+{
+    "name": "igpiechartview-showing-slices-zero-values-legend",
+    "controlName": [],
+    "tags": [],
+    "guid": "26a36d90-f8a4-41d5-bdfa-fa9c95098b3a",  
+    "buildFlags": [],
+    "createdOn": "2015-03-30T12:47:54.1081147Z"
+}
+|metadata|
+////
+
+= Showing Slices with Zero Values in the Legend
+
+== Topic Overview
+
+=== Purpose
+
+This topic provides an introductory overview of showing slices with zero values in the legend on the  _IGPieChartView_™ control.
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref324841248, Introduction >>
+* <<_Ref215823716, Related Content >>
+
+[[_Ref324841248]]
+== Introduction
+
+=== Slices with zero values summary
+
+When the  _IGPieChartView_   creates its slices and legend items the pie chart skips all zeroes. To show zero value items in the legend the `showZeroValuesInLegend` property on the  _IGPieChartView_   allows zeroes to be treated as valid values. When this property is set to `YES` each zero slice will have its own brush and label. While the zero values are not actually rendering in the pie chart, they will appear in the pie chart’s legend.
+
+.Note:
+[NOTE]
+====
+The  _IGPieChartView_   has a default ‘Others’ slice threshold. In order to get empty values to show in the legend, the property `othersCategoryThreshold` needs set to 0, otherwise, zero slices will get grouped into the ‘Others’ slice.
+====
+
+*In Objective-C:*
+
+[source,csharp]
+----
+NSArray *values = @[@1,@0, @0, @1, @2];
+_pieChartDataSourceHelper = [[IGPieChartViewDataSourceHelper alloc]initWithValues:values];
+_pieChart = [[IGPieChartView alloc]initWithFrame:self.view.frame];
+_pieChart.showZeroValuesInLegend = YES;
+_pieChart.othersCategoryThreshold = 0;
+_pieChart.dataSource = _pieChartDataSourceHelper;
+_legend = [[IGLegend alloc]initWithFrame:CGRectMake(20, 20, 500, 40) andLegendType:IGChartLegendTypeItem];
+_pieChart.legend = _legend;
+ [self.view addSubview:_pieChart];
+ [self.view addSubview:_legend];
+----
+
+*In C#:*
+
+[source,csharp]
+----
+List<NSObject> values = new List<NSObject> { new NSNumber(1), new NSNumber(0), new NSNumber(0), new NSNumber(1), new NSNumber(2) };
+_pieChartDataSourceHelper = new IGPieChartViewDataSourceHelper(values.ToArray());
+_pieChart = new IGPieChartView ();
+_pieChart.Frame = this.View.Bounds;
+_pieChart.ShowZeroValuesInLegend = true;
+_pieChart.OthersCategoryThreshold = 0;
+_pieChart.DataSource = _pieChartDataSourceHelper;
+_legend = new IGLegend (new RectangleF (20, 20, 500, 40), IGChartLegendType.IGChartLegendTypeItem);
+_pieChart.Legend = _legend;this.View.AddSubview (_pieChart);
+this.View.AddSubview (_legend);
+----
+
+[[_Ref324841253]]
+[[_Ref215823716]]
+== Related Content
+
+=== Topics
+
+The following topic provides additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:igpiechartview.html[IGPieChartView]
+|The topics in this group cover enabling, configuring, and using the _IGPieChartView_ control’s supported features.
+
+|====

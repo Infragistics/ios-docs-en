@@ -1,0 +1,105 @@
+﻿////
+
+|metadata|
+{
+    "name": "igfunnelchartview-configuring-slice-selection",
+    "tags": ["Getting Started","How Do I","Selection"],
+    "controlName": ["IGFunnelChartView"],
+    "guid": "823e0221-d9a3-4a62-a3c3-661336e193aa",  
+    "buildFlags": [],
+    "createdOn": "2013-09-10T15:02:11.872637Z"
+}
+|metadata|
+////
+
+= Configuring Slice Selection
+
+== Topic Overview
+
+=== Purpose
+
+This topic provides a conceptual overview of selecting slices on the  _IGFunnelChartView_   _™_   control and demonstrates its configuration using a code example.
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref324841248, Introduction >>
+* <<_Ref327936206, Selecting Slices on the IGFunnelChartView – Code Example >>
+
+** <<_Ref327344209,Description>>
+** <<_Ref327523606,Prerequisites>>
+** <<_Ref327344217,Code>>
+
+* <<_Ref215823716, Related Content >>
+
+[[_Ref324841248]]
+== Introduction
+
+[[_Ref215796828]]
+
+=== Selecting slices summary
+
+A selected funnel slice uses an outline, brush color or both to signify its selection. Selected slices use the `selectedBrush` and `selectedOutline` properties for applying distinct colors to the selected slices.
+
+image::images/IGFunnelChartView_-_Configuring_Slice_Selection_1.png[]
+
+One method for creating selected slices is by adding their index to an  _NSMutableIndexSet_   _,_   and then assigning the  _NSMutableIndexSet_   instance to the `selectedSlices` property. Additionally, when using the  _IGFunnelChartViewDelegate_   control’s `funnelChartView``:tapWithItem:atPoint``:` method, the `item` parameter contains a reference to the  _IGFunnelSliceInfo_   object, which has a configurable property named `isSelected` that selects or deselects the tapped slice.
+
+[[_Ref324842387]]
+[[_Ref327936206]]
+[[_Ref324841253]]
+== Selecting Slices on the  _IGFunnelChartView_  – Code Example
+
+[[_Ref327344209]]
+
+=== Description
+
+The code below adds two indexes of the  _IGFunnelChartView_   slices to an  _NSMutableIndexSet_   and sets this object to the `selectedSlices` property. The result is a funnel chart with two selected slices.
+
+[[_Ref327523606]]
+
+=== Prerequisites
+
+This code example requires the inclusion of the  _Chart_   framework, detail about how to add this framework can be found in the link:igchartview-adding-the-chart-framework-file.html[Adding the Chart Framework File] topic.
+
+[[_Ref327344217]]
+
+=== Code
+
+*In C#:*
+
+[source,csharp]
+----
+IGFunnelChartView _funnelChartView = new IGFunnelChartView();
+NSMutableIndexSet selected = new NSMutableIndexSet();
+selected.Add(1);
+selected.Add(4);
+_funnelChartView.SelectedSlices = selected;
+----
+
+*In Objective-C:*
+
+[source,csharp]
+----
+NSMutableIndexSet *selected = [[NSMutableIndexSet alloc]init];
+[selected addIndex:1];
+[selected addIndex:4];
+_funnelChartView.selectedSlices = selected;
+----
+
+[[_Ref215823716]]
+== Related Content
+
+=== Topics
+
+The following topic provides additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:igfunnelchartview-configuring-igfunnelchartview.html[Configuring IGFunnelChartView]
+|The topics in this group cover enabling, configuring, and using the _IGFunnelChartView_ control’s supported features.
+
+|====

@@ -1,0 +1,88 @@
+﻿////
+
+|metadata|
+{
+    "name": "iggridview-column-reordering",
+    "controlName": ["IGGridView"],
+    "tags": ["Grids","How Do I","Layouts"],
+    "guid": "5d70529c-8306-424d-bdb5-71ee5caa71ec",  
+    "buildFlags": [],
+    "createdOn": "2013-02-11T19:28:27.2686179Z"
+}
+|metadata|
+////
+
+= Column Reordering
+
+== Topic Overview
+
+=== Purpose
+
+This topic provides a conceptual overview on reordering the  _IGGridView_™ control’s columns.
+
+=== Required background
+
+The following table lists the topics required as a prerequisite to understanding this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:iggridview-adding-the-ig-framework-file.html[Adding the Grid Framework File]
+|This topic explains how to add the grid framework file to the project.
+
+|====
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref324841248, Introduction >>
+* <<_Ref323199323, Related Content >>
+
+[[_Ref324841248]]
+[[_Ref323199279]]
+[[_Ref324505001]]
+[[_Ref323111244]]
+== Introduction
+
+[[_Ref327859845]]
+
+=== Column reordering summary
+
+Column reordering allows users to rearrange the position of visible columns within their data source helper, except for cell specific helpers, by using simple drag and drop techniques. The  _IGGridViewDataSourceHelper_   class exposes the `allowColumnReordering` property, used to enable or disable column reordering at the data source level.
+
+The following methods were added to  _IGGridViewDataSource_    __to support this feature:__
+
+* `-(BOOL)gridView:(IGGridView $$* $$)gridView canMoveColumnAtIndex:(int)index`
+* `-(void)gridView:(IGGridView $$* $$)gridView moveColumnAtIndex:(int) sourceIndex toIndex:(int)destinationIndex`
+
+It is also possible to trigger a column move, without dragging, using the following  _IGGridView’s_   API method.
+
+* `-(void)moveColumnAtIndex:(int)index toIndex:(int)newIndex`
+
+The  _IGGridView_   control constantly calls the  _IGGridViewDelegate_   whenever you drag a column. To make a column stationary, propose and return a different index.
+
+* `-(int)gridView:(IGGridView$$* $$)gridView targetPathForMoveFromColumnAtIndex:(int)sourceIndex toProposedIndex:(int)proposedIndex`
+
+.Note:
+[NOTE]
+====
+Column Reordering only applies to data source helpers. If, following any column manipulation, you need to update the data source; you will need to call the  _IGGridView_   method `invalidateData` with the `BOOL` parameter specified as `NO`. Not invalidating the data after making any alterations, such as moving, inserting, or deleting cells, rows, or columns causing them to reappear in their original position.
+====
+
+[[_Ref323199323]]
+== Related Content
+
+=== Topics
+
+The following topics provide additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:iggridview.html[IGGridView]
+|This section serves as an introduction to the _IGGridView’s_ key features and functionalities.
+
+|====

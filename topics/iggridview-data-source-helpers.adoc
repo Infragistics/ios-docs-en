@@ -1,0 +1,33 @@
+﻿////
+
+|metadata|
+{
+    "name": "iggridview-data-source-helpers",
+    "controlName": ["IGGridView"],
+    "tags": ["Data Binding","Grids","How Do I"],
+    "guid": "3beb6678-bd07-4759-8998-186d2b32f585",  
+    "buildFlags": [],
+    "createdOn": "2012-07-16T14:10:23.0592989Z"
+}
+|metadata|
+////
+
+= Data Source Helpers
+
+=== Introduction
+
+The  _IGGridView_™ can make use of helper classes when connecting to data or configuring columns using a data helper, to speed up development time. This topic contains links to conceptual information and code snippets for connecting data to a helper and configuring columns.
+
+=== Topics
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:iggridview-column-definitions.html[Configuring Which Columns to Display]
+|This topic explains how to configure which columns to display the _IGGridView_ control based on externally provided custom logic.
+
+| link:iggridview-data-helpers.html[Data Helpers]
+|This topic provides a conceptual overview of how data helpers connect your data to the _IGGridView_ control.
+
+|====

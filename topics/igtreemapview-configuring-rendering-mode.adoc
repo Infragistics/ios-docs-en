@@ -1,0 +1,131 @@
+﻿////
+
+|metadata|
+{
+    "name": "igtreemapview-configuring-rendering-mode",
+    "tags": ["Charting","Getting Started","How Do I"],
+    "controlName": ["IGTreemapView"],
+    "guid": "14b26ca3-0857-4d6e-8403-ec3bb7ae1007",  
+    "buildFlags": [],
+    "createdOn": "2013-09-25T12:53:33.9957434Z"
+}
+|metadata|
+////
+
+= Configuring the Rendering Mode
+
+== Topic Overview
+
+=== Purpose
+
+This topic provides an introductory overview of the rendering modes of the  _IGTreemapView_™ control.
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref324841248, Introduction >>
+* <<_Ref240335883, Displaying Custom Node Content – Code Example >>
+
+** <<_Ref327344209,Description>>
+** <<_Ref327523606,Prerequisites>>
+** <<_Ref327344217,Code>>
+
+* <<_Ref240332769, Related Content >>
+
+[[_Ref324841248]]
+== Introduction
+
+[[_Ref215796828]]
+
+=== Interactions summary
+
+The  _IGTreemapView_   provides 2 different types of rendering modes set through the `renderingMode` property;  _UIView_  (s) and Core Graphics.
+
+* `IGTreemapRenderingModeUIView` - Renders  _UIView_   by default. To add custom content to a node rendered in this mode, implement the  _IGTreemapViewDelegate_   method `treemapView:viewForLeafWithNode:`. Returns a custom  _UIView_  
+* `IGTreemapRenderingModeImmediate` – Draws the Core Graphics geometry of the nodes and labels and is considerably faster at rendering and animating nodes
+
+[[_Ref240332183]]
+[[_Ref240335883]]
+[[_Ref324841253]]
+[[_Ref215823716]]
+== Displaying Custom Node Content – Code Example
+
+[[_Ref327344209]]
+
+=== Description
+
+The following code implements the  _IGTreemapViewDelegate’s_   `treemapView:viewForLeafWithNode:` method to display a custom label embedded in a tree map node.
+
+[[_Ref327523606]]
+
+=== Prerequisites
+
+This code example requires the inclusion of the  _Chart_   framework, detail about how to add this framework can be found in the link:igchartview-adding-the-chart-framework-file.html[Adding the Chart Framework File] topic.
+
+[[_Ref327344217]]
+
+=== Code
+
+*In Objective-C:*
+
+[source,csharp]
+----
+-(UIView *)treemapView:(IGTreemapView *)treemapView viewForLeafWithNode:(IGTreemapNode * )node
+{
+    UILabel *content = [[UILabel alloc]init];
+    content.textColor = [UIColor blackColor];
+    content.backgroundColor = [UIColor clearColor];
+    content.font = [UIFont fontWithName:@"Helvetica" size:30];
+    content.numberOfLines = 0;
+    content.text = @"Custom Content : A leaf node can have a custom embedded view";
+    [content sizeToFit];
+    [content setFrame:CGRectMake(node.frame.size.width/2 - content.frame.size.width/2,
+                                node.frame.size.height/2 - content.frame.size.height/2,
+                                 content.frame.size.width, content.frame.size.height)];
+    if (node.finalSize.width < content.frame.size.width || node.finalSize.height < content.frame.size.height)
+        return nil;
+    return content;
+}
+----
+
+*In C#:*
+
+[source,csharp]
+----
+public class TreemapDelegate : IGTreemapViewDelegate
+{
+      public override UIView ResolveLeafNodeView (IGTreemapView treemapView, IGTreemapNode node)
+      {
+            UILabel content = new UILabel();
+            content.TextColor = UIColor.Black;
+            content.BackgroundColor = UIColor.Clear;
+            content.Font = UIFont.FromName ("Helvetica", 30.0);
+            content.Lines = 0;
+            content.Text = "Custom Content : A leaf node can have a custom embedded view";
+            content.SizeToFit ();
+            content.Frame = new RectangleF(node.Frame.Width/2 - content.Frame.Width/2,
+                                           node.Frame.Height/2 - content.Frame.Height/2,
+                                           content.Frame.Width, content.Frame.Height);
+            if (node.FinalSize.Width < content.Frame.Width || node.FinalSize.Height < content.Frame.Height)
+                  return nil;
+            return content;
+      }
+}
+----
+
+[[_Ref240332769]]
+== Related Content
+
+=== Topics
+
+The following topic provides additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:igtreemapview.html[IGTreemapView]
+|The topics in this group cover enabling, configuring, and using the _IGTreemapView_ control’s supported features.
+
+|====

@@ -1,0 +1,145 @@
+﻿////
+
+|metadata|
+{
+    "name": "igslidetabview-moving-a-tab-item",
+    "tags": ["How Do I","Getting Started"],
+    "controlName": ["IGSlideTabView"],
+    "guid": "eb544eaa-7d3a-41e4-a1d0-e55ad969736e",  
+    "buildFlags": [],
+    "createdOn": "2014-03-18T13:51:42.324165Z"
+}
+|metadata|
+////
+
+= Moving a Tab Item
+
+== Topic Overview
+
+=== Purpose
+
+This topic provides an informational overview of moving a tab item on the  _IGSlideTabView_™ control and demonstrates the usage using a code example.
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref324841248, Introduction >>
+* <<_Ref248895787, Moving a Tab Item – Code Example >>
+
+** <<_Ref327344209,Description>>
+** <<_Ref327523606,Prerequisites>>
+** <<_Ref327344217,Code>>
+
+* <<_Ref215823716, Related Content >>
+
+[[_Ref324841248]]
+== Introduction
+
+=== Moving a tab summary
+
+You can change which side the tab items display on the  _IGSlideTabView_   by setting the `tabLocation` property found on the  _IGSlideTabItem_   instance. The following enumerations are supported by the `tabLocation` property:
+
+* `IGSlideTabLocationTop` (default)
+* `IGSlideTabLocationBottom`
+* `IGSlideTabLocationLeft`
+* `IGSlideTabLocationRight`
+
+When the `tabLocation` has been set the  _IGSlideTabView_   redraws the tab at the new location and calls a series of optional delegate methods along the way. The following is the order of optional delegate methods that are called when the `tabLocation` has been set.
+
+[start=1]
+. `slideTabView:tabLocationWillChange:toLocation:`
+[start=2]
+. `slideTabView:tabContentSizeDidChange:`
+[start=3]
+. `slideTabView:tabLocationDidChange:fromLocation:`
+
+The `slideTabView:tabLocationWillChange:toLocation:` delegate method expects a return value of `YES` or `NO` to indicate whether or not to allow the location change.
+
+[[_Ref248895787]]
+[[_Ref324841253]]
+== Moving a Tab Item – Code Example
+
+[[_Ref327344209]]
+
+=== Description
+
+The code example below creates and adds a tab item to the  _IGSlideTabView_   and then move the tab item from `IGSlideTabLocationBottom` to `IGSlideTabLocationLeft` after a 2 second delay.
+
+[[_Ref327523606]]
+
+=== Prerequisites
+
+This code example requires the inclusion of the  __IG__  framework; details about how to add this framework are available in the link:iggridview-adding-the-ig-framework-file.html[Adding the IG Framework File] topic.
+
+[[_Ref327344217]]
+
+=== Code
+
+*In Objective-C:*
+
+[source,csharp]
+----
+IGSlideTabView *slideTabView;
+IGSlideTabItem *tabItem;
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    self.view.backgroundColor = [UIColor whiteColor];
+    slideTabView = [[IGSlideTabView alloc] initWithFrame:self.view.bounds];
+    slideTabView.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
+    [self.view addSubview:slideTabView];
+    tabItem = [IGSlideTabItem tabWithLocation:IGSlideTabLocationBottom title:@"Example" tabView:nil contentView:nil];
+    tabItem.contentSize = [IGSlideTabContentSize sizeWithPercentageWidth:0.3 percentageHeight:0.3];
+    [slideTabView addTab:tabItem];
+    [self performSelector:@selector(moveTab) withObject:nil afterDelay:2.0];
+}
+- (void)moveTab
+{
+    tabItem.tabLocation = IGSlideTabLocationLeft;
+}
+----
+
+*In C#:*
+
+[source,csharp]
+----
+IGSlideTabView slideTabView;
+IGSlideTabItem tabItem;
+public override void ViewDidLoad ()
+{
+      base.ViewDidLoad ();
+      this.View.BackgroundColor = UIColor.White;
+      slideTabView = new IGSlideTabView ();
+      slideTabView.Frame = this.View.Bounds;
+      slideTabView.AutoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleHeight;
+      this.View.Add (slideTabView);
+      tabItem = new IGSlideTabItem ();
+      tabItem.TabLocation = IGSlideTabLocation.IGSlideTabLocationBottom;
+      tabItem.Title = "Example";
+      tabItem.ContentSize = IGSlideTabContentSize.CreatePercentageSize (0.3f, 0.3f);
+      slideTabView.AddTab(tabItem);
+      this.PerformSelector (new MonoTouch.ObjCRuntime.Selector ("MoveTab"), null, 2.0f);
+}
+[Export("MoveTab")]
+public void MoveTab()
+{
+      tabItem.TabLocation = IGSlideTabLocation.IGSlideTabLocationLeft;
+}
+----
+
+[[_Ref215823716]]
+== Related Content
+
+=== Topics
+
+The following topic provides additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:igslidetabview.html[IGSlideTabView]
+|The topics in this group cover enabling, configuring, and using the _IGSlideTabView_ control’s supported features.
+
+|====

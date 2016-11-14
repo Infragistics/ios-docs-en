@@ -1,0 +1,103 @@
+﻿////
+
+|metadata|
+{
+    "name": "iglineargaugeview-needles",
+    "tags": ["Getting Started","How Do I","Styling"],
+    "controlName": ["IGLinearGaugeView"],
+    "guid": "cd0fcb2e-730a-45a9-8295-6c88042016f3",  
+    "buildFlags": [],
+    "createdOn": "2013-09-10T14:33:50.0434711Z"
+}
+|metadata|
+////
+
+= Needles
+
+== Topic Overview
+
+=== Purpose
+
+This topic provides an introductory overview of needle shapes available with the  _IGLinearGaugeView_™ control.
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref222887277, Needles >>
+
+** <<_Ref329132134,Introduction>>
+** <<_Ref327864136,Needle shape types>>
+
+* <<_Ref324841253, Related Content >>
+
+[[_Ref222887277]]
+== Needles
+
+[[_Ref329132134]]
+
+=== Introduction
+
+A linear gauge needle is a visual element used to signify a set value. The supported needle shapes shown in <<_Ref327864136,Needle shape types>> are set using the `needleShape` property. If `needleShape` is not set, the default needle `IGLinearGraphNeedleShapeTrapezoid` is used. The linear gauge needle can have its appearance customized through the following properties.
+
+* `needleBrush`
+* `needleInnerExtent`
+* `needleOuterExtent`
+* `needleOutline`
+* `needleStrokeThickness`
+
+[[_Ref327864136]]
+
+=== Needle shape types
+
+The following table contains supported marker shapes and their associated type name.
+
+[options="header", cols="a,a"]
+|====
+|Needle Shape Name|Preview
+
+|`IGLinearGraphNeedleShapeCustom`
+|No preview shown. Use these additional needle properties to create a custom needle. 
+
+* `needleInnerBaseWidth` 
+
+* `needleInnerPointExtent` 
+
+* `needleInnerPointWidth` 
+
+* `needleOuterBaseWidth` 
+
+* `needleOuterPointExtent` 
+
+* `needleOuterPointWidth` 
+
+|`IGLinearGraphNeedleShapeRectangle`
+|image::images/IGLinearGaugeView_-_Needles_1.png[]
+
+|`IGLinearGraphNeedleShapeTriangle`
+|image::images/IGLinearGaugeView_-_Needles_2.png[]
+
+|`IGLinearGraphNeedleShapeNeedle`
+|image::images/IGLinearGaugeView_-_Needles_3.png[]
+
+|`IGLinearGraphNeedleShapeTrapezoid`
+|image::images/IGLinearGaugeView_-_Needles_4.png[]
+
+|====
+
+[[_Ref324841253]]
+
+== Related Content
+
+=== Topics
+
+The following topic provides additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:iglineargaugeview.html[IGLinearGaugeView]
+|This topic serves as a gateway to the features and functionality of the _IGLinearGaugeView_ control.
+
+|====

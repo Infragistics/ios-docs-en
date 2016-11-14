@@ -1,0 +1,67 @@
+﻿////
+
+|metadata|
+{
+    "name": "igchartview-configuring-category-axis-clustering-mode",
+    "controlName": [],
+    "tags": [],
+    "guid": "cef66b88-037b-494b-916a-a26a6eae3eeb",  
+    "buildFlags": [],
+    "createdOn": "2015-03-30T12:29:36.3683517Z"
+}
+|metadata|
+////
+
+= Configuring Category Axis Clustering Mode
+
+== Topic Overview
+
+=== Purpose
+
+This topic provides an introductory overview of configuring category axis clustering mode on the  _IGChartView_™ control.
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref324841248, Introduction >>
+* <<_Ref215823716, Related Content >>
+
+[[_Ref324841248]]
+== Introduction
+
+=== Category axis clustering mode summary
+
+Category axis clustering mode allows the line and area based series to draw their vertices in the center of each category. Typically, the line series starts and ends at the very edge of the viewport. However, when plotting the line and column series together, the line series gets offset and each line point is plotted in the center of each column. Clustering mode allows simulating the same behavior without actually having a column series present. To enable clustering mode, set the `useClusteringMode` property to `YES`.
+
+*In Objective-C:*
+
+[source,csharp]
+----
+_xAxis = (IGCategoryAxisBase*)[_chart findAxisByKey:@"x"];
+_xAxis.useClusteringMode = YES;
+----
+
+*In C#:*
+
+[source,csharp]
+----
+_xAxis = _chartView.FindAxisByKey ("x");_xAxis.UseClusteringMode = true;
+----
+
+[[_Ref324841253]]
+[[_Ref215823716]]
+== Related Content
+
+=== Topics
+
+The following topic provides additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:igchartview.html[IGChartView]
+|The topics in this group cover enabling, configuring, and using the _IGChartView_ control’s supported features.
+
+|====

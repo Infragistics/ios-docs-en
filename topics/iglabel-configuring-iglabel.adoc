@@ -1,0 +1,36 @@
+﻿////
+
+|metadata|
+{
+    "name": "iglabel-configuring-iglabel",
+    "controlName": ["IGLabel"],
+    "tags": ["Getting Started"],
+    "guid": "314ca9c5-c2f8-4386-aa54-7ac855197c69",  
+    "buildFlags": [],
+    "createdOn": "2013-02-05T13:09:53.1740016Z"
+}
+|metadata|
+////
+
+= Configuring IGLabel
+
+=== Introduction
+
+The topics in this group cover enabling, configuring, and using the  _IGLabel_™ control’s supported features.
+
+=== Topics
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:iglabel-configuring-text-styling-attributes.html[Configuring Text Styling Attributes]
+|This topic provides a conceptual overview of the text styling attributes in the _IGLabel_ control and demonstrates how to configure it using a code example.
+
+| link:iglabel-configuring-text-variables.html[Configuring Text Variables]
+|This topic provides a conceptual overview of adding and removing text variables from the _IGLabel_ control with code examples for each.
+
+| link:iglabel-configuring-overflow-indicator.html[Configuring the Overflow Indicator]
+|This topic provides a conceptual overview of the overflow indicator in the _IGLabel_ control and uses a code example to demonstrate how to configure it.
+
+|====

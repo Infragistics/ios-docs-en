@@ -1,0 +1,237 @@
+////
+
+|metadata|
+{
+    "name": "igcompactcalendarview-adding-meetings-compact-calendar",
+    "tags": ["Getting Started","How Do I"],
+    "controlName": ["IGCompactCalendarView"],
+    "guid": "9f41bd58-d212-4115-9b60-2f77ea564425",  
+    "buildFlags": [],
+    "createdOn": "2016-03-18T15:31:41.5783027Z"
+}
+|metadata|
+////
+
+= Adding Meetings to the Compact Calendar
+
+== Topic Overview
+
+=== Purpose
+
+This topic provides a conceptual overview of adding meetings to the  _IGCompactCalendarView_™ control and demonstrates the procedure using a code example.
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref324841248, Introduction >>
+* <<_Ref248895787, Adding the Meetings – Code Example >>
+
+** <<_Ref327344209,Description>>
+** <<_Ref252521837,Preview>>
+** <<_Ref327523606,Prerequisites>>
+** <<_Ref327344217,Code>>
+
+* <<_Ref215823716, Related Content >>
+
+[[_Ref324841248]]
+
+== Introduction
+
+=== Compact calendar meetings summary
+
+The _IGCompactCalendarView_ has the functionality to display an indicator when a specific date has a meeting. To display the indicator the _IGCompactCalendarAppointmentDataSource_ protocol must be adopted and the `compactCalendarView:hasAppointmentForMonth:day:year:` method overriden, where a `YES` is returned for a specific day or `NO` for no meetings on that specific date.
+
+[[_Ref248895787]]
+
+== Adding the Meetings – Code Example
+
+[[_Ref327344209]]
+
+=== Description
+
+The code example below creates an instance of the _IGCompactCalendarView_ and displays an indicator for meetings on random days.
+
+[[_Ref252521837]]
+
+=== Preview
+
+Following is a preview of the results.
+
+image::images/IGCompactCalendarView-Adding-Meetings_1.png[]
+
+[[_Ref327523606]]
+
+=== Prerequisites
+
+This code example requires the inclusion of the  __IG__  framework; details about how to add this framework are available in the link:iggridview-adding-the-ig-framework-file.html[Adding the IG Framework File] topic.
+
+[[_Ref327344217]]
+
+=== Code
+
+*In Objective-C:*
+
+[source,csharp]
+----
+@interface ViewController () <IGCompactCalendarAppointmentDataSource>
+{
+    IGCompactCalendarView *_calendar;
+    NSMutableArray *_meetings;
+}
+@end
+
+@implementation ViewController
+
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+
+    _meetings = [[NSMutableArray alloc] init];
+    [self generateMeetings];
+
+    _calendar = [[IGCompactCalendarView alloc]init];
+    _calendar.frame = CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height);
+    _calendar.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
+    _calendar.appointmentDataSource = self;
+    [_calendar invalidate];
+    [self.view addSubview:_calendar];
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+}
+
+- (void)generateMeetings
+{
+    int totalMeetings = 5;
+
+    NSDate *today = [NSDate date];
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSCalendarUnit unitFlags = NSCalendarUnitYear | NSCalendarUnitMonth |  NSCalendarUnitDay;
+    NSDateComponents *dateComponents = [calendar components:unitFlags fromDate:today];
+    NSRange days = [calendar rangeOfUnit:NSCalendarUnitDay inUnit:NSCalendarUnitMonth forDate:today];
+
+    for (int i = 0; i < totalMeetings; i++)
+    {
+        int r = arc4random() % days.length;
+
+        [dateComponents setDay:r];
+        NSDate *startDate = [calendar dateFromComponents:dateComponents];
+        [_meetings addObject:startDate];
+    }
+}
+
+- (BOOL)compactCalendarView:(IGCompactCalendarView *)calView hasAppointmentForMonth:(NSInteger)month day:(NSInteger)day year:(NSInteger)year
+{
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSCalendarUnit unitFlags = NSCalendarUnitYear | NSCalendarUnitMonth |  NSCalendarUnitDay;
+
+    for (int i = 0; i < _meetings.count; i++)
+    {
+        NSDate *meetingDate = _meetings[i];
+        NSDateComponents *dateComponents = [calendar components:unitFlags fromDate:meetingDate];
+        if ([dateComponents month] == month && [dateComponents day] == day && [dateComponents year] == year)
+            return YES;
+    }
+
+    return NO;
+}
+
+@end
+----
+
+*In C#:*
+
+[source,csharp]
+----
+namespace CompactCalendarMeetingsCS
+{
+	public partial class ViewController : UIViewController, IIGCompactCalendarAppointmentDataSource
+	{
+		IGCompactCalendarView _calendar;
+		NSMutableArray _meetings;
+
+		protected ViewController(IntPtr handle) : base(handle)
+		{
+			// Note: this .ctor should not contain any initialization logic.
+		}
+
+		public override void ViewDidLoad()
+		{
+			base.ViewDidLoad();
+
+			_meetings = new NSMutableArray();
+			GenerateMeetings();
+
+			_calendar = new IGCompactCalendarView();
+			_calendar.Frame = new CoreGraphics.CGRect(0, 0, this.View.Bounds.Width, this.View.Bounds.Height);
+			_calendar.AutoresizingMask = UIViewAutoresizing.FlexibleHeight | UIViewAutoresizing.FlexibleWidth;
+			_calendar.WeakAppointmentDataSource = this;
+			_calendar.Invalidate();
+			this.View.Add(_calendar);
+		}
+
+		public override void DidReceiveMemoryWarning()
+		{
+			base.DidReceiveMemoryWarning();
+		}
+
+		private void GenerateMeetings()
+		{
+			int totalMeetings = 5;
+
+			NSDate today = NSDate.Now;
+			NSCalendar calendar = NSCalendar.CurrentCalendar;
+			NSCalendarUnit unitFlags = NSCalendarUnit.Year | NSCalendarUnit.Month | NSCalendarUnit.Day;
+			NSDateComponents dateComponents = calendar.Components(unitFlags, today);
+			NSRange days = calendar.Range(NSCalendarUnit.Day, NSCalendarUnit.Month, today);
+
+			for (int i = 0; i < totalMeetings; i++)
+			{
+				int r = (int)(new Random((int)dateComponents.Nanosecond).Next() % days.Length);
+
+				dateComponents.Day = r;
+				NSDate startDate = calendar.DateFromComponents(dateComponents);
+				_meetings.Add(startDate);
+			}
+		}
+
+		[Export("compactCalendarView:hasAppointmentForMonth:day:year:")]
+		public bool HasAppointment(IGCompactCalendarView calView, nint month, nint day, nint year)
+		{
+			NSCalendar calendar = NSCalendar.CurrentCalendar;
+			NSCalendarUnit unitFlags = NSCalendarUnit.Year | NSCalendarUnit.Month | NSCalendarUnit.Day;
+
+			for (int i = 0; i < (int)_meetings.Count; i++)
+			{
+				NSDate meetingDate = _meetings.GetItem<NSDate>((nuint)i);
+				NSDateComponents dateComponents = calendar.Components(unitFlags, meetingDate);
+				if (dateComponents.Month == month && dateComponents.Day == day && dateComponents.Year == year)
+					return true;
+			}
+
+			return false;
+		}
+	}
+}
+----
+
+[[_Ref215823716]]
+
+== Related Content
+
+=== Topics
+
+The following topic provides additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:igcompactcalendarview.html[IGCompactCalendarView]
+|The topics in this group cover enabling, configuring, and using the _IGCompactCalendarView_ control’s supported features.
+
+|====

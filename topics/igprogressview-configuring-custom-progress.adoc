@@ -1,0 +1,247 @@
+﻿////
+
+|metadata|
+{
+    "name": "igprogressview-configuring-custom-progress",
+    "tags": ["Getting Started","How Do I"],
+    "controlName": ["IGProgressView"],
+    "guid": "a96c26f7-13a9-4c22-82db-5edf82f167bc",  
+    "buildFlags": [],
+    "createdOn": "2013-08-26T14:22:53.6507597Z"
+}
+|metadata|
+////
+
+= Configuring a Custom Progress
+
+== Topic Overview
+
+=== Purpose
+
+This topic provides an introductory overview of configuring a custom progress on the  _IGProgressView_™ control and demonstrates how to configure it using a code example.
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref324841248, Introduction >>
+* <<_Ref327936206, Configuring a Custom Progress – Code Example >>
+
+** <<_Ref327344209,Description>>
+** <<_Ref327523606,Prerequisites>>
+** <<_Ref231532531,Preview>>
+** <<_Ref327344217,Code>>
+
+* <<_Ref215823716, Related Content >>
+
+[[_Ref324841248]]
+== Introduction
+
+[[_Ref215796828]]
+
+=== Custom progress summary
+
+The  _IGProgressView_   supports custom progress shapes by providing a  _CGPathRef_   through one of the following initializers.
+
+* `-(id)initWithCustomShape:(CGPathRef)customShape`
+* `-(id)initWithFrame:(CGRect)frame customShape:(CGPathRef)customShape`
+
+.Note:
+[NOTE]
+====
+Creating a progress using a custom shape limits your progress fill options by only allowing for a standard left-to-right progress fill.
+====
+
+[[_Ref327936206]]
+[[_Ref324841253]]
+== Configuring a Custom Progress – Code Example
+
+[[_Ref327344209]]
+
+=== Description
+
+The code example below sets the view’s background color to white before instantiating an  _IGProgressView_   using a custom shape, with its progress value set to 40%. The custom shape consists of 5 adjacent stars arranged in a horizontally line next to the other that represent 20% of the total 100%.
+
+[[_Ref327523606]]
+
+=== Prerequisites
+
+This code example requires the inclusion of the  __IG__  framework; details about how to add this framework are available in the link:iggridview-adding-the-ig-framework-file.html[Adding the IG Framework File] topic.
+
+[[_Ref231532531]]
+
+=== Preview
+
+image::images/IGProgressView_-_Configuring_a_Custom_Progress_1.png[]
+
+[[_Ref327344217]]
+
+=== Code
+
+*In Objective-C:*
+
+[source,csharp]
+----
+self.view.backgroundColor = [UIColor whiteColor];
+CGFloat centerX, centerY;
+centerX = CGRectGetMidX(self.view.bounds);
+centerY = CGRectGetMidY(self.view.bounds);
+UIBezierPath *starsPath = [UIBezierPath bezierPath];
+[starsPath moveToPoint:CGPointMake(20.5, 6.5)];
+[starsPath addLineToPoint:CGPointMake(13.45, 16.79)];
+[starsPath addLineToPoint:CGPointMake(1.48, 20.32)];
+[starsPath addLineToPoint:CGPointMake(9.09, 30.21)];
+[starsPath addLineToPoint:CGPointMake(8.74, 42.68)];
+[starsPath addLineToPoint:CGPointMake(20.5, 38.5)];
+[starsPath addLineToPoint:CGPointMake(32.26, 42.68)];
+[starsPath addLineToPoint:CGPointMake(31.91, 30.21)];
+[starsPath addLineToPoint:CGPointMake(39.52, 20.32)];
+[starsPath addLineToPoint:CGPointMake(27.55, 16.79)];
+[starsPath addLineToPoint:CGPointMake(20.5, 6.5)];
+[starsPath closePath];
+[starsPath moveToPoint:CGPointMake(60.5, 6.5)];
+[starsPath addLineToPoint:CGPointMake(53.45, 16.79)];
+[starsPath addLineToPoint:CGPointMake(41.48, 20.32)];
+[starsPath addLineToPoint:CGPointMake(49.09, 30.21)];
+[starsPath addLineToPoint:CGPointMake(48.74, 42.68)];
+[starsPath addLineToPoint:CGPointMake(60.5, 38.5)];
+[starsPath addLineToPoint:CGPointMake(72.26, 42.68)];
+[starsPath addLineToPoint:CGPointMake(71.91, 30.21)];
+[starsPath addLineToPoint:CGPointMake(79.52, 20.32)];
+[starsPath addLineToPoint:CGPointMake(67.55, 16.79)];
+[starsPath addLineToPoint:CGPointMake(60.5, 6.5)];
+[starsPath closePath];
+[starsPath moveToPoint:CGPointMake(100.5, 6.5)];
+[starsPath addLineToPoint:CGPointMake(93.45, 16.79)];
+[starsPath addLineToPoint:CGPointMake(81.48, 20.32)];
+[starsPath addLineToPoint:CGPointMake(89.09, 30.21)];
+[starsPath addLineToPoint:CGPointMake(88.74, 42.68)];
+[starsPath addLineToPoint:CGPointMake(100.5, 38.5)];
+[starsPath addLineToPoint:CGPointMake(112.26, 42.68)];
+[starsPath addLineToPoint:CGPointMake(111.91, 30.21)];
+[starsPath addLineToPoint:CGPointMake(119.52, 20.32)];
+[starsPath addLineToPoint:CGPointMake(107.55, 16.79)];
+[starsPath addLineToPoint:CGPointMake(100.5, 6.5)];
+[starsPath closePath];
+[starsPath moveToPoint:CGPointMake(140.5, 6.5)];
+[starsPath addLineToPoint:CGPointMake(133.45, 16.79)];
+[starsPath addLineToPoint:CGPointMake(121.48, 20.32)];
+[starsPath addLineToPoint:CGPointMake(129.09, 30.21)];
+[starsPath addLineToPoint:CGPointMake(128.74, 42.68)];
+[starsPath addLineToPoint:CGPointMake(140.5, 38.5)];
+[starsPath addLineToPoint:CGPointMake(152.26, 42.68)];
+[starsPath addLineToPoint:CGPointMake(151.91, 30.21)];
+[starsPath addLineToPoint:CGPointMake(159.52, 20.32)];
+[starsPath addLineToPoint:CGPointMake(147.55, 16.79)];
+[starsPath addLineToPoint:CGPointMake(140.5, 6.5)];
+[starsPath closePath];
+[starsPath moveToPoint:CGPointMake(180.5, 6.5)];
+[starsPath addLineToPoint:CGPointMake(173.45, 16.79)];
+[starsPath addLineToPoint:CGPointMake(161.48, 20.32)];
+[starsPath addLineToPoint:CGPointMake(169.09, 30.21)];
+[starsPath addLineToPoint:CGPointMake(168.74, 42.68)];
+[starsPath addLineToPoint:CGPointMake(180.5, 38.5)];
+[starsPath addLineToPoint:CGPointMake(192.26, 42.68)];
+[starsPath addLineToPoint:CGPointMake(191.91, 30.21)];
+[starsPath addLineToPoint:CGPointMake(199.52, 20.32)];
+[starsPath addLineToPoint:CGPointMake(187.55, 16.79)];
+[starsPath addLineToPoint:CGPointMake(180.5, 6.5)];
+[starsPath closePath];
+IGProgressView *progressView = [[IGProgressView alloc] initWithCustomShape:starsPath.CGPath];
+progressView.frame = CGRectMake(centerX - 100, centerY - 25, 200, 50);
+progressView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleRightMargin|UIViewAutoresizingFlexibleBottomMargin;
+progressView.progress = 0.4;
+[self.view addSubview:progressView];
+----
+
+*In C#:*
+
+[source,csharp]
+----
+this.View.BackgroundColor = UIColor.White;
+float centerX, centerY;
+centerX = this.View.Bounds.Width / 2;
+centerY = this.View.Bounds.Height / 2;
+UIBezierPath starsPath = new UIBezierPath ();
+starsPath.MoveTo(new PointF(20.5f, 6.5f));
+starsPath.AddLineTo(new PointF(13.45f, 16.79f));
+starsPath.AddLineTo(new PointF(1.48f, 20.32f));
+starsPath.AddLineTo(new PointF(9.09f, 30.21f));
+starsPath.AddLineTo(new PointF(8.74f, 42.68f));
+starsPath.AddLineTo(new PointF(20.5f, 38.5f));
+starsPath.AddLineTo(new PointF(32.26f, 42.68f));
+starsPath.AddLineTo(new PointF(31.91f, 30.21f));
+starsPath.AddLineTo(new PointF(39.52f, 20.32f));
+starsPath.AddLineTo(new PointF(27.55f, 16.79f));
+starsPath.AddLineTo(new PointF(20.5f, 6.5f));
+starsPath.ClosePath();
+starsPath.MoveTo(new PointF(60.5f, 6.5f));
+starsPath.AddLineTo(new PointF(53.45f, 16.79f));
+starsPath.AddLineTo(new PointF(41.48f, 20.32f));
+starsPath.AddLineTo(new PointF(49.09f, 30.21f));
+starsPath.AddLineTo(new PointF(48.74f, 42.68f));
+starsPath.AddLineTo(new PointF(60.5f, 38.5f));
+starsPath.AddLineTo(new PointF(72.26f, 42.68f));
+starsPath.AddLineTo(new PointF(71.91f, 30.21f));
+starsPath.AddLineTo(new PointF(79.52f, 20.32f));
+starsPath.AddLineTo(new PointF(67.55f, 16.79f));
+starsPath.AddLineTo(new PointF(60.5f, 6.5f));
+starsPath.ClosePath();
+starsPath.MoveTo(new PointF(100.5f, 6.5f));
+starsPath.AddLineTo(new PointF(93.45f, 16.79f));
+starsPath.AddLineTo(new PointF(81.48f, 20.32f));
+starsPath.AddLineTo(new PointF(89.09f, 30.21f));
+starsPath.AddLineTo(new PointF(88.74f, 42.68f));
+starsPath.AddLineTo(new PointF(100.5f, 38.5f));
+starsPath.AddLineTo(new PointF(112.26f, 42.68f));
+starsPath.AddLineTo(new PointF(111.91f, 30.21f));
+starsPath.AddLineTo(new PointF(119.52f, 20.32f));
+starsPath.AddLineTo(new PointF(107.55f, 16.79f));
+starsPath.AddLineTo(new PointF(100.5f, 6.5f));
+starsPath.ClosePath();
+starsPath.MoveTo(new PointF(140.5f, 6.5f));
+starsPath.AddLineTo(new PointF(133.45f, 16.79f));
+starsPath.AddLineTo(new PointF(121.48f, 20.32f));
+starsPath.AddLineTo(new PointF(129.09f, 30.21f));
+starsPath.AddLineTo(new PointF(128.74f, 42.68f));
+starsPath.AddLineTo(new PointF(140.5f, 38.5f));
+starsPath.AddLineTo(new PointF(152.26f, 42.68f));
+starsPath.AddLineTo(new PointF(151.91f, 30.21f));
+starsPath.AddLineTo(new PointF(159.52f, 20.32f));
+starsPath.AddLineTo(new PointF(147.55f, 16.79f));
+starsPath.AddLineTo(new PointF(140.5f, 6.5f));
+starsPath.ClosePath();
+starsPath.MoveTo(new PointF(180.5f, 6.5f));
+starsPath.AddLineTo(new PointF(173.45f, 16.79f));
+starsPath.AddLineTo(new PointF(161.48f, 20.32f));
+starsPath.AddLineTo(new PointF(169.09f, 30.21f));
+starsPath.AddLineTo(new PointF(168.74f, 42.68f));
+starsPath.AddLineTo(new PointF(180.5f, 38.5f));
+starsPath.AddLineTo(new PointF(192.26f, 42.68f));
+starsPath.AddLineTo(new PointF(191.91f, 30.21f));
+starsPath.AddLineTo(new PointF(199.52f, 20.32f));
+starsPath.AddLineTo(new PointF(187.55f, 16.79f));
+starsPath.AddLineTo(new PointF(180.5f, 6.5f));
+starsPath.ClosePath();
+IGProgressView progressView = new IGProgressView(starsPath.CGPath);
+progressView.Frame = new RectangleF(centerX - 100, centerY - 25, 200, 50);
+progressView.AutoresizingMask = UIViewAutoresizing.All;
+progressView.Progress = 0.4f;
+this.View.AddSubview(progressView);
+----
+
+[[_Ref215823716]]
+== Related Content
+
+=== Topics
+
+The following topic provides additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:igprogressview.html[IGProgressView]
+|The topics in this group cover enabling, configuring, and using the _IGProgressView_ control’s supported features.
+
+|====

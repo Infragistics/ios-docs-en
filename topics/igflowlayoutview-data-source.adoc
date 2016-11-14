@@ -1,0 +1,65 @@
+﻿////
+
+|metadata|
+{
+    "name": "igflowlayoutview-data-source",
+    "tags": ["Data Binding","Getting Started","How Do I"],
+    "controlName": ["IGFlowLayoutView"],
+    "guid": "31592b27-f418-450f-aa16-4b9c2224e003",  
+    "buildFlags": [],
+    "createdOn": "2014-03-18T12:09:45.0772785Z"
+}
+|metadata|
+////
+
+= Data Source
+
+== Topic Overview
+
+=== Purpose
+
+This topic provides an informational overview of supplying data to the  _IGFlowLayoutView_™ control.
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref255107368, Data Source >>
+* <<_Ref255107412, Related Content >>
+
+[[_Ref255107368]]
+== Data Source
+
+[[_Ref329132134]]
+
+=== Introduction
+
+To supply data to the  _IGFlowLayoutView_   you must adopt the  _IGFlowLayoutDataSource_   protocol or create a new class that adopts this protocol and set the `dataSource` property on the  _IGFlowLayoutView_  . The  _IGFlowLayoutDataSource_   has 4 required methods that are used to populate the  _IGFlowLayoutView_  .
+
+* `-(CGSize)numberOfBlocksInViewport:(IGFlowLayoutView$$* $$)flowLayoutView;`
+* `-(NSInteger)numberOfItemsInFlowLayoutView:(IGFlowLayoutView$$* $$)flowLayoutView;`
+* `-(CGSize)flowLayoutView:(IGFlowLayoutView$$* $$)flowLayoutView sizeForItemAtIndex:(NSInteger)index;`
+* `-(IGFlowLayoutViewCell$$*$$)flowLayoutView:(IGFlowLayoutView$$* $$)flowLayoutView cellAtIndex:(NSInteger)index;`
+
+By design, the data source for the  _IGFlowLayoutView_   uses blocks to represent the size of a flow layout item. For example, if your  _IGFlowLayoutView_   has a size of 1024x768 and the `numberOfBlocksInViewport:` is set to return a `CGSize` of (4, 4), each block would have a size of 256x192. This means that your  _IGFlowLayoutView_   will fit 16 blocks in the viewport. If your data source returns a number higher than the multiplied `CGSize` from `numberOfItemsInFlowLayoutView:`, the viewport will then be scrollable. To learn more about the scrolling layout of the  _IGFlowLayoutView_  , visit the link:igflowlayoutview-layouts.html[Layouts topic].
+
+The returned `CGSize` from the `flowLayoutView:sizeForItemAtIndex:` method block size for each item is the bases on . Using the same amount of blocks in our viewport with a `CGSize` of (4, 4) as mentioned previously, an item that returns its `CGSize` of (2,3) would have an actual size of 512x576.
+
+The  _IGFlowLayoutDataSource_   populates layout items by calling the `flowLayoutView:cellAtIndex:` method, which is the same technique you would use to populate items on the  _UITableView_   or  _IGGridView_  , by de-queuing a cell or creating a new one in this method. The difference is that a default  _IGFlowLayoutViewCell_   has content; it is just a container. To add content, set the `contentView` property of the cell to display any  _UIView_  .
+
+[[_Ref324841253]]
+[[_Ref255107412]]
+== Related Content
+
+=== Topics
+
+The following topic provides additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:igflowlayoutview.html[IGFlowLayoutView]
+|This topic serves as a gateway to the features and functionality of the _IGFlowLayoutView_ control.
+
+|====

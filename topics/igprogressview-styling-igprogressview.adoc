@@ -1,0 +1,102 @@
+﻿////
+
+|metadata|
+{
+    "name": "igprogressview-styling-igprogressview",
+    "tags": ["Getting Started","How Do I","Styling"],
+    "controlName": ["IGProgressView"],
+    "guid": "b3eb1104-4816-4090-9bc8-e663e029f5d8",  
+    "buildFlags": [],
+    "createdOn": "2013-08-26T14:25:03.3657299Z"
+}
+|metadata|
+////
+
+= Styling the IGProgressView
+
+== Topic Overview
+
+=== Purpose
+
+This topic provides an introduction to styling the  _IGProgressView_™ control.
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref324841248, Introduction >>
+* <<_Ref324841253, Advanced Styling >>
+* <<_Ref215823716, Related Content >>
+
+[[_Ref324841248]]
+== Introduction
+
+[[_Ref215796828]]
+
+=== Styling summary
+
+Styling allows you to change the appearance of a control simply by manipulating a few properties. Use one of the properties listed in the table below or the exposed  _CAShapeLayer_   properties to style the  _IGProgressView_  . More information about the exposed shape layers can be found in the <<_Ref324841253,Advanced Styling>> section of this topic.
+
+[options="header", cols="a,a,a"]
+|====
+|Property Name|Description|Preview
+
+|`progressTintColor`
+|The color used to fill the portion of the progress bar filled using the `progress` property. In the preview image, the `progressTintColor` is set to green.
+|image::images/IGProgressView_-_Styling_the_IGProgressView_1.png[]
+
+|`progressTrackTintColor`
+|The color used to fill the portion of the progress bar not filled using the `progress` property. In the preview image, the `progressTrackTintColor` is set to light gray.
+|image::images/IGProgressView_-_Styling_the_IGProgressView_2.png[]
+
+|`radialContentView`
+|The view placed into the center of the `IGProgressViewStyleRadial` and `IGProgressViewStyleRadialIndeterminate` progress styles. In the preview image, the `radialContentView` is set to a _UILabel_ instance containing the current progress percentage.
+|image::images/IGProgressView_-_Styling_the_IGProgressView_3.png[]
+
+|`radialInsertScale`
+|The size of the `IGProgressViewStyleRadial` and `IGProgressViewStyleRadialIndeterminate` progress style’s insert. In the preview image, the `radialInsertScale` is set to 0.45, which is 45% of the width the insert can extend.
+|image::images/IGProgressView_-_Styling_the_IGProgressView_4.png[]
+
+|`radialInsertTintColor`
+|The color shown for the insert portion of the `IGProgressViewStyleRadial` and `IGProgressViewStyleRadialIndeterminate` progress styles. In the preview image, the `radialInsertTintColor` is set to light gray.
+|image::images/IGProgressView_-_Styling_the_IGProgressView_5.png[]
+
+|`standardCornerRadius`
+|The radius used when drawing rounded corners for the `IGProgressViewStyleStandard` and `IGProgressViewStyleStandardIndeterminate` progress styles. In the preview image, the `standardCornerRadius` is set to 0.0.
+|image::images/IGProgressView_-_Styling_the_IGProgressView_6.png[]
+
+|====
+
+[[_Ref327936206]]
+[[_Ref324841253]]
+== Advanced Styling
+
+=== Advanced styling summary
+
+The  _IGProgressView_   exposes 3 properties that are of the type link:https://developer.apple.com/library/mac/[CAShapeLayer].
+
+* `progressShapeLayer`
+* `progressTrackShapeLayer`
+* `radialInsertShapeLayer`
+
+The control uses the `progressShapeLayer` and `progressTrackShapeLayer` to create each progress type and uses the `radialInsertShapeLayer` for rendering the circle shape found in the `IGProgressViewStyleRadial` and `IGProgressViewStyleRadialIndeterminate` progress types. The most common  _CAShapeLayers’_   styling properties are shown below; please consult with the link:https://developer.apple.com/library/mac/[Apple CAShapeLayer Class Reference documentation] to learn more about these and other properties.
+
+* `fillColor` – The fill color is the background color
+* `lineWidth` –The width of the stroke bordering the link:https://developer.apple.com/library/mac/[CAShapeLayer]
+* `strokeColor` – The color of the stroke
+
+[[_Ref215823716]]
+== Related Content
+
+=== Topics
+
+The following topic provides additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:igprogressview.html[IGProgressView]
+|The topics in this group cover enabling, configuring, and using the _IGProgressView_ control’s supported features.
+
+|====

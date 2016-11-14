@@ -1,0 +1,23 @@
+﻿////
+
+|metadata|
+{
+    "name": "whats-new",
+    "controlName": [],
+    "tags": ["Getting Started"],
+    "guid": "9f9f826b-75ee-4084-af41-c03ad7e7c5db",  
+    "buildFlags": [],
+    "createdOn": "2013-02-28T13:20:38.1745493Z"
+}
+|metadata|
+////
+
+= What's New
+
+== link:whats-new-2016-volume-2.html[2016 Volume 2]
+
+Find out which new controls and features were added to this volume release of {ProductName}.
+
+== link:whats-new-revision-history.html[Revision History]
+
+Need to find out if or when a specific feature was added to our controls? Use this section to quickly and easily track down any new feature since our 2012 Volume 1 release.

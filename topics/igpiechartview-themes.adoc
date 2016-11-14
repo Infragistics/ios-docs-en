@@ -1,0 +1,243 @@
+﻿////
+
+|metadata|
+{
+    "name": "igpiechartview-themes",
+    "controlName": ["IGPieChartView"],
+    "tags": ["Charting","How Do I","Styling","Theming"],
+    "guid": "b1a94fba-377f-4da3-8c83-a52d95c41758",  
+    "buildFlags": [],
+    "createdOn": "2013-01-24T17:05:56.2445194Z"
+}
+|metadata|
+////
+
+= Themes
+
+== Topic Overview
+
+=== Purpose
+
+This topic provides a conceptual overview of the supported themes available in the  _IGPieChartView_™ control.
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref324841248, Introduction >>
+
+** <<_Ref327859845,Theme summary>>
+** <<_Ref327864136,Theme types>>
+
+* <<_Ref329853754, Creating a Custom Theme – Code Example >>
+
+** <<_Ref323199287,Description>>
+** <<_Ref323199293,Code>>
+
+* <<_Ref324841253, Related Content >>
+
+[[_Ref324841248]]
+== Introduction
+
+[[_Ref327859845]]
+
+=== Theme summary
+
+Use chart themes to give a chart a consistent, color coordinated, look and feel. Simply set the  _IGPieChartView_   theme property to one of the predefined themes found in either the  _IGPieChartDefaultThemes_   or  _IGPieChartGradientThemes_  .
+
+[[_Ref327864136]]
+
+=== Theme types
+
+The following table contains the supported themes and their associated type name.
+
+[options="header", cols="a,a"]
+|====
+|Theme Name|Preview
+
+| _DefaultTheme_ 
+|image::images/IGPieChartView_-_Themes_1.png[]
+
+| _IGTheme_ 
+|image::images/IGPieChartView_-_Themes_2.png[]
+
+| _IGThemeDark_ 
+|image::images/IGPieChartView_-_Themes_3.png[]
+
+| _DarkTheme1_ 
+|image::images/IGPieChartView_-_Themes_4.png[]
+
+| _DarkTheme2_ 
+|image::images/IGPieChartView_-_Themes_5.png[]
+
+| _DarkTheme3_ 
+|image::images/IGPieChartView_-_Themes_6.png[]
+
+| _DarkTheme4_ 
+|image::images/IGPieChartView_-_Themes_7.png[]
+
+| _IGTheme_ 
+|image::images/IGPieChartView_-_Themes_8.png[]
+
+| _IGThemeDark_ 
+|image::images/IGPieChartView_-_Themes_9.png[]
+
+| _FinanceTheme1_ 
+|image::images/IGPieChartView_-_Themes_10.png[]
+
+| _FinanceTheme2_ 
+|image::images/IGPieChartView_-_Themes_11.png[]
+
+| _FinanceTheme3_ 
+|image::images/IGPieChartView_-_Themes_12.png[]
+
+| _FinanceTheme4_ 
+|image::images/IGPieChartView_-_Themes_13.png[]
+
+| _FinanceTheme5_ 
+|image::images/IGPieChartView_-_Themes_14.png[]
+
+|====
+
+[[_Ref329330892]]
+[[_Ref329853754]]
+== Creating a Custom Theme – Code Example
+
+[[_Ref323199287]]
+
+=== Description
+
+The following code creates a new  _IGPieChartThemeDefinition_   object and adds several  _IGChartPaletteItem_   objects to the `slicePalettes` collection found on the  _IGPieChartThemeDefinition_  .
+
+[[_Ref323199293]]
+
+=== Code
+
+*In C#:*
+
+[source,csharp]
+----
+IGPieChartView pieChart = new IGPieChartView();
+IGPieChartThemeDefinition def = new IGPieChartThemeDefinition();
+def.Font = UIFont.FromName("Helvetica", 12);
+def.FontColor = new IGBrush(0, 0, 0, 1);
+def.BackgroundColor = UIColor.White;
+def.LegendFont = UIFont.FromName("Helvetica", 12);
+def.LegendFontColor = new IGBrush(0, 0, 0, 1);
+def.LegendBorderThickness = 1;
+def.LegendPalette = new IGChartPaletteItem();
+def.LegendPalette.Color = new IGBrush(0.9f, 0.9f, 0.9f, 0.8f);
+def.LegendPalette.OutlineColor = new IGBrush(0.7f, 0.7f, 0.7f, 1f);
+IGChartPaletteItem item1 = new IGChartPaletteItem();
+item1.OutlineColor = new IGBrush(0.69f, 0.75f, 0.79f, 1f);
+item1.Color = new IGBrush(0.31f, 0.65f, 0.74f, 1f);
+(def.SlicePalettes).Add(item1);
+IGChartPaletteItem item2 = new IGChartPaletteItem();
+item2.OutlineColor = new IGBrush(0.47f, 0.53f, 0.58f, 1f);
+item2.Color = new IGBrush(0.98f, 0.40f, 0.33f, 1f);
+(def.SlicePalettes).Add(item2);
+IGChartPaletteItem item3 = new IGChartPaletteItem();
+item3.OutlineColor = new IGBrush(0.31f, 0.38f, 0.42f, 1f);
+item3.Color = new IGBrush(0.99f, 0.76f, 0.23f, 1f);
+(def.SlicePalettes).Add(item3);
+IGChartPaletteItem item4 = new IGChartPaletteItem();
+item4.OutlineColor = new IGBrush(0.21f, 0.27f, 0.31f, 1f);
+item4.Color = new IGBrush(0.23f, 0.39f, 0.6f, 1f);
+(def.SlicePalettes).Add(item4);
+IGChartPaletteItem item5 = new IGChartPaletteItem();
+item5.OutlineColor = new IGBrush(0.08f, 0.17f, 0.23f, 1f);
+item5.Color = new IGBrush(0.57f, 0.69f, 0.29f, 1f);
+(def.SlicePalettes).Add(item5);
+IGChartPaletteItem others = new IGChartPaletteItem();
+others.OutlineColor = new IGBrush(0.50f, 0.50f, 0.50f, 1f);
+others.Color = new IGBrush(0.33f, 0.05f, 1.0f, 1f);
+def.OthersCategoryFont = UIFont.FromName("Helvetica", 12);
+def.OthersCategoryFontColor = new IGBrush(0, 0, 0, 1);
+def.OthersCategoryThickness = 1.0f;
+def.OthersCategoryPalette = others;
+IGChartPaletteItem selected = new IGChartPaletteItem();
+selected.OutlineColor = new IGBrush(0.50f, 0.50f, 0.50f, 1f);
+selected.Color = new IGBrush(0.16f, 0.81f, 1f, 1f);
+def.SelectedFont = UIFont.FromName("Helvetica", 12);
+def.SelectedFontColor = new IGBrush(0, 0, 0, 1);
+def.SelectedThickness = 1.0f;
+def.SelectedPalette = selected;
+IGChartPaletteItem leaderLine = new IGChartPaletteItem();
+leaderLine.OutlineColor = new IGBrush(0.10f, 0.10f, 0.10f, 1f);
+leaderLine.Color = new IGBrush(0.10f, 0.10f, 0.10f, 1f);
+def.LeaderLineThickness = 1.0f;
+def.LeaderLinePalette = leaderLine;
+pieChart.Theme = def;
+----
+
+*In Objective-C:*
+
+[source,csharp]
+----
+ IGPieChartThemeDefinition *def = [[IGPieChartThemeDefinition alloc]init];
+    def.font = [UIFont fontWithName:@"Helvetica" size:12];
+    def.fontColor = [[IGBrush alloc] initWithR:0 andG:0 andB:0 andA:1];
+    def.backgroundColor = [UIColor whiteColor];
+    def.legendFont = [UIFont fontWithName:@"Helvetica" size:12];
+    def.legendFontColor = [[IGBrush alloc] initWithR:0 andG:0 andB:0 andA:1];
+    def.legendBorderThickness = 1;
+    def.legendPalette = [[IGChartPaletteItem alloc]init];
+    def.legendPalette.color = [[IGBrush alloc] initWithR:0.9 andG:0.9 andB:0.9 andA:0.8];
+    def.legendPalette.outlineColor = [[IGBrush alloc] initWithR:0.7 andG:0.7 andB:0.7 andA:1];
+    IGChartPaletteItem* item1 = [[IGChartPaletteItem alloc] init];
+    item1.outlineColor = [[IGBrush alloc] initWithR:0.69 andG:0.75 andB:0.79 andA:1];
+    item1.color = [[IGBrush alloc] initWithR:0.31 andG:0.65 andB:0.74 andA:1];
+    [def.slicePalettes addObject:item1];
+    IGChartPaletteItem* item2 = [[IGChartPaletteItem alloc] init];
+    item2.outlineColor = [[IGBrush alloc] initWithR:0.47 andG:0.53 andB:0.58 andA:1];
+    item2.color = [[IGBrush alloc] initWithR:0.98 andG:0.40 andB:0.33 andA:1];
+    [def.slicePalettes addObject:item2];
+    IGChartPaletteItem* item3 = [[IGChartPaletteItem alloc] init];
+    item3.outlineColor = [[IGBrush alloc] initWithR:0.31 andG:0.38 andB:0.42 andA:1];
+    item3.color = [[IGBrush alloc] initWithR:0.99 andG:0.76 andB:0.23 andA:1];
+    [def.slicePalettes addObject:item3];
+    IGChartPaletteItem* item4 = [[IGChartPaletteItem alloc] init];
+    item4.outlineColor = [[IGBrush alloc] initWithR:0.21 andG:0.27 andB:0.31 andA:1];
+    item4.color = [[IGBrush alloc] initWithR:0.23 andG:0.39 andB:0.6 andA:1];
+    [def.slicePalettes addObject:item4];
+    IGChartPaletteItem* item5 = [[IGChartPaletteItem alloc] init];
+    item5.outlineColor = [[IGBrush alloc] initWithR:0.08 andG:0.17 andB:0.23 andA:1];
+    item5.color = [[IGBrush alloc] initWithR:0.57 andG:0.69 andB:0.29 andA:1];
+    [def.slicePalettes addObject:item5];
+    IGChartPaletteItem* others = [[IGChartPaletteItem alloc] init];
+    others.outlineColor = [[IGBrush alloc] initWithR:0.50 andG:0.50 andB:0.50 andA:1];
+    others.color = [[IGBrush alloc] initWithR:0.33 andG:0.05 andB:1.0 andA:1];
+    def.othersCategoryFont = [UIFont fontWithName:@"Helvetica" size:12];
+    def.othersCategoryFontColor = [[IGBrush alloc] initWithR:0 andG:0 andB:0 andA:1];
+    def.othersCategoryThickness = 1.0;
+    def.othersCategoryPalette = others;
+    IGChartPaletteItem* selected = [[IGChartPaletteItem alloc] init];
+    selected.outlineColor = [[IGBrush alloc] initWithR:0.50 andG:0.50 andB:0.50 andA:1];
+    selected.color = [[IGBrush alloc] initWithR:0.16 andG:0.81 andB:1 andA:1];
+    def.selectedFont = [UIFont fontWithName:@"Helvetica" size:12];
+    def.selectedFontColor = [[IGBrush alloc] initWithR:0 andG:0 andB:0 andA:1];
+    def.selectedThickness = 1.0;
+    def.selectedPalette = selected;
+    IGChartPaletteItem* leaderLine = [[IGChartPaletteItem alloc] init];
+    leaderLine.outlineColor = [[IGBrush alloc] initWithR:0.10 andG:0.10 andB:0.10 andA:1];
+    leaderLine.color = [[IGBrush alloc] initWithR:0.10 andG:0.10 andB:0.10 andA:1];
+    def.leaderLineThickness = 1.0;
+    def.leaderLinePalette = leaderLine;    
+pieChart.theme = def;
+----
+
+[[_Ref324841253]]
+== Related Content
+
+=== Topics
+
+The following topic provides additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:igpiechartview.html[IGPieChartView]
+|This topic serves as a gateway to the features and functionality of the _IGPieChartView_ control.
+
+|====

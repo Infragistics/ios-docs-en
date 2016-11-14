@@ -1,0 +1,105 @@
+﻿////
+
+|metadata|
+{
+    "name": "igrangeselectorview-styling-range-selector",
+    "tags": ["Getting Started","How Do I","Styling"],
+    "controlName": ["IGRangeSelectorView"],
+    "guid": "96d6421d-41c7-4163-9b28-d7eecbf6cd1a",  
+    "buildFlags": [],
+    "createdOn": "2013-09-25T12:33:25.4497434Z"
+}
+|metadata|
+////
+
+= Styling the Range Selector
+
+== Topic Overview
+
+=== Purpose
+
+This topic provides an introductory overview of styling the  _IGRangeSelectorView_™ control.
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref324841248, Introduction >>
+
+** <<_Ref215796828,Styling summary>>
+** <<_Ref240944501,Styling properties>>
+
+* <<_Ref215823716, Related Content >>
+
+[[_Ref324841248]]
+== Introduction
+
+[[_Ref215796828]]
+
+=== Styling summary
+
+The  _IGRangeSelectorView_   is made up of several views that are exposed as properties. These exposed properties allow you to style the control elements to your requirements.
+
+* `contentView` - The  _UIView_  , displays as the body of the  _IGRangeSelector_   in order to provide the scale meaning
+* `minimumThumbView` - The  _UIView_  , used as the smallest thumb
+* `maximumThumbView` - The  _UIView_  , used as the biggest thumb
+* `minMaxThumbSize` - The width of the thumbs when in horizontal orientation, and the height of the thumbs when in vertical orientation
+* `shadeColor` - The  _UIView_   area on the control that is behind the thumbs
+* `thumbView` - The  _UIView_   area between the two thumbs
+
+[[_Ref240944501]]
+
+=== Styling properties
+
+The following table illustrates the various styling properties available and previews each.
+
+[options="header", cols="a,a"]
+|====
+|Property|Preview
+
+|`contentView`
+|image::images/IGRangeSelector_-_Styling_the_Range_Selector_1.png[] 
+
+Shown as the chart displayed in the preview image.
+
+|`minimumThumbView`
+|image::images/IGRangeSelector_-_Styling_the_Range_Selector_2.png[] 
+
+Shown as the orange _UIView_ .
+
+|`maximumThumbView`
+|image::images/IGRangeSelector_-_Styling_the_Range_Selector_3.png[] 
+
+Shown as the orange _UIView_ .
+
+|`minMaxThumbSize`
+|N/A
+
+|`shadeColor`
+|image::images/IGRangeSelector_-_Styling_the_Range_Selector_4.png[] 
+
+Shown as the translucent orange _UIView_ .
+
+|`thumbView`
+|image::images/IGRangeSelector_-_Styling_the_Range_Selector_5.png[] 
+
+Shown as the translucent orange _UIView_ .
+
+|====
+
+[[_Ref324841253]]
+[[_Ref215823716]]
+== Related Content
+
+=== Topics
+
+The following topic provides additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:igrangeselectorview.html[IGRangeSelectorView]
+|The topics in this group cover enabling, configuring, and using the _IGRangeSelectorView_ control’s supported features.
+
+|====

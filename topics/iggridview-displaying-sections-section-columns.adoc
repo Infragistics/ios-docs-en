@@ -1,0 +1,103 @@
+﻿////
+
+|metadata|
+{
+    "name": "iggridview-displaying-sections-section-columns",
+    "controlName": ["IGGridView"],
+    "tags": ["Grids","Grouping","How Do I"],
+    "guid": "b7c8d3cf-3065-4855-b544-511962467921",  
+    "buildFlags": [],
+    "createdOn": "2012-07-16T14:19:21.6291505Z"
+}
+|metadata|
+////
+
+= Displaying Sections and Section Columns
+
+== Topic Overview
+
+=== Purpose
+
+This topic provides a conceptual overview, with code, on displaying sections and section columns on the  _IGGridView_™ control.
+
+=== Required background
+
+The following table lists the topics required as a prerequisite to understanding this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:iggridview-adding-the-ig-framework-file.html[Adding the Grid Framework File]
+|This topic explains the requirements for adding the grid framework file to an Xcode project; a requirement for using the _IGGridView_ control.
+
+|====
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref324841248, Introduction >>
+* <<_Ref329848476, Section Columns >>
+* <<_Ref323199323, Related Content >>
+
+[[_Ref324841248]]
+[[_Ref323199279]]
+[[_Ref324505001]]
+[[_Ref323111244]]
+== Introduction
+
+[[_Ref327859845]]
+
+=== Sections summary
+
+The  _IGGridView_   allows displayed data to be grouped together into sections. The  _IGGridViewDataSource_   has three methods that make the implementation of sections quick and easy.
+
+* `-(int) numberOfSectionsInGridView:(IGGridView $$* $$)gridView;`
+* `-(NSString$$*$$)gridView:(IGGridView$$* $$)gridView titleForHeaderInSection:(int)section;`
+* `-(NSString$$*$$)gridView:(IGGridView$$* $$)gridView titleForFooterInSection:(int)section;`
+
+The `numberOfSectionsInGridView` allows you to tell the IGGridView how many sections you want displayed, while the other two methods `titleForHeaderInSection` and `titleForFooterInSection`, allow you to display a string in the header and footer. No representation for a particular section will be displayed if `titleForHeaderInSection` or `titleForFooterInSection` was not implemented or their method’s return value is nil.
+
+To display more than text in a section header or footer the IGGridView control comes with two delegate methods, which allow for complete customization.
+
+* `-(UIView$$*$$)gridView:(IGGridView$$* $$)gridView viewForHeaderInSection:(int)section;`
+* `-(UIView$$*$$)gridView:(IGGridView$$* $$)gridView viewForFooterInSection:(int)section;`
+
+These methods are used to display a custom view in the section header or footer. When using a custom view, you may want to adjust the size of the header or footer. This is done by using the `sectionHeaderHeight` and `sectionFooterHeight` found on the  _IGGridView_  . If the header and footer sizes will vary, there are two methods found on the  _IGGridViewDelegate_   that allow for customizing the specific height for each header and footer.
+
+* `-(CGFloat)gridView:(IGGridView$$* $$)gridView heightForHeaderInSection:(int)section;`
+* `-(CGFloat)gridView:(IGGridView$$* $$)gridView heightForFooterInSection:(int)section;`
+
+[[_Ref329848476]]
+== Section Columns
+
+=== Section columns summary
+
+Sections have an additional visual element that displays a fixed content column for each section. For example, if you create a music application that groups songs in sections by album, you could use the section column to display album art. To display the section column implement the follow delegate method.
+
+* `-(UIView $$*$$)gridView:(IGGridView $$* $$)gv viewForSectionColumn:(int)section`
+
+To customize the width of the section column, the property `sectionColumnWidth` found on the  _IGGridView_   can be used. Additionally, if you want to control the background color or what’s displayed in the background of the section column, you can specify a custom view using the  _IGGridView’s_   `sectionColumnBackgroundView` property.
+
+[[_Ref323199323]]
+== Related Content
+
+=== Topics
+
+The following topics provide additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:iggridview-adding-the-ig-framework-file.html[Adding the Grid Framework File]
+|This topic explains the requirements for adding the grid framework file to an Xcode project; a requirement for using the _IGGridView™_ control.
+
+| link:iggridview-adding-the-iggridview-uiview.html[Adding the IGGridView to a UIView]
+|This topic provides basic information about creating an instance of the _IGGridView_ and displaying data to help you with getting up and running with using the control.
+
+| link:iggridview.html[IGGridView]
+|This section serves as an introduction to the _IGGridView’s_ key features and functionalities.
+
+|====

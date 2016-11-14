@@ -1,0 +1,96 @@
+﻿////
+
+|metadata|
+{
+    "name": "igchartview-brushes",
+    "controlName": ["IGChartView"],
+    "tags": ["Charting","How Do I","Styling"],
+    "guid": "6dcf214e-500a-414b-8a46-8cbd110e690f",  
+    "buildFlags": [],
+    "createdOn": "2012-07-25T17:34:37.2820956Z"
+}
+|metadata|
+////
+
+= Brushes
+
+== Topic Overview
+
+=== Purpose
+
+This topic provides a conceptual overview of the  _IGBrush_   support in the  _IGChartView_™ control and uses code examples to explain how to set properties requiring this object type.
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref324841248, Introduction >>
+* <<_Ref327861013, Creating a Solid Color Brush – Code Example >>
+
+** <<_Ref326147531,Description>>
+** <<_Ref326147537,Code>>
+
+* <<_Ref324841253, Related Content >>
+
+[[_Ref324841248]]
+== Introduction
+
+[[_Ref327859845]]
+
+=== Brushes summary
+
+The charting framework makes extensive uses of properties that require the  _IGBrush_   object type. Brushes add solid colors to chart elements.  _IGBrush_   type properties, set directly on the series, take precedence over any other brushes set on the  _IGChartView_  . Chart axis lines and major gridlines have a default gray colored brush. Minor chart gridlines will only show up if a brush is set for the  _minorStroke_   property.
+
+[[_Ref324842387]]
+
+[[_Ref324841253]]
+
+[[_Ref327861013]]
+== Creating a Solid Color Brush – Code Example
+
+[[_Ref326147531]]
+
+=== Description
+
+Solid brushes are based on RGBA values and are created using red, green, blue and alpha components. The value of each component must be a float values between 0.0 and 1.0. The brush can also be created from a  _UIColor_  , which can be useful when colors are already defined in the application.
+
+The following code demonstrates the creation of both an  _IGBrush_   using RGBA and another  _IGBrush_   using  _UIColor_  .
+
+[[_Ref326147537]]
+
+=== Code
+
+*In Objective-C:*
+
+[source,csharp]
+----
+//Light red colored brush using RGBA
+IGBrush *brush = [[IGBrush alloc]initWithR:1.0 andG:0.5 andB:0.5 andA:1.0];
+//Orange colored brush using the UIColor orangeColor preset
+IGBrush *brush = [[IGBrush alloc]initWithColor:[UIColor orangeColor]];
+----
+
+*In C#:*
+
+[source,csharp]
+----
+//Light red colored brush using RGBA
+IGBrush brush = new IGBrush(1.0f, .5f, .5f, 1.0f);[
+//Orange colored brush using the UIColor orangeColor preset
+IGBrush *brush = new IGBrush(UIColor.Orange);
+----
+
+== Related Content
+
+=== Topics
+
+The following topic provides additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:igchartview.html[IGChartView]
+|This topic serves as a gateway to the features and functionality of the _IGChartView_ control.
+
+|====

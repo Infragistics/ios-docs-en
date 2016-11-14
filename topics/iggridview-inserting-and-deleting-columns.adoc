@@ -1,0 +1,178 @@
+﻿////
+
+|metadata|
+{
+    "name": "iggridview-inserting-and-deleting-columns",
+    "controlName": ["IGGridView"],
+    "tags": ["Grids","How Do I","Layouts"],
+    "guid": "5e8c6b0a-a125-48cf-bf7b-56fd500d63da",  
+    "buildFlags": [],
+    "createdOn": "2013-02-11T19:46:26.1696179Z"
+}
+|metadata|
+////
+
+= Inserting and Deleting Columns
+
+== Topic Overview
+
+=== Purpose
+
+This topic provides a conceptual overview, with code examples, of inserting and deleting columns on the  _IGGridView_™ control.
+
+=== Required background
+
+The following table lists the topics required as a prerequisite to understanding this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:iggridview-adding-the-ig-framework-file.html[Adding the Grid Framework File]
+|This topic explains the requirements for adding the grid framework file to an Xcode project, a requirement for using the _IGGridView_ control.
+
+|====
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref324841248, Introduction >>
+* <<_Ref338831345, Inserting and Deleting a Normal Column – Code Example >>
+
+** <<_Ref338831392,Description>>
+** <<_Ref338831399,Code>>
+
+* <<_Ref338831418, Inserting and Deleting a Fixed Column – Code Example >>
+
+** <<_Ref323199287,Description>>
+** <<_Ref323199293,Code>>
+
+* <<_Ref323199323, Related Content >>
+
+[[_Ref324841248]]
+[[_Ref323199279]]
+[[_Ref324505001]]
+[[_Ref323111244]]
+== Introduction
+
+[[_Ref327859845]]
+
+=== Inserting and deleting columns summary
+
+For the purposes of this discussion, the  _IGGridView_   control recognizes two distinct and different column types, normal and fixed. A normal column is any column that is not pinned in place, while a fixed column is a column that is pinned to either the left or right side of the  _IGGridView_  . Inserting and deleting columns is very similar to inserting and deleting rows and cells. Use one of the following methods to inform the  _IGGridView_   control of updates to the underlying data.
+
+* `-(void)insertColumnsAtIndexes:(NSArray $$* $$)indexes`
+* `-(void)deleteColumnsAtIndexes:(NSArray $$* $$)indexes`
+* `-(void)insertFixedLeftColumnsAtIndexes:(NSArray $$* $$)indexes`
+* `-(void)deleteFixedLeftColumnsAtIndexes:(NSArray $$* $$)indexes`
+* `-(void)insertFixedRightColumnsAtIndexes:(NSArray $$* $$)indexes`
+* `-(void)deleteFixedRightColumnsAtIndexes:(NSArray $$* $$)indexes`
+
+For inserting and deleting normal columns using a data source helper, the following methods are available.
+
+* `-(void)insertColumns:(NSArray $$* $$)columns atIndex:(int)index`
+* `-(void)deleteColumns:(NSArray $$* $$)columns`
+
+.Note:
+[NOTE]
+====
+This only applies to data source helpers. If the data source needs updating after any column manipulations, such as moving, inserting, or deleting cells, rows, or columns, you will need to call the  _IGGridView_   method `invalidateData` with the BOOL parameter specified as  _NO_  . Failing to do so will result in all columns maintaining their original positions within the  _IGGridView_   and not displaying data updates.
+====
+
+[[_Ref338831345]]
+[[_Ref329330892]]
+== Inserting and Deleting a Normal Column – Code Example
+
+[[_Ref338831392]]
+
+=== Description
+
+The following code example demonstrates how to insert and delete a normal column within the  _IGGridView_  .
+
+[[_Ref338831399]]
+
+=== Code
+
+*In Objective-C:*
+
+[source,csharp]
+----
+//Insert normal column
+IGGridViewColumnDefinition* col = [[IGGridViewColumnDefinition alloc]initWithKey:@"prop1"];
+[_dsh insertColumns:[NSArray arrayWithObjects:col, nil] atIndex:0];
+[_gridView insertColumnsAtIndexes: [NSArray arrayWithObjects: @0, nil]]; 
+//Delete normal column
+[_dsh deleteColumns:[NSArray arrayWithObject:[_dsh.columns objectAtIndex:0]]];
+[_gridView deleteColumnsAtIndexes:[NSArray arrayWithObject:@0]];
+----
+
+*In C#:*
+
+[source,csharp]
+----
+//Insert left fixed column
+IGGridViewColumnDefinition col = new IGGridViewColumnDefinition("prop1");
+dsh.InsertColumns(new NSObject[]{col}, 0);
+grid.InsertColumns(new NSObject[]{new NSNumber(0)});
+//Delete left fixed column
+dsh.DeleteColumns(new NSObject[]{dsh.Columns[0]});
+grid.DeleteColumns(new NSObject[]{new NSNumber(0)});
+----
+
+[[_Ref338831418]]
+== Inserting and Deleting a Fixed Column – Code Example
+
+[[_Ref323199287]]
+
+=== Description
+
+The following code example demonstrates how to insert and delete a fixed column on the left side of the  _IGGridView_  .
+
+[[_Ref323199293]]
+
+=== Code
+
+*In Objective-C:*
+
+[source,csharp]
+----
+//Insert left fixed column
+IGGridViewColumnDefinition* colLeft = [[IGGridViewColumnDefinition alloc]initWithKey:@"prop1"];
+colLeft.headerText = @"Fixed";
+[_dsh.fixedLeftColumns insertObject:colLeft atIndex:0];
+[_gridView insertFixedLeftColumnsAtIndexes:[NSArray arrayWithObject:[NSNumber numberWithInt:0]]];
+//Delete left fixed column
+[_dsh.fixedLeftColumns removeObjectAtIndex:0];
+[_gridView deleteFixedLeftColumnsAtIndexes:[NSArray arrayWithObject:@0]];
+----
+
+*In C#:*
+
+[source,csharp]
+----
+//Insert left fixed column
+IGGridViewColumnDefinition colLeft = new IGGridViewColumnDefinition("prop1");
+colLeft.HeaderText = "Fixed";
+dsh.FixedLeftColumns.Insert(colLeft, 0);
+grid.InsertFixedLeftColumns(new NSObject[]{new NSNumber(0)});
+//Delete left fixed column
+dsh.FixedLeftColumns.RemoveObject(0);
+grid.DeleteFixedLeftColumns(new NSObject[]{new NSNumber(0)});
+----
+
+[[_Ref323199323]]
+== Related Content
+
+=== Topics
+
+The following topics provide additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:iggridview.html[IGGridView]
+|This section serves as an introduction to the _IGGridView_ control’s key features and functionalities.
+
+|====

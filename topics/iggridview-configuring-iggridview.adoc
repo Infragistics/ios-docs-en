@@ -1,0 +1,105 @@
+﻿////
+
+|metadata|
+{
+    "name": "iggridview-configuring-iggridview",
+    "controlName": ["IGGridView"],
+    "tags": ["Getting Started","Grids","How Do I"],
+    "guid": "73dc4978-17c7-4726-9291-1ad6bbcd2a72",  
+    "buildFlags": [],
+    "createdOn": "2012-07-16T14:13:40.4810391Z"
+}
+|metadata|
+////
+
+= Configuring IGGridView
+
+=== Introduction
+
+The topics in this group cover enabling, configuring, and using the  _IGGridView_™ control’s supported features.
+
+=== Topics
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:iggridview-attaching-gestures-cells.html[Attaching Gestures to Cells]
+|This topic provides a conceptual overview and uses code to demonstrate attaching gestures to cells on the _IGGridView_ control.
+
+| link:iggridview-column-reordering.html[Column Reordering]
+|This topic provides a conceptual overview on reordering the _IGGridView_ control’s columns.
+
+| link:iggridview-configuring-grid-data-entry.html[Configuring Grid Data Entry]
+|This topic provides an introduction to grid editing on the _IGGridView_ control and demonstrates how to configure them using a code example.
+
+| link:iggridview-configuring-custom-cell.html[Configuring a Custom Cell]
+|This topic provides a conceptual overview, with code, on creating and configuring a custom cell on the _IGGridView_ control.
+
+| link:iggridview-configuring-dynamic-row-height.html[Configuring Dynamic Row Height]
+|This topic provides an overview of configuring dynamic row height on the _IGGridView_ control.
+
+| link:iggridview-configuring-expandable-sections.html[Configuring Expandable Sections]
+|This topic provides an overview of configuring expandable sections on the _IGGridView_ control.
+
+| link:iggridview-configuring-fixed-rows.html[Configuring Fixed Rows]
+|This topic provides an introductory overview of configuring fixed rows on the _IGGridView_ control.
+
+| link:iggridview-configuring-swipe-row.html[Configuring Swipe Row]
+|This topic provides a conceptual overview of the _IGGridView_ control’s swipe row and demonstrates how to configure it on the grid view.
+
+| link:iggridview-configuring-cell-location-viewport.html[Configuring the Cell Location within the Viewport]
+|This topic provides a conceptual overview of configuring the cell location within the viewport on the _IGGridView_ control and demonstrates the configuration using a code example.
+
+| link:iggridview-configuring-loading-more-rows.html[Configuring the Loading More Rows Functionality]
+|This topic provides a conceptual overview, with code, on configuring the loading more rows functionality on the _IGGridView_ control.
+
+| link:iggridview-configuring-ui-column-resizing.html[Configuring UI Column Resizing]
+|This topic provides a conceptual overview on configuring UI column resizing on the _IGGridView_ control.
+
+| link:iggridview-displaying-sections-section-columns.html[Displaying Sections and Section Columns]
+|This topic provides a conceptual overview, with code, on displaying sections and section columns on the _IGGridView_ control.
+
+| link:iggridview-enabling-configuring-context-menus.html[Enabling and Configuring Context Menus]
+|This topic provides a conceptual overview of using context menus with cells in the _IGGridView_ control.
+
+| link:iggridview-enabling-configuring-pull-down-reload.html[Enabling and Configuring Pull Down to Reload]
+|This topic provides a conceptual overview of the _IGGridView_ control’s pull down to reload functionality, and uses code to illustrate how they are enabled and configured.
+
+| link:iggridview-row-separators.html[Enabling and Configuring Row Separators]
+|This topic provides information about creating row separators between rows on the _IGGridView_ .
+
+| link:iggridview-enabling-configuring-selection.html[Enabling and Configuring Selection]
+|This topic provides a conceptual overview, with code, on enabling and configuring the selection of cells and rows on the _IGGridView_ control.
+
+| link:iggridview-enabling-configuring-shortcut-bar.html[Enabling and Configuring the Shortcut Bar]
+|This topic provides a conceptual overview, with code, on enabling and configuring the shortcut bar on the _IGGridView_ control.
+
+| link:iggridview-enabling-infinite-scrolling.html[Enabling Infinite Scrolling]
+|This topic provides a conceptual overview of the _IGGridView_ control’s infinite scrolling capabilities along with information on configuring it in the grid view.
+
+| link:iggridview-enabling-single-cell-paging.html[Enabling Single Cell Paging]
+|This topic provides a conceptual overview of using single cell paging in the _IGGridView_ control.
+
+| link:iggridview-filtering.html[Filtering]
+|This topic provides a conceptual overview, with code, on filtering rows on the _IGGridView_ control.
+
+| link:iggridview-filtering-attributes.html[Filtering Attributes]
+|This topic provides a conceptual overview, with code, on using filtering attributes with filtered rows on the _IGGridView_ control.
+
+| link:iggridview-fixed-columns.html[Fixed Columns]
+|This topic provides a conceptual overview, with code, on fixing columns to the left or right side of the _IGGridView_ control.
+
+| link:iggridview-inserting-and-deleting-columns.html[Inserting and Deleting Columns]
+|This topic provides a conceptual overview, with code examples, of inserting and deleting columns on the _IGGridView_ control.
+
+| link:iggridview-inserting-deleting-cells-rows.html[Inserting and Deleting Cells and Rows]
+|This topic provides a conceptual overview, with code, on inserting and deleting cells and rows from the _IGGridView_ control.
+
+| link:iggridview-reordering-cells-rows.html[Reordering Cells and Rows]
+|This topic provides a conceptual overview for reordering cells and rows on the _IGGridView_ control.
+
+| link:iggridview-sorting-columns.html[Sorting Columns]
+|This topic provides a conceptual overview of sorting columns in the _IGGridView_ control.
+
+|====

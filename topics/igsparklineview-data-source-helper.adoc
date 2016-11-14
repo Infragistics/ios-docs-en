@@ -1,0 +1,130 @@
+﻿////
+
+|metadata|
+{
+    "name": "igsparklineview-data-source-helper",
+    "tags": ["Charting","Data Binding","Getting Started","How Do I"],
+    "controlName": ["IGSparklineView"],
+    "guid": "3e15bd2a-abe4-4e16-a5d1-5dc9c46f62dd",  
+    "buildFlags": [],
+    "createdOn": "2013-08-26T18:29:17.1999668Z"
+}
+|metadata|
+////
+
+= Data Source Helper
+
+== Topic Overview
+
+=== Purpose
+
+This topic provides an introductory overview of data source helper in the  _IGSparklineView_™ and using a code example demonstrates how to configure it.
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref324841248, Introduction >>
+* <<_Ref327936206, Data Source Helper – Code Example >>
+
+** <<_Ref327344209,Description>>
+** <<_Ref327523606,Prerequisites>>
+** <<_Ref327344217,Code>>
+
+* <<_Ref215823716, Related Content >>
+
+[[_Ref324841248]]
+== Introduction
+
+[[_Ref215796828]]
+
+=== Data source helper summary
+
+Using the  _IGSparklineViewDataSourceHelper_   eliminates the need to implement any of the required protocol methods found in the  _IGSparklineViewDataSource_   class. Thus, allowing you to simplify the wiring up of data to the  _IGSparklineView_   control by using the data source helper specialized for this control.
+
+The  _IGSparklineViewDataSourceHelper_   is extremely flexible in how the values and labels can be loaded. These initialization methods for directly loading your data arrays or with an array custom  _NSObjects_   are supported.
+
+* `initWithValues:`
+* `initWithValues:labels:`
+* `initWithData:valuePath:`
+* `initWithData:valuePath:labelPath:`
+
+Additionally, the  _IGSparklineViewDataSourceHelper_   can be initialized with the generic `init` method, and the properties; `data`, `values`, `labels`, `valuePath`, `labelPath`, depending on the use case, can be manually set.
+
+[[_Ref327936206]]
+[[_Ref324841253]]
+== Data Source Helper – Code Example
+
+[[_Ref327344209]]
+
+=== Description
+
+The code below demonstrates loading an  _NSMutableArray_   of  _NSObjects_   that contain data value and label properties. First, initialize the  _IGSparklineViewDataSourceHelper_   with the data and values and then assign the data source helper instance to the `dataSource` property found on the  _IGSparklineView_  .
+
+[[_Ref327523606]]
+
+=== Prerequisites
+
+This code example requires the inclusion of the  _Chart_   framework, detail about how to add this framework can be found in the link:igchartview-adding-the-chart-framework-file.html[Adding the Chart Framework File] topic.
+
+[[_Ref327344217]]
+
+=== Code
+
+*In Objective-C:*
+
+[source,csharp]
+----
+@interface SimpleData : NSObject
+@property (nonatomic, assign) double value;
+@property (nonatomic, retain) NSString *label;
+@end
+@implementation SimpleData
+@end
+//...
+NSMutableArray *data = [[NSMutableArray alloc]init];
+// ...Add NSObjects such as the SimpleData object above to the array, the NSObject in this example must contain the property named “value” and a property named “label”.
+IGSparklineViewDataSourceHelper *sparklineDataSourceHelper = [[IGSparklineViewDataSourceHelper alloc]initWithData:data valuePath:@"value" labelPath:@"label"];
+//...
+sparklineView.dataSource = sparklineDataSourceHelper;
+----
+
+*In C#:*
+
+[source,csharp]
+----
+public class SimpleData : NSObject
+{
+    [Export("Value")]
+    public double value { get; set;}
+    [Export("Label")]
+    public string label { get; set; }
+    public SimpleData (double data_value, string data_label)
+    {
+        value = data_value;
+        label = data_label;
+    }
+}
+//...
+List<DataObject> data = new List<DataObject>;
+// ...Add custom data NSObjects such as the SimpleData object above to the list collection, the NSObject in this example must contain the property named “value” and a property named “label”.
+IGSparklineViewDataSourceHelper sparklineDataSourceHelper = new IGSparklineViewDataSourceHelper (data.ToArray (), "value", "label");
+//...
+sparklineView.DataSource = sparklineDataSourceHelper;
+----
+
+[[_Ref215823716]]
+== Related Content
+
+=== Topics
+
+The following topic provides additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:igsparklineview.html[IGSparklineView]
+|The topics in this group cover enabling, configuring, and using the _IGSparklineView_ control’s supported features.
+
+|====

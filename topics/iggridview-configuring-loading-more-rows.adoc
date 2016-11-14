@@ -1,0 +1,182 @@
+﻿////
+
+|metadata|
+{
+    "name": "iggridview-configuring-loading-more-rows",
+    "controlName": ["IGGridView"],
+    "tags": ["Grids","How Do I","Paging"],
+    "guid": "02db5d99-8bc4-4e2d-b9fd-c9781d3ecbd2",  
+    "buildFlags": [],
+    "createdOn": "2012-07-16T14:23:15.6545507Z"
+}
+|metadata|
+////
+
+= Configuring the Loading More Rows Functionality
+
+== Topic Overview
+
+=== Purpose
+
+This topic provides a conceptual overview of the  _IGGridView_™ control’s loading more rows functionality and uses code to demonstrate its configuration.
+
+=== Required background
+
+The following table lists the topics required as a prerequisite to understanding this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:iggridview-adding-the-ig-framework-file.html[Adding the Grid Framework File]
+|This topic explains the requirements for adding the grid framework file to an Xcode project; a requirement for using the _IGGridView_ control.
+
+|====
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref324841248, Introduction >>
+* <<_Ref329330892, Loading More Rows Delegate Implementation – Code Example >>
+** <<_Ref323199287,Description>>
+** <<_Ref330390372,Prerequisites>>
+** <<_Ref329331375,Code>>
+** <<_Ref329680374,Implementation>>
+
+* <<_Ref323199323, Related Content >>
+
+[[_Ref324841248]]
+[[_Ref323199279]]
+[[_Ref324505001]]
+[[_Ref323111244]]
+== Introduction
+
+[[_Ref327859845]]
+
+=== Loading more rows summary
+
+Triggered by the user scrolls to the bottom of the  _IGGridView_   with the “loading more” row is in view adds more rows by automatically calling the  _IGGridViewDataSourceHelperLoadMoreDelegate_   protocol method. To implement this feature, you first need to set the data source helper’s `loadMoreDelegate` property to a class object that implements the  _IGGridViewDataSourceHelperLoadMoreDelegate_   protocol.
+
+.Note:
+[NOTE]
+====
+The loading more rows functionality is only available through data source helpers.
+====
+
+[[_Ref329330892]]
+== Loading More Rows Delegate Implementation – Code Example
+
+[[_Ref323199287]]
+
+=== Description
+
+The  _IGGridViewDataSourceHelperLoadMoreDelegate_   protocol has three required methods to implement: `loadMoreRows`, `cellForLoadingMore`, and `needMoreRows`. The following code demonstrates the handling of each of these protocol methods.
+
+[[_Ref328077899]]
+
+=== Prerequisites
+
+This code example requires that you create and implement the  _IGGridViewDataSourceHelperLoadMoreDelegate_   in a class named `loadMoreCell`.
+
+[[_Ref323199293]]
+
+=== Code
+
+*In Objective-C:*
+
+[source,csharp]
+----
+-(IGGridViewLoadMoreCell *)cellForLoadingMore:(IGGridView * )gridView 
+{
+    NSString* lookup = @"LOAD_MORE";
+    IGGridViewLoadMoreCell *cell = [gridView dequeueReusableCellWithIdentifier:lookup];
+    if (cell == nil) 
+    {
+        cell = [[IGGridViewLoadMoreCell alloc] initWithReuseIdentifier:lookup];
+    }
+    cell.textLabel.textAlignment = UITextAlignmentCenter;
+    cell.textLabel.text = @"Loading More Movies...";
+    return cell;
+}
+-(BOOL)needMoreRows:(IGGridViewDataSourceHelper *)dataSource
+{
+    return (dataSource.data.count < 200);
+}
+-(void)loadMoreRows:(IGGridViewDataSourceHelper *)dataSource
+{
+    IGGridViewDataSourceHelper *dataSource = _gridView.dataSource;
+    [dataSource appendData:newData];
+    [_gridView updateData];
+}
+----
+
+*In C#:*
+
+[source,csharp]
+----
+public class LoadMoreHelper : IGGridViewDataSourceHelperLoadMoreDelegate
+ {
+  public override IGGridViewLoadMoreCell ResolveLoadMoreCell (IGGridView gridView)
+  {
+      IGGridViewLoadMoreCell cell = (IGGridViewLoadMoreCell)gridView.DequeueReusableCell("LoadMore");
+      if(cell == null)
+         cell = new IGGridViewLoadMoreCell("LoadMore");
+cell.TextLabel.TextAlignment = UITextAlignment.Center;
+     cell.TextLabel.Text = "Load More...";
+return cell;
+  }
+public override bool NeedMoreRows (IGGridViewDataSourceHelper dataSource)
+  {
+      return dataSource.Data.Length < 200;
+  }
+public override void LoadMoreRows (IGGridViewDataSourceHelper dataSource)
+  {
+      // Add data to datasource
+// Update the gridView:
+      _gridView.UpdateData();
+  }
+ }
+----
+
+[[_Ref329680374]]
+
+=== Implementation
+
+Both the preceding and following code examples demonstrate how to implement the load more cells functionality by assigning the class object implementing the  _IGGridViewDataSourceHelperLoadMoreDelegate_   protocol to the `loadMoreDelegate` property. Furthermore, both examples assume that you have created and implemented the  _IGGridViewDataSourceHelperLoadMoreDelegate_   in a class named `loadMoreCell`.
+
+*In Objective-C:*
+
+[source,csharp]
+----
+ IGGridViewDataSourceHelper* ds = [[IGGridViewDataSourceHelper alloc]init];    
+    // Must set the LoadMoreDelegate property on the DataSourceHelper
+    ds.loadMoreDelegate = self;
+----
+
+*In C#:*
+
+[source,csharp]
+----
+ IGGridViewDataSourceHelper ds = new IGGridViewDataSourceHelper();
+   ds.LoadMoreDelegate = new LoadMoreHelper();
+----
+
+[[_Ref323199323]]
+== Related Content
+
+=== Topics
+
+The following topics provide additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:iggridview-adding-the-iggridview-uiview.html[Adding the IGGridView to a UIView]
+|This topic provides basic information about creating an instance of the _IGGridView_ and displaying data to help you with getting up and running with using the control.
+
+| link:iggridview.html[IGGridView]
+|This section serves as an introduction to the _IGGridView’s_ key features and functionalities.
+
+|====

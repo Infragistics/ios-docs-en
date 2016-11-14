@@ -1,0 +1,111 @@
+﻿////
+
+|metadata|
+{
+    "name": "igpiechartview-igpiechart-data-source-helper",
+    "controlName": ["IGPieChartView"],
+    "tags": ["Charting","Data Binding","How Do I"],
+    "guid": "06f29b1a-776b-4139-8366-62dc224584d8",  
+    "buildFlags": [],
+    "createdOn": "2013-01-24T16:45:57.0456115Z"
+}
+|metadata|
+////
+
+= IGPieChart Data Source Helper
+
+== Topic Overview
+
+=== Purpose
+
+This topic provides a conceptual overview of data source helper in the  _IGPieChartView_™ and demonstrates its configuration using a code example.
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref324841248, Introduction >>
+* <<_Ref327936206,IGPieChartView Data Source Helper – Code Example>>
+
+** <<_Ref327344209,Description>>
+** <<_Ref327523606,Prerequisites>>
+** <<_Ref327344217,Code>>
+
+* <<_Ref215823716, Related Content >>
+
+[[_Ref324841248]]
+== Introduction
+
+[[_Ref215796828]]
+
+=== Data source helper summary
+
+Using the  _IGPieChartViewDataSourceHelper_   eliminates the need to implement any of the required protocol methods found in the  _IGPieChartViewDataSource_   class. Thus, simplifying your wiring up of data to the  _IGPieChartView_   control by using the data source helper specialized for this control.
+
+The  _IGPieChartViewDataSourceHelper_   is extremely flexible in how the values and labels load. These initialization methods support directly loading your data arrays or loading them with an array custom  _NSObjects_  .
+
+* `initWithData:valuePath:labelPath:`
+* `initWithData:valuePath:`
+* `initWithValues:`
+* `initWithValues:labels:`
+
+Additionally, you can initialize the  _IGPieChartViewDataSourceHelper_   using the generic `init` method, and depending on the use case, manually set the; `data`, `values`, `labels`, `valuePath`, `labelPath`, properties.
+
+[[_Ref327936206]]
+[[_Ref324841253]]
+== IGPieChartView Data Source Helper – Code Example
+
+[[_Ref327344209]]
+
+=== Description
+
+The code below demonstrates loading an  _NSMutableArray_   of  _NSObjects_   containing values for the pie slice and the label properties. Once initialized, and after loading data and values into the  _IGPieChartViewDataSourceHelper_   control, you can assign an instance of the data source helper to the  _IGPieChartView_   control’s `dataSource` property.
+
+[[_Ref327523606]]
+
+=== Prerequisites
+
+This code example requires the inclusion of the  _Chart_   framework, detail about how to add this framework can be found in the link:igchartview-adding-the-chart-framework-file.html[Adding the Chart Framework File] topic.
+
+[[_Ref327344217]]
+
+=== Code
+
+*In C#:*
+
+[source,csharp]
+----
+IGPieChartView pieChartView = new IGPieChartView();
+NSMutableArray data = new NSMutableArray();
+// ...Add NSObjects to the array, the NSObject in this example must contain the property named “value” and a property named “label”
+IGPieChartViewDataSourceHelper pieChartDataSourceHelper = new IGPieChartViewDataSourceHelper(data, "value", "label");
+//...
+pieChartView.DataSource = pieChartDataSourceHelper;
+----
+
+*In Objective-C:*
+
+[source,csharp]
+----
+NSMutableArray *data = [[NSMutableArray alloc]init];
+// ...Add NSObjects to the array, the NSObject in this example must contain the property named “value” and a property named “label”
+IGPieChartViewDataSourceHelper *pieChartDataSourceHelper = [[IGPieChartViewDataSourceHelper alloc]initWithData:data valuePath:@"value" labelPath:@"label"];
+//...
+pieChartView.dataSource = pieChartDataSourceHelper;
+----
+
+[[_Ref215823716]]
+== Related Content
+
+=== Topics
+
+The following topics provide additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:igpiechartview.html[IGPieChartView]
+|To help you get up and running with the _IGPieChartView_ control this topic provides basic information about creating an instance of the control to display a pie chart.
+
+|====

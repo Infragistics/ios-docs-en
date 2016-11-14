@@ -1,0 +1,156 @@
+﻿////
+
+|metadata|
+{
+    "name": "iglabel-adding-iglabel-uiview",
+    "controlName": ["IGLabel"],
+    "tags": ["Getting Started","How Do I"],
+    "guid": "5bdc53f7-2070-479e-b973-1645a463d5ec",  
+    "buildFlags": [],
+    "createdOn": "2012-11-06T13:40:25.4421604Z"
+}
+|metadata|
+////
+
+= Adding IGLabel to a UIView
+
+== Topic Overview
+
+=== Purpose
+
+This topic provides basic information about creating an instance of the  _IGLabel_   _™_   and styling its text to help you get up and running with this control.
+
+=== Required background
+
+The following table lists the topics required as a prerequisite to understanding this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:iglabel-adding-the-label-framework-file.html[Adding the Label Framework File]
+|This topic explains the requirements for adding the label framework file to an Xcode project, a requirement for using the _IGLabel_ control.
+
+|====
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref323111244, Introduction >>
+* <<_Ref323199279, Instantiating and Styling the IGLabel >>
+
+** <<_Ref323199287,Description>>
+** <<_Ref323199293,Code>>
+
+* <<_Ref323199323, Related Content >>
+
+[[_Ref323111244]]
+== Introduction
+
+=== Adding IGLabel summary
+
+To get started using  _IGLabel_   add it to a  _UIView_   by allocating the class object using one of the common initialization constructor methods to instantiate the control. Shown below is an example of instantiating the control with a frame size equal to that of the device’s screen.
+
+*In C#:*
+
+[source,csharp]
+----
+IGLabel labelView = new IGLabel();
+labelView.Frame = new RectangleF(0, 0, this.View.Frame.Size.Width, this.View.Frame.Size.Height);
+----
+
+*In Objective-C:*
+
+[source,csharp]
+----
+IGLabel* labelView = [[IGLabel alloc]initWithFrame:
+        CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.width)];
+----
+
+After allocating an instance of the  _IGLabel_   _,_   you can call its properties and methods. For example, you may want to configure the label’s display text using the `text` property.
+
+*In C#:*
+
+[source,csharp]
+----
+labelView.text = “The quick brown fox jumped over the lazy dogs.”;
+----
+
+*In Objective-C:*
+
+[source,csharp]
+----
+labelView.text = @”The quick brown fox jumped over the lazy dogs.”;
+----
+
+With text now set on the  _IGLabel_  , you may be required to stylize the text using either of these two label text styling methods.
+
+* -(void)addAttributes:(NSDictionary $$* $$)attributes range:(NSRange)styleRange;
+* -(void)addAttributes:(NSDictionary $$*$$)attributes forRegEx:(NSString $$*$$)expression error:(NSError $$*$$$$* $$)error;
+
+The  _IGLabel_   has considerable functionality beyond these basic capabilities, be sure to look at the link:iglabel.html[IGLabel] topic and the link:iglabel-configuring-iglabel.html[Configuring IGLabel] topic for more in-depth feature specific information.
+
+[[_Ref323199279]]
+== Instantiating and Styling the  _IGLabel_   – Code Example
+
+[[_Ref323199287]]
+
+=== Description
+
+To start using the  _IGLabel_  , it is first necessary to create an instance of it and add it to your view. After setting the text property, use the `addAttributes` method found on the  _IGLabel_   with a  _NSDictionary_   to add styling key/value pairs. Additional information about using text style attributes is available in the link:iglabel-configuring-text-styling-attributes.html[Configuring Text Styling Attributes] topic.
+
+[[_Ref323199293]]
+
+=== Code
+
+The code below overrides the  _UIViewController’s_   `viewDidLoad` method to instantiate the  _IGLabel_   _,_   adds attributes to the word “The” that change its font size to 28 points and the text color to red.
+
+*In C#:*
+
+[source,csharp]
+----
+public override void ViewDidLoad ()
+{
+      base.ViewDidLoad ();
+      IGLabel labelView = new IGLabel();
+      labelView.Frame = new RectangleF(0, 0, this.View.Frame.Size.Width, this.View.Frame.Size.Height);
+      labelView.Text = "The quick brown fox jumped over the lazy dogs.";
+      NSMutableDictionary attributes = new NSMutableDictionary();
+      attributes.Add(IGLabelConstants.IGTextStyleFontAttributeName, UIFont.SystemFontOfSize(28.0f));
+      attributes.Add(IGLabelConstants.IGTextStyleForegroundColorAttributeName, UIColor.Red);
+      labelView.AddAttributes(attributes, new NSRange(0, 3));
+      (this.View).AddSubview(labelView);
+}
+----
+
+*In Objective-C:*
+
+[source,csharp]
+----
+-(void)viewDidLoad)
+{
+    IGLabel* labelView = [[IGLabel alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.width)];
+ labelView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
+ labelView.text = @”The quick brown fox jumped over the lazy dogs.”;
+ NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:        [UIFont systemFontOfSize:28], IGTextStyleFontAttributeName, [UIColor redColor], IGTextStyleForegroundColorAttributeName, nil];
+ [label addAttributes:attributes range:NSMakeRange(0, 3)];
+    [self.view addSubview:labelView];
+}
+----
+
+[[_Ref323199323]]
+== Related Content
+
+=== Topics
+
+The following topics provide additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:iglabel.html[IGLabel]
+|This section serves as an introduction to the _IGLabel’s_ key features and functionalities.
+
+|====

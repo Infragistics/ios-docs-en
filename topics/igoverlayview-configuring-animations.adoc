@@ -1,0 +1,196 @@
+﻿////
+
+|metadata|
+{
+    "name": "igoverlayview-configuring-animations",
+    "tags": ["Getting Started","How Do I"],
+    "controlName": ["IGOverlayView"],
+    "guid": "2491efa1-fb8d-4b06-8cc0-742c0f06ad4a",  
+    "buildFlags": [],
+    "createdOn": "2013-08-26T15:37:43.5917089Z"
+}
+|metadata|
+////
+
+= Configuring Animations
+
+== Topic Overview
+
+=== Purpose
+
+This topic provides an introduction to the animations available for the  _IGOverlayView_™ control and using a code example, demonstrates how to configure them.
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref324841248, Introduction >>
+* <<_Ref327936206, Configuring Overlay Animations – Code Example >>
+
+** <<_Ref327344209,Description>>
+** <<_Ref327523606,Prerequisites>>
+** <<_Ref327344217,Code>>
+
+* <<_Ref215823716, Related Content >>
+
+[[_Ref324841248]]
+== Introduction
+
+[[_Ref215796828]]
+
+=== Animation summary
+
+The power of the  _IGOverlayView_   lays in its ability to animate itself in and out of view. Both the `showInView``:withAnimation``:` and `dismiss:` methods take a parameter which specifies the  _IGOverlayAnimationType_   to use.
+
+The following table associates each enumeration value with its animation effect.
+
+[options="header", cols="a,a,a"]
+|====
+|Animation Enumeration|Enter Animation|Exit Animation
+
+|`IGOverlayAnimationNone`
+|Transitions to displaying the _IGOverlayView_ without any animation.
+|Transitions to removing the _IGOverlayView_ without any animation.
+
+|`IGOverlayAnimationSlideTop`
+|Transitions to displaying the _IGOverlayView_ using animation that slides it down from the top of the specified view.
+|Transitions to removing the _IGOverlayView_ using animation that slides it up and out of the specified view.
+
+|`IGOverlayAnimationSlideTopFade`
+|Transitions to displaying the _IGOverlayView_ using animation that fades in and slides down from the top of the specified view.
+|Transitions to removing the _IGOverlayView_ using animation that fades out and slides up and out of the specified view.
+
+|`IGOverlayAnimationSlideLeft`
+|Transitions to displaying the _IGOverlayView_ using animation that slides into the specified view from the left of the specified view.
+|Transitions to removing the _IGOverlayView_ using animation that slides out of the specified view to the left of the specified view.
+
+|`IGOverlayAnimationSlideLeftFade`
+|Transitions to displaying the _IGOverlayView_ using animation that fades in and slides from the left of the specified view.
+|Transitions to removing the _IGOverlayView_ using animation that fades out and slides to left and out of the specified view.
+
+|`IGOverlayAnimationSlideRight`
+|Transitions to displaying the _IGOverlayView_ using animation that slides into the specified view from the right of the specified view.
+|Transitions to removing the _IGOverlayView_ using animation that slides out of the specified view to the right of the specified view.
+
+|`IGOverlayAnimationSlideRightFade`
+|Transitions to displaying the _IGOverlayView_ using animation that fades in and slides from the right of the specified view.
+|Transitions to removing the _IGOverlayView_ using animation that fades out and slides to the right and out of the specified view.
+
+|`IGOverlayAnimationSlideBottom`
+|Transitions to displaying the _IGOverlayView_ using animation that slides up from bottom of the specified view.
+|Transitions to removing the _IGOverlayView_ using animation that slides down and out of the specified view.
+
+|`IGOverlayAnimationSlideBottomFade`
+|Transitions to displaying the _IGOverlayView_ using animation that fades in and slides up from the bottom of the specified view.
+|Transitions to removing the _IGOverlayView_ using animation that fades out and slides down out and out of the specified view.
+
+|`IGOverlayAnimationFade`
+|Transitions to displaying the _IGOverlayView_ using animation that fades into the specified view.
+|Transitions to removing the _IGOverlayView_ using animation that fades out of the specified view.
+
+|`IGOverlayAnimationCustomFade`
+|Transitions to displaying the _IGOverlayView_ using a customized fade animation. 
+
+For information about how to use this enumeration, see the link:igoverlayview-configuring-custom-animations.html[Configuring Custom Animations] topic.
+|Transitions to removing the _IGOverlayView_ using a customized fade animation. 
+
+For information about how to use this enumeration, see the link:igoverlayview-configuring-custom-animations.html[Configuring Custom Animations] topic.
+
+|`IGOverlayAnimationCustomSlide`
+|Transitions to displaying the _IGOverlayView_ using a custom slide animation. 
+
+For information about how to use this enumeration, see the link:igoverlayview-configuring-custom-animations.html[Configuring Custom Animations] topic.
+|Transitions to removing the _IGOverlayView_ using a custom slide animation. 
+
+For information about how to use this enumeration, see the link:igoverlayview-configuring-custom-animations.html[Configuring Custom Animations] topic.
+
+|====
+
+[[_Ref327936206]]
+[[_Ref324841253]]
+== Configuring Overlay Animations – Code Example
+
+[[_Ref327344209]]
+
+=== Description
+
+The code below creates an instance of the  _IGOverlayView_   and places a  _labeled_   view as an overlay sub-view, and then displays the overlay using the `IGOverlayAnimationSlideBottom` animation.
+
+[[_Ref327523606]]
+
+=== Prerequisites
+
+This code example requires the inclusion of the  __IG__  framework; details about how to add this framework are available in the link:iggridview-adding-the-ig-framework-file.html[Adding the IG Framework File] topic.
+
+[[_Ref327344217]]
+
+=== Code
+
+*In Objective-C:*
+
+[source,csharp]
+----
+self.view.backgroundColor = [UIColor whiteColor];
+IGOverlayView *overlayView = [[IGOverlayView alloc] init];
+UIView *messageView = [[UIView alloc] init];
+CGRect viewBounds = self.view.bounds;
+messageView.frame = CGRectMake((viewBounds.size.width / 2) - 125, viewBounds.size.height - 20, 250, 50);
+messageView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleRightMargin;
+messageView.backgroundColor = [UIColor blackColor];
+messageView.layer.cornerRadius = 8.0;
+messageView.layer.shadowOffset = CGSizeZero;
+messageView.layer.shadowOpacity = 0.5;
+[overlayView addSubview:messageView];
+UILabel *label = [[UILabel alloc] init];
+label.frame = CGRectInset(messageView.bounds, 5, 5);
+label.backgroundColor = [UIColor clearColor];
+label.textColor = [UIColor whiteColor];
+label.font = [UIFont fontWithName:@"TrebuchetMS-Bold" size:17.0];
+label.textAlignment = NSTextAlignmentCenter;
+label.text = @"Overlay Message";
+[messageView addSubview:label];
+[overlayView showInView:self.view withAnimation:IGOverlayAnimationSlideBottom];
+----
+
+*In C#:*
+
+[source,csharp]
+----
+this.View.BackgroundColor = UIColor.White;
+IGOverlayView overlayView = new IGOverlayView();
+UIView messageView = new UIView();
+RectangleF viewBounds = this.View.Bounds;
+messageView.Frame = new RectangleF((viewBounds.Size.Width / 2) - 125, viewBounds.Size.Height - 20, 250, 50);
+messageView.AutoresizingMask = UIViewAutoresizing.FlexibleTopMargin | UIViewAutoresizing.FlexibleLeftMargin | UIViewAutoresizing.FlexibleRightMargin;
+messageView.BackgroundColor = UIColor.Black;
+messageView.Layer.CornerRadius = 8.0f;
+messageView.Layer.ShadowOffset = Size.Empty;
+messageView.Layer.ShadowOpacity = 0.5f;
+overlayView.Add(messageView);
+UILabel label = new UILabel();
+label.Frame = messageView.Bounds;
+label.Frame.Inflate (-5, -5);
+label.BackgroundColor = UIColor.Clear;
+label.TextColor = UIColor.White;
+label.Font = UIFont.FromName ("TrebuchetMS-Bold", 17.0f);
+label.TextAlignment = UITextAlignment.Center;
+label.Text = "Overlay Message";
+messageView.Add (label);
+overlayView.ShowInViewWithAnimation (this.View, IGOverlayAnimationType.IGOverlayAnimationSlideBottom);
+----
+
+[[_Ref215823716]]
+== Related Content
+
+=== Topics
+
+The following topic provides additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:igoverlayview.html[IGOverlayView]
+|The topics in this group cover enabling, configuring, and using the _IGOverlayView_ control’s supported features.
+
+|====

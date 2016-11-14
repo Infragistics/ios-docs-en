@@ -1,0 +1,98 @@
+﻿////
+
+|metadata|
+{
+    "name": "igtreemapview-layouts",
+    "tags": ["Getting Started","How Do I","Layouts"],
+    "controlName": ["IGTreemapView"],
+    "guid": "6ae64a14-0eb9-43f9-ad6d-d5bcb24c2a95",  
+    "buildFlags": [],
+    "createdOn": "2013-09-25T12:58:57.3327434Z"
+}
+|metadata|
+////
+
+= Layouts
+
+== Topic Overview
+
+=== Purpose
+
+This topic provides an introductory overview of the supported tree map layouts available in the  _IGTreemapView_™ control.
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref324841248, Introduction >>
+
+** <<_Ref327859845,Layouts summary>>
+** <<_Ref327864136,Layout types>>
+
+* <<_Ref324841253, Related Content >>
+
+[[_Ref324841248]]
+== Introduction
+
+[[_Ref327859845]]
+
+=== Layouts summary
+
+There are different layout algorithms when it comes to displaying the tree map data. All algorithms have their advantages depending on the user’s needs. Some aim to obtain the best aspect ratio – the nodes are as close to rectangles as possible. Other algorithms aim to preserve the initial order of the elements – object which are close to each other in the data source are arranged near each other on the tree map.
+
+To change the  _IGTreemapView’s_   layout, set the  _IGTreemapView_   `layoutType` property to one of the predefined layouts:  _IGTreemapLayoutTypeSliceAndDice_  ,  _IGTreemapLayoutTypeSquarified_  , and  _IGTreemapLayoutTypeStrip_  . The default layout is  _IGTreemapLayoutTypeSquarified_  .
+
+*In C#:*
+
+[source,csharp]
+----
+IGTreemapView theTreemap = new IGTreemapView();
+//configure the tree map...
+theTreemap.LayoutType = IGTreemapLayoutTypeSliceAndDice;
+----
+
+*In Objective-C:*
+
+[source,csharp]
+----
+IGTreemapView *theTreemap = [[IGTreemapView alloc] init];
+//configure the tree map...
+theTreemap.theme = IGTreemapLayoutType.IGTreemapLayoutTypeSliceAndDice;
+----
+
+[[_Ref327864136]]
+
+=== Layout types
+
+The following table contains the supported layout types with a preview.
+
+[options="header", cols="a,a"]
+|====
+|Layout Type|Preview
+
+| _IGTreemapLayoutTypeSliceAndDice_ 
+|image::images/IGTreemapView_-_Layouts_1.png[]
+
+| _IGTreemapLayoutTypeSquarified_ 
+|image::images/IGTreemapView_-_Layouts_2.png[]
+
+| _IGTreemapLayoutTypeStrip_ 
+|image::images/IGTreemapView_-_Layouts_3.png[]
+
+|====
+
+[[_Ref324841253]]
+== Related Content
+
+=== Topics
+
+The following topic provides additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:igtreemapview.html[IGTreemapView]
+|This topic serves as a gateway to the features and functionality of the _IGTreemapView_ control.
+
+|====

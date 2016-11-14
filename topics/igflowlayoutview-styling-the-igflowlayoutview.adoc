@@ -1,0 +1,58 @@
+﻿////
+
+|metadata|
+{
+    "name": "igflowlayoutview-styling-the-igflowlayoutview",
+    "tags": ["How Do I","Getting Started","Styling"],
+    "controlName": ["IGFlowLayoutView"],
+    "guid": "dbbe0ab3-2d85-4ff3-990d-ccace61a87d6",  
+    "buildFlags": [],
+    "createdOn": "2014-03-18T12:40:44.7266443Z"
+}
+|metadata|
+////
+
+= Styling the IGFlowLayoutView
+
+== Topic Overview
+
+=== Purpose
+
+This topic provides an overview of styling the  _IGFlowLayoutView_™ control and demonstrates its use with a code example.
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref324841248, Introduction >>
+* <<_Ref215823716, Related Content >>
+
+[[_Ref324841248]]
+== Introduction
+
+=== Styling summary
+
+The  _IGFlowLayoutView_   inherits much of its appearance from the developer provided content. That being said, you can style the UI element on the  _IGFlowLayoutView_   is the edit selection border. The following are properties that can further customize the edit selection border. These properties control the color of the border, the width of it and the size of the handles when an item is resizable.
+
+* `editItemColor` ( _UIColor_  )
+* `editItemHandleSize` ( _CGFloat_  )
+* `editItemBorderWidth` ( _CGFloat_  )
+
+The  _IGFlowLayoutViewCell_   has one styling point that allows for padding around the cell. Setting a `UIEdgeInsets` value to the `contentInset` property creates the padding.
+
+[[_Ref324841253]]
+[[_Ref215823716]]
+== Related Content
+
+=== Topics
+
+The following topic provides additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:igflowlayoutview.html[IGFlowLayoutView]
+|The topics in this group cover enabling, configuring, and using the _IGFlowLayoutView_ control’s supported features.
+
+|====

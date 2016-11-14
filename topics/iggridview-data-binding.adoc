@@ -1,0 +1,36 @@
+﻿////
+
+|metadata|
+{
+    "name": "iggridview-data-binding",
+    "controlName": ["IGGridView"],
+    "tags": ["Data Binding","Grids","How Do I"],
+    "guid": "ab8a0609-17a5-453b-bafd-4a53b8cc3996",  
+    "buildFlags": [],
+    "createdOn": "2012-07-16T14:07:02.2082158Z"
+}
+|metadata|
+////
+
+= Data Binding
+
+=== Introduction
+
+The  _IGGridView_™ contains properties and methods that allow for easily wiring data and manipulating the data based on user interaction. This topic contains links to conceptual information and code snippets for connecting data.
+
+=== Topics
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:iggridview-data-source-helpers.html[Data Source Helpers]
+|To speed up development time, the _IGGridView_ uses helper classes when connecting to data or configuring columns using a data helper, . This topic contains links to conceptual information and code snippets for connecting data to a helper and configuring columns.
+
+| link:iggridview-configuring-loading-more-rows.html[Configuring the Loading More Rows Functionality]
+|This topic provides a conceptual overview of the IGGridView™ control’s loading more rows functionality and uses code to demonstrate its configuration.
+
+| link:iggridview-refreshing-data.html[Refreshing Data]
+|This topic provides a conceptual overview of refreshing the _IGGridView_ control’s data.
+
+|====

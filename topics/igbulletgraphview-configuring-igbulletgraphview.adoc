@@ -1,0 +1,36 @@
+﻿////
+
+|metadata|
+{
+    "name": "igbulletgraphview-configuring-igbulletgraphview",
+    "tags": ["Getting Started","How Do I"],
+    "controlName": ["IGBulletGraphView"],
+    "guid": "00c9c994-3b28-4b7e-82ff-4ff590b33e93",  
+    "buildFlags": [],
+    "createdOn": "2013-09-11T12:46:29.6377814Z"
+}
+|metadata|
+////
+
+= Configuring IGBulletGraphView
+
+=== Introduction
+
+The topics in this group cover enabling configuring, and using the  _IGBulletGraphView_™ control’s supported features.
+
+=== Topics
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:igbulletgraphview-configuring-ranges.html[Configuring Ranges]
+|This topic provides a conceptual overview of ranges with the _IGBulletGraphView_ control and demonstrates how to configure them using a code example.
+
+| link:igbulletgraphview-configuring-the-scale.html[Configuring the Scale]
+|This topic explains, with examples, how to customize the scale of the _IGBulletGraphView_ control.
+
+| link:iglineargaugeview-customizing-scale-labels.html[Customizing Scale Labels]
+|This topic provides a conceptual overview of customizing scale labels on the _IGBulletGraphView_ control and demonstrates how to configure them using a code example.
+
+|====

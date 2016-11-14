@@ -1,0 +1,41 @@
+﻿////
+
+|metadata|
+{
+    "name": "igchartview-scatter-series",
+    "controlName": ["IGChartView"],
+    "tags": ["Charting","Getting Started"],
+    "guid": "5c641b78-d6b6-4b7a-a37e-6eb5b9bc7c25",  
+    "buildFlags": [],
+    "createdOn": "2012-05-11T19:43:13.6917239Z"
+}
+|metadata|
+////
+
+= Scatter Series
+
+=== Introduction
+
+This collection of topics explains each of the individual Scatter chart series (Chart type) supported by the  _IGChartView_™ control.
+
+=== Topics
+
+The  _IGChartView_   control supports the following types of scatter series:
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:igchartview-bubble-series.html[Bubble Series]
+|This topic provides a conceptual overview of the Bubble series in the _IGChartView_ control and provides a code example showing you how to add it to the chart views.
+
+| link:igchartview-scatter-line-series.html[Scatter Line Series]
+|This topic provides a conceptual overview of the Scatter Line Series in the _IGChartView_ control and uses a code example to demonstrate how to add it to the chart view.
+
+| link:igchartview-scatter-series-1.html[Scatter Series]
+|This topic provides a conceptual overview of the Scatter Series in the _IGChartView_ control and uses a code example to demonstrate how to add it to the chart view.
+
+| link:igchartview-scatter-spline-series.html[Scatter Spline Series]
+|This topic provides a conceptual overview of the Scatter Spline Series in the _IGChartView_ control and uses a code example to demonstrate how to add it to the chart view.
+
+|====

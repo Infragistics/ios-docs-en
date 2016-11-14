@@ -1,0 +1,73 @@
+﻿////
+
+|metadata|
+{
+    "name": "igsidemenuview-showing-hiding-side-menu",
+    "tags": ["Getting Started","How Do I"],
+    "controlName": ["IGSideMenuView"],
+    "guid": "032841ae-0358-42b7-accb-edc3be645852",  
+    "buildFlags": [],
+    "createdOn": "2014-09-15T11:52:21.250441Z"
+}
+|metadata|
+////
+
+= Showing and Hiding the Side Menu
+
+== Topic Overview
+
+=== Purpose
+
+This topic provides a conceptual overview of showing and hiding of the side menu on the  _IGSideMenuView_™ control.
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref324841248, Introduction >>
+* <<_Ref215823716, Related Content >>
+
+[[_Ref324841248]]
+== Introduction
+
+=== Showing and hiding the summary
+
+The  _IGSideMenuView_   provides a means for displaying a side menu, either interactively or programmatically. To show the side menu using interaction, the  _IGSideMenuView_   uses a long press gesture, which by default uses a minimum press duration of 0.02 second; however, this is reconfigurable using the `minimumPressDuration` property. Additionally, the long press gesture is available as an exposed property named `longPressGesture`.
+
+.Note:
+[NOTE]
+====
+If you wish to disable the interactive exposing of the side menu, set the `presentsWithGesture` property to `NO`.
+====
+
+To programmatically show or hide a side menu, the  _IGSideMenuView_   provides two methods:
+
+* `openSideMenu:`
+* `closeSideMenu:`
+
+When opening or closing the side menu the `contentView` animates into position. Using the `transitionDuration` property configure the animation’s duration.
+
+The  _IGSideMenuView_   includes a delegate property that can be set to a class adopting the  _IGSideMenuViewDelegate_  . The delegate protocol allows the receiver to respond to `contentView` location changes as well as open and close events. The following optional methods are called by the  _IGSideMenuViewDelegate_    __protocol__ :
+
+* `sideMenuView:contentViewLocationDidChange:` - the `contentView` has an updated location
+* `sideMenuView:sideDidClose:` - a side menu has closed
+* `sideMenuView:sideWillClose:` - a side menu will close
+* `sideMenuView:sideDidOpen:` - a side menu has opened
+* `sideMenuView:sideWillOpen:` - a side menu will open
+
+[[_Ref324841253]]
+[[_Ref215823716]]
+== Related Content
+
+=== Topics
+
+The following topic provides additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:igsidemenuview.html[IGSideMenuView]
+|The topics in this group cover enabling, configuring, and using the _IGSideMenuView_ control’s supported features.
+
+|====

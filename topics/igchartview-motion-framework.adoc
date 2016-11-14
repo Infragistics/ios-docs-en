@@ -1,0 +1,89 @@
+﻿////
+
+|metadata|
+{
+    "name": "igchartview-motion-framework",
+    "controlName": ["IGChartView"],
+    "tags": ["Charting","How Do I","Styling"],
+    "guid": "fae4c2ee-6a4f-4b64-b53b-4f10f7a94790",  
+    "buildFlags": [],
+    "createdOn": "2012-07-16T14:40:10.769052Z"
+}
+|metadata|
+////
+
+= Animating Charts using the Motion Framework
+
+== Topic Overview
+
+=== Purpose
+
+This topic provides a conceptual overview of the Motion Framework used in the  _IGChartView_™ control.
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref329132546, Motion Framework >>
+
+** <<_Ref329132590,Introduction>>
+** <<_Ref327952463,Limitations>>
+
+* <<_Ref324841253, Related Content >>
+
+[[_Ref324841248]]
+[[_Ref329132546]]
+== Motion Framework
+
+[[_Ref327859845]]
+
+=== Introduction
+
+The Motion Framework allows you to animate data changes over time in the  _IGChartView_   control allowing you to create an immersive animated user experience that, “tells the story” of your data.
+
+Transitions between changes in series data points can be animated by setting the series `transitionDuration` property. This property accepts a float value representing, in seconds, the start-to-end animation timing. It is important to note; however, that setting the `transitionDuration` property does not initiate the animation.
+
+The animation has to be initiated manually by calling one of these methods on the chart view based on the action taken.
+
+[options="header", cols="a,a"]
+|====
+|Action Taken|Method
+
+|Clear data source
+|`-(void) clearItemsForDataSource:(id<IGSeriesDataSource>)source;`
+
+|Add item
+|`-(void) insertItemAtIndex:(int)index withSource:(id<IGSeriesDataSource>)source;`
+
+|Remove item
+|`-(void) removeItemAtIndex:(int)index withSource:(id<IGSeriesDataSource>)source;`
+
+|Replace item
+|`-(void) replaceItemAtIndex:(int)index withSource:(id<IGSeriesDataSource>)source;`
+
+|Update item
+|`-(void) updateItemAtIndex:(int)index withSource:(id<IGSeriesDataSource>)source;`
+
+|====
+
+[[_Ref327952463]]
+
+=== Limitations
+
+The Motion Framework has the following limitation; if the range of an axis changes due to a change in the data change, then animation will no longer begin when calling one  _IGChartView’s_   Motion Framework methods.
+
+[[_Ref324841253]]
+== Related Content
+
+=== Topics
+
+The following topic provides additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:igchartview.html[IGChartView]
+|This topic serves as a gateway to the features and functionality of the _IGChartView_ control.
+
+|====

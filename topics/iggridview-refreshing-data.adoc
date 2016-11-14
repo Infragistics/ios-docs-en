@@ -1,0 +1,61 @@
+﻿////
+
+|metadata|
+{
+    "name": "iggridview-refreshing-data",
+    "controlName": ["IGGridView"],
+    "tags": ["Data Binding","Grids","How Do I"],
+    "guid": "8f1a9f19-9f86-4613-bdc4-3c86c34fbbdf",  
+    "buildFlags": [],
+    "createdOn": "2012-07-16T14:12:52.5662481Z"
+}
+|metadata|
+////
+
+= Refreshing Data
+
+== Topic Overview
+
+=== Purpose
+
+This topic provides a conceptual overview of refreshing the  _IGGridView_™ control’s data.
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref324841248, Refreshing Data >>
+* <<_Ref324841253, Related Content >>
+
+[[_Ref324841248]]
+== Refreshing Data
+
+[[_Ref327859845]]
+
+=== Introduction
+
+Although the  _IGGridView_   does not monitor changes to your data, it does; however, have two methods for updating the grid’s data to respond to changes in your data, which requires updating the  _IGGridView_  .
+
+* `updateData` – Minor changes to the data source. Keeps current scroll position and selection.
+* `reloadData` – Drastic changes that totally alter the data source.
+
+These two methods are contained on the  _IGGridView_   and can be invoked by directly calling them.
+
+* `[gridView updateData];`
+* `[gridView reloadData];`
+
+[[_Ref324841253]]
+== Related Content
+
+=== Topics
+
+The following topic provides additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:iggridview-data-binding.html[Data Binding]
+|This topic contains links to conceptual information and code snippets for connecting data.
+
+|====

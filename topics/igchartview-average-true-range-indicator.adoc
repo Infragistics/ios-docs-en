@@ -1,0 +1,191 @@
+﻿////
+
+|metadata|
+{
+    "name": "igchartview-average-true-range-indicator",
+    "controlName": ["IGChartView"],
+    "tags": ["Charting","How Do I"],
+    "guid": "7d331bce-e7c3-4a4f-b0d8-8fc2f3f90d01",  
+    "buildFlags": [],
+    "createdOn": "2012-05-24T18:24:42.1910648Z"
+}
+|metadata|
+////
+
+= Average True Range Indicator
+
+== Topic Overview
+
+=== Purpose
+
+This topic provides an overview of the Average True Range indicator in the  _IGChartView_™ control and uses a code example to demonstrate how to add it to the chart view.
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref324841248, Introduction >>
+
+** <<_Ref326220605,Average True Range indicator summary>>
+** <<_Ref326220610,Data requirements>>
+
+* <<_Ref327934861,Adding an Average True Range Indicator to the  _IGChartView_   – Code Example>>
+
+** <<_Ref326220621,Description>>
+** <<_Ref327934873,Prerequisites>>
+** <<_Ref326220625,Code>>
+
+* <<_Ref324841253, Related Content >>
+
+[[_Ref324841248]]
+== Introduction
+
+[[_Ref326220605]]
+
+=== Average True Range indicator summary
+
+The  _IGChartView’s_   average true range indicator is a financial indicator that measures a security's degree of price movement or volatility within a given interval. The indicator is not a measure of price direction or duration, but simply the amount of price movement or volatility. The average true range (ATR) is frequently calculated with a 14 day period using several bases, including: daily, weekly or monthly. The average true range is the exponential moving average of the TR values for the last 14 periods. The actual period used can vary depending on the user’s preference.
+
+image::images/IGChartView_-_Average_True_Range_Indicator_1.png[]
+
+[[_Ref326220610]]
+
+=== Data requirements
+
+While the  _IGChartView_   control allows easy binding to your own data model, make sure to supply the appropriate amounts and types of data required by the series. If the data does not meet the minimum requirements, based on the type of series that you are using, the  _IGChartView_   will appear blank.
+
+The following is a list of data requirements for the average true range indicator type:
+
+* High (numeric)
+* Low (numeric)
+* Close (numeric)
+
+[[_Ref324842387]]
+[[_Ref327934861]]
+== Adding an Average True Range Indicator to the  _IGChartView_   – Code Example
+
+[[_Ref326220621]]
+
+=== Description
+
+The code below uses the link:igchartview-data-source-helpers.html[IGOHLCSeriesDataSourceHelper] to supply randomly generated data to a financial price series that first gets added to the  _IGChartView_   instance, next the financial indicator is added to the IGChartView instance as a series, and then the  _IGChartView_   is added as a subview of the current UIView.
+
+[[_Ref327934873]]
+
+=== Prerequisites
+
+This code example requires the inclusion of the  _IGChartView_   framework, detail about how to add this framework can be found in the link:igchartview-adding-the-chart-framework-file.html[Adding the Chart Framework File] topic.
+
+[[_Ref326220625]]
+
+=== Code
+
+*In Objective-C:*
+
+[source,csharp]
+----
+ NSMutableArray *open = [[NSMutableArray alloc] init];
+    for (int i = 0; i < 25; i++) {
+        [open addObject:[[NSNumber alloc] initWithDouble:(arc4random() % 100)]];
+    }
+    NSMutableArray *high = [[NSMutableArray alloc] init];
+    for (int i = 0; i < 25; i++) {
+        [high addObject:[[NSNumber alloc] initWithDouble:(arc4random() % 100 + 30)]];
+    }
+    NSMutableArray *low = [[NSMutableArray alloc] init];
+    for (int i = 0; i < 25; i++) {
+        [low addObject:[[NSNumber alloc] initWithDouble:(arc4random() % 100)]];
+    }
+    NSMutableArray *close = [[NSMutableArray alloc] init];
+    for (int i = 0; i < 25; i++) {
+        [close addObject:[[NSNumber alloc] initWithDouble:(arc4random() % 100 + 10)]];
+    }
+    IGOHLCSeriesDataSourceHelper *source = [[IGOHLCSeriesDataSourceHelper alloc] init];
+    source.openValues = open;
+    source.highValues = high;
+    source.lowValues = low;
+    source.closeValues = close;
+    IGChartView *infraChart = [[IGChartView alloc] initWithFrame:self.view.frame];
+    IGCategoryXAxis *xAxis = [[IGCategoryXAxis alloc] initWithKey:@"xAxis"];
+    IGNumericYAxis *yAxis = [[IGNumericYAxis alloc] initWithKey:@"yAxis"];
+    [infraChart addAxis:xAxis];
+    [infraChart addAxis:yAxis];
+    IGFinancialPriceSeries *financialPriceSeries = [[IGFinancialPriceSeries alloc] initWithKey:@"financialPriceSeries"];
+    financialPriceSeries.xAxis = xAxis;
+    financialPriceSeries.yAxis = yAxis;
+    financialPriceSeries.dataSource = source;
+    financialPriceSeries.displayType = IGPriceDisplayTypeOHLC;
+    IGAverageTrueRangeIndicator *financialIndicator = [[IGAverageTrueRangeIndicator alloc] initWithKey:@"financialIndicator"];
+    financialIndicator.xAxis = xAxis;
+    financialIndicator.yAxis = yAxis;
+    financialIndicator.dataSource = source;
+    financialIndicator.thickness = 3.0f;
+    financialIndicator.trendLineThickness = 3.0f;
+    financialIndicator.trendLineType = IGTrendLineTypeModifiedAverage;
+    financialIndicator.trendLinePeriod = 5;
+    [infraChart addSeries:financialPriceSeries];
+    [infraChart addSeries:financialIndicator];
+    [self.view addSubview:infraChart];
+----
+
+*In C#:*
+
+[source,csharp]
+----
+Random r = new Random();
+   List<NSObject> open = new List<NSObject>();
+   List<NSObject> high = new List<NSObject>();
+   List<NSObject> low = new List<NSObject>();
+   List<NSObject> volumes = new List<NSObject>();
+   List<NSObject> close = new List<NSObject>();
+   for(int i = 0;i <25; i++)
+   {
+    open.Add(new NSNumber(r.Next() % 100));
+    high.Add(new NSNumber(r.Next() % 100 + 30));
+    low.Add(new NSNumber(r.Next() % 100));
+    close.Add(new NSNumber(r.Next() % 100 + 10));
+    volumes.Add(new NSNumber(r.Next() % 1000000 + 100000));
+   }
+IGOHLCSeriesDataSourceHelper source = new IGOHLCSeriesDataSourceHelper();
+   source.OpenValues = open.ToArray();
+   source.HighValues = high.ToArray();
+   source.LowValues = low.ToArray();
+   source.CloseValues = close.ToArray();
+source.VolumeValues= volumes.ToArray();
+IGChartView chart = new IGChartView(this.View.Frame);
+   chart.AutoresizingMask = UIViewAutoresizing.FlexibleHeight | UIViewAutoresizing.FlexibleWidth;
+   this.View.AddSubview(chart);
+IGCategoryXAxis xAxis = new IGCategoryXAxis("xAxis");
+   IGNumericYAxis yAxis = new IGNumericYAxis("yAxis");
+   chart.AddAxis(xAxis);
+   chart.AddAxis(yAxis);
+IGFinancialPriceSeries series = new IGFinancialPriceSeries("series");
+   series.XAxis = xAxis;
+   series.YAxis = yAxis;
+   series.DataSource = source;
+   series.DisplayType = IGPriceDisplayType.IGPriceDisplayTypeOHLC;
+chart.AddSeries(series);
+IGAverageTrueRangeIndicator indicator = new IGAverageTrueRangeIndicator ("indicator");
+   indicator.XAxis = xAxis;
+   indicator.YAxis = yAxis;
+   indicator.DataSource = source;
+   indicator.TrendLineType = IGTrendLineType.IGTrendLineTypeModifiedAverage;
+   indicator.TrendLinePeriod = 5;
+   chart.AddSeries(indicator);
+----
+
+[[_Ref324841253]]
+== Related Content
+
+=== Topics
+
+The following topics provide additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:igchartview-financial-indicators.html[Financial Indicators]
+|This is a group of topics explaining the various types of chart series, supported by the _IGChartView_ control, that are classified as financial indicators.
+
+|====

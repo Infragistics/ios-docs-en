@@ -1,0 +1,113 @@
+﻿////
+
+|metadata|
+{
+    "name": "iggridview-filtering-attributes",
+    "controlName": ["IGGridView"],
+    "tags": ["Filtering","Grids","How Do I","Styling"],
+    "guid": "c0ac604a-a7e2-4223-8ffc-1d94e291ad35",  
+    "buildFlags": [],
+    "createdOn": "2012-11-06T13:46:59.9396062Z"
+}
+|metadata|
+////
+
+= Filtering Attributes
+
+== Topic Overview
+
+=== Purpose
+
+This topic provides a conceptual overview, with code, on using filtering attributes with filtered rows on the  _IGGridView_™ control.
+
+=== Required background
+
+The following table lists the topics required as a prerequisite to understanding this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:iggridview-adding-the-ig-framework-file.html[Adding the IG Framework File]
+|This topic explains the requirements for adding the grid framework file to an Xcode project, a requirement for using the _IGGridView_ control.
+
+|====
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref324841248, Introduction >>
+* <<_Ref329330892, Apply Filtering Attributes – Code Example >>
+
+** <<_Ref323199287,Description>>
+** <<_Ref329331375,Code>>
+
+* <<_Ref323199323, Related Content >>
+
+[[_Ref324841248]]
+[[_Ref323199279]]
+[[_Ref324505001]]
+[[_Ref323111244]]
+== Introduction
+
+[[_Ref327859845]]
+
+=== Filtering attributes summary
+
+Filter attributes allow you to apply a customized visual appearance to text matching a filtered text string. The data source helper’s `filteringAttributes` property uses an  _NSDictionary_   of key/value pairs, the same ones used with  _NSAttributedString_  , to define the appearance. To view the supported key/value pairs, visit Apple’s link:https://developer.apple.com/library/ios/#documentation/UIKit/Reference/NSAttributedString_UIKit_Additions/Reference/Reference.html[NSAttributedString reference page].
+
+.Note:
+[NOTE]
+====
+Filtering attributes are only available for iOS 6.0 and beyond.
+====
+
+[[_Ref329330892]]
+== Apply Filtering Attributes – Code Example
+
+[[_Ref323199287]]
+
+=== Description
+
+The following code example sets the data source helper’s `filteringAttributes` property to apply a yellow foreground color matching the filtered text string.
+
+[[_Ref323199293]]
+
+=== Code
+
+*In Objective-C:*
+
+[source,csharp]
+----
+[ds.filterAttributes setValue:[UIColor yellowColor] forKey:NSForegroundColorAttributeName];
+----
+
+*In C#:*
+
+[source,csharp]
+----
+ds.FilterAttributes.SetValueForKey(UIColor.Yellow, new NSString("NSForegroundColor"));
+----
+
+[[_Ref323199323]]
+== Related Content
+
+=== Topics
+
+The following topics provide additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:iggridview.html[IGGridView]
+|This section serves as an introduction to the _IGGridView’s_ key features and functionalities.
+
+| link:iggridview-adding-the-ig-framework-file.html[Adding the IG Framework File]
+|This topic explains the requirements for adding the grid framework file to an Xcode project, a requirement for using the _IGGridView_ control.
+
+| link:iggridview-adding-the-iggridview-uiview.html[Adding the IGGridView to a UIView]
+|This topic provides basic information about creating an instance of the _IGGridView_ and displaying data to help you with getting up and running with using the control.
+
+|====

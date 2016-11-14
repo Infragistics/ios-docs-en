@@ -1,0 +1,124 @@
+﻿////
+
+|metadata|
+{
+    "name": "igbulletgraphview-themes",
+    "tags": ["How Do I","Styling"],
+    "controlName": ["IGBulletGraphView"],
+    "guid": "6ff7a1c3-f03e-440e-82b8-084a39cf456a",  
+    "buildFlags": [],
+    "createdOn": "2013-09-11T12:48:15.93441Z"
+}
+|metadata|
+////
+
+= Themes
+
+== Topic Overview
+
+=== Purpose
+
+This topic provides a conceptual overview of the supported themes available in the  _IGBulletGraphView_™ control.
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref324841248, Introduction >>
+
+** <<_Ref327859845,Theme summary>>
+** <<_Ref327864136,Theme types>>
+
+* <<_Ref324841253, Related Content >>
+
+[[_Ref324841248]]
+== Introduction
+
+[[_Ref327859845]]
+
+=== Theme summary
+
+Linear gauge themes allow you to give the gauge a consistent, color coordinated look and feel. Simply set the  _IGBulletGraphView_   `theme` property to one of the predefined themes.
+
+*  _IGBulletGraphViewDefaultTheme_  
+*  _IGBulletGraphViewLightTheme1_  
+*  _IGBulletGraphViewLightTheme2_  
+*  _IGBulletGraphViewLightTheme3_  
+*  _IGBulletGraphViewLightTheme4_  
+*  _IGBulletGraphViewDarkTheme1_  
+*  _IGBulletGraphViewDarkTheme2_  
+*  _IGBulletGraphViewDarkTheme3_  
+*  _IGBulletGraphViewDarkTheme4_  
+
+*In C#:*
+
+[source,csharp]
+----
+IGBulletGraphView bulletGraph = new IGBulletGraphView();
+//configure the bullet graph...
+bulletGraph.theme = new IGBulletGraphViewLightTheme1();
+----
+
+*In Objective-C:*
+
+[source,csharp]
+----
+IGBulletGraphView *bulletGraph = [[IGBulletGraphView alloc] init];
+//configure the bullet graph...
+bulletGraph.theme = [[IGBulletGraphLightTheme1 alloc] init];
+----
+
+[[_Ref327864136]]
+
+=== Theme types
+
+The following table illustrates the supported themes and their associated type name.
+
+[options="header", cols="a,a"]
+|====
+|Theme Name|Preview
+
+| _IGBulletGraphViewDefaultTheme_ 
+|image::images/IGBulletGraphView_-_Themes_1.png[]
+
+| _IGBulletGraphViewLightTheme1_ 
+|image::images/IGBulletGraphView_-_Themes_2.png[]
+
+| _IGBulletGraphViewLightTheme2_ 
+|image::images/IGBulletGraphView_-_Themes_3.png[]
+
+| _IGBulletGraphViewLightTheme3_ 
+|image::images/IGBulletGraphView_-_Themes_4.png[]
+
+| _IGBulletGraphViewLightTheme4_ 
+|image::images/IGBulletGraphView_-_Themes_5.png[]
+
+| _IGBulletGraphViewDarkTheme1_ 
+|image::images/IGBulletGraphView_-_Themes_6.png[]
+
+| _IGBulletGraphViewDarkTheme2_ 
+|image::images/IGBulletGraphView_-_Themes_7.png[]
+
+| _IGBulletGraphViewDarkTheme3_ 
+|image::images/IGBulletGraphView_-_Themes_8.png[]
+
+| _IGBulletGraphViewDarkTheme4_ 
+|image::images/IGBulletGraphView_-_Themes_9.png[]
+
+|====
+
+[[_Ref324841253]]
+== Related Content
+
+=== Topics
+
+The following topic provides additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:igbulletgraphview.html[IGBulletGraphView]
+|This topic serves as a gateway to the features and functionality of the _IGBulletGraphView_ control.
+
+|====

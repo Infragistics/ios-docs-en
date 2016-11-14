@@ -1,0 +1,139 @@
+﻿////
+
+|metadata|
+{
+    "name": "iggridview-filtering",
+    "controlName": ["IGGridView"],
+    "tags": ["Filtering","Grids","How Do I"],
+    "guid": "f49f5e6b-f47b-4407-b9e8-d3098a99e6d2",  
+    "buildFlags": [],
+    "createdOn": "2012-07-16T14:20:24.8894759Z"
+}
+|metadata|
+////
+
+= Filtering
+
+== Topic Overview
+
+=== Purpose
+
+This topic provides a conceptual overview, with code, on filtering rows on the  _IGGridView_™ control.
+
+=== Required background
+
+The following table lists the topics required as a prerequisite to understanding this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:iggridview-adding-the-ig-framework-file.html[Adding the Grid Framework File]
+|This topic explains the requirements for adding the grid framework file to an Xcode project; a requirement for using the _IGGridView_ control.
+
+|====
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref324841248, Introduction >>
+* <<_Ref329330892, Enable Filtering on a Column – Code Example >>
+
+** <<_Ref323199287,Description>>
+** <<_Ref329331375,Code>>
+
+* <<_Ref323199323, Related Content >>
+
+[[_Ref324841248]]
+[[_Ref323199279]]
+[[_Ref324505001]]
+[[_Ref323111244]]
+== Introduction
+
+[[_Ref327859845]]
+
+=== Filtering summary
+
+To enable filtering, set the data source helpers’ `filteringKey` property to a string that maps to a property of the underlying data object. Using the `filterType` property found on the data source helper it is possible to set a filter condition using these enumerations.
+
+* `IGGridViewFilterConditionTypeStringContains`
+* `IGGridViewFilterConditionTypeStringBeginsWith`
+* `IGGridViewFilterConditionTypeStringEndsWith`
+* `IGGridViewFilterConditionTypeStringLike`
+* `IGGridViewFilterConditionTypeStringMatches`
+* `IGGridViewFilterConditionTypeNumberEquals`
+* `IGGridViewFilterConditionTypeNumberNotEquals`
+* `IGGridViewFilterConditionTypeNumberGreaterThan`
+* `IGGridViewFilterConditionTypeNumberGreaterThanEquals`
+* `IGGridViewFilterConditionTypeNumberLessThan`
+* `IGGridViewFilterConditionTypeNumberLessThanEquals`
+
+On the  _IGGridView_  , the property named filterAction can be used to determine when the filter should be applied. The default value for this property is IGGridViewFilterActionImmediate, but the following enumerations can be used.
+
+* `IGGridViewFilterActionImmediate` - after each key press.
+* `IGGridViewFilterActionDoneEditing` - when the user finishes typing.
+
+[[_Ref329330892]]
+== Enable Filtering on a Column – Code Example
+
+[[_Ref323199287]]
+
+=== Description
+
+The following code sets the `filteringKey` property on the data source helper to filter on the  _firstName_   column using a, starts with, condition set on the `filterType` property and to apply the filter immediately after a key press with the `filterAction` property.
+
+[[_Ref323199293]]
+
+=== Code
+
+*In Objective-C:*
+
+[source,csharp]
+----
+ // Use this DataSource Helper to create a single row data source, using the column we defined above. 
+    IGGridViewDataSourceHelper* ds = [[IGGridViewDataSourceHelper alloc] init];
+    // To enable filtering, simply set the Filtering key on the DataSourceHelper
+    ds.filteringKey = @"firstName";
+    // To modify the type of filtering, set the FilterType property
+    ds.filterType  = IGGridViewFilterConditionTypeStringBeginsWith;
+    // To edit whether filtering happens immediately, or after the user is done typing, change the filter action property on the IGGridView.
+    _gridView.filterAction = IGGridViewFilterActionImmediate;
+    ds.data  = data;
+    _gridView.dataSource = ds;
+----
+
+*In C#:*
+
+[source,csharp]
+----
+ // Use this DataSource Helper to create a single row data source, using the column we defined above. 
+    IGGridViewDataSourceHelper ds = new IGGridViewDataSourceHelper();
+    // To enable filtering, simply set the Filtering key on the DataSourceHelper
+    ds.FilteringKey = @"firstName";
+    // To modify the type of filtering, set the FilterType property
+    ds.FilterType  = IGGridViewFilterConditionType.IGGridViewFilterConditionTypeStringBeginsWith;
+    // To edit whether filtering happens immediately, or after the user is done typing, change the filter action property on the IGGridView.
+    _gridView.FilterAction = IGGridViewFilterAction.IGGridViewFilterActionImmediate;
+    ds.Data  = data;
+    _gridView.WeakDataSource= ds;
+----
+
+[[_Ref323199323]]
+== Related Content
+
+=== Topics
+
+The following topics provide additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:iggridview-adding-the-iggridview-uiview.html[Adding the IGGridView to a UIView]
+|This topic provides basic information about creating an instance of the _IGGridView_ and displaying data to help you with getting up and running with using the control.
+
+| link:iggridview.html[IGGridView]
+|This section serves as an introduction to the _IGGridView’s_ key features and functionalities.
+
+|====

@@ -1,0 +1,115 @@
+﻿////
+
+|metadata|
+{
+    "name": "igtreemapview-configuring-interactions",
+    "tags": ["Charting","Getting Started","How Do I"],
+    "controlName": ["IGTreemapView"],
+    "guid": "e57a71ac-975c-45ac-a40e-5b8aa8ed2fe3",  
+    "buildFlags": [],
+    "createdOn": "2013-09-25T12:50:27.7317434Z"
+}
+|metadata|
+////
+
+= Configuring Interactions
+
+== Topic Overview
+
+=== Purpose
+
+This topic provides an introductory overview of interacting with the  _IGTreemapView_™ control.
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref324841248, Introduction >>
+* <<_Ref240332183, Displaying a Tooltip – Code Example >>
+
+** <<_Ref327344209,Description>>
+** <<_Ref327523606,Prerequisites>>
+** <<_Ref327344217,Code>>
+
+* <<_Ref240332769, Related Content >>
+
+[[_Ref324841248]]
+== Introduction
+
+[[_Ref215796828]]
+
+=== Interactions summary
+
+The  _IGTreemapView_   provides support for the 3 most common gestures; pinch, tap and long press.
+
+* The pinch gesture is for zooming out of a viewed child node and is handled by default within the  _IGTreemapView_  
+* Tapping a node automatically makes it a root node and puts it on top of the  _IGTreemapView_  , additionally, if handled the  _IGTreemapView_   will call the  _IGTreemapViewDelegate_   method `treemapView:tapWithNode:atPoint:`
+* The long press gesture is used to call the  _IGTreemapViewDelegate_   method `treemapView:viewForTooltipWithNode:` to return and render a  _UIView_   tooltip
+
+[[_Ref240332183]]
+[[_Ref324841253]]
+[[_Ref215823716]]
+== Displaying a Tooltip – Code Example
+
+[[_Ref327344209]]
+
+=== Description
+
+The following code implements the  _IGTreemapViewDelegate’s_   `treemapView:viewForTooltipWithNode:` method to display a tooltip containing the node’s label string.
+
+[[_Ref327523606]]
+
+=== Prerequisites
+
+This code example requires the inclusion of the  _Chart_   framework, detail about how to add this framework can be found in the link:igchartview-adding-the-chart-framework-file.html[Adding the Chart Framework File] topic.
+
+[[_Ref327344217]]
+
+=== Code
+
+*In Objective-C:*
+
+[source,csharp]
+----
+-(UIView *)treemapView:(IGTreemapView *)treemapView viewForTooltipWithNode:(IGTreemapNode * )node
+{
+    UILabel *label = [[UILabel alloc]init];
+    label.text = node.label;
+    [label setAutoresizingMask:UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight];
+    [label sizeToFit];
+    return label;
+}
+----
+
+*In C#:*
+
+[source,csharp]
+----
+public class TreemapDelegate : IGTreemapViewDelegate
+{
+      public override UIView ResolveNodeTooltipView (IGTreemapView treemapView, IGTreemapNode node)
+      {
+            UILabel label = new UILabel();
+            label.Text = node.Label;
+            label.AutoresizingMask = UIViewAutoresizing.FlexibleHeight | UIViewAutoresizing.FlexibleWidth;
+            label.SizeToFit ();
+            return label;
+      }
+}
+----
+
+[[_Ref240332769]]
+== Related Content
+
+=== Topics
+
+The following topic provides additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:igtreemapview-configuring-igtreemapview.html[Configuring IGTreemapView]
+|The topics in this group cover enabling, configuring, and using the _IGTreemapView_ control’s supported features.
+
+|====

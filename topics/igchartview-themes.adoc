@@ -1,0 +1,208 @@
+﻿////
+
+|metadata|
+{
+    "name": "igchartview-themes",
+    "controlName": ["IGChartView"],
+    "tags": ["Charting","How Do I","Styling"],
+    "guid": "2d1472d1-428c-4829-8cb5-8fc6fa580fba",  
+    "buildFlags": [],
+    "createdOn": "2012-07-16T14:50:22.6852375Z"
+}
+|metadata|
+////
+
+= Themes
+
+== Topic Overview
+
+=== Purpose
+
+This topic provides a conceptual overview of the supported themes available in the  _IGChartView_™ control.
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref324841248, Introduction >>
+
+** <<_Ref327859845,Theme summary>>
+** <<_Ref327864136,Theme types>>
+
+* <<_Ref329853754, Creating a Custom Theme – Code Example >>
+
+** <<_Ref323199287,Description>>
+** <<_Ref323199293,Code>>
+
+* <<_Ref324841253, Related Content >>
+
+[[_Ref324841248]]
+== Introduction
+
+[[_Ref327859845]]
+
+=== Theme summary
+
+Use chart themes to give a chart a consistent and color coordinated look and feel. Simply set the  _IGChartView_   theme property to one of the predefined themes.
+
+[[_Ref327864136]]
+
+=== Theme types
+
+The following table contains the supported themes and their associated type name from  _IGChartDefaultThemes_   or  _IGChartGradientThemes_  .
+
+[options="header", cols="a,a"]
+|====
+|Theme Name|Preview
+
+| _DefaultTheme_ 
+|image::images/IGChartView_-_Themes_1.png[]
+
+| _IGTheme_ 
+|image::images/IGChartView_-_Themes_6.png[]
+
+| _IGThemeDark_ 
+|image::images/IGChartView_-_Themes_7.png[]
+
+| _DarkTheme1_ 
+|image::images/IGChartView_-_Themes_2.png[]
+
+| _DarkTheme2_ 
+|image::images/IGChartView_-_Themes_3.png[]
+
+| _DarkTheme3_ 
+|image::images/IGChartView_-_Themes_4.png[]
+
+| _DarkTheme4_ 
+|image::images/IGChartView_-_Themes_5.png[]
+
+| _IGTheme_ 
+|image::images/IGChartView_-_Themes_8.png[]
+
+| _IGThemeDark_ 
+|image::images/IGChartView_-_Themes_9.png[]
+
+| _FinanceTheme1_ 
+|image::images/IGChartView_-_Themes_10.png[]
+
+| _FinanceTheme2_ 
+|image::images/IGChartView_-_Themes_11.png[]
+
+| _FinanceTheme3_ 
+|image::images/IGChartView_-_Themes_12.png[]
+
+| _FinanceTheme4_ 
+|image::images/IGChartView_-_Themes_13.png[]
+
+| _FinanceTheme5_ 
+|image::images/IGChartView_-_Themes_14.png[]
+
+|====
+
+[[_Ref329330892]]
+[[_Ref329853754]]
+== Creating a Custom Theme – Code Example
+
+[[_Ref323199287]]
+
+=== Description
+
+The following code creates a new  _IGChartThemeDefinition_   object and adds several  _IGChartPaletteItem_   objects to the `seriesPalettes` collection found on the  _IGChartThemeDefinition_  .
+
+[[_Ref323199293]]
+
+=== Code
+
+*In Objective-C:*
+
+[source,csharp]
+----
+IGChartThemeDefinition* def = [[IGChartThemeDefinition alloc]init];
+    def.font = [UIFont fontWithName:@"Helvetica" size:12];
+    def.fontColor = [[IGBrush alloc] initWithR:0 andG:0 andB:0 andA:1];
+    def.legendFont = [UIFont fontWithName:@"Helvetica" size:12];
+    def.legendFontColor = [[IGBrush alloc] initWithR:0 andG:0 andB:0 andA:1];
+    def.legendBorderThickness = 1;
+    def.legendPalette = [[IGChartPaletteItem alloc]init];
+    def.legendPalette.color = [[IGBrush alloc] initWithR:0.9 andG:0.9 andB:0.9 andA:1];
+    def.legendPalette.outlineColor = [[IGBrush alloc] initWithR:0.7 andG:0.7 andB:0.7 andA:1];
+    IGChartPaletteItem* item1 = [[IGChartPaletteItem alloc] init];
+    item1.color = [[IGBrush alloc] initWithR:0 andG:.63 andB:.88 andA:1]; 
+    item1.outlineColor = [[IGBrush alloc] initWithR:0 andG:0 andB:0 andA:1]; 
+    [def.seriesPalettes addObject:item1];
+    IGChartPaletteItem* item2 = [[IGChartPaletteItem alloc] init];
+    item2.color = [[IGBrush alloc] initWithR:.54 andG:.6 andB:.05 andA:1];
+    item2.outlineColor = [[IGBrush alloc] initWithR:0 andG:0 andB:0 andA:1];
+    [def.seriesPalettes addObject:item2];
+    IGChartPaletteItem* item3 = [[IGChartPaletteItem alloc] init];
+    item3.color = [[IGBrush alloc] initWithR:.94 andG:.3 andB:.05 andA:1];
+    item3.outlineColor = [[IGBrush alloc] initWithR:0 andG:0 andB:0 andA:1];
+    [def.seriesPalettes addObject:item3];
+    IGChartPaletteItem* item4 = [[IGChartPaletteItem alloc] init];
+    item4.color = [[IGBrush alloc] initWithR:.5 andG:.06 andB:.42 andA:1];
+    item4.outlineColor = [[IGBrush alloc] initWithR:0 andG:0 andB:0 andA:1];
+    [def.seriesPalettes addObject:item4];
+    IGChartPaletteItem* item5 = [[IGChartPaletteItem alloc] init];
+    item5.color = [[IGBrush alloc] initWithR:.98 andG:.66 andB:.06 andA:1];
+    item5.outlineColor = [[IGBrush alloc] initWithR:0 andG:0 andB:0 andA:1];
+    [def.seriesPalettes addObject:item5];
+    IGChartPaletteItem* axis = [[IGChartPaletteItem alloc] init];
+    axis.outlineColor = [[IGBrush alloc] initWithR:.72 andG:.72 andB:.72 andA:1]; 
+    def.axisPalette = axis;   
+infraChart.theme = def;
+----
+
+*In C#:*
+
+[source,csharp]
+----
+IGChartThemeDefinition def = new IGChartThemeDefinition();
+   def.Font = UIFont.FromName("Helvetica", 12); 
+   def.FontColor = new IGBrush(0,0,0,1);
+def.LegendFont = UIFont.FromName("Helvetica", 12); 
+   def.LegendFontColor = new IGBrush(0,0,0,1);
+   def.LegendBorderThickness = 1;
+   def.LegendPalette = new IGChartPaletteItem();
+   def.LegendPalette.Color = new IGBrush(0.9f,0.9f,0.9f,1);
+   def.LegendPalette.OutlineColor = new IGBrush(0.7f,0.7f,0.7f,1);
+   IGChartPaletteItem item1 = new IGChartPaletteItem();
+   item1.Color = new IGBrush(0.0f,0.63f,0.88f,1);
+   item1.OutlineColor = new IGBrush(0,0,0,1);
+   def.SeriesPalettes.Add(item1);
+   IGChartPaletteItem item2 = new IGChartPaletteItem();
+   item2.Color = new IGBrush(0.54f,0.6f,0.05f,1);
+   item2.OutlineColor = new IGBrush(0,0,0,1);
+   def.SeriesPalettes.Add(item2);
+   IGChartPaletteItem item3 = new IGChartPaletteItem();
+   item3.Color = new IGBrush(0.94f,0.3f,0.05f,1);
+   item3.OutlineColor = new IGBrush(0,0,0,1);
+   def.SeriesPalettes.Add(item3);
+   IGChartPaletteItem item4 = new IGChartPaletteItem();
+   item4.Color = new IGBrush(0.5f,0.06f,0.42f,1);
+   item4.OutlineColor = new IGBrush(0,0,0,1);
+   def.SeriesPalettes.Add(item4);
+   IGChartPaletteItem item5 = new IGChartPaletteItem();
+   item5.Color = new IGBrush(0.98f,0.66f,0.06f,1);
+   item5.OutlineColor = new IGBrush(0,0,0,1);
+   def.SeriesPalettes.Add(item5);
+IGChartPaletteItem axis = new IGChartPaletteItem();
+   axis.OutlineColor = new IGBrush(0.72f,0.72f,0.72f,1);
+   def.AxisPalette = axis;   
+   chart.Theme = def;
+----
+
+[[_Ref324841253]]
+== Related Content
+
+=== Topics
+
+The following topic provides additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:igchartview.html[IGChartView]
+|This topic serves as a gateway to the features and functionality of the _IGChartView_ control.
+
+|====

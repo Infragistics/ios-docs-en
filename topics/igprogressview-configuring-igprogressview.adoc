@@ -1,0 +1,36 @@
+﻿////
+
+|metadata|
+{
+    "name": "igprogressview-configuring-igprogressview",
+    "tags": ["How Do I","Tips and Tricks"],
+    "controlName": ["IGProgressView"],
+    "guid": "445633da-4486-450a-83dc-3e801f399a81",  
+    "buildFlags": [],
+    "createdOn": "2013-08-26T14:06:20.0464092Z"
+}
+|metadata|
+////
+
+= Configuring IGProgressView
+
+=== Introduction
+
+The topics in this group cover enabling configuring, and using the  _IGProgressView_™ control’s supported features.
+
+=== Topics
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:igprogressview-configuring-radial-angles.html[Configuring Radial Angles]
+|This topic provides an introduction to configuring radial angles on the _IGProgressView_ control and using a code example, demonstrates how to configure them.
+
+| link:igprogressview-configuring-custom-progress.html[Configuring a Custom Progress]
+|This topic provides an introductory overview of configuring a custom progress on the _IGProgressView_ control and demonstrates how to configure it using a code example.
+
+| link:igprogressview-styling-igprogressview.html[Styling the IGProgressView]
+|This topic provides an introduction to styling the _IGProgressView_ control.
+
+|====

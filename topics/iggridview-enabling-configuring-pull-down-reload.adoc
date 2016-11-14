@@ -1,0 +1,299 @@
+﻿////
+
+|metadata|
+{
+    "name": "iggridview-enabling-configuring-pull-down-reload",
+    "controlName": ["IGGridView"],
+    "tags": ["Grids","How Do I","Paging"],
+    "guid": "d965bfc9-cdd2-4fa3-a713-23893f6ce9ac",  
+    "buildFlags": [],
+    "createdOn": "2012-07-16T14:24:29.7359581Z"
+}
+|metadata|
+////
+
+= Enabling and Configuring Pull Down to Reload
+
+== Topic Overview
+
+=== Purpose
+
+This topic provides a conceptual overview of the  _IGGridView_™ control’s pull down to reload functionality, and uses code to illustrate how they are enabled and configured.
+
+=== Required background
+
+The following table lists the topics required as a prerequisite to understanding this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:iggridview-adding-the-ig-framework-file.html[Adding the Grid Framework File]
+|This topic explains the requirements for adding the grid framework file to an Xcode project; a requirement for using the _IGGridView™_ control.
+
+|====
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref324841248, Introduction >>
+* <<_Ref329688989, Enabling Pull Down Functionality – Code Example >>
+
+** <<_Ref329688996,Description>>
+** <<_Ref329688999,Code>>
+
+* <<_Ref329689252, Customize Pull Down Cell – Code Example >>
+
+** <<_Ref323199287,Description>>
+** <<_Ref329331375,Code>>
+** <<_Ref329680467,Implementation>>
+
+* <<_Ref323199323, Related Content >>
+
+[[_Ref324841248]]
+[[_Ref323199279]]
+[[_Ref324505001]]
+[[_Ref323111244]]
+== Introduction
+
+[[_Ref327859845]]
+
+=== Pull down to reload summary
+
+Pull down to reload is a common feature developers employ to allow users to refresh data in a view. To enable this functionality on the  _IGGridView_  , implement the `updateRequestedInGridView` method found in the  _IGGridViewDelegate_   protocol.
+
+* `-(void)updateRequestedInGridView:(IGGridView$$* $$)gridView;`
+
+Once the data source has been reloaded inside of this method, call the finishedUpdating method found on the  _IGGridView_  . This tells the  _IGGridView_   that it no longer needs to be in the update state and should update the visually displayed data.
+
+[[_Ref329688989]]
+[[_Ref329330892]]
+== Enabling Pull Down Functionality – Code Example
+
+[[_Ref329688996]]
+
+=== Description
+
+The following code demonstrates how to implement the `updateRequestedInGridView` method found in the  _IGGridViewDelegate_   protocol that enables pull down to reload functionality.
+
+[[_Ref329688999]]
+
+=== Code
+
+*In Objective-C:*
+
+[source,csharp]
+----
+// To turn on the pull down feature, all we need to do, is implement this selector on our IGGridViewDelegate
+-(void)updateRequestedInGridView:(IGGridView *)gridView
+{
+    // The user has pulled down the grid, and asked for an update.
+    // So For the sake of the code example, lets create a 2.5 second delay to make it seem like we're requesting data from the server
+    [self performSelector:@selector(reloadData) withObject:nil afterDelay:2.5];
+}
+-(void)reloadData
+{
+    // Ok the delay is over, so lets get  put new data in the grid
+    NSArray* data = [igSalesmanItem generateData:100];
+    IGGridViewDataSourceHelper* ds = _gridView.dataSource;
+    ds.data = data;
+    [_gridView reloadData];
+    // When we're ready to tell the grid that we've completed the requested update, we call the following selector.
+    [_gridView finishedUpdating];
+}
+----
+
+*In C#:*
+
+[source,csharp]
+----
+// To turn on the pull down feature, all we need to do, is implement this selector on our IGGridViewDelegate
+public override void UpdateRequested (IGGridView gridView)
+{
+    // The user has pulled down the grid, and asked for an update.
+    // So For the sake of the code example, lets create a 2.5 second delay to make it seem like we're requesting data from the server
+ this.PerformSelector(new Selector("reloadData:"), gridView, 2.5);
+}
+[Export("reloadData")]
+public void ReloadData(IGGridView gridView)
+{
+    // Ok the delay is over, so lets get  put new data in the grid
+    NSObject[] newData = this.GenerateData();
+   IGGridViewDataSourceHelper ds = (IGGridViewDataSourceHelper)gridView.WeakDataSource;
+   ds.Data = newData;
+   gridView.ReloadData();
+    // When we're ready to tell the grid that we've completed the requested update, we call the following selector.
+    gridView.FinishedUpdating();
+}
+----
+
+[[_Ref329689252]]
+== Customize Pull Down Cell – Code Example
+
+[[_Ref323199287]]
+
+=== Description
+
+The following code demonstrates how to customize what is displayed in the pull down cell by deriving from  _IGGridViewPullDownCell_  .
+
+[[_Ref323199293]]
+
+=== Code
+
+*In Objective-C:*
+
+[source,csharp]
+----
+@interface CustomPullDownCell : IGGridViewPullDownCell
+{
+    UIImageView* _arrow;
+}
+@end
+@implementation CustomPullDownCell
+-(id)init
+{
+    self = [super init];
+    if(self)
+    {
+        _arrow = [[UIImageViewalloc]init];
+_arrow.image = [UIImage imageNamed"arrow.png"]; 
+        _arrow.frame = CGRectMake(25,25, 30, 50);
+        [self addSubview:_arrow];
+    }
+    return self;
+}
+-(void)changeStateToReleaseMode
+{
+    [super changeStateToReleaseMode];
+    _arrow.hidden = NO;
+    [UIView transitionWithView:_arrow duration:.2f
+                       options:UIViewAnimationCurveEaseInOut
+                    animations:^ 
+     {  
+         _arrow.transform = CGAffineTransformMakeRotation(M_PI * 180 / 180.0); 
+     }
+                    completion:nil];
+}
+-(void)changeStateToPullDownMode
+{
+    [super changeStateToPullDownMode];
+    _arrow.hidden = NO;
+    [UIView transitionWithView:_arrow duration:.2f
+                       options:UIViewAnimationCurveEaseInOut
+                    animations:^ 
+     {  
+         _arrow.transform = CGAffineTransformMakeRotation(0); 
+     }
+                    completion:nil];
+}
+-(void)changeStateToUpdatingMode
+{
+    [super changeStateToUpdatingMode];
+    _arrow.hidden = YES;
+}
+@end
+----
+
+*In C#:*
+
+[source,csharp]
+----
+public class CustomPullDownCell :IGGridViewPullDownCell
+{
+  UIImageView _arrow;
+public CustomPullDownCell(string identifier) : base(identifier)
+  {
+     _arrow = new UIImageView();
+     _arrow.Image = new UIImage("arrow.png");
+     _arrow.Frame = new RectangleF(25, 25, 30, 50);
+     this.AddSubview(_arrow);
+  }
+  public override void BeginReleaseModeState ()
+  {
+     base.BeginReleaseModeState ();
+_arrow.Hidden = false;
+     UIView.Transition(_arrow, .2f, UIViewAnimationOptions.CurveEaseInOut, new NSAction(this.AnimateRelease), null);
+  }
+public void AnimateRelease()
+  {
+     _arrow.Transform = CGAffineTransform.MakeRotation((float)Math.PI * 180.0f/ 180.0f);
+  }
+public override void BeginPullDownModeState ()
+  {
+     base.BeginPullDownModeState ();
+     _arrow.Hidden = false;
+     UIView.Transition(_arrow, .2f, UIViewAnimationOptions.CurveEaseInOut, new NSAction(this.AnimatePullDown), null);
+  }
+public void AnimatePullDown()
+  {
+     _arrow.Transform = CGAffineTransform.MakeRotation(0);
+  }
+public override void BeginUpdatingModeState ()
+  {
+     base.BeginUpdatingModeState ();
+     _arrow.Hidden = true;
+  }
+}
+----
+
+[[_Ref329680467]]
+
+=== Implementation
+
+The `pullDownCellForGridView` method found on the  _IGGridViewDataSource_   protocol asks the data source for a pull down cell to place when the  _IGGridView_   is down further than its bounds. The code example below demonstrates how to implement a custom pull down cell.
+
+*In Objective-C:*
+
+[source,csharp]
+----
+-(IGGridViewPullDownCell *)pullDownCellForGridView:(IGGridView * )gridView
+{
+    CustomPullDownCell* cell = [gridView dequeueReusableCellWithIdentifier:@"customPullDown"];
+    if(!cell)
+    {
+        cell = [[CustomPullDownCell alloc]initWithReuseIndentifier:@"customPullDown"];
+        cell.updatingText = @"Generating...";
+        cell.pullDownText = @"PULL TO GENERATE NUMBER";
+        cell.releaseText = @"RELEASE TO GENERATE";
+    }
+    return cell;
+}
+----
+
+*In C#:*
+
+[source,csharp]
+----
+public override IGGridViewPullDownCell CreatePullDownCell (IGGridView gridView)
+{
+   CustomPullDownCell cell = (CustomPullDownCell)gridView.DequeueReusableCell("pulldownCell");
+   if(cell == null)
+   {
+    cell = new CustomPullDownCell("pulldownCell");
+    cell.UpdatingText = "Generating...";
+    cell.PullDownText = "Pull To Generate a Number";
+    cell.ReleaseText = "Release to Generate";
+   }
+return cell;
+}
+----
+
+[[_Ref323199323]]
+== Related Content
+
+=== Topics
+
+The following topics provide additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:iggridview-adding-the-iggridview-uiview.html[Adding the IGGridView to a UIView]
+|This topic provides basic information about creating an instance of the _IGGridView_ and displaying data to help you with getting up and running with using the control.
+
+| link:iggridview.html[IGGridView]
+|This section serves as an introduction to the _IGGridView’s_ key features and functionalities.
+
+|====

@@ -1,0 +1,44 @@
+﻿////
+|metadata|
+{
+    "name": "igcalendarview",
+    "tags": ["Getting Started","How Do I"],
+    "controlName": ["IGCalendarView"],
+    "guid": "5b2d7c66-6d7b-4f4b-afd5-f56ce58a54b5",
+    "buildFlags": [],
+    "createdOn": "2013-09-25T13:03:56.0157434Z"
+}
+|metadata|
+////
+
+= IGCalendarView
+
+This section gives you an overview of the use of the  _IGCalendarView_™ control. It contains information ranging from what the control does to the step-by-step procedures on how to accomplish common tasks using the control.
+
+Click the links below to access important information about the  _IGCalendarView_   control.
+
+== About IGCalendarView
+
+image::images/What's_New_in_2013_Volume_2_2.png[]
+
+The  _IGCalendarView_   is a container that displays different views for navigating dates and display appointments. Within in this control you can view 3 different display types: Year, Month, and Day. Each display type knows how to animate smoothly between other display types to prvoide a seamless transition. You can use this control to display your own calendars/appointments.
+
+== link:iggridview-adding-the-ig-framework-file.html[Adding the IG Framework File]
+
+This topic demonstrates how to add the IG framework file to a project.
+
+== link:igcalendarview-adding-calendar-view.html[Adding the Calendar to a View]
+
+This topic provides basic information about creating an instance of the  _IGCalendarView_   to help you get up and running with this control.
+
+== link:igcalendarview-configuring-igcalendarview.html[Configuring IGCalendarView]
+
+The topics in this group explain and demonstrate enabling, configuring, and using the _IGCalendarView_ control’s supported features.
+
+== link:igcalendarview-data-source-helper.html[Data Source Helper]
+
+This topic provides a conceptual overview of the data source helper in the  _IGCalendarView_   and demonstrates its configuration using a code example.
+
+== link:igcalendarview-themes.html[Themes]
+
+This topic provides an introductory overview of the supported themes available in the  _IGCalendarView_   control.

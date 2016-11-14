@@ -1,0 +1,216 @@
+﻿////
+
+|metadata|
+{
+    "name": "igoverlayview-configuring-custom-animations",
+    "tags": ["Getting Started","How Do I"],
+    "controlName": ["IGOverlayView"],
+    "guid": "17a4f4ef-3749-48f6-aaff-fae83981db2e",  
+    "buildFlags": [],
+    "createdOn": "2013-08-26T15:40:47.2750754Z"
+}
+|metadata|
+////
+
+= Configuring Custom Animations
+
+== Topic Overview
+
+=== Purpose
+
+This topic provides a conceptual overview of custom animations for the  _IGOverlayView_™ control.
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref324841248, Introduction >>
+* <<_Ref233942966, Configuring Custom Animations – Code Example >>
+
+** <<_Ref327344209,Description>>
+** <<_Ref327523606,Prerequisites>>
+** <<_Ref327344217,Code>>
+
+* <<_Ref233943001, Related Content >>
+
+[[_Ref324841248]]
+== Introduction
+
+[[_Ref215796828]]
+
+=== Custom animations summary
+
+The  _IGOverlayView_   is an extremely powerful and flexible control for displaying any type of view that overlays another view, with or without animation, when shown or dismissed. A total of 12 overlay animations are included, with 2 of these animation types allowing for custom animations limited only by your imagination. This summary covers the typical life cycle of the  _IGOverlayView_   and how to use custom animations when showing or dismissing the control.
+
+Showing or dismissing the  _IGOverlayView_   by using either the `showInView:withAnimation:` or `dismiss:` methods, each taking a parameter specifying the  _IGOverlayAnimationType_   to use. When the  _IGOverlayAnimationType_   has been set to `IGOverlayAnimationCustomFade` or `IGOverlayAnimationCustomSlide` then the  _IGOverlayView_   call the following delegate methods being used by the receiver:
+
+* `- (void)customEnterAnimationForOverlay:(IGOverlayView $$* $$)overlayView`
+* `- (void)customExitAnimationForOverlay:(IGOverlayView $$* $$)overlayView`
+* `- (CGRect)customEnterFrameForOverlay:(IGOverlayView $$* $$)overlayView`
+* `- (CGRect)customExitFrameForOverlay:(IGOverlayView $$* $$)overlayView`
+
+When the  _IGOverlayView_   prepares to use animation to show itself in the view using the `IGOverlayAnimationCustomFade` or `IGOverlayAnimationCustomSlide` animation type, the control attempts to call the `customEnterFrameForOverlay:` delegate method for a  _CGRect,_   used as the  _IGOverlayView_  ’s starting size and location. Then the  _IGOverlayView_   attempts to call the `customEnterAnimationForOverlay:` delegate method for providing any custom animations or property settings on views contained within the  _IGOverlayView_   once the enter animation sequence begins.
+
+.Note:
+[NOTE]
+====
+If the receiver does not implement the customEnterFrameForOverlay: delegate method, then the enter frame is rendered with the exact same dimensions of the view in which it is contained.
+====
+
+Finally, when the  _IGOverlay_   prepares to use animation to dismiss itself out of view using the `IGOverlayAnimationCustomFade` or `IGOverlayAnimationCustomSlide` animation type, the control attempts to call the `customExitFrameForOverlay:` delegate method for a  _CGRect,_   used as the  _IGOverlayView_  ’s ending size and location. If the receiver does not implement this method, then the exit frame is the size of the view that the overlay is shown within. Once the  _IGOverlayView_   begins its exit animation sequence it calls the `customExitAnimationForOverlay:` delegate method, which if implemented on the receiver, provides any custom animations or property settings on views contained within the  _IGOverlayView_  .
+
+[[_Ref327936206]]
+[[_Ref233942966]]
+[[_Ref324841253]]
+[[_Ref215823716]]
+== Configuring Custom Animations – Code Example
+
+[[_Ref327344209]]
+
+=== Description
+
+The following code creates an instance of the  _IGOverlayView_   to overlay a view with a message and uses a custom animation on exit to rotate and shrink the overlay as it fades away into the view.
+
+[[_Ref327523606]]
+
+=== Prerequisites
+
+This code example requires the inclusion of the  __IG__  framework; details about how to add this framework are available in the link:iggridview-adding-the-ig-framework-file.html[Adding the IG Framework File] topic.
+
+[[_Ref327344217]]
+
+=== Code
+
+*In Objective-C:*
+
+[source,csharp]
+----
+@interface igViewController () <IGOverlayViewDelegate>
+{
+    IGOverlayView *_overlayView;
+    UIView *_uiView;
+    UILabel *_overlayLabel;
+}
+@end
+@implementation igViewController
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    self.view.backgroundColor = [UIColor whiteColor];
+    _overlayView = [[IGOverlayView alloc] init];
+    _overlayView.backgroundColor = [UIColor colorWithWhite:0.2 alpha:0.7];
+    _overlayView.durationShow = 1.0;
+    _overlayView.delegate = self;
+    _overlayLabel = [[UILabel alloc] initWithFrame:_overlayView.bounds];
+    _overlayLabel.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
+    _overlayLabel.backgroundColor = [UIColor clearColor];
+    _overlayLabel.textColor = [UIColor whiteColor];
+    _overlayLabel.textAlignment = NSTextAlignmentCenter;
+    _overlayLabel.font = [UIFont fontWithName:@"TrebuchetMS-Bold" size:20.0];
+    _overlayLabel.text = @"Custom Animation";
+    [_overlayView addSubview:_overlayLabel];
+    _uiView = [[UIView alloc] init];
+    _uiView.frame = CGRectInset(self.view.bounds, 20, 20);
+    _uiView.backgroundColor = [UIColor colorWithRed:1.000 green:0.384 blue:0.208 alpha:1.0];
+    _uiView.layer.borderColor = [UIColor blackColor].CGColor;
+    _uiView.layer.borderWidth = 2.0;
+    _uiView.userInteractionEnabled = YES;
+    [self.view addSubview:_uiView];
+    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showOverlay:)];
+    [_uiView addGestureRecognizer:tapGestureRecognizer];
+    [_overlayView showInView:_uiView withAnimation:IGOverlayAnimationFade];
+}
+-(void)showOverlay:(UIGestureRecognizer *)gestureRecognizer
+{
+    if (gestureRecognizer.state != UIGestureRecognizerStateRecognized)
+        return;
+    _overlayView.transform = CGAffineTransformIdentity;
+    if (_overlayView.isVisible)
+        [_overlayView dismiss:IGOverlayAnimationCustomFade];
+    else
+        [_overlayView showInView:_uiView withAnimation:IGOverlayAnimationFade];
+}
+- (void)customExitAnimationForOverlay:(IGOverlayView *)overlayView
+{
+    CGAffineTransform transform = CGAffineTransformMakeRotation(3.14);
+    overlayView.transform = CGAffineTransformScale(transform, 0.1, 0.1);
+}
+@end
+----
+
+*In C#:*
+
+[source,csharp]
+----
+public partial class OverlayCustomAnimation_CSViewController : UIViewController
+{
+      IGOverlayView _overlayView = new IGOverlayView();
+      UIView _uiView = new UIView();
+      UILabel _overlayLabel = new UILabel();
+      UITapGestureRecognizer tapGestureRecognizer;
+      public OverlayCustomAnimation_CSViewController () {}
+      public override void ViewDidLoad ()
+      {
+            base.ViewDidLoad ();
+            this.View.BackgroundColor = UIColor.White;
+            _overlayView.BackgroundColor = UIColor.FromWhiteAlpha (0.2f, 0.7f);
+            _overlayView.DurationShow = 1.0f;
+            _overlayView.Delegate = new OverlayDelegate ();
+            _overlayLabel.Frame = _overlayView.Bounds;
+            _overlayLabel.AutoresizingMask = UIViewAutoresizing.FlexibleHeight | UIViewAutoresizing.FlexibleWidth;
+            _overlayLabel.BackgroundColor = UIColor.Clear;
+            _overlayLabel.TextColor = UIColor.White;
+            _overlayLabel.TextAlignment = UITextAlignment.Center;
+            _overlayLabel.Font = UIFont.FromName ("TrebuchetMS-Bold", 20.0f);
+            _overlayLabel.Text = "Custom Animation";
+            _overlayView.Add (_overlayLabel);
+            RectangleF uiViewRect = this.View.Bounds;
+            uiViewRect.Inflate (-20.0f, -20.0f);
+            _uiView.Frame = uiViewRect;
+            _uiView.BackgroundColor = UIColor.FromRGB (1.0f, 0.384f, 0.208f);
+            _uiView.Layer.BorderColor = UIColor.Black.CGColor;
+            _uiView.Layer.BorderWidth = 2.0f;
+            _uiView.UserInteractionEnabled = true;
+            this.View.Add (_uiView);
+            tapGestureRecognizer = new UITapGestureRecognizer (this, new MonoTouch.ObjCRuntime.Selector ("ShowOverlay"));
+            _uiView.AddGestureRecognizer (tapGestureRecognizer);
+            _overlayView.Show (_uiView, IGOverlayAnimationType.IGOverlayAnimationFade);
+      }
+      [Export("ShowOverlay")]
+      private void ShowOverlay(UIGestureRecognizer sender)
+      {
+            if (sender.State != UIGestureRecognizerState.Recognized)
+                  return;
+            _overlayView.Transform = CGAffineTransform.MakeIdentity();
+            if (_overlayView.IsVisible())
+                  _overlayView.Dismiss (IGOverlayAnimationType.IGOverlayAnimationCustomFade);
+            else
+                  _overlayView.Show(_uiView, IGOverlayAnimationType.IGOverlayAnimationFade);
+      }
+}
+public class OverlayDelegate : IGOverlayViewDelegate
+{
+      public override void CustomExitAnimation (IGOverlayView overlayView)
+      {
+            CGAffineTransform transform = CGAffineTransform.MakeRotation (3.14f);
+            transform.Scale (0.1f, 0.1f);
+            overlayView.Transform = transform;
+      }
+}
+----
+
+[[_Ref233943001]]
+== Related Content
+
+=== Topics
+
+The following topic provides additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:igoverlayview.html[IGOverlayView]
+|This is a group of topics explaining how to enable, configure, and use the _IGOverlayView_ control and its features.
+
+|====

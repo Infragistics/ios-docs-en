@@ -1,0 +1,142 @@
+﻿////
+
+|metadata|
+{
+    "name": "iglabel-configuring-text-variables",
+    "controlName": ["IGLabel"],
+    "tags": ["How Do I"],
+    "guid": "b555df70-3d1a-47c3-bcdd-ac8e2c4dfe84",  
+    "buildFlags": [],
+    "createdOn": "2013-02-05T13:23:24.5021263Z"
+}
+|metadata|
+////
+
+= Configuring Text Variables
+
+== Topic Overview
+
+=== Purpose
+
+This topic provides a conceptual overview of adding and removing text variables from the  _IGLabel_™ control with code examples for each.
+
+=== Required background
+
+The following table lists the topics required as a prerequisite to understanding this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:iglabel-adding-the-label-framework-file.html[Adding the Label Framework File]
+|This topic explains the requirements for adding the grid framework file to an Xcode project; a requirement for using the _IGLabel_ control.
+
+|====
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref324841248, Introduction >>
+* <<_Ref340233651, Adding Text Variables – Code Example >>
+
+** <<_Ref323199287,Description>>
+** <<_Ref329331375,Adding Text Variables - Code>>
+
+* <<_Ref340233596, Removing Text Variables – Code Example >>
+
+** <<_Ref329331181,Description>>
+** <<_Ref329331389,Removing Text Variables - Code>>
+
+* <<_Ref323199323, Related Content >>
+
+[[_Ref324841248]]
+[[_Ref323199279]]
+[[_Ref324505001]]
+[[_Ref323111244]]
+== Introduction
+
+[[_Ref327859845]]
+
+=== Configuring text variables summary
+
+Dynamic text variables are unique combinations of characters that act as placeholders and are replaced with a specific value when processing a text value. The  _IGLabel_   accommodates the usage of dynamic text values and adds text variables using the `addTextVariable:value:` method. Defined text variables automatically updates with the configured value whenever the text property changes. Use the `updateTextVariableValue:value:` method for updating a previously defined text variable.
+
+Call the `removeTextVariable:` method and specifying the variable to stop text variables from automatically replacing text. Use the `resetTextVariables` method to remove all text variable entries.
+
+[[_Ref340233651]]
+== Adding Text Variables – Code Example
+
+[[_Ref323199287]]
+
+=== Description
+
+The following code demonstrates instantiating an  _IGLabel_   with a frame size equal to the size of the view, creating a variable “{LastName}” with a replacement variable of “Jones.” Setting the text is what actually triggers the automatic replacement.
+
+[[_Ref323199293]]
+
+=== Adding Text Variables - Code
+
+*In C#:*
+
+[source,csharp]
+----
+IGLabel label = new IGLabel();
+label.Frame = new RectangleF(0, 0, this.View.Frame.Size.Width, this.View.Frame.Size.Height);
+label.AddTextVariable("{LastName}", "Jones");
+label.Text = "Hello Mr. {LastName}, welcome back to the app.";
+(this.View).AddSubview(label);
+----
+
+*In Objective-C:*
+
+[source,csharp]
+----
+IGLabel *label = [[IGLabel alloc] init];label.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);[label addTextVariable:@"{LastName}" value:@"Jones"];label.text = @"Hello Mr. {LastName}, welcome back to the app.";[self.view addSubView:label];
+----
+
+[[_Ref340233596]]
+[[_Ref323199323]]
+== Removing Text Variables – Code Example
+
+[[_Ref329331181]]
+
+=== Description
+
+Uses the  _IGLabel_   instance, created from the above <<_Ref340233651,Adding Text Variables – Code Example>>, calls and supplies the `removeTextVariable:` method with the text variable for removal.
+
+[[_Ref329331187]]
+
+=== Removing Text Variables - Code
+
+*In C#:*
+
+[source,csharp]
+----
+label.RemoveTextVariable("{LastName}");
+----
+
+*In Objective-C:*
+
+[source,csharp]
+----
+[label removeTextVariable:@"{LastName}"];
+----
+
+== Related Content
+
+=== Topics
+
+The following topics provide additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:iglabel-adding-iglabel-uiview.html[Adding IGLabel to a UIView]
+|This topic provides basic information about creating an instance of the _IGLabel_ and styling text to help you get up and running with this control.
+
+| link:iglabel.html[IGLabel]
+|This section serves as an introduction to the _IGLabel’s_ key features and functionalities.
+
+|====

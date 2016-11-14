@@ -1,0 +1,39 @@
+﻿////
+
+|metadata|
+{
+    "name": "iglineargaugeview-configuring-iglineargaugeview",
+    "tags": ["Getting Started"],
+    "controlName": ["IGLinearGaugeView"],
+    "guid": "4d3ebeb3-3979-4992-8b70-cd4a4e5d6c31",  
+    "buildFlags": [],
+    "createdOn": "2013-09-10T12:45:48.0223338Z"
+}
+|metadata|
+////
+
+= Configuring IGLinearGaugeView
+
+=== Introduction
+
+The topics in this group cover enabling configuring, and using the  _IGLinearGaugeView_™ control’s supported features.
+
+=== Topics
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:iglineargaugeview-configuring-gauge-interactions.html[Configuring Gauge Interactions]
+|This topic provides an introductory overview of interacting with the _IGLinearGaugeView_ control and demonstrates how to configure it using a code example
+
+| link:iglineargaugeview-configuring-ranges.html[Configuring Ranges]
+|This topic provides a conceptual overview of ranges with the _IGLinearGaugeView_ control and demonstrates how to configure them using a code example.
+
+| link:iglineargaugeview-configuring-the-scale.html[Configuring the Scale]
+|This topic explains uses examples demonstrating how to customize the scale of the _IGLinearGaugeView_ control.
+
+| link:iglineargaugeview-customizing-scale-labels.html[Customizing Scale Labels]
+|This topic provides a conceptual overview of customizing scale labels on the _IGLinearGaugeView_ control and demonstrates how to configure it using a code example.
+
+|====

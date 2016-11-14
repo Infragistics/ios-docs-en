@@ -1,0 +1,108 @@
+﻿////
+
+|metadata|
+{
+    "name": "igtreemapview-themes",
+    "tags": ["Getting Started","How Do I","Styling","Theming"],
+    "controlName": ["IGTreemapView"],
+    "guid": "dafaef1e-6f51-454c-9f00-a32e556ce009",  
+    "buildFlags": [],
+    "createdOn": "2013-09-25T12:59:44.6787434Z"
+}
+|metadata|
+////
+
+= Themes
+
+== Topic Overview
+
+=== Purpose
+
+This topic provides an introductory overview of the supported themes available in the  _IGTreemapView_™ control.
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref324841248, Introduction >>
+
+** <<_Ref327859845,Theme summary>>
+** <<_Ref367858213,Theme names>>
+
+* <<_Ref324841253, Related Content >>
+
+[[_Ref324841248]]
+== Introduction
+
+[[_Ref327859845]]
+
+=== Theme summary
+
+Tree map themes allow you to give the tree map a consistent, color coordinated look and feel. Simply set the  _IGTreemapView_   `theme` property to one of the predefined themes:
+
+*  _IGTreemapViewTheme1_  
+*  _IGTreemapViewTheme2_  
+*  _IGTreemapViewTheme3_  
+*  _IGTreemapViewTheme4_  
+*  _IGTreemapViewTheme5_  
+
+*In C#:*
+
+[source,csharp]
+----
+IGTreemapView theTreemap = new IGTreemapView();
+//configure the tree map...
+theTreemap.theme = new IGTreemapViewTheme1();
+----
+
+*In Objective-C:*
+
+[source,csharp]
+----
+IGTreemapView *theTreemap = [[IGTreemapView alloc] init];
+//configure the tree map...
+theTreemap.theme = [[IGTreemapViewTheme1 alloc] init];
+----
+
+[[_Ref327864136]]
+
+=== Theme names
+
+The following table maps each of the supported themes to their respective type names.
+
+[options="header", cols="a,a"]
+|====
+|Theme Name|Preview
+
+| _IGTreemapViewTheme1_ 
+|image::images/IGTreemapView_-_Themes_1.png[]
+
+| _IGTreemapViewTheme2_ 
+|image::images/IGTreemapView_-_Themes_2.png[]
+
+| _IGTreemapViewTheme3_ 
+|image::images/IGTreemapView_-_Themes_3.png[]
+
+| _IGTreemapViewTheme4_ 
+|image::images/IGTreemapView_-_Themes_4.png[]
+
+| _IGTreemapViewTheme5_ 
+|image::images/IGTreemapView_-_Themes_5.png[]
+
+|====
+
+[[_Ref324841253]]
+== Related Content
+
+=== Topics
+
+The following topic provides additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:igtreemapview.html[IGTreemapView]
+|This topic serves as a gateway to the features and functionality of the _IGTreemapView_ control.
+
+|====

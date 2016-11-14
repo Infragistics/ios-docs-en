@@ -1,0 +1,41 @@
+﻿////
+
+|metadata|
+{
+    "name": "igchartview-radial-series",
+    "controlName": ["IGChartView"],
+    "tags": ["Charting","Getting Started"],
+    "guid": "2df82bc2-a3ea-4e1f-86e3-a1fb8420f2d1",  
+    "buildFlags": [],
+    "createdOn": "2012-05-21T17:59:01.6756459Z"
+}
+|metadata|
+////
+
+= Radial Series
+
+=== Introduction
+
+This collection of topics explains each of the individual Radial chart series (chart types) supported by the  _IGChartView_™ control.
+
+=== Topics
+
+The  _IGChartView_™ control supports the following types of radial series:
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:igchartview-radial-area-series.html[Radial Area Series]
+|This topic is a conceptual overview of the _IGChartView_ control’s Radial Area Series and provides a code example demonstrating how to add it to the chart view.
+
+| link:igchartview-radial-column-series.html[Radial Column Series]
+|This topic provides a conceptual overview of the _IGChartView_ control and provides a code sample demonstrating how to add it to the chart view.
+
+| link:igchartview-radial-line-series.html[Radial Line Series]
+|This topic provides a conceptual overview of the Radial Line series in the _IGChartView_ control and uses a code sample to demonstrate how to add it to the chart view.
+
+| link:igchartview-radial-pie-series.html[Radial Pie Series]
+|This topic provides a conceptual overview of the Radial Pie series in the _IGChartView_ control and uses a code sample to demonstrate how to add it to the chart view.
+
+|====

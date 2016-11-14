@@ -1,0 +1,132 @@
+﻿////
+
+|metadata|
+{
+    "name": "iggridview-row-separators",
+    "controlName": ["IGGridView"],
+    "tags": ["Grids","How Do I","Layouts","Styling"],
+    "guid": "19945f6d-0464-495e-9c1d-915d445ffcdd",  
+    "buildFlags": [],
+    "createdOn": "2012-05-14T19:13:17.4464812Z"
+}
+|metadata|
+////
+
+= Enabling and Configuring Row Separators
+
+== Topic Overview
+
+=== Purpose
+
+This topic provides information about creating  _IGGridView™_   row separators.
+
+=== Required background
+
+The following table lists the topics required as a prerequisite to understanding this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:iggridview-adding-the-ig-framework-file.html[Adding the Grid Framework File]
+|This topic explains the requirements for adding the grid framework file to an Xcode project; a requirement for using the _IGGridView_ control.
+
+|====
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref324505001,Creating Row Separators - Code Example>>
+
+** <<_Ref323199287,Description>>
+** <<_Ref323199293,Code>>
+
+* <<_Ref323199323,Related Content>>
+
+[[_Ref324505001]]
+[[_Ref323111244]]
+== Creating Row Separators – Code Example
+
+[[_Ref323199287]]
+
+=== Description
+
+In a basic  _IGGridView_   instance, the grid renders a 2 point black line separator after each row. In the event, that a line separator is insufficient for your needs the separator area between rows is completely customizable. The table below details the properties and methods used to customize the separator.
+
+[options="header", cols="a,a,a"]
+|====
+|Name|Description|Type
+
+|`rowSeparatorColor`
+|Changes the color of the row separator line by assigning a _UIColor_ .
+|Property
+
+|`rowSeparatorHeight`
+|Changes the height of the row separator by assigning an integer or float value.
+|Property
+
+|`rowSeparatorHeight`
+|Removes the row separator by setting the property to 0 (zero).
+|Property
+
+|`viewForRowSeparatorAtPath`
+|Displays a custom separator.
+|Method
+
+|====
+
+.Note:
+[NOTE]
+====
+When working with classes using the `viewForRowSeparatorAtPath` delete method you must use the  _IGGridViewDelegate_   to create row separators.
+====
+
+[[_Ref323199293]]
+
+=== Code
+
+The code below uses the  _IGGridViewDelegate’s_   `viewForRowSeparatorAtPath` delegate method to return a custom row separator  _UIView_  . This custom row separator uses an image of a shelf, creating the illusion of the grid row sitting on a shelf.
+
+*In Objective-C:*
+
+[source,csharp]
+----
+-(UIView *)gridView:(IGGridView *)gridView viewForRowSeparatorAtPath:(IGRowPath * )path
+{
+    UIImageView* iv = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"Shelf.png"]];
+    iv.contentMode = UIViewContentModeScaleAspectFit;
+    return iv;
+}
+----
+
+*In C#:*
+
+[source,csharp]
+----
+public override UIView ResolveRowSeparatorView (IGGridView gridView, IGRowPath path)
+{
+   UIImageView iv = new UIImageView(new UIImage("Shelf.png"));
+   iv.ContentMode = UIViewContentMode.ScaleAspectFit;
+   return iv;
+}
+----
+
+[[_Ref323199323]]
+== Related Content
+
+=== Topics
+
+The following topics provide additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:iggridview-adding-the-iggridview-uiview.html[Adding the IGGridView to a UIView]
+|This topic provides basic information about creating an instance of the _IGGridView_ and displaying data to help you with getting up and running with using the control.
+
+| link:iggridview.html[IGGridView]
+|This section serves as an introduction to the _IGGridView’s_ key features and functionalities.
+
+|====

@@ -1,0 +1,248 @@
+﻿////
+
+|metadata|
+{
+    "name": "iggridview-inserting-deleting-cells-rows",
+    "controlName": ["IGGridView"],
+    "tags": ["Grids","How Do I","Layouts"],
+    "guid": "65857f08-d99b-407c-aa93-e423e86691c2",  
+    "buildFlags": [],
+    "createdOn": "2012-07-16T14:21:04.3084174Z"
+}
+|metadata|
+////
+
+= Inserting and Deleting Cells and Rows
+
+== Topic Overview
+
+=== Purpose
+
+This topic provides a conceptual overview of inserting and deleting cells and rows from the  _IGGridView_™ control with code examples for each.
+
+=== Required background
+
+The following table lists the topics required as a prerequisite to understanding this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:iggridview-adding-the-ig-framework-file.html[Adding the Grid Framework File]
+|This topic explains the requirements for adding the grid framework file to an Xcode project; a requirement for using the _IGGridView_ control.
+
+|====
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref324841248, Introduction >>
+* <<_Ref329330892, Inserting Cells and Rows – Code Example >>
+
+** <<_Ref323199287,Description>>
+** <<_Ref329331375,Inserting Cells - Code>>
+** <<_Ref329331381,Inserting Rows>>
+
+* <<_Ref329331174, Deleting Cells and Rows – Code Example >>
+
+** <<_Ref329331181,Description>>
+** <<_Ref329331389,Deleting Cells - Code>>
+** <<_Ref329331393,Deleting Rows>>
+
+* <<_Ref323199323, Related Content >>
+
+[[_Ref324841248]]
+[[_Ref323199279]]
+[[_Ref324505001]]
+[[_Ref323111244]]
+== Introduction
+
+[[_Ref327859845]]
+
+=== Inserting and deleting summary
+
+The  _IGGridView’s_   methods for inserting and deleting cells and rows are very similar to the generic  _UITableView_   control. Once the underlying data has been updated, use one of the following methods to inform the  _IGGridView_   of the updates.
+
+* `-(void)insertCellsAtPaths:(NSArray $$* $$)path withAnimation:(IGGridViewAnimation)animation`
+* `-(void)insertRowsAtPaths:(NSArray $$* $$)paths withAnimation:(IGGridViewAnimation)animation`
+* `-(void)deleteCellsAtPaths:(NSArray $$* $$)paths withAnimation:(IGGridViewAnimation)animation`
+* `-(void)deleteRowsAtPaths:(NSArray $$* $$)paths withAnimation:(IGGridViewAnimation)animation`
+
+When rows or cells are inserted or deleted, the  _IGGridView_   uses the supplied `IGGridViewAnimation` to create a visual transition with the change of data. It is not necessary to call the `reloadData` or `updateData` methods on the  _IGGridView_  , they will be called automatically. The following bullets are the enumeration values for `IGGridViewAnimation`.
+
+* `IGGridViewAnimationAutomatic`
+* `IGGridViewAnimationBottom`
+* `IGGridViewAnimationFade`
+* `IGGridViewAnimationLeft`
+* `IGGridViewAnimationNone`
+* `IGGridViewAnimationRight`
+* `IGGridViewAnimationTop`
+
+.Note:
+[NOTE]
+====
+The `IGGridViewAnimationAutomatic` method uses the `IGGridViewAnimationTop` for row animation and the `IGGridViewAnimationLeft` for cell animation.
+====
+
+[[_Ref329330892]]
+== Inserting Cells and Rows – Code Example
+
+[[_Ref323199287]]
+
+=== Description
+
+To insert a new cell or row to the  _IGGridView_   simply add the new cell or row to the data source, invalidate the data, and finally instructing the  _IGGridView_   to insert the new cell or row with the specified animation.
+
+[[_Ref323199293]]
+
+=== Inserting Cells - Code
+
+*In Objective-C:*
+
+[source,csharp]
+----
+-(void)insertTouched:(id)sender
+{
+    IGGridViewDataSourceHelper* ds = _gridView.dataSource;
+    NSString* item = @”New Item”;
+    IGCellPath* path1 = [IGCellPath pathForRow:1 inSection:0 inColumn:0];
+    NSMutableArray* data = (NSMutableArray* )ds.data;
+    [data insertObject:item atIndex:1];
+    [ds invalidateData];
+    [_gridView insertCellsAtPaths:[NSArray arrayWithObjects:path1, nil] withAnimation:IGGridViewAnimationLeft];
+}
+----
+
+*In C#:*
+
+[source,csharp]
+----
+ IGGridViewDataSourceHelper ds = (IGGridViewDataSourceHelper)gridView.DataSource;
+   IGCellPath path = new IGCellPath(1, 0, 0);
+   ArrayList data = new ArrayList(ds.Data);
+   data.Add("New value");
+   ds.Data = (NSObject[])data.ToArray();
+   gridView.InsertCells(new NSObject[]{path}, IGGridViewAnimation.IGGridViewAnimationLeft);
+----
+
+[[_Ref329331381]]
+
+=== Inserting Rows – Code
+
+*In Objective-C:*
+
+[source,csharp]
+----
+-(void)insertTouched:(id)sender
+{
+    IGGridViewDataSourceHelper* ds = _gridView.dataSource;
+    NSString* item = @”New Item”;
+    IGRowPath* path1 = [IGRowPath pathForRow:1 inSection:0];
+    NSMutableArray* data = (NSMutableArray* )ds.data;
+    [data insertObject:item atIndex:1];
+    [ds invalidateData];  
+    [_gridView insertRowsAtPaths:[NSArray arrayWithObjects:path1, nil] withAnimation:IGGridViewAnimationTop];
+}
+----
+
+*In C#:*
+
+[source,csharp]
+----
+ IGGridViewDataSourceHelper ds = (IGGridViewDataSourceHelper)gridView.DataSource;
+   IGRowPathpath = new IGRowPath(1, 0);
+   ArrayList data = new ArrayList(ds.Data);
+   data.Add("New value");
+   ds.Data = (NSObject[])data.ToArray();
+   gridView.InsertRows(new NSObject[]{path}, IGGridViewAnimation.IGGridViewAnimationTop);
+----
+
+[[_Ref329331174]]
+== Deleting Cells and Rows – Code Example
+
+[[_Ref329331181]]
+
+=== Description
+
+To delete a cell or row from the  _IGGridView_   simply remove the cell or row from the data source, invalidate the data, and finally instructing the  _IGGridView_   to update the visually displayed data with the specified animation.
+
+[[_Ref329331187]]
+
+=== Deleting Cells - Code
+
+*In Objective-C:*
+
+[source,csharp]
+----
+-(void)deleteClicked:(id)sender
+{
+    IGGridViewDataSourceHelper* ds = _gridView.dataSource;
+    IGCellPath* path = [IGCellPath pathForRow:0 inSection:0 inColumn:0];
+    NSMutableArray* data = (NSMutableArray* )ds.data;
+    [data removeObjectAtIndex:0];
+    [ds invalidateData];       
+    [_gridView deleteCellsAtPaths:[NSArray arrayWithObjects:path , nil]withAnimation:IGGridViewAnimationLeft];
+}----
+
+*In C#:*
+
+[source,csharp]
+----
+ IGGridViewDataSourceHelper ds = (IGGridViewDataSourceHelper)gridView.DataSource;
+   IGCellPath path = new IGCellPath(0, 0, 0);
+   ArrayList data = new ArrayList(ds.Data);
+   data.RemoveAt(0);
+   ds.Data = (NSObject[])data.ToArray();
+   gridView.DeleteCells(new NSObject[]{path}, IGGridViewAnimation.IGGridViewAnimationLeft);
+----
+
+[[_Ref329331393]]
+
+=== Deleting Rows - Code
+
+*In Objective-C:*
+
+[source,csharp]
+----
+-(void)deleteClicked:(id)sender
+{
+    IGGridViewDataSourceHelper* ds = _gridView.dataSource;
+    IGRowPath* path = [IGRowPathpathForRow:0 inSection:0];
+    NSMutableArray* data = (NSMutableArray* )ds.data;
+    [data removeObjectAtIndex:0];
+    [ds invalidateData];       
+    [_gridView deleteRowsAtPaths:[NSArray arrayWithObjects:path , nil]withAnimation:IGGridViewAnimationTop];
+}
+----
+
+*In C#:*
+
+[source,csharp]
+----
+ IGGridViewDataSourceHelper ds = (IGGridViewDataSourceHelper)gridView.DataSource;
+   IGRowPath = new IGRowPath (0, 0);
+   ArrayList data = new ArrayList(ds.Data);
+   data.RemoveAt(0);
+   ds.Data = (NSObject[])data.ToArray();
+   gridView.DeleteRows(new NSObject[]{path}, IGGridViewAnimation.IGGridViewAnimationTop);
+----
+
+[[_Ref323199323]]
+== Related Content
+
+=== Topics
+
+The following topics provide additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:iggridview-adding-the-iggridview-uiview.html[Adding the IGGridView to a UIView]
+|This topic provides basic information about creating an instance of the _IGGridView_ and displaying data to help you with getting up and running with using the control.
+
+| link:iggridview.html[IGGridView]
+|This section serves as an introduction to the _IGGridView’s_ key features and functionalities.
+
+|====

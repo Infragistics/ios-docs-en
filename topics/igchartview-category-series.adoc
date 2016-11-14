@@ -1,0 +1,103 @@
+﻿////
+
+|metadata|
+{
+    "name": "igchartview-category-series",
+    "controlName": ["IGChartView"],
+    "tags": ["Charting","Getting Started"],
+    "guid": "2baf3883-95a0-4e83-8f2b-77fd47664516",  
+    "buildFlags": [],
+    "createdOn": "2012-05-11T19:39:24.1485135Z"
+}
+|metadata|
+////
+
+= Category Series
+
+=== Introduction
+
+The topics in this group explain the individual Category series (chart types) supported by the  _IGChartView_™ control.
+
+=== Topics
+
+The Category chart series of the  _IGChartView_   control are covered in the following topics:
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+|[[_Hlk326941987]] 
+
+link:igchartview-area-series.html[Area Series]
+|This topic provides a conceptual overview of the Bar series in the _IGChartView_ control and provides a code example showing you how to add it to the chart view.
+
+| link:igchartview-bar-series.html[Bar Series]
+|This topic provides a conceptual overview of the Bar series in the _IGChartView_ control and provides a code example showing you how to add it to the chart views.
+
+| link:igchartview-column-series.html[Column Series]
+|This topic provides a conceptual overview of the Column series in the _IGChartView_ control.
+
+| link:igchartview-line-series.html[Line Series]
+|This topic provides a conceptual overview of the Line series in the _IGChartView_ control and uses a code example to demonstrate how to add it to the chart view.
+
+| link:igchartview-point-series.html[Point Series]
+|This topic provides a conceptual overview of the Point series in the _IGChartView_ control and uses a code example to demonstrate how to add it to the chart view.
+
+| link:igchartview-range-area-series.html[Range Area Series]
+|This topic provides a conceptual overview of the Range Area series in the _IGChartView_ control and uses a code example to demonstrate how to add it to the chart view.
+
+| link:igchartview-range-column-series.html[Range Column Series]
+|This topic provides a conceptual overview of the Range Column series in the _IGChartView_ control and uses a code example to demonstrate how to add it to the chart view.
+
+| link:igchartview-spline-area-series.html[Spline Area Series]
+|This topic provides a conceptual overview of the Spline Area series in the _IGChartView_ control and uses a code example to demonstrate how to add it to the chart view.
+
+| link:igchartview-spline-series.html[Spline Series]
+|This topic provides a conceptual overview of the Spline series in the _IGChartView_ control and provides a code example showing you how to add it to the chart views.
+
+| link:igchartview-stacked-100-area-series.html[Stacked 100 Area Series]
+|This topic provides a conceptual overview of the Stacked 100 Area series in the _IGChartView_ control and provides a code example showing you how to add it to the chart views.
+
+| link:igchartview-stacked-100-bar-series.html[Stacked 100 Bar Series]
+|This topic provides a conceptual overview of the _IGChartView_ control’s Stacked 100 Bar series and demonstrates how to add it to the chart view using a code example.
+
+| link:igchartview-stacked-100-column-series.html[Stacked 100 Column Series]
+|This topic provides a conceptual overview of the Stacked 100 Column series in the _IGChartView_ control and provides a code example showing you how to add it to the chart views.
+
+| link:igchartview-stacked-100-line-series.html[Stacked 100 Line Series]
+|This topic provides a conceptual overview of the Stacked 100 Line series in the _IGChartView_ control and provides a code example showing you how to add it to the chart views.
+
+| link:igchartview-stacked-100-spline-area-series.html[Stacked 100 Spline Area Series]
+|This topic provides a conceptual overview of the Stacked 100 Spline Area series in the _IGChartView_ control and demonstrates adding it to the chart views using a code example.
+
+| link:igchartview-stacked-100-spline-series.html[Stacked 100 Spline Series]
+|This topic provides a conceptual overview of the Stacked 100 Spline series in the _IGChartView_ control and demonstrates adding it to the chart series using a code example.
+
+| link:igchartview-stacked-area-series.html[Stacked Area Series]
+|This topic provides a conceptual overview of the Stacked Area series in the _IGChartView_ control and demonstrates adding it to the chart view using a code example.
+
+| link:igchartview-stacked-bar-series.html[Stacked Bar Series]
+|This topic provides a conceptual overview of the Stacked Bar series in the _IGChartView_ control and provides a code example showing you how to add it to the chart views.
+
+| link:igchartview-stacked-column-series.html[Stacked Column Series]
+|This topic provides a conceptual overview of the Stacked Column series in the _IGChartView_ control and demonstrates adding it to the chart views using a code example.
+
+| link:igchartview-stacked-line-series.html[Stacked Line Series]
+|This topic provides a conceptual overview of the Stacked Line series in the _IGChartView_ control and demonstrates adding it to the chart views using a code example.
+
+| link:igchartview-stacked-spline-area-series.html[Stacked Spline Area Series]
+|This topic provides a conceptual overview of the Stacked Spline Area series in the _IGChartView_ control and demonstrates adding it to the chart views using a code example.
+
+| link:igchartview-stacked-spline-series.html[Stacked Spline Series]
+|This topic provides a conceptual overview of the Stacked Spline series in the _IGChartView_ control and demonstrates adding it to the chart views using a code example.
+
+| link:igchartview-step-area-series.html[Step Area Series]
+|This topic provides a conceptual overview of the Step Area series in the _IGChartView_ control and provides a code example showing you how to add it to the chart views.
+
+| link:igchartview-step-line-series.html[Step Line Series]
+|This topic provides a conceptual overview of the Step Area series of the _IGChartView_ control and uses a code example to demonstrate how to add it to the chart view.
+
+| link:igchartview-waterfall-series.html[Waterfall Series]
+|This topic provides a conceptual overview of the Waterfall series of the _IGChartView_ control and uses a code example to demonstrate how to add it to the chart view.
+
+|====

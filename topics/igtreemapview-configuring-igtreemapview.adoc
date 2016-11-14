@@ -1,0 +1,36 @@
+﻿////
+
+|metadata|
+{
+    "name": "igtreemapview-configuring-igtreemapview",
+    "tags": ["Charting","Getting Started"],
+    "controlName": ["IGTreemapView"],
+    "guid": "f12b17d1-2b21-4195-ab44-4b39deff6084",  
+    "buildFlags": [],
+    "createdOn": "2013-09-25T12:47:56.8257434Z"
+}
+|metadata|
+////
+
+= Configuring IGTreemapView
+
+=== Introduction
+
+The topics in this group cover enabling configuring, and using the  _IGTreemapView_™ control’s supported features.
+
+=== Topics
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:igtreemapview-configuring-interactions.html[Configuring Interactions]
+|This topic provides an introductory overview of interacting with the IGTreemapView control.
+
+| link:igtreemapview-configuring-color-mapper.html[Configuring the Color Mapper]
+|This topic provides an introductory overview of configuring the color mapper on the IGTreemapView control and demonstrates its configuration using a code example.
+
+| link:igtreemapview-configuring-rendering-mode.html[Configuring the Rendering Mode]
+|This topic provides an introductory overview of the rendering modes of the IGTreemapView control.
+
+|====

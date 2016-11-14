@@ -1,0 +1,175 @@
+﻿////
+
+|metadata|
+{
+    "name": "iggridview-configuring-grid-data-entry",
+    "tags": ["Editing","Getting Started","Grids","How Do I"],
+    "controlName": ["IGGridView"],
+    "guid": "be0dc65d-7978-4473-b7f1-5194ffd76326",  
+    "buildFlags": [],
+    "createdOn": "2013-09-11T13:45:54.7312551Z"
+}
+|metadata|
+////
+
+= Configuring Grid Data Entry
+
+== Topic Overview
+
+=== Purpose
+
+This topic provides an introduction to grid editing on the  _IGGridView_™ control and demonstrates how to configure them using a code example.
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref324841248, Introduction >>
+* <<_Ref327936206, Configuring Grid Editing – Code Example >>
+
+** <<_Ref327344209,Description>>
+** <<_Ref327523606,Prerequisites>>
+** <<_Ref327344217,Code>>
+
+* <<_Ref215823716, Related Content >>
+
+[[_Ref324841248]]
+== Introduction
+
+[[_Ref215796828]]
+
+=== Grid editing summary
+
+Editing cells on the grid is handled through the  _IGGridViewDataSourceHelper_  . To turn on editing, simply set the `allowEditing` property found on the  _IGGridViewDataSourceHelper_   to `YES`. Double tapping any editable cell after enabling this property rotates the cell into edit mode.
+
+.Note:
+[NOTE]
+====
+_IGGridViewColumnDefintion_   and  _IGGridViewValueColumnDefintion_   both support editing, however  _IGGridViewImageColumnDefintion_   does not.
+====
+
+You can customize the animation sequence of a cell entering or exiting edit mode by setting the following properties found on the  _IGGridViewDataSourceHelper_  .
+
+* `editingTransitionDuration` – gets or sets the time, in seconds, it takes for a cell to animate into edit mode or exit edit mode
+* `editingStartTransitionOptions` - gets or sets the transition for a cell to enter edit mode
+* `editingEndTransitionOptions` - gets or sets the transition for a cell to exit edit mode
+
+.Note:
+[NOTE]
+====
+The  _UIViewAnimationOptions_   enumerations for the `editingStartTransitionOptions` and `editingEndTransitionOptions` properties can be found in link:http://developer.apple.com/library/ios/documentation/UIKit/Reference/UIView_Class/UIView/UIView.html#//apple_ref/doc/uid/TP40006816-CH3-SW105[Apple’s documentation].
+====
+
+Use the `editingDelegate` property on the  _IGGridViewDataSourceHelper,_   which is of type  _IGGridViewDataSourceHelperEditingDelegate,_   to be notified when an editor is about to be displayed or dismissed. You can use these methods to do things like setting a default editing value or tweaking a value before storing the value in your underlying data.
+
+Editing is mainly a column level feature. To disable editing for a particular column, set the `editable` property to `NO` on  _IGGridViewColumnDefinition_  .
+
+Currently  _UITextField_   is the only built in editor supported. To use a different editor, you will have to create a custom column definition derived from one of the  _IGGridViewColumnDefintion_   classes. Then you will need to override the following methods:
+
+* `-(void)gridView:(IGGridView$$*$$)gridView displayEditorForCell:(IGCellPath$$*$$)path usingDataSource:(IGGridViewDataSourceHelper$$* $$)dataSource`
+* `-(void)gridView:(IGGridView $$*$$)gridView removeEditorForCell:(IGCellPath $$*$$)path usingDataSource:(IGGridViewDataSourceHelper $$* $$)dataSource isCellStillVisible:(BOOL)cellVisible isAnotherCellEnteringEditMode:(BOOL)anotherCellEnteringEditMode`
+
+The column is responsible for displaying the editor, raising the delegate methods of the data source and optionally choosing whether or not to use the data source helper’s animation settings. For example, you can use the following lines of code to display and remove the editor:
+
+* Show - `[UIView transitionFromView:cell.textLabel toView:field duration:dsh.editingTransitionDuration options:dsh.editingStartTransitionOptions completion:nil];`
+* Hide - `[UIView transitionFromView:_editField toView:cell.textLabel duration:duration options:options completion:nil];`
+
+You will need to notify the grid when using a custom editor in any grid that requires a keyboard. Failure to notify the grid could cause cells nearer to the bottom of the device screen to become covered by the keyboard and obscures what the user is typing. The  _IGGridView_   has two methods that allow you to control this behavior.
+
+* `registerKeyboardForCell:`
+* `unregisterKeyboard:`
+
+The  _IGGridView_   method’s `registerKeyboardForCell:` and `unregisterKeyboard:` are helper methods that tell the grid to listen for a keyboard. By registering the cell, the grid will automatically make sure the cell being edited is scrolled above the keyboard. It will also update the grid’s `contentInset`, repositioning the bottom of the grid is at the top of the keyboard.
+
+When finished editing, you should unregister the keyboard. By doing this the grid will gracefully animate back into place by adjusting the `contentInset`. The `unregisterKeyboard:` method accepts a BOOL parameter, which is a flag that you can set if your cell is exiting edit mode and another cell is entering edit mode. Setting this parameter flag to `NO` allows the grid to stay at the current `contentInset` position.
+
+Finally, cells can be programmatically placed into and out of edit mode by using one of the following methods found in the  _IGGridViewDataSourceHelper_   class.
+
+* `beginEditing:inGrid:`
+* `endEditing`
+
+[[_Ref327936206]]
+[[_Ref324841253]]
+== Configuring Grid Editing – Code Example
+
+[[_Ref327344209]]
+
+=== Description
+
+The code below creates an instance of the  _IGGridView_   with one column and five rows that allow cell editing.
+
+[[_Ref327523606]]
+
+=== Prerequisites
+
+This code example requires the inclusion of the  __IG__  framework; details about how to add this framework are available in the link:iggridview-adding-the-ig-framework-file.html[Adding the IG Framework File] topic.
+
+[[_Ref327344217]]
+
+=== Code
+
+*In Objective-C:*
+
+[source,csharp]
+----
+IGGridViewDataSourceHelper *dsh;
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    self.view.backgroundColor = [UIColor whiteColor];
+    NSArray *data = [[NSArray alloc] initWithObjects:@"One", @"Two", @"Three", @"Four", @"Five", nil];
+    CGRect gridFrame = CGRectInset(self.view.bounds, 10, 10);
+    IGGridView *gridView = [[IGGridView alloc] initWithFrame:gridFrame style:IGGridViewStyleDefault];
+    gridView.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
+    gridView.headerHeight = 0;
+    gridView.emptyRows = NO;
+    [self.view addSubview:gridView];
+    dsh = [[IGGridViewDataSourceHelper alloc] init];
+    dsh.data = data;
+    dsh.allowEditing = YES;
+    gridView.dataSource = dsh;
+}
+----
+
+*In C#:*
+
+[source,csharp]
+----
+public override void ViewDidLoad ()
+{
+      base.ViewDidLoad ();
+      this.View.BackgroundColor = UIColor.White;
+      List<NSObject> data = new List<NSObject> ();
+      data.Add (new NSString("One"));
+      data.Add (new NSString("Two"));
+      data.Add (new NSString("Three"));
+      data.Add (new NSString("Four"));
+      data.Add (new NSString("Five"));
+      IGGridView gridView = new IGGridView (this.View.Bounds, IGGridViewStyle.IGGridViewStyleDefault);
+      gridView.Frame.Inflate (-10, -10);
+      gridView.AutoresizingMask = UIViewAutoresizing.FlexibleHeight | UIViewAutoresizing.FlexibleWidth;
+      gridView.HeaderHeight = 0;
+      gridView.EmptyRows = false;
+      this.View.Add (gridView);
+      IGGridViewDataSourceHelper dsh = new IGGridViewDataSourceHelper ();
+      dsh.Data = data.ToArray();
+      dsh.AllowEditing = true;
+      gridView.DataSource = dsh;
+}
+----
+
+[[_Ref215823716]]
+== Related Content
+
+=== Topics
+
+The following topic provides additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:iggridview.html[IGGridView]
+|The topics in this group cover enabling, configuring, and using the _IGGridView_ control’s supported features.
+
+|====

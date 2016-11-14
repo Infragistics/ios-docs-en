@@ -1,0 +1,84 @@
+﻿////
+
+|metadata|
+{
+    "name": "igchartview-hiding-invalid-data-financial-price-series",
+    "controlName": [],
+    "tags": [],
+    "guid": "1f8486f3-d8a7-4f72-baca-ffc0129c3bf1",  
+    "buildFlags": [],
+    "createdOn": "2015-03-30T12:35:57.7354846Z"
+}
+|metadata|
+////
+
+= Hiding Invalid Data in the Financial Price Series
+
+== Topic Overview
+
+=== Purpose
+
+This topic provides an introductory overview of hiding invalid data in the financial price series on the  _IGChartView_™ control.
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref324841248, Introduction >>
+* <<_Ref215823716, Related Content >>
+
+[[_Ref324841248]]
+== Introduction
+
+=== Hiding invalid data summary
+
+OHLC points have always been allowed to show in the chart regardless of the underlying values. However, a financial chart should not show points where the low value is greater than high value. To hide invalid values set the OHLC data source helper’s property `restrictLowsGreaterThanHighs` to `YES`.
+
+.Note:
+[NOTE]
+====
+To take advantage of this feature, a data source helper must be used.
+====
+
+*In Objective-C:*
+
+[source,csharp]
+----
+_chart = [[IGChartView alloc]initWithFrame:self.view.frame];
+_ohlcHelper = [[IGOHLCSeriesDataSourceHelper alloc]initWithData:_data openPath:@"open" highPath:@"high" lowPath:@"low" andClosePath:@"close"];
+_ohlcHelper.restrictLowsGreaterThanHighs = YES;
+[_chart addSeriesForType:[IGFinancialPriceSeries class] usingKey:@"series" withDataSource:_ohlcHelper firstAxisKey:@"x" secondAxisKey:@"y"];
+IGFinancialPriceSeries *s = [_chart findSeriesByKey:@"series"];
+s.displayType = IGPriceDisplayTypeOHLC;
+[self.view addSubview:_chart];
+----
+
+*In C#:*
+
+[source,csharp]
+----
+_chart = new IGChartView (this.View.Bounds);
+_ohlcHelper = new IGOHLCSeriesDataSourceHelper (_data.ToArray (), "Open", "High", "Low", "Close");
+_ohlcHelper.RestrictLowsGreaterThanHighs = true;
+_chart.AddSeries (new ObjCRuntime.Class ("IGFinancialPriceSeries"), "series", _ohlcHelper, "x", "y");
+IGFinancialPriceSeries s = _chart.FindSeriesByKey ("series");
+s.DisplayType = IGPriceDisplayType.IGPriceDisplayTypeOHLC;
+this.View.AddSubview (_chart);
+----
+
+[[_Ref324841253]]
+[[_Ref215823716]]
+== Related Content
+
+=== Topics
+
+The following topic provides additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:igchartview.html[IGChartView]
+|The topics in this group cover enabling, configuring, and using the _IGChartView_ control’s supported features.
+
+|====

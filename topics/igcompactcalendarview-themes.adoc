@@ -1,0 +1,233 @@
+﻿////
+|metadata|
+{
+    "name": "igcompactcalendarview-themes",
+    "controlName": ["IGCompactCalendarView"],
+    "tags": ["How Do I","Styling","Theming"],
+    "guid": "37a1c97a-e124-4b9c-964c-e7aa0be15b61",
+    "buildFlags": [],
+    "createdOn": "2016-02-11T19:51:44.6136179Z"
+}
+|metadata|
+////
+
+= Themes
+
+== Topic Overview
+
+=== Purpose
+
+This topic provides a conceptual overview of the supported themes available in the  _IGCompactCalendarView_™ control.
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref324841248, Introduction >>
+
+** <<_Ref327859845,Theme summary>>
+** <<_Ref327864136,Theme types>>
+
+* <<_Ref329853754, Creating a Custom Theme – Code Example >>
+
+** <<_Ref323199287,Description>>
+** <<_Ref323199293,Code>>
+
+* <<_Ref324841253, Related Content >>
+
+[[_Ref324841248]]
+
+== Introduction
+
+[[_Ref327859845]]
+
+=== Theme summary
+
+Compact calendar themes allow you to apply a consistent, color coordinated, look and feel to your charts. Simply set the  _IGCompactCalendarView_   `theme` property to one of the predefined themes.
+
+*In C#:*
+
+[source,csharp]
+----
+_compactCalendarView.Theme = new IGCompactCalendarViewDefaultTheme();
+----
+
+*In Objective-C:*
+
+[source,csharp]
+----
+_compactCalendarView.theme = [[IGCompactCalendarViewDefaultTheme alloc] init];
+----
+
+[[_Ref327864136]]
+
+=== Theme types
+
+The following table contains the names associated with the supported themes type and a preview of its rendering.
+
+[options="header", cols="a,a"]
+|====
+|Theme Name|Preview
+
+| _IGCompactCalendarViewDefaultTheme_ 
+|image::images/IGCompactCalendarView-Adding-Meetings_1.png[]
+|====
+
+[[_Ref329853754]]
+
+== Creating a Custom Theme – Code Example
+
+[[_Ref323199287]]
+
+=== Description
+
+The following code defines a new _IGCompactCalendarViewThemeDefinition_. After initializing an instance of _CustomTheme_, assign it to the _IGCompactCalendarView_ control’s `theme` property.
+
+[[_Ref323199293]]
+
+=== Code
+
+*In Objective-C:*
+
+[source,csharp]
+----
+@interface CustomTheme : NSObject<IGCompactCalendarViewThemeDefinition>
+@end
+
+@implementation CustomTheme
+
+-(NSString *)headerFontName
+{
+    return @"Cochin-Bold";
+}
+
+-(NSString *)dayFontName
+{
+    return @"Cochin";
+}
+
+-(NSString *)weekDayFontName
+{
+    return @"Cochin";
+}
+
+-(UIColor *)dayTextColor
+{
+    return [UIColor colorWithWhite:.2f alpha:1];
+}
+
+-(UIColor *)weekDayTextColor
+{
+    return [UIColor colorWithWhite:.6f alpha:1];
+}
+
+-(UIColor *)headerTextColor
+{
+    return [UIColor colorWithWhite:.15f alpha:1];
+}
+
+-(UIColor *)headerBackgroundColor
+{
+    return [UIColor colorWithWhite:.97 alpha:1];
+}
+
+-(UIColor *)highlightColor
+{
+    return [UIColor blueColor];
+}
+
+-(UIColor *)highlightOffsetColor
+{
+    return [UIColor whiteColor];
+}
+
+@end
+----
+
+*In C#:*
+
+[source,csharp]
+----
+public class CustomTheme : IGCompactCalendarViewThemeDefinition
+{
+	public override string HeaderFontName()
+	{
+		return "Cochin-Bold";
+	}
+
+	public override string DayFontName()
+	{
+		return "Cochin";
+	}
+
+	public override string WeekDayFontName()
+	{
+		return "Cochin";
+	}
+
+	public override UIColor DayTextColor
+	{
+		get
+		{
+			return UIColor.FromWhiteAlpha(0.2f, 1.0f);
+		}
+	}
+
+	public override UIColor WeekDayTextColor
+	{
+		get
+		{
+			return UIColor.FromWhiteAlpha(0.6f, 1.0f);
+		}
+	}
+
+	public override UIColor HeaderTextColor
+	{
+		get
+		{
+			return UIColor.FromWhiteAlpha(0.15f, 1.0f);
+		}
+	}
+
+	public override UIColor HeaderBackgroundColor
+	{
+		get
+		{
+			return UIColor.FromWhiteAlpha(0.97f, 1.0f);
+		}
+	}
+
+	public override UIColor HighlightColor
+	{
+		get
+		{
+			return UIColor.Blue;
+		}
+	}
+
+	public override UIColor HighlightOffsetColor
+	{
+		get
+		{
+			return UIColor.White;
+		}
+	}
+}
+----
+
+[[_Ref324841253]]
+
+== Related Content
+
+=== Topics
+
+The following topic provides additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:igcompactcalendarview.html[IGCompactCalendarView]
+|This topic serves as a gateway to the features and functionality of the _IGCompactCalendarView_ control.
+
+|====

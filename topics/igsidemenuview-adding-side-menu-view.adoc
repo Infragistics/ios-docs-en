@@ -1,0 +1,298 @@
+﻿////
+
+|metadata|
+{
+    "name": "igsidemenuview-adding-side-menu-view",
+    "tags": ["How Do I","Getting Started"],
+    "controlName": ["IGSideMenuView"],
+    "guid": "b698743c-4a64-435e-8dbe-b30599fdb616",  
+    "buildFlags": [],
+    "createdOn": "2014-09-15T11:39:34.0967333Z"
+}
+|metadata|
+////
+
+= Adding the Side Menu to a View
+
+== Topic Overview
+
+=== Purpose
+
+This topic explains, with a code example how to create a basic instance of the  _IGSideMenuView_™ control and display it on a view.
+
+=== Required background
+
+The following table lists the prerequisite topics required to understanding this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:iggridview-adding-the-ig-framework-file.html[Adding the IG Framework File]
+|This topic explains how to add the IG framework file to a project.
+
+|====
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref328621638, Displaying the IGSideMenuView – Code Example >>
+
+** <<_Ref323199287,Description>>
+** <<_Ref357071611,Preview>>
+** <<_Ref323199293,Code>>
+** <<_Ref260551535,Code: Complete listing>>
+
+* <<_Ref323199323, Related Content >>
+
+[[_Ref323199279]]
+[[_Ref328621638]]
+[[_Ref323111244]]
+== Displaying the  _IGSideMenuView_   – Code Example
+
+[[_Ref323199287]]
+
+=== Description
+
+This code example illustrates creating an  _IGSideMenuView_   that uses the  _IGGridView_   as the right menu.
+
+[[_Ref357071611]]
+
+=== Preview
+
+image::images/IGSideMenuView_-_Adding_the_Side_Menu_to_a_View_1.png[]
+
+[[_Ref323199293]]
+
+=== Code
+
+To start, create an instance of the  _IGSideMenuView_   and add the subview.
+
+*In Objective-C:*
+
+[source,csharp]
+----
+_sideMenuView = [[IGSideMenuView alloc] initWithFrame:self.view.bounds];
+_sideMenuView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
+[self.view addSubview:_sideMenuView];
+----
+
+*In C#:*
+
+[source,csharp]
+----
+_sideMenuView = new IGSideMenuView ();
+_sideMenuView.Frame = this.View.Bounds;
+_sideMenuView.AutoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleHeight;
+this.View.AddSubview (_sideMenuView);
+----
+
+Next, create an instance of a label to add to the `contentView` of the  _IGSideMenuView_  .
+
+*In Objective-C:*
+
+[source,csharp]
+----
+_contentLabel = [[UILabel alloc] initWithFrame:_sideMenuView.contentView.bounds];
+_contentLabel.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
+_contentLabel.textAlignment = NSTextAlignmentCenter;
+_contentLabel.text = @"Content Area - Swipe or drag to the left to view the menu.";
+[_sideMenuView.contentView addSubview:_contentLabel];
+----
+
+*In C#:*
+
+[source,csharp]
+----
+_contentLabel = new UILabel (_sideMenuView.ContentView.Bounds);
+_contentLabel.AutoresizingMask = UIViewAutoresizing.FlexibleHeight | UIViewAutoresizing.FlexibleWidth;
+_contentLabel.TextAlignment = UITextAlignment.Center;
+_contentLabel.Text = "Content Area - Swipe or drag to the left to view the menu.";
+_sideMenuView.ContentView.AddSubview (_contentLabel);
+----
+
+Next, create an instance of the  _IGGridViewDataSourceHelper_   for the menu options.
+
+*In Objective-C:*
+
+[source,csharp]
+----
+_dsh = [[IGGridViewDataSourceHelper alloc] init];
+_dsh.data = @[@"Option 1", @"Option 2", @"Option 3", @"Option 4"];
+----
+
+*In C#:*
+
+[source,csharp]
+----
+_dsh = new IGGridViewDataSourceHelper ();
+_dsh.Data = new NSObject[] { new NSString("Option 1"), new NSString("Option 2"), 
+      new NSString("Option 3"), new NSString("Option 4") };
+----
+
+Then, create the  _IGGridView_   instance and initialize its `dataSource` with the  _IGGridViewDataSourceHelper_   from the last step.
+
+*In Objective-C:*
+
+[source,csharp]
+----
+_gridMenu = [[IGGridView alloc] initWithFrame:CGRectMake(0, 0, 250, 1) style:IGGridViewStyleDefault];
+    _gridMenu.headerHeight = 0;
+    _gridMenu.emptyRows = NO;
+    _gridMenu.theme = _theme = [[IGGridViewDarkTheme alloc] init];
+    _gridMenu.backgroundColor = [UIColor colorWithWhite:0.15 alpha:1.0];
+    _gridMenu.dataSource = _dsh;
+    _gridMenu.delegate = self;
+----
+
+*In C#:*
+
+[source,csharp]
+----
+_gridMenu = new IGGridView (new RectangleF (0, 0, 250, 1), IGGridViewStyle.IGGridViewStyleDefault);
+_gridMenu.HeaderHeight = 0;
+_gridMenu.EmptyRows = false;
+_gridMenu.Theme = _theme = new IGGridViewDarkTheme ();
+_gridMenu.BackgroundColor = new UIColor (0.15f, 0.15f, 0.15f, 1.0f);
+_gridMenu.DataSource = _dsh;
+_gridMenu.Delegate = _gridDelegate = new GridDelegate() { SideMenu = _sideMenuView };
+----
+
+Lastly, assign the  _IGGridView_   instance as the right side menu on the  _IGSideMenuView_  .
+
+*In Objective-C:*
+
+[source,csharp]
+----
+_sideMenuView.rightMenuView = _gridMenu;
+----
+
+*In C#:*
+
+[source,csharp]
+----
+_sideMenuView.RightMenuView = _gridMenu;
+----
+
+[[_Ref260551535]]
+
+=== Code: Complete listing
+
+*In Objective-C:*
+
+[source,csharp]
+----
+@interface igViewController () <IGGridViewDelegate>
+{
+    IGSideMenuView *_sideMenuView;
+    IGGridView *_gridMenu;
+    IGGridViewDataSourceHelper *_dsh;
+    IGGridViewDarkTheme *_theme;
+    UILabel *_contentLabel;
+}
+@end
+@implementation igViewController
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    _sideMenuView = [[IGSideMenuView alloc] initWithFrame:self.view.bounds];
+    _sideMenuView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
+    [self.view addSubview:_sideMenuView];
+    _contentLabel = [[UILabel alloc] initWithFrame:_sideMenuView.contentView.bounds];
+    _contentLabel.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
+    _contentLabel.textAlignment = NSTextAlignmentCenter;
+    _contentLabel.text = @"Content Area - Swipe or drag to the left to view the menu.";
+    [_sideMenuView.contentView addSubview:_contentLabel];
+    _dsh = [[IGGridViewDataSourceHelper alloc] init];
+    _dsh.data = @[@"Option 1", @"Option 2", @"Option 3", @"Option 4"];
+    _gridMenu = [[IGGridView alloc] initWithFrame:CGRectMake(0, 0, 250, 1) style:IGGridViewStyleDefault];
+    _gridMenu.headerHeight = 0;
+    _gridMenu.emptyRows = NO;
+    _gridMenu.theme = _theme = [[IGGridViewDarkTheme alloc] init];
+    _gridMenu.backgroundColor = [UIColor colorWithWhite:0.15 alpha:1.0];
+    _gridMenu.dataSource = _dsh;
+    _gridMenu.delegate = self;
+    _sideMenuView.rightMenuView = _gridMenu;
+}
+- (void)gridView:(IGGridView *)gridView didSelectRowAtPath:(IGRowPath * )path
+{
+    [self performSelector:@selector(deselectCell) withObject:nil afterDelay:0.75];
+}
+- (void)deselectCell
+{
+    [_sideMenuView closeSideMenu];
+    [_gridMenu deselectAll];
+}
+@end
+----
+
+*In C#:*
+
+[source,csharp]
+----
+public class GridDelegate : IGGridViewDelegate
+{
+      [Export("SideMenu")]
+      public IGSideMenuView SideMenu { get; set; }
+      public override void DidSelectRow (IGGridView gridView, IGRowPath path)
+      {
+            NSTimer.CreateScheduledTimer (0.75f, () => {
+                  SideMenu.CloseSideMenu();
+                  gridView.DeselectAll();
+            });
+      }
+}
+public partial class SideMenuGettingStarted_CSViewController : UIViewController
+{
+      IGSideMenuView _sideMenuView;
+      IGGridView _gridMenu;
+      IGGridViewDataSourceHelper _dsh;
+      IGGridViewDarkTheme _theme;
+      GridDelegate _gridDelegate;
+      UILabel _contentLabel;
+      public SideMenuGettingStarted_CSViewController ()
+      {
+      }
+      public override void ViewDidLoad ()
+      {
+            base.ViewDidLoad ();
+            _sideMenuView = new IGSideMenuView ();
+            _sideMenuView.Frame = this.View.Bounds;
+            _sideMenuView.AutoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleHeight;
+            this.View.AddSubview (_sideMenuView);
+            _contentLabel = new UILabel (_sideMenuView.ContentView.Bounds);
+            _contentLabel.AutoresizingMask = UIViewAutoresizing.FlexibleHeight | UIViewAutoresizing.FlexibleWidth;
+            _contentLabel.TextAlignment = UITextAlignment.Center;
+            _contentLabel.Text = "Content Area - Swipe or drag to the left to view the menu.";
+            _sideMenuView.ContentView.AddSubview (_contentLabel);
+            _dsh = new IGGridViewDataSourceHelper ();
+            _dsh.Data = new NSObject[] { new NSString("Option 1"), new NSString("Option 2"), 
+                  new NSString("Option 3"), new NSString("Option 4") };
+            _gridMenu = new IGGridView (new RectangleF (0, 0, 250, 1), IGGridViewStyle.IGGridViewStyleDefault);
+            _gridMenu.HeaderHeight = 0;
+            _gridMenu.EmptyRows = false;
+            _gridMenu.Theme = _theme = new IGGridViewDarkTheme ();
+            _gridMenu.BackgroundColor = new UIColor (0.15f, 0.15f, 0.15f, 1.0f);
+            _gridMenu.DataSource = _dsh;
+            _gridMenu.Delegate = _gridDelegate = new GridDelegate() { SideMenu = _sideMenuView };
+            _sideMenuView.RightMenuView = _gridMenu;
+      }
+}
+----
+
+[[_Ref323199323]]
+== Related Content
+
+=== Topics
+
+The following topic provides additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:igsidemenuview.html[IGSideMenuView]
+|This topic provides a conceptual overview of the _IGSideMenuView_ control and its key features.
+
+|====

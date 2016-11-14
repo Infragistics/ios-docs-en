@@ -1,0 +1,281 @@
+﻿////
+
+|metadata|
+{
+    "name": "igsparklineview-adding-sparkline-chart-view",
+    "controlName": ["IGSparklineView"],
+    "tags": ["Charting","Getting Started","How Do I"],
+    "guid": "51fceb0d-6942-4edd-9f6d-beb7efcc385c",  
+    "buildFlags": [],
+    "createdOn": "2013-08-26T18:25:36.9629453Z"
+}
+|metadata|
+////
+
+= Adding a Sparkline Chart to a View
+
+== Topic Overview
+
+=== Purpose
+
+This topic uses a code example to explain how to create and display a basic instance of the  _IGSparklineView_™ control.
+
+=== Required background
+
+The following table lists the prerequisite topic required to understanding this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:igchartview-adding-the-chart-framework-file.html[Adding the Chart Framework File]
+|This topic explains how to add the Chart framework file to a project.
+
+|====
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref328621638, Displaying an IGSparklineView – Code Example >>
+
+** <<_Ref323199287,Description>>
+** <<_Ref357071611,Preview>>
+** <<_Ref323199293,Code>>
+** <<_Ref235156702,Code: Complete Listing>>
+
+* <<_Ref323199323, Related Content >>
+
+[[_Ref323199279]]
+[[_Ref328621638]]
+[[_Ref323111244]]
+== Displaying an  _IGSparklineView_   – Code Example
+
+[[_Ref323199287]]
+
+=== Description
+
+This code example illustrates how to create a sparkline chart, 50 pixels high and as wide as the parent view and render it centered vertically in the current device orientation.
+
+[[_Ref357071611]]
+
+=== Preview
+
+image::images/IGSparklineView_-_Adding_a_Sparkline_Chart_to_a_View_1.png[]
+
+[[_Ref323199293]]
+
+=== Code
+
+To start, add custom data objects into an  _NSMutableArray_   and initialize into an instance of the  _IGSparklineViewDataSourceHelper_  .
+
+*In C#:*
+
+[source,csharp]
+----
+NSMutableArray *data = [self createSimpleData:20];
+IGSparklineViewDataSourceHelper *dsh = [[IGSparklineViewDataSourceHelper alloc] initWithData:data valuePath:@"value"];
+----
+
+*In Objective-C:*
+
+[source,csharp]
+----
+List<NSObject> data = this.CreateSimpleData (20);
+IGSparklineViewDataSourceHelper dsh = new IGSparklineViewDataSourceHelper(data.ToArray(), "Value", "Label");
+----
+
+Next, with the  _IGSparklineView_   instance, configure its height to 50 pixels and the width equal to the parent view’s width, using a centered position in the parent view.
+
+*In Objective-C:*
+
+[source,csharp]
+----
+IGSparklineView *sparklineView = [[IGSparklineView alloc] init];
+CGRect sparklineRect = CGRectMake(0, (self.view.bounds.size.height / 2) - 25, self.view.bounds.size.width, 50);
+sparklineView.frame = CGRectInset(sparklineRect, 10, 0);
+----
+
+*In C#:*
+
+[source,csharp]
+----
+IGSparklineView sparklineView = new IGSparklineView();
+RectangleF sparklineRect = new RectangleF(0, (this.View.Bounds.Size.Height / 2) - 25, this.View.Bounds.Size.Width, 50);
+sparklineRect.Inflate (-10, 0);
+sparklineView.Frame = sparklineRect;
+----
+
+Next, set the `autoresizingMask` property to allow the sparkline chart to float in the center of the current device orientation.
+
+*In Objective-C:*
+
+[source,csharp]
+----
+sparklineView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleBottomMargin;
+----
+
+*In C#:*
+
+[source,csharp]
+----
+sparklineView.AutoresizingMask = UIViewAutoresizing.FlexibleWidth|UIViewAutoresizing.FlexibleTopMargin|UIViewAutoresizing.FlexibleBottomMargin;
+----
+
+Set the  _IGSparklineView_  ’s `dataSource` property to the  _IGSparklineViewDataSourceHelper_   instance.
+
+*In Objective-C:*
+
+[source,csharp]
+----
+sparklineView.dataSource = dsh;
+----
+
+*In C#:*
+
+[source,csharp]
+----
+sparklineView.DataSource = dsh;
+----
+
+Finally, add the sparkline chart to the view.
+
+*In Objective-C:*
+
+[source,csharp]
+----
+ [self.view addSubview:sparklineView];
+----
+
+*In C#:*
+
+[source,csharp]
+----
+this.View.Add (sparklineView);
+----
+
+[[_Ref235156702]]
+
+=== Code: Complete Listing
+
+*In Objective-C:*
+
+[source,csharp]
+----
+@interface SimpleData : NSObject
+@property (nonatomic, assign) double value;
+@property (nonatomic, retain) NSString *label;
+@end
+@implementation SimpleData
+@end
+@implementation igViewController
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    NSMutableArray *data = [self createSimpleData:20];
+    IGSparklineViewDataSourceHelper *dsh = [[IGSparklineViewDataSourceHelper alloc] initWithData:data valuePath:@"value"];
+    IGSparklineView *sparklineView = [[IGSparklineView alloc] init];
+    CGRect sparklineRect = CGRectMake(0, (self.view.bounds.size.height / 2) - 25, self.view.bounds.size.width, 50);
+    sparklineView.frame = CGRectInset(sparklineRect, 10, 0);
+    sparklineView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleBottomMargin;
+    sparklineView.backgroundColor = [UIColor blackColor];
+    sparklineView.markerVisibility = NO;
+    sparklineView.negativeMarkerVisibility = NO;
+    sparklineView.firstMarkerVisibility = NO;
+    sparklineView.lastMarkerVisibility = NO;
+    sparklineView.highMarkerVisibility = NO;
+    sparklineView.lowMarkerVisibility = NO;
+    sparklineView.dataSource = dsh;
+    [self.view addSubview:sparklineView];
+}
+-(NSMutableArray *) createSimpleData:(int)recordCount
+{
+    NSMutableArray *retValue = [[NSMutableArray alloc] init];
+    for (int i = 0 ; i < recordCount ; i++)
+    {
+        int randomInt = rand();
+        int shouldMakeNeg = rand();
+        randomInt = randomInt % 10;
+        if ((shouldMakeNeg % 3) == 0)
+            randomInt = -randomInt;
+        SimpleData *data = [[SimpleData alloc] init];
+        data.value = randomInt;
+        data.label = [NSString stringWithFormat:@"Item %d", i];
+        [retValue addObject:data];
+    }
+    return retValue;
+}
+@end
+----
+
+*In C#:*
+
+[source,csharp]
+----
+public class SimpleData : NSObject
+{
+      [Export("Value")]
+      public double value { get; set;}
+      [Export("Label")]
+      public string label { get; set; }
+      public SimpleData (double data_value, string data_label)
+      {
+            value = data_value;
+            label = data_label;
+      }
+}
+public partial class SparklineGettingStarted_CSViewController : UIViewController
+{
+      public SparklineGettingStarted_CSViewController () { }
+      public override void ViewDidLoad ()
+      {
+            base.ViewDidLoad ();
+            List<NSObject> data = this.CreateSimpleData (20);
+            IGSparklineViewDataSourceHelper dsh = new IGSparklineViewDataSourceHelper(data.ToArray(), "Value", "Label");
+            IGSparklineView sparklineView = new IGSparklineView();
+            RectangleF sparklineRect = new RectangleF(0, (this.View.Bounds.Size.Height / 2) - 25, this.View.Bounds.Size.Width, 50);
+            sparklineRect.Inflate (-10, 0);
+            sparklineView.Frame = sparklineRect;
+            sparklineView.AutoresizingMask = UIViewAutoresizing.FlexibleWidth|UIViewAutoresizing.FlexibleTopMargin|UIViewAutoresizing.FlexibleBottomMargin;
+            sparklineView.BackgroundColor = UIColor.Black;
+            sparklineView.MarkerVisibility = false;
+            sparklineView.NegativeMarkerVisibility = false;
+            sparklineView.FirstMarkerVisibility = false;
+            sparklineView.LastMarkerVisibility = false;
+            sparklineView.HighMarkerVisibility = false;
+            sparklineView.LowMarkerVisibility = false;
+            sparklineView.DataSource = dsh;
+            this.View.Add (sparklineView);
+      }
+      List<NSObject> CreateSimpleData(int recordCount)
+      {
+            List<NSObject> retValue = new List<NSObject>();
+            for (int i = 0; i < recordCount; i++) 
+            {
+                  int randomInt = new Random(DateTime.Now.Millisecond*i).Next(10);
+                  int shouldMakeNeg = new Random(DateTime.Now.Millisecond*i).Next(3);
+                  if (shouldMakeNeg == 0)
+                        randomInt = -randomInt;
+                  SimpleData data = new SimpleData(randomInt, String.Format("Item {0}", i));
+                  retValue.Add (data);
+            }
+            return retValue;
+      }
+}
+----
+
+[[_Ref323199323]]
+== Related Content
+
+=== Topics
+
+The following topic provides additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:igsparklineview.html[IGSparklineView]
+|This topic provides a conceptual overview of the _IGSparklineView_ control and its key features.
+
+|====

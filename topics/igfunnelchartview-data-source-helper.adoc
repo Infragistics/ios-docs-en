@@ -1,0 +1,110 @@
+﻿////
+
+|metadata|
+{
+    "name": "igfunnelchartview-data-source-helper",
+    "tags": ["Data Binding","Getting Started","How Do I"],
+    "controlName": ["IGFunnelChartView"],
+    "guid": "2503f2b9-fdc0-43c5-93ef-e17048675bd6",  
+    "buildFlags": [],
+    "createdOn": "2013-09-10T15:03:02.3656858Z"
+}
+|metadata|
+////
+
+= Data Source Helper
+
+== Topic Overview
+
+=== Purpose
+
+This topic provides an introductory overview of the data source helper in the  _IGFunnelChartView_™ and demonstrates how to configure it using a code example.
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref324841248, Introduction >>
+* <<_Ref327936206, Data Source Helper – Code Example >>
+
+** <<_Ref327344209,Description>>
+** <<_Ref327523606,Prerequisites>>
+** <<_Ref327344217,Code>>
+
+* <<_Ref215823716, Related Content >>
+
+[[_Ref324841248]]
+== Introduction
+
+[[_Ref215796828]]
+
+=== Data source helper summary
+
+Using the  _IGFunnelChartViewDataSourceHelper_   eliminates the need to implement any of the required protocol methods found in the  _IGFunnelChartViewDataSource_   class. Thus, allowing you to simplify the wiring up of data to the  _IGFunnelChartView_   control by using the data source helper specialized for this control.
+
+The  _IGFunnelChartViewDataSourceHelper_   is extremely flexible in how it loads the values and labels. These initialization methods for directly loading your data arrays or with an array custom  _NSObjects_   are supported.
+
+* `initWithValues:`
+* `initWithValues:innerLabels:outerLabels:`
+* `initWithData:valuePath:`
+* `initWithData:valuePath:innerLabelPath:outerLabelPath:`
+
+Additionally, the  _IGFunnelChartViewDataSourceHelper_   can be initialized using the generic `init` method, and the properties; `data`, `values`, `innerLabels`, `outerLabels`, `valuePath`, `innerLabelPath`, `outerLabelPath`, depending on the use case, can be manually set.
+
+[[_Ref327936206]]
+[[_Ref324841253]]
+== Data Source Helper – Code Example
+
+[[_Ref327344209]]
+
+=== Description
+
+The code below demonstrates loading an  _NSMutableArray_   of  _NSObjects_   containing properties for the value of the funnel slice and the inner and outer labels. After initializing the  _IGFunnelChartViewDataSourceHelper_   with data and values, assign the data source helper instance to the `dataSource` property found on the  _IGFunnelChartView_  .
+
+[[_Ref327523606]]
+
+=== Prerequisites
+
+This code example requires the inclusion of the  _Chart_   framework, detail about how to add this framework can be found in the link:igchartview-adding-the-chart-framework-file.html[Adding the Chart Framework File] topic.
+
+[[_Ref327344217]]
+
+=== Code
+
+*In Objective-C:*
+
+[source,csharp]
+----
+NSMutableArray *data = [[NSMutableArray alloc]init];
+// ...Add NSObjects to the array, the NSObject in this example must contain the property named “value”, a property named “innerLabel”, and a property named “outerLabel”.
+IGFunnelChartViewDataSourceHelper *funnelChartDataSourceHelper = [[IGFunnelChartViewDataSourceHelper alloc]initWithData:data valuePath:@"value" innerLabelPath:@"innerLabel" outerLabelPath:@”outerLabel”];
+//...
+funnelChartView.dataSource = funnelChartDataSourceHelper;
+----
+
+*In C#:*
+
+[source,csharp]
+----
+List<DataObject> data = new List<DataObject>;
+// ...Add custom data NSObjects to the list collection, the NSObject in this example must contain the property named “value”, a property named “innerLabel”, and a property named “outerLabel”.
+IGFunnelChartViewDataSourceHelper funnelChartDataSourceHelper = new IGFunnelChartViewDataSourceHelper (data.ToArray (), "value", "innerLabel", "outerLabel");
+//...
+funnelChartView.DataSource = funnelChartDataSourceHelper;
+----
+
+[[_Ref215823716]]
+== Related Content
+
+=== Topics
+
+The following topic provides additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:igfunnelchartview.html[IGFunnelChartView]
+|This topic serves as a gateway to the features and functionality of the _IGFunnelChartView_ control.
+
+|====

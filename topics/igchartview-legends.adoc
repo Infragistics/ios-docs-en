@@ -1,0 +1,108 @@
+﻿////
+
+|metadata|
+{
+    "name": "igchartview-legends",
+    "controlName": ["IGChartView"],
+    "tags": ["Charting","Grouping","How Do I"],
+    "guid": "c30fac80-57bc-40e5-a13a-f37a3b420245",  
+    "buildFlags": [],
+    "createdOn": "2012-05-11T19:34:33.3885135Z"
+}
+|metadata|
+////
+
+= Legends
+
+== Topic Overview
+
+=== Purpose
+
+This topic provides a conceptual overview about legends in the  _IGChartView_™ control.
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref324841248, Introduction >>
+
+** <<_Ref327859845,Legend summary>>
+** <<_Ref327966938,Legend preview>>
+
+* <<_Ref327861013, Adding a Legend to a UIView – Code Example >>
+
+** <<_Ref326147531,Description>>
+** <<_Ref326147537,Code>>
+
+* <<_Ref324841253, Related Content >>
+
+[[_Ref324841248]]
+== Introduction
+
+[[_Ref327859845]]
+
+=== Legend summary
+
+Legends identify the name of a series or its elements represented in the chart plot area. The legend is a view that displays a series of legend items. Denoted by a colored icon and a label, each legend item represents a series in the chart view. The icon uses the series brush with the label being the series title. The legend can be positioned anywhere in the application’s view and does not have to be part of the chart view. Legends are linked to charts via the `legend` property either on the  _IGChartView_   or on a series. A single legend can be used to display some or all of the series in multiple chart views, although a series may only be bound to one legend view at a time.
+
+.Note:
+[NOTE]
+====
+If a series does not have a title property set, the label will contain the text, “Series Title” in the legend.
+====
+
+[[_Ref327966938]]
+
+=== Legend preview
+
+The image below presents an  _IGChartView_   rendered onto a view that containing a legend in the upper right corner. Each item’s icon in the legend corresponds to the series of the same color.
+
+image::images/IGChartView_-_Legends_1.png[]
+
+[[_Ref327861013]]
+[[_Ref324841253]]
+== Adding a Legend to a UIView – Code Example
+
+[[_Ref326147531]]
+
+=== Description
+
+The following code creates an  _IGLegend_   instance and assigns it to the `legend` property on the  _IGChartView_   before adding the legend to the subview. With the `legend` property being set on the chart, the legend will contain items for every series that was added to the  _IGChartView_  .
+
+[[_Ref326147537]]
+
+=== Code
+
+*In Objective-C:*
+
+[source,csharp]
+----
+IGLegend *legend = [[IGLegend alloc]initWithFrame:CGRectMake(0, 0, 200, 100)];
+yourChart.legend = legend;
+[self.view addSubview:legend];
+----
+
+*In C#:*
+
+[source,csharp]
+----
+IGLegend legend = new IGLegend();
+legend.Frame = new RectangleF(0,0, 200, 100);
+chart.Legend = legend;
+this.View.AddSubview(legend);
+----
+
+== Related Content
+
+=== Topics
+
+The following topic provides additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:igchartview.html[IGChartView]
+|This topic serves as a gateway to the features and functionality of the _IGChartView_ control.
+
+|====

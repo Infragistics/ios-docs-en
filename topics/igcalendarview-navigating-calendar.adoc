@@ -1,0 +1,149 @@
+﻿////
+
+|metadata|
+{
+    "name": "igcalendarview-navigating-calendar",
+    "tags": ["Getting Started","How Do I"],
+    "controlName": ["IGCalendarView"],
+    "guid": "7a414e02-2b33-47e2-bf8e-0b3e43da9936",  
+    "buildFlags": [],
+    "createdOn": "2013-09-25T13:12:14.3717434Z"
+}
+|metadata|
+////
+
+= Navigating the Calendar
+
+== Topic Overview
+
+=== Purpose
+
+This topic provides an introductory overview of navigating the  _IGCalendarView_™ control and demonstrates how to configure it using a code example.
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref324841248, Introduction >>
+* <<_Ref241115619, Navigating the Calendar – Code Example >>
+
+** <<_Ref327344209,Description>>
+** <<_Ref327523606,Prerequisites>>
+** <<_Ref327344217,Code>>
+
+* <<_Ref215823716, Related Content >>
+
+[[_Ref324841248]]
+== Introduction
+
+[[_Ref215796828]]
+
+=== Navigation summary
+
+The  _IGCalendarView_   is simple to navigate, whether programmatically or using interaction through the year, month and day views.
+
+* Year View - Tapping a month while on the year view navigates to that month, while Scrolling vertically navigates through the years
+* Month View - Tapping on a day in the month view navigates to that day, while Scrolling vertically navigates through the months and increases or decreases the year depending on the whether you are scrolling forwards or backwards through time.
+* Day View - Tapping on any number day in the day view to navigate to that day, or scroll by a week, by panning left or right
+
+.Note:
+[NOTE]
+====
+Day view navigation is horizontal; flat.
+====
+
+IGCalendarViewDelegate provides methods for intercepting the year and month navigation. Returning YES on these methods accepts navigation, whereas NO cancel the navigation.
+
+* `calendarView:yearViewMonthTapped:`
+* `calendarView:monthViewDayTapped:`
+
+Navigating the calendar is also possibly through methods available on the calendar.
+
+* `navigateToDate:forType:` - This method takes an  _NSDate_   and navigates to it and if possible will animate into the supplied  _IGCalendarViewDisplayType_  ; `IGCalendarViewDisplayTypeYear`, `IGCalendarViewDisplayTypeMonth` or `IGCalendarViewDisplayTypeDay`. If animating into view is not possible, the calendar will snap into the view
+* `navigateBack` – This method navigates back to a month view from a day view, or conversly back to a year view from a month view. Calling the method while in year view, results in nothing occuring
+
+Additionally, there are properties for obtaining information about the current calendar view and date.
+
+* `currentDate` (read only) – Returns an  _NSDate_   representing a date based on your current view.
+** In year view, `currentDate` returns January 1st of the year you are currently in
+** In month view, `currentDate` l returns the 1st of the month you are viewing in the year you are
+** In day view, `currentDate` returns the month, day and year you are viewing
+
+* `calendarType` (read only) – Returns the view you are currently in; `IGCalendarViewDisplayTypeYear`, `IGCalendarViewDisplayTypeMonth` or `IGCalendarViewDisplayTypeDay`
+
+=== Navigation views
+
+The following table illustrates the typical representation of the year, month and day views that can be navigated to through interaction or programmatically.
+
+[options="header", cols="a,a"]
+|====
+|Calendar View|Preview
+
+|Year View
+|image::images/IGCalendarView_-_Navigating_the_Calendar_1.png[]
+
+|Month View
+|image::images/IGCalendarView_-_Navigating_the_Calendar_2.png[]
+
+|Week View
+|image::images/Whats_New_2015_Volume_2_1.png[]
+
+|Day View
+|image::images/IGCalendarView_-_Navigating_the_Calendar_3.png[]
+
+|====
+
+[[_Ref241115619]]
+[[_Ref324841253]]
+== Navigating the Calendar – Code Example
+
+[[_Ref327344209]]
+
+=== Description
+
+The code below creates an instance of the  _IGCalendarView_   and navigates it to the day view of the current date.
+
+[[_Ref327523606]]
+
+=== Prerequisites
+
+This code example requires the inclusion of the  _IG_   framework, detail about how to add this framework can be found in the link:iggridview-adding-the-ig-framework-file.html[Adding the IG Framework File] topic.
+
+[[_Ref327344217]]
+
+=== Code
+
+*In Objective-C:*
+
+[source,csharp]
+----
+IGCalendarView *calendar = [[IGCalendarView alloc] initWithFrame:self.view.bounds];
+[self.view addSubview:calendar];
+[calendar navigateToDate:[NSDate date] forType:IGCalendarViewDisplayTypeDay];
+----
+
+*In C#:*
+
+[source,csharp]
+----
+IGCalendarView calendar = new IGCalendarView ();
+calendar.Frame = this.View.Bounds;
+this.View.Add (calendar);
+calendar.Navigate (NSDate.Now, IGCalendarViewDisplayType.IGCalendarViewDisplayTypeDay);
+----
+
+[[_Ref215823716]]
+== Related Content
+
+=== Topics
+
+The following topic provides additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:igcalendarview-configuring-igcalendarview.html[Configuring IGCalendarView]
+|The topics in this group cover enabling, configuring, and using the _IGCalendarView_ control’s supported features.
+
+|====

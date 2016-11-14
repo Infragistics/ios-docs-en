@@ -1,0 +1,220 @@
+﻿////
+
+|metadata|
+{
+    "name": "iggaugeview-configuring-gauge-interactions",
+    "controlName": ["IGGaugeView"],
+    "tags": ["Charting","How Do I","Selection"],
+    "guid": "0cc561d8-b686-4742-90ac-11fcac6d9098",  
+    "buildFlags": [],
+    "createdOn": "2013-02-13T14:30:10.7045127Z"
+}
+|metadata|
+////
+
+= Configuring Gauge Interactions
+
+== Topic Overview
+
+=== Purpose
+
+This topic provides a conceptual overview of interacting with the  _IGGaugeView_™ control and demonstrates how to configure it using a code example.
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref324841248, Introduction >>
+* <<_Ref327936206,Configuring IGGaugeView Interactions – Code Example>>
+
+** <<_Ref327344209,Description>>
+** <<_Ref327523606,Prerequisites>>
+** <<_Ref327344217,Code>>
+
+* <<_Ref215823716, Related Content >>
+
+[[_Ref324841248]]
+== Introduction
+
+[[_Ref215796828]]
+
+=== Interactions summary
+
+The  _IGGaugeView_   provides two methods for touch interactions used in combination with the gesture recognizers.
+
+* `needleAtPoint:` - Returns whether the needle exists at a specified point
+* `valueForPoint:` - Returns a value for any given point on the gauge view
+
+.Note:
+[NOTE]
+====
+If, at a given point, the  _IGGaugeView_   does not contain a valid `value`, the  _IGGaugeView_   returns a value less than the `minimumValue`.
+====
+
+The code snippet below contains the  _UITapGestureReconizer_   selector method, demonstrating the use of the `valueForPoint` method when a user taps on the  _IGGaugeView_   area.
+
+*In C#:*
+
+[source,csharp]
+----
+void Tap(UITapGestureRecognizer gesture)
+{
+      PointF pointForView = gesture.LocationInView(_gauge);
+      float val = _gauge.ValueForPoint(pointForView);
+      if (val >= _gauge.MinimumValue) _gauge.Value = val;
+}
+----
+
+*In Objective-C:*
+
+[source,csharp]
+----
+-(void)tap:(UITapGestureRecognizer*)gesture
+{
+    CGPoint pointForView = [gesture locationInView:_gauge];
+    CGFloat val = [_gauge valueForPoint:pointForView];
+    if(val >= _gauge.minimumValue)
+        _gauge.value = val;
+}
+----
+
+[[_Ref327936206]]
+[[_Ref324841253]]
+== Configuring IGGaugeView Interactions – Code Example
+
+[[_Ref327344209]]
+
+=== Description
+
+The following code example instantiates the IGGridView
+
+The code below creates an instance of the  _IGGaugeView_   with a default range of 0 to 100, adds a pan gesture recognizer allowing the gauge needle to move dynamically as the user drags their finger around the control and finally adds a gesture recognizer to the  _IGGaugeView_   allowing users to drag the needle to a new location.
+
+[[_Ref327523606]]
+
+=== Prerequisites
+
+This code example requires the inclusion of the  _Chart_   framework, details about how to add this framework are available in the link:igchartview-adding-the-chart-framework-file.html[Adding the Chart Framework File] topic.
+
+[[_Ref327344217]]
+
+=== Code
+
+*In C#:*
+
+[source,csharp]
+----
+IGGaugeView _gauge;
+Boolean _isDragging;
+public override void ViewDidLoad ()
+{
+      base.ViewDidLoad ();
+      _gauge = new IGGaugeView();
+      _gauge.Frame = new RectangleF(0, 0, this.View.Frame.Size.Width, this.View.Frame.Size.Height);
+      _gauge.AutoresizingMask = UIViewAutoresizing.FlexibleHeight|UIViewAutoresizing.FlexibleWidth;
+      _gauge.NeedleShape = IGGaugeNeedleShape.IGGaugeNeedleShapeNeedleWithBulb;
+      _gauge.NeedlePivotShape = IGGaugePivotShape.IGGaugePivotShapeCircleWithHole;
+      _gauge.TransitionDuration = 0.25f;
+      this.View.AddSubview(_gauge);
+      UIPanGestureRecognizer panGesure = new UIPanGestureRecognizer(Pan);
+      _gauge.AddGestureRecognizer(panGesure);
+      UITapGestureRecognizer tapGesture = new UITapGestureRecognizer(Tap);
+      _gauge.AddGestureRecognizer(tapGesture);
+}
+void Pan(UIPanGestureRecognizer gesture)
+{
+      PointF pointForView = gesture.LocationInView(_gauge);
+      if (gesture.State == UIGestureRecognizerState.Began) {
+            _isDragging = _gauge.NeedleAtPoint(pointForView);
+            _gauge.TransitionDuration = 0;
+            return;
+      }
+      else if (gesture.State == UIGestureRecognizerState.Ended) {
+            _gauge.TransitionDuration = 0.25f;
+      }
+      if (_isDragging) {
+            float val = _gauge.ValueForPoint(pointForView);
+            if (val >= _gauge.MinimumValue) _gauge.Value = val;
+            else if (_gauge.Value >= ((_gauge.MinimumValue + _gauge.MaximumValue) / 2)) _gauge.Value = _gauge.MaximumValue;
+            else _gauge.Value = _gauge.MinimumValue;
+      }
+}
+void Tap(UITapGestureRecognizer gesture)
+{
+      PointF pointForView = gesture.LocationInView(_gauge);
+      float val = _gauge.ValueForPoint(pointForView);
+      if (val >= _gauge.MinimumValue) _gauge.Value = val;
+}
+----
+
+*In Objective-C:*
+
+[source,csharp]
+----
+IGGaugeView* _gauge;
+BOOL _isDragging;
+-(void)viewDidLoad
+{
+    [super viewDidLoad];
+    self.view.backgroundColor = [UIColor blackColor];
+    _gauge = [[IGGaugeView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    _gauge.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+    _gauge.needleShape = IGGaugeNeedleShapeNeedleWithBulb;
+    _gauge.needlePivotShape = IGGaugePivotShapeCircleWithHole;
+    _gauge.transitionDuration = .25;
+    [self.view addSubview:_gauge];
+    UIPanGestureRecognizer* panGesure = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(pan:)];
+    [_gauge addGestureRecognizer:panGesure];
+    UITapGestureRecognizer* tapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tap:)];
+    [_gauge addGestureRecognizer:tapGesture];  
+}
+-(void)pan:(UIPanGestureRecognizer*)gesture
+{
+    CGPoint pointForView = [gesture locationInView:_gauge];
+    if(gesture.state == UIGestureRecognizerStateBegan)
+    {
+        // Check to see if the needle is at the specified point.
+        _isDragging = [_gauge needleAtPoint:pointForView];
+        _gauge.transitionDuration = 0;
+        return;
+    }
+    else if(gesture.state == UIGestureRecognizerStateEnded)
+    {
+        _gauge.transitionDuration = .25;
+    }
+    if(_isDragging)
+    {
+        // Find a value on the gauge at a specific point. 
+        CGFloat val = [_gauge valueForPoint:pointForView];
+        if(val >= _gauge.minimumValue)
+            _gauge.value = val;
+        else if(_gauge.value >= ((_gauge.minimumValue + _gauge.maximumValue)/2))
+            _gauge.value = _gauge.maximumValue;
+        else
+            _gauge.value = _gauge.minimumValue;
+    }
+}
+-(void)tap:(UITapGestureRecognizer*)gesture
+{
+    CGPoint pointForView = [gesture locationInView:_gauge];
+    CGFloat val = [_gauge valueForPoint:pointForView];
+    if(val >= _gauge.minimumValue)
+        _gauge.value = val;
+}
+----
+
+[[_Ref215823716]]
+== Related Content
+
+=== Topics
+
+The following topic provides additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:iggaugeview.html[IGGaugeView]
+|The topics in this group cover enabling, configuring, and using the _IGGaugeView_ control’s supported features.
+
+|====

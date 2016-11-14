@@ -1,0 +1,193 @@
+﻿////
+
+|metadata|
+{
+    "name": "iggridview-enabling-configuring-selection",
+    "controlName": ["IGGridView"],
+    "tags": ["Grids","How Do I","Selection"],
+    "guid": "ad188bbf-73a6-4037-afd5-bf2ab9ca6f24",  
+    "buildFlags": [],
+    "createdOn": "2012-07-16T14:26:46.2676099Z"
+}
+|metadata|
+////
+
+= Enabling and Configuring Selection
+
+== Topic Overview
+
+=== Purpose
+
+This topic provides a conceptual overview, with code, on enabling and configuring the selection of cells and rows on the  _IGGridView_™ control.
+
+=== Required background
+
+The following table lists the topics required as a prerequisite to understanding this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:iggridview-adding-the-ig-framework-file.html[Adding the Grid Framework File]
+|This topic explains the requirements for adding the grid framework file to an Xcode project; a requirement for using the _IGGridView™_ control .
+
+|====
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref324841248, Introduction >>
+** <<_Ref327859845,Selection summary>>
+** <<_Ref329695807,Determining selection>>
+** <<_Ref329696437,Cell and row selection>>
+
+* <<_Ref329330892, Changing the Color of a Selected Cell – Code Example >>
+** <<_Ref323199287,Description>>
+** <<_Ref329331375,Code>>
+
+* <<_Ref323199323, Related Content >>
+
+[[_Ref324841248]]
+[[_Ref323199279]]
+[[_Ref324505001]]
+[[_Ref323111244]]
+== Introduction
+
+[[_Ref327859845]]
+
+=== Selection summary
+
+The  _IGGridView_   has two types of selection, cell and row. To switch between these modes, use the  _IGGridView’s_   `selectionType` property, which can be, set to any of the following values:
+
+* `IGGridViewSelectionTypeRow` – when you press a cell the row is selected.
+* `IGGridViewSelectionTypeCell` – when you press a cell the cell is selected.
+* `IGGridViewSelectionTypeNone` – when you press a cell nothing is selected.
+
+[[_Ref329695807]]
+
+=== Determining selection
+
+By default, only one cell or row can be selected, if you want multiple selections, set the  _IGGridView’s_   `allowMultipleSelection` property to YES. To determine which cells and rows are selected, there are a couple of methods for each type of selection.
+
+[options="header", cols="a,a"]
+|====
+|Selection|Methods
+
+|Cells
+|
+* `pathForSelectedCell` – top most selected cell. 
+
+* `pathsForSelectedCells` – all selected cells. 
+
+|Rows
+|
+* `pathForSelectedRow` – top most selected row. 
+
+* `pathsForSelectedRows` – all selected rows. 
+
+|====
+
+[[_Ref329696437]]
+
+=== Cell and row selection
+
+To select a row or cell, there is one method each:
+
+* `-(void)selectRowAtPath:(IGRowPath$$* $$)path animated:(BOOL)animated scrollPosition:(IGGridViewScrollPosition)scrollPosition;`
+* `-(void)selectCellAtPath:(IGCellPath$$* $$)path animated:(BOOL)animated scrollPosition:(IGGridViewScrollPosition)scrollPosition;`
+
+Cells or rows that are selected using these methods are scrolled to automatically. To disable scrolling, pass  _IGGridViewScrollPositionNone_   as the `scrollPosition` parameter. Multiple selections are honored with the selection methods. If multiple selections are disabled, you can select a new cell or row using the method, and the previously selected cell or row will automatically be deselected. Likewise, if multiple selections are on, then multiple cells or rows would be selected.
+
+To remove selection for cells and rows, the following methods exist on the  _IGGridView_  :
+
+* `-(void)deselectCellAtPath:(IGCellPath$$* $$)path animated:(BOOL)animated;`
+* `-(void)deselectRowAtPath:(IGRowPath$$* $$)path animated:(BOOL)animated;`
+
+To clear all selected cells or rows the following method can be used:
+
+* `-(void)deselectAll;`
+
+.Note:
+[NOTE]
+====
+Delegate methods will not be raised when selection and deselecting methods are called.
+====
+
+The following  _IGGridViewDelegate_   methods will fire before a cell or row is selected or deselected. To cancel the selection or deselecting, return nil. To change the selection, return an alternate path.
+
+* `-(IGRowPath$$*$$)gridView:(IGGridView$$*$$)gridView willSelectRowAtPath:(IGRowPath$$* $$)path;`
+* `-(IGCellPath$$*$$)gridView:(IGGridView$$*$$)gridView willSelectCellAtPath:(IGCellPath$$* $$)path;`
+* `-(IGRowPath$$*$$)gridView:(IGGridView$$*$$)gridView willDeselectRowAtPath:(IGRowPath$$* $$)path;`
+* `-(IGCellPath$$*$$)gridView:(IGGridView$$*$$)gridView willDeselectCellAtPath:(IGCellPath$$* $$)path;`
+
+The following delegate methods will fire after a cell or row is selected or deselected. These methods are not cancellable.
+
+* `-(void)gridView:(IGGridView$$*$$)gridView didSelectRowAtPath:(IGRowPath$$* $$)path;`
+* `-(void)gridView:(IGGridView$$*$$)gridView didSelectCellAtPath:(IGCellPath$$* $$)path;`
+* `-(void)gridView:(IGGridView$$*$$)gridView didDeselectRowAtPath:(IGRowPath$$* $$)path;`
+* `-(void)gridView:(IGGridView$$*$$)gridView didDeselectCellAtPath:(IGCellPath$$* $$)path;`
+
+When a cell is selected, it is possible to change the color or display a custom view overtop of the cell by using the `selectedColor` and `selectedView` properties of the  _IGGridViewCell_  . The best place to set these properties is when you create the cell, or when the cell is initialized, which you can detect with the following  _IGGridViewDelegate_   method.
+
+* `-(void)gridView:(IGGridView$$*$$)gridView initializeCell:(IGGridViewCell$$* $$)cell;`
+
+[[_Ref329330892]]
+== Changing the Color of a Selected Cell – Code Example
+
+[[_Ref323199287]]
+
+=== Description
+
+The following code demonstrates the handling of the `initializeCell` method found on the  _IGGridViewDelegate_   protocol, to change the background color and view of a selected cell to indicate the selection by including a checkmark.
+
+[[_Ref323199293]]
+
+=== Code
+
+*In Objective-C:*
+
+[source,csharp]
+----
+-(void)gridView:(IGGridView *)gridView initializeCell:(IGGridViewCell * )cell
+{
+    cell.selectedColor = [UIColor clearColor];
+    UIView* v = [[UIView alloc]init];
+    v.backgroundColor = [UIColor blackColor];
+    v.alpha = .4;
+cell.selectedView = v;
+}
+----
+
+*In C#:*
+
+[source,csharp]
+----
+public override void InitializeCell (IGGridView gridView, IGGridViewCell cell)
+{
+   cell.SelectedColor = UIColor.Clear;
+UIView v = new UIView();
+   v.BackgroundColor = UIColor.Black;
+   v.Alpha = .4f;
+cell.SelectedView = v;
+}
+----
+
+[[_Ref323199323]]
+== Related Content
+
+=== Topics
+
+The following topics provide additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:iggridview-adding-the-iggridview-uiview.html[Adding the IGGridView to a UIView]
+|This topic provides basic information about creating an instance of the _IGGridView_ and displaying data to help you with getting up and running with using the control.
+
+| link:iggridview.html[IGGridView]
+|This section serves as an introduction to the _IGGridView’s_ key features and functionalities.
+
+|====

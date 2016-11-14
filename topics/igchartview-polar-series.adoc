@@ -1,0 +1,44 @@
+﻿////
+
+|metadata|
+{
+    "name": "igchartview-polar-series",
+    "controlName": ["IGChartView"],
+    "tags": ["Charting","Getting Started"],
+    "guid": "261e91c7-945b-4c22-952b-cb278f54f11f",  
+    "buildFlags": [],
+    "createdOn": "2012-05-21T17:55:41.473195Z"
+}
+|metadata|
+////
+
+= Polar Series
+
+=== Introduction
+
+This collection of topics explains each of the individual Polar chart series (chart types) supported by the  _IGChartView_™ control.
+
+=== Topics
+
+The IGChartView™ control supports the following types of polar series:
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:igchartview-polar-area-series.html[Polar Area Series]
+|This topic provides a conceptual overview of the Polar Area series in the _IGChartView_ control and uses a code example demonstrating how to add it to the chart views.
+
+| link:igchartview-polar-line-series.html[Polar Line Series]
+|This topic provides a conceptual overview of the Polar Line series in the _IGChartView_ control and provides a code example showing you how to add it to the chart views.
+
+| link:igchartview-polar-scatter-series.html[Polar Scatter Series]
+|This topic provides a conceptual overview of the Polar Scatter series in the _IGChartView_ control and provides a code example showing you how to add it to the chart views.
+
+| link:igchartview-polar-spline-area-series.html[Polar Spline Area Series]
+|This topic is a conceptual overview of the _IGChartView_ control’s Polar Spline Area Series and provides a code example demonstrating how to add it to the chart views.
+
+| link:igchartview-polar-spline-series.html[Polar Spline Series]
+|This topic provides a conceptual overview of the Polar Spline Series in the _IGChartView_ control and provides a code example showing you how to add it to the chart views.
+
+|====

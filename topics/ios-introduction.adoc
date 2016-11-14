@@ -1,0 +1,147 @@
+﻿////
+
+|metadata|
+{
+    "name": "ios-introduction",
+    "controlName": [],
+    "tags": ["Getting Started"],
+    "guid": "64b271af-dad1-42cc-b522-47b3b7bc5381",  
+    "buildFlags": [],
+    "createdOn": "2012-07-16T14:02:28.1858163Z"
+}
+|metadata|
+////
+
+= Introduction
+
+image::images/iOS.png[]
+
+Infragistics® {ProductNameVersion} provides the core controls you need to build high performance, highly visual iPad & iPhone applications. In this release, we include the following native Objective-C controls:
+
+Barcode Renderer, featuring:
+
+* Supports 12 different 1D barcode types
+* Customizable barcode and text color
+* Customizable font for text
+* Xamarin.iOS wrapper support (formerly MonoTouch)
+
+Bullet Graph, featuring:
+
+* The ability to style & theme the bullet graph
+* Support for the Motion Framework, giving life to your gauge through fluid animations
+* Customizable scale labels
+* Xamarin.iOS wrapper support (formerly MonoTouch)
+
+Calendar, featuring:
+
+* The ability to style & theme the calendar
+* Year, month and day views with smooth transitions
+* Supports appointments from the device or manually created appointments
+* Xamarin.iOS wrapper support (formerly MonoTouch)
+
+Charts, featuring:
+
+* More than 40 chart types, or series (bars, columns, line, area, polar, radial, financial, scatter, ranges & more), allowing you to combine multiple series into advanced hybrid charts
+* Chart customization, legends, markers, and 13 different trend lines
+* Support for the Motion Framework, giving life to your charts through fluid animations
+* Xamarin.iOS wrapper support (formerly MonoTouch)
+
+Flow Layout, featuring:
+
+* The ability to resize layout items interactively
+* Reorder, insert and delete layout items
+* Vertical or horizontal layout directions
+* Xamarin.iOS wrapper support (formerly MonoTouch)
+
+Funnel Chart, featuring:
+
+* The ability to style & theme the funnel chart
+* Support for the Motion Framework, giving life to your funnel chart through fluid animations
+* Funnel chart interactions
+* Xamarin.iOS wrapper support (formerly MonoTouch)
+
+Gauge, featuring:
+
+* The ability to style & theme the gauge
+* Support for the Motion Framework, giving life to your gauge through fluid animations
+* Dozens of needle and pivot shape combinations
+* Xamarin.iOS wrapper support (formerly MonoTouch)
+
+Grid, featuring:
+
+* The ability to style & template the grid to look like almost anything
+* Data binding and a Data Source Helper
+* Grouping, filtering, sizing, pull-down-to-refresh, context menu, and much more!
+* Xamarin.iOS wrapper support (formerly MonoTouch)
+
+Label, featuring:
+
+* Interact or apply styling attributes to text
+* Regular expression support for text styling
+* Apply text variables to replace dynamic text
+* Xamarin.iOS wrapper support (formerly MonoTouch)
+
+Linear Gauge, featuring:
+
+* The ability to style & theme the gauge
+* Support for the Motion Framework, giving life to your linear gauge through fluid animations
+* Neede presets and needle customization support
+* Xamarin.iOS wrapper support (formerly MonoTouch)
+
+Overlay, featuring:
+
+* Support for 12 different animations
+* Support for custom animations
+* Extensible, easily create notification popups, HUDs, animated menus and more
+* Xamarin.iOS wrapper support (formerly MonoTouch)
+
+Pie Chart, featuring:
+
+* The ability to style & theme the pie chart
+* Legend support & pie slice label positioning
+* Interact and visual pie chart data with exploded slices and selections
+* Xamarin.iOS wrapper support (formerly MonoTouch)
+
+Progress, featuring:
+
+* The ability to style & theme the progress
+* Five different progress types
+* Support for custom progress shapes
+* Xamarin.iOS wrapper support (formerly MonoTouch)
+
+Range Selector, featuring:
+
+* The ability to style & theme the range selector
+* Supports vertical and horizontal orientations
+* Synchronizes interaction with the chart
+* Xamarin.iOS wrapper support (formerly MonoTouch)
+
+Side Menu, featuring:
+
+* A menu can be placed on the left, right or both sides of the view
+* Supports custom open and closing menu animations
+* Completely customizable menu content
+* Xamarin.iOS wrapper support (formerly MonoTouch)
+
+Slide Tab, featuring:
+
+* Tabs can be placed on the top, bottom, left or right side of the view
+* Tab padding to prevent views from being obstructed
+* Completely customizable tab and content views
+* Xamarin.iOS wrapper support (formerly MonoTouch)
+
+Sparkline Chart, featuring:
+
+* The ability to style & theme the sparkline chart
+* Four different chart types: Line, Area, Column, and Win/Loss
+* Markers, trendlines, and the ability to apply normal, minimum and maximum ranges
+* Xamarin.iOS wrapper support (formerly MonoTouch)
+
+Treemap, featuring:
+
+* The ability to style & theme the treemap
+* Supports UIViews for treemap nodes or CoreGraphics
+* Color mapper support for mapping colors to values
+* Xamarin.iOS wrapper support (formerly MonoTouch)
+
+Our iOS controls are built with performance and style in mind. They’re ideal for all Apple developers, whether you build mobile apps for the general consumer market or the enterprise.

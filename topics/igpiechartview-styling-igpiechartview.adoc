@@ -1,0 +1,117 @@
+﻿////
+
+|metadata|
+{
+    "name": "igpiechartview-styling-igpiechartview",
+    "controlName": ["IGPieChartView"],
+    "tags": ["Charting","How Do I","Styling"],
+    "guid": "feee114b-ea21-408d-af45-6b73814c6d6b",  
+    "buildFlags": [],
+    "createdOn": "2013-01-24T17:02:48.6677636Z"
+}
+|metadata|
+////
+
+= Styling the IGPieChartView
+
+== Topic Overview
+
+=== Purpose
+
+This topic provides a conceptual overview of styling the  _IGPieChartView_™ control and demonstrates its configuration using a code example.
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref324841248, Introduction >>
+* <<_Ref327936206,Styling the IGPieChartView – Code Example>>
+
+** <<_Ref327344209,Description>>
+** <<_Ref327523606,Prerequisites>>
+** <<_Ref327344217,Code>>
+
+* <<_Ref215823716, Related Content >>
+
+[[_Ref324841248]]
+== Introduction
+
+[[_Ref215796828]]
+
+=== Styling summary
+
+The outlines and fill colors of the  _IGPieChartView_   control’s pie slices are completely customizable. Use the following two exposed properties to apply the customized styling.
+
+* `brushes`
+* `outlines`
+
+These two properties are both of type  _NSMutableArray_  . They are required to contain only  _IGBrush_   objects to specify the colors to use. In addition to styling, you can also apply themes to the  _IGPieChartView._   Please refer to the link:igpiechartview-themes.html[Themes] topic for additional information.
+
+[[_Ref327936206]]
+[[_Ref324841253]]
+== Styling the  _IGPieChartView_  – Code Example
+
+[[_Ref327344209]]
+
+=== Description
+
+The code below demonstrates how to style the brush fill color and outline of the  _IGPieChartView_  . First, create an  _NSMutableArray_   to place the  _IGBrush_   objects into before assigning the respective mutable arrays to both the `brushes` and `outlines` property.
+
+[[_Ref327523606]]
+
+=== Prerequisites
+
+This code example requires the inclusion of the  _Chart_   framework, detail about how to add this framework can be found in the link:igchartview-adding-the-chart-framework-file.html[Adding the Chart Framework File] topic.
+
+[[_Ref327344217]]
+
+=== Code
+
+*In C#:*
+
+[source,csharp]
+----
+IGPieChartView _pieChartView = new IGPieChartView();
+NSMutableArray brushes = new NSMutableArray();
+brushes.Add(new IGBrush(UIColor.Red));
+brushes.Add(new IGBrush(UIColor.Green));
+brushes.Add(new IGBrush(UIColor.Blue));
+NSMutableArray outlines = new NSMutableArray();
+outlines.Add(new IGBrush(UIColor.Magenta));
+outlines.Add(new IGBrush(UIColor.Cyan));
+outlines.Add(new IGBrush(UIColor.Brown));
+_pieChartView.Brushes = brushes;
+_pieChartView.Outlines = outlines;
+----
+
+*In Objective-C:*
+
+[source,csharp]
+----
+NSMutableArray *brushes = [[NSMutableArray alloc]init];
+[brushes addObject:[[IGBrush alloc]initWithColor:[UIColor redColor]]];
+[brushes addObject:[[IGBrush alloc]initWithColor:[UIColor greenColor]]];
+[brushes addObject:[[IGBrush alloc]initWithColor:[UIColor blueColor]]];    
+NSMutableArray *outlines = [[NSMutableArray alloc]init];
+[outlines addObject:[[IGBrush alloc]initWithColor:[UIColor magentaColor]]];
+[outlines addObject:[[IGBrush alloc]initWithColor:[UIColor cyanColor]]];
+[outlines addObject:[[IGBrush alloc]initWithColor:[UIColor brownColor]]];
+_pieChartView.brushes = brushes;
+_pieChartView.outlines = outlines;
+----
+
+[[_Ref215823716]]
+== Related Content
+
+=== Topics
+
+The following topic provides additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:igpiechartview-configuring-igpiechartview.html[Configuring IGPieChartView]
+|The topics in this group cover enabling, configuring, and using the _IGPieChartView_ control’s supported features.
+
+|====

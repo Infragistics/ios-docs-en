@@ -1,0 +1,33 @@
+﻿////
+
+|metadata|
+{
+    "name": "igfunnelchartview-configuring-igfunnelchartview",
+    "tags": ["Getting Started","How Do I"],
+    "controlName": ["IGFunnelChartView"],
+    "guid": "65fffab3-4d0e-474c-8a72-82380df5fd7b",  
+    "buildFlags": [],
+    "createdOn": "2013-09-10T15:01:47.5922092Z"
+}
+|metadata|
+////
+
+= Configuring IGFunnelChartView
+
+=== Introduction
+
+The topics in this group cover enabling, configuring, and using the  _IGFunnelChartView_™ control’s supported features.
+
+=== Topics
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:igfunnelchartview-configuring-slice-selection.html[Configuring Slice Selection]
+|This topic provides a conceptual overview of selecting slices on the _IGFunnelChartView_ control and demonstrates its configuration using a code example.
+
+| link:igfunnelchartview-enabling-weighted-slices.html[Enabling Weighted Slices]
+|This topic provides an introductory overview of enabling weighted slices on the _IGFunnelChartView_ control and demonstrates its configuration using a code example.
+
+|====

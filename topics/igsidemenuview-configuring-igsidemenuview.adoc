@@ -1,0 +1,33 @@
+﻿////
+
+|metadata|
+{
+    "name": "igsidemenuview-configuring-igsidemenuview",
+    "tags": ["Getting Started","How Do I"],
+    "controlName": ["IGSideMenuView"],
+    "guid": "19afc938-b9b7-4f08-b329-fa5d0b934a5b",  
+    "buildFlags": [],
+    "createdOn": "2014-09-15T11:45:22.4555657Z"
+}
+|metadata|
+////
+
+= Configuring IGSideMenuView
+
+=== Introduction
+
+The topics in this group cover enabling, configuring, and using the  _IGSideMenuView™_   control’s supported features.
+
+=== Topics
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:igsidemenuview-configuring-side-menu-location.html[Configuring the Side Menu Location]
+|This topic provides an overview of configuring the side menu location on the _IGSideMenuView_ control and demonstrates its configuration using a code example.
+
+| link:igsidemenuview-showing-hiding-side-menu.html[Showing and Hiding the Side Menu]
+|This topic provides a conceptual overview of showing and hiding of the side menu on the _IGSideMenuView_ control.
+
+|====

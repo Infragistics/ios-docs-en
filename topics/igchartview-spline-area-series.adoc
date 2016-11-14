@@ -1,0 +1,151 @@
+﻿////
+
+|metadata|
+{
+    "name": "igchartview-spline-area-series",
+    "controlName": ["IGChartView"],
+    "tags": ["Charting","How Do I"],
+    "guid": "240b9257-75b6-4fac-a566-9be3c08b9fe7",  
+    "buildFlags": [],
+    "createdOn": "2012-05-17T13:57:49.0753352Z"
+}
+|metadata|
+////
+
+= Spline Area Series
+
+== Topic Overview
+
+=== Purpose
+
+This topic provides a conceptual overview of the Spline Area series in the  _IGChartView_™ control and uses a code example to demonstrate how to add it to the chart view.
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref324841248, Introduction >>
+
+** <<_Ref328074413,Spline Area series summary>>
+** <<_Ref327344549,Data requirements>>
+
+* <<_Ref327929176,Adding a Spline Area Series to the  _IGChartView_   – Code Example>>
+
+** <<_Ref327344559,Description>>
+** <<_Ref328074495,Prerequisites>>
+** <<_Ref327344567,Code>>
+
+* <<_Ref324841253, Related Content >>
+
+[[_Ref324841248]]
+== Introduction
+
+[[_Ref327344545]]
+
+=== Spline Area series summary
+
+Spline area series belongs to a group of category series that uses a collection of points connected by smooth curves of spline with the area below the spline filled in when rendered. Values are represented on the y-axis ( _IGNumericYAxis_  ) and categories are displayed on the x-axis ( _IGCategoryXAxis_   or  _IGCategoryDateTimeXAxis_  ). Spline area series emphasizes the amount of change over time or compares multiple items as well as the relationship of parts to a whole by displaying the total of the plotted values.
+
+image::images/IGChartView_-_Spline_Area_Series_1.png[]
+
+The spline area series is identical to the area series in all aspects except that line connecting data points has spline interpolation and smoothing for improved presentation of data.
+
+[[_Ref327344549]]
+
+=== Data requirements
+
+While the  _IGChartView_   control allows easy binding to your own data model, make sure to supply the appropriate amounts and types of data required by the series. If the data does not meet the minimum requirements, based on the type of series that you are using, the  _IGChartView_   will appear blank.
+
+The following is a list of data requirements for the area series type:
+
+*  *Required –*  the data model must contain at least one numeric field for rendering the data. The data model should contain two or more data items so that a spline can have two or more points.
+*  *Optional –*  the data model may contain an optional string or  _NSDate_   field for labels.
+
+[[_Ref324842387]]
+[[_Ref327929176]]
+== Adding a Spline Area Series to the  _IGChartView_   – Code Example
+
+[[_Ref327344559]]
+
+=== Description
+
+The code below uses the link:igchartview-data-source-helpers.html[IGCategorySeriesDataSourceHelper] to supply randomly generated data to a spline area series that first gets added to the  _IGChartView_   instance, and then the  _IGChartView_   is added as a subview of the current  _UIView_  .
+
+[[_Ref328074495]]
+
+=== Prerequisites
+
+This code example requires the inclusion of the  _IGChartView_   framework, detail about how to add this framework can be found in the link:igchartview-adding-the-chart-framework-file.html[Adding the Chart Framework File] topic.
+
+[[_Ref327344567]]
+
+=== Code
+
+*In Objective-C:*
+
+[source,csharp]
+----
+ NSMutableArray data = [[NSMutableArray alloc] init];
+    for (int i = 0; i < 25; i++)
+    {
+        double value = arc4random() % 100;
+        [data addObject:[[NSNumber alloc] initWithDouble:value]];
+    }
+    IGCategorySeriesDataSourceHelper *source = [[IGCategorySeriesDataSourceHelper alloc] init];
+    source.values = data;
+    IGChartView *infraChart = [[IGChartView alloc] initWithFrame:self.view.frame];
+    [infraChart setAutoresizingMask:UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight];
+    IGCategoryXAxis *xAxis = [[IGCategoryXAxis alloc] initWithKey:@"xAxis"];
+    IGNumericYAxis *yAxis = [[IGNumericYAxis alloc] initWithKey:@"yAxis"];
+    [infraChart addAxis:xAxis];
+    [infraChart addAxis:yAxis];
+    IGSplineAreaSeries *splineAreaSeries = [[IGSplineAreaSeries alloc] initWithKey:@"splineAreaSeries"];
+    splineAreaSeries.xAxis = xAxis;
+    splineAreaSeries.yAxis = yAxis;
+    splineAreaSeries.dataSource = source;
+    [infraChart addSeries:splineAreaSeries];
+    [self.view addSubview:infraChart];
+----
+
+*In C#:*
+
+[source,csharp]
+----
+ List<NSObject> data = new List<NSObject>();
+   Random r = new Random();
+   for(int i = 0;i <25; i++)
+   {
+      double val = r.Next() % 100; 
+      data.Add(new NSNumber(val));
+   }
+ IGCategoryDateSeriesDataSourceHelper source = new IGCategoryDateSeriesDataSourceHelper();
+   source.Values = data.ToArray();
+ IGChartView chart = new IGChartView(this.View.Frame);
+   chart.AutoresizingMask = UIViewAutoresizing.FlexibleHeight | UIViewAutoresizing.FlexibleWidth;
+  this.View.AddSubview(chart);
+ IGCategoryXAxis xAxis = new IGCategoryXAxis("xAxis");
+   IGNumericYAxis yAxis = new IGNumericYAxis("yAxis");
+   chart.AddAxis(xAxis);
+   chart.AddAxis(yAxis);
+ IGSplineAreaSeries series= new IGSplineAreaSeries ("series");
+   series.XAxis = xAxis;
+   series.YAxis = yAxis;
+   series.DataSource = source;
+   chart.AddSeries(columnSeries);
+----
+
+[[_Ref324841253]]
+== Related Content
+
+=== Topics
+
+The following topics provide additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:igchartview-category-series.html[Category Series]
+|This is a group of topics explaining the various types of Category series supported by the _IGChartView_ control.
+
+|====

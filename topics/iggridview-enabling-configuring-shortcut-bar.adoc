@@ -1,0 +1,128 @@
+﻿////
+
+|metadata|
+{
+    "name": "iggridview-enabling-configuring-shortcut-bar",
+    "controlName": ["IGGridView"],
+    "tags": ["Grids","Grouping","How Do I","Navigation"],
+    "guid": "24c1626b-8631-4fc3-a65d-d7a58e20f405",  
+    "buildFlags": [],
+    "createdOn": "2012-07-16T14:29:30.7720587Z"
+}
+|metadata|
+////
+
+= Enabling and Configuring the Shortcut Bar
+
+== Topic Overview
+
+=== Purpose
+
+This topic provides a conceptual overview, with code, on enabling and configuring the shortcut bar on the IGGridView™ control.
+
+=== Required background
+
+The following table lists the topics required as a prerequisite to understanding this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:iggridview-adding-the-ig-framework-file.html[Adding the Grid Framework File]
+|This topic explains the requirements for adding the grid framework file to an Xcode project; a requirement for using the _IGGridView™_ control.
+
+|====
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref324841248, Introduction >>
+* <<_Ref329330892, Implementation of the Shortcut Bar – Code Example >>
+** <<_Ref323199287,Description>>
+** <<_Ref329331375,Code>>
+
+* <<_Ref323199323, Related Content >>
+
+[[_Ref324841248]]
+[[_Ref323199279]]
+[[_Ref324505001]]
+[[_Ref323111244]]
+== Introduction
+
+[[_Ref327859845]]
+
+=== Shortcut bar summary
+
+The shortcut bar is a quick and easy way of navigating through a lot of data. Achieved by presenting a bar along the right side of the  _IGGridView_   for users to press the section name, navigating instantly to the section. To enable the shortcut bar, the  _IGGridViewDataSource_   protocol has 2 methods that must be implemented.
+
+* `-(NSArray $$*$$)sectionIndexTitlesForGridView:(IGGridView $$* $$)gridView;`
+* `-(NSInteger)gridView:(IGGridView $$*$$)gridView sectionForSectionIndexTitle:(NSString $$* $$)title atIndex:(NSInteger)index;`
+
+The `sectionIndexTitlesForGridView` method provides an array of strings displayed in the shortcut bar. The second required method, sectionForSectionIndexTitle, tells the  _IGGridView_   what section it should navigate to when the following item is pressed on the shortcut bar.
+
+The shortcut bar has additional properties found on the  _IGGridView_   that allow for further customization.
+
+* `shortcutBarColor` – background color of the shortcut bar.
+* `shortcutBarColumnWidth` – width of the shortcut bar column.
+* `shortcutBarColumnBackgroundView` – custom  _UIView_   to represent the background of the shortcut bar.
+
+[[_Ref329330892]]
+== Implementation of the Shortcut Bar – Code Example
+
+[[_Ref323199287]]
+
+=== Description
+
+The following code implements the `sectionIndexTitlesForGridView` and `sectionForSectionIndexTitle` methods required for the shortcut bar. The shortcut bar contains the letters A through D (`sectionIndexTitlesForGridView`), and when the user presses a letter, the  _IGGridView_   navigates to the associated grid section (`sectionForSectionIndexTitle`).
+
+[[_Ref323199293]]
+
+=== Code
+
+*In Objective-C:*
+
+[source,csharp]
+----
+- (NSArray *)sectionIndexTitlesForGridView:(IGGridView * )gridView
+{
+       return [NSArray arrayWithObjects:@"A", @"B", @"C", @"D", nil];
+}
+- (NSInteger)gridView:(IGGridView *)gridView sectionForSectionIndexTitle:(NSString * )title atIndex:(NSInteger)index
+{
+    return index;
+}
+----
+
+*In C#:*
+
+[source,csharp]
+----
+public override NSObject[] SectionIndexTitles(IGGridView gridView)
+{
+   return new NSObject[]{new NSString("A"), new NSString("B"), new NSString("C"), new NSString("D")};
+}
+public override int GetSectionForTitleAtIndex(IGGridView gridView, string title, int index)
+{
+   return index;
+}
+----
+
+[[_Ref323199323]]
+== Related Content
+
+=== Topics
+
+The following topics provide additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:iggridview-adding-the-iggridview-uiview.html[Adding the IGGridView to a UIView]
+|This topic provides basic information about creating an instance of the _IGGridView_ and displaying data to help you with getting up and running with using the control.
+
+| link:iggridview.html[IGGridView]
+|This section serves as an introduction to the _IGGridView’s_ key features and functionalities.
+
+|====

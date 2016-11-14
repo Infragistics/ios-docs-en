@@ -1,0 +1,45 @@
+﻿////
+
+|metadata|
+{
+    "name": "igpiechartview-configuring-igpiechartview",
+    "controlName": ["IGPieChartView"],
+    "tags": ["Charting","Getting Started"],
+    "guid": "466a74e7-657c-4b88-b932-069f6c413bf6",  
+    "buildFlags": [],
+    "createdOn": "2013-01-24T16:18:25.6524887Z"
+}
+|metadata|
+////
+
+= Configuring IGPieChartView
+
+=== Introduction
+
+The topics in this group cover enabling, configuring, and using the  _IGPieChartView™_   control’s supported features.
+
+=== Topics
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:igpiechart-exploding-slices-igpiechartview.html[Exploding Slices on the IGPieChartView]
+|This topic provides a conceptual overview of Exploding Slices on the _IGPieChartView_ control and demonstrates its configuration using a code example.
+
+| link:igpiechartview-selecting-slices-igpiechartview.html[Selecting Slices on the IGPieChartView]
+|This topic provides a conceptual overview of selecting slices on the _IGPieChartView_ control and demonstrates its configuration using a code example.
+
+| link:igpiechartview-configuring-others-pie-slice.html[Configuring the Others Pie Slice]
+|This topic provides a conceptual overview of the Others pie slice in the _IGPieChartView_ and demonstrates its configuration using a code example.
+
+| link:igpiechartview-rotating-the-igpiechartview.html[Rotating the IGPieChartView]
+|This topic provides an overview of rotating the _IGPieChartView_ control and demonstrates their operation with a code example.
+
+| link:igpiechartview-showing-slices-zero-values-legend.html[Showing Slices with Zero Values in the Legend]
+|This topic provides an introductory overview of showing slices with zero values in the legend on the _IGPieChartView_ control.
+
+| link:igpiechartview-styling-igpiechartview.html[Styling the IGPieChartView]
+|This topic provides a conceptual overview of styling the _IGPieChartView_ control and demonstrates its configuration using a code example.
+
+|====

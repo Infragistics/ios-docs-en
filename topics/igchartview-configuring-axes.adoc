@@ -1,0 +1,49 @@
+﻿////
+
+|metadata|
+{
+    "name": "igchartview-configuring-axes",
+    "controlName": ["IGChartView"],
+    "tags": ["Charting","Getting Started"],
+    "guid": "3a0d825f-d62f-4a86-bd86-cd3513e61b72",  
+    "buildFlags": [],
+    "createdOn": "2012-07-16T14:35:47.6557433Z"
+}
+|metadata|
+////
+
+= Configuring Axes
+
+=== Introduction
+
+This collection of topics explains each of the individual Axes series supported by the  _IGChartViews_™ control.
+
+=== Topics
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:igchartview-configuring-category-angle-axis.html[Configuring Category Angle Axis]
+|This topic explains, with code examples, how to use the _IGChartView_ control’s category angle axis.
+
+| link:igchartview-configuring-numeric-angle-axis.html[Configuring Numeric Angle Axis]
+|This topic explains, with code examples, how to use the _IGChartView_ control’s numeric angle axis.
+
+| link:igchartview-configuring-numeric-radius-axis.html[Configuring Numeric Radius Axis]
+|This topic explains, with code examples, how to use the _IGChartView_ control’s numeric radius axis.
+
+|====
+
+== Related Content
+
+The following topics provide additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:igchartview-axes.html[Axes]
+|This topic explains the types of axes supported on the _IGChartView_ control.
+
+|====

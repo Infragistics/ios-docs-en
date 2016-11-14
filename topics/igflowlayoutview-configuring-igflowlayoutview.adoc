@@ -1,0 +1,39 @@
+﻿////
+
+|metadata|
+{
+    "name": "igflowlayoutview-configuring-igflowlayoutview",
+    "tags": ["How Do I","Getting Started"],
+    "controlName": ["IGFlowLayoutView"],
+    "guid": "5db088a1-6a96-400a-a836-a5c96a521a32",  
+    "buildFlags": [],
+    "createdOn": "2014-03-18T12:23:24.5711508Z"
+}
+|metadata|
+////
+
+= Configuring IGFlowLayoutView
+
+=== Introduction
+
+The topics in this group cover enabling, configuring, and using the  _IGFlowLayoutView_   control’s supported features.
+
+=== Topics
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:igflowlayoutview-inserting-deleting-updating-items.html[Inserting Deleting and Updating Items]
+|This topic provides a conceptual overview of inserting, deleting and updating items on the _IGFlowLayoutView_ control and demonstrates their operation with a code example.
+
+| link:igflowlayoutview-reordering-items.html[Reordering Items]
+|This topic provides a conceptual overview of reordering items on the _IGFlowLayoutView_ control and demonstrates their operation with a code example.
+
+| link:igflowlayoutview-resizing-items.html[Resizing Items]
+|This topic provides an overview of resizing items on the _IGFlowLayoutView_ control and demonstrates their use with a code example.
+
+| link:igflowlayoutview-styling-the-igflowlayoutview.html[Styling the IGFlowLayoutView]
+|This topic provides an overview of styling the _IGFlowLayoutView_ control and demonstrates its use with a code example.
+
+|====

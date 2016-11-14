@@ -1,0 +1,93 @@
+﻿////
+
+|metadata|
+{
+    "name": "iggaugeview-themes",
+    "controlName": ["IGGaugeView"],
+    "tags": ["Charting","How Do I","Styling","Theming"],
+    "guid": "04b250d2-1ecb-4d01-ad97-ad51e41f94af",  
+    "buildFlags": [],
+    "createdOn": "2013-02-13T14:31:59.7664178Z"
+}
+|metadata|
+////
+
+= Themes
+
+== Topic Overview
+
+=== Purpose
+
+This topic provides a conceptual overview of the supported themes available in the  _IGGaugeView_™ control.
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref324841248, Introduction >>
+
+** <<_Ref327859845,Theme summary>>
+** <<_Ref327864136,Theme types>>
+
+* <<_Ref324841253, Related Content >>
+
+[[_Ref324841248]]
+== Introduction
+
+[[_Ref327859845]]
+
+=== Theme summary
+
+Gauge themes allow you to give a gauge a consistent, color coordinated look and feel. Simply set the  _IGGaugeView_   theme property to one of the predefined themes:  _IGGaugeThemeDark_   or  _IGGaugeThemeLight_  .
+
+*In C#:*
+
+[source,csharp]
+----
+IGGaugeView theGauge = new IGGaugeView();
+//configure the gauge...
+theGauge.theme = new IGGaugeThemeLight();
+----
+
+*In Objective-C:*
+
+[source,csharp]
+----
+IGGaugeView *theGauge = [[IGGaugeView alloc] init];
+//configure the gauge...
+theGauge.theme = [[IGGaugeThemeLight alloc] init];
+----
+
+[[_Ref327864136]]
+
+=== Theme types
+
+The following table contains the supported themes and their associated type name.
+
+[options="header", cols="a,a"]
+|====
+|Theme Name|Preview
+
+| _IGGaugeThemeDark_ 
+|image::images/IGGaugeView_-_Themes_1.png[]
+
+| _IGGaugeThemeLight_ 
+|image::images/IGGaugeView_-_Themes_2.png[]
+
+|====
+
+[[_Ref324841253]]
+== Related Content
+
+=== Topics
+
+The following topic provides additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:iggaugeview.html[IGGaugeView]
+|This topic serves as a gateway to the features and functionality of the _IGGaugeView_ control.
+
+|====

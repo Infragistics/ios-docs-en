@@ -1,0 +1,130 @@
+﻿////
+
+|metadata|
+{
+    "name": "igslidetabview-dragging-a-tab-item",
+    "tags": ["How Do I","Getting Started"],
+    "controlName": ["IGSlideTabView"],
+    "guid": "ae0a7f06-51e1-4e73-9f50-70cab38273be",  
+    "buildFlags": [],
+    "createdOn": "2014-03-18T13:47:08.7395168Z"
+}
+|metadata|
+////
+
+= Dragging a Tab Item
+
+== Topic Overview
+
+=== Purpose
+
+This topic introduces dragging a tab item to a new position on the  _IGSlideTabView_™ control and uses a code example to demonstrate its usage.
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref324841248, Introduction >>
+* <<_Ref248895787, Dragging a Tab Item – Code Example >>
+
+** <<_Ref327344209,Description>>
+** <<_Ref327523606,Prerequisites>>
+** <<_Ref327344217,Code>>
+
+* <<_Ref215823716, Related Content >>
+
+[[_Ref324841248]]
+== Introduction
+
+=== Dragging a tab summary
+
+Tab items on the  _IGSlideTabView_   can be dragged to different positions along the view’s `tabLocation` side by enabling the `isDraggable` property found on the  _IGSlideTabItem_   instance. This control supports the following `isDraggable` property enumerations:
+
+* `IGSlideTabDragNever` (default) – The tab item is not draggable
+* `IGSlideTabDragOpened` – The tab item can only be dragged with the tab item expanded
+* `IGSlideTabDragClosed` – The tab item can only be dragged with the tab item collapsed
+* `IGSlideTabDragOpenedOrClosed` – The tab item can always be dragged
+
+Dragging a tab item calls two optional delegate methods in the following order.
+
+[start=1]
+. `slideTabView:tabWillDrag:`
+[start=2]
+. `slideTabView:tabDidDrag:`
+
+The optional `slideTabView:tabWillDrag:` delegate method expects a returned `YES` or `NO` to allow or prevent the tab item from being dragged to a new position. Bounds checks are made to close any intersecting expanded tabs when dragging a tab item. The tab item will also stop dragging if the potential drag causes the `tabView` or `contentView` to collide with the  _IGSlideTabView_   boundaries or another tab item’s tab on a different side of the view.
+
+[[_Ref248895787]]
+[[_Ref324841253]]
+== Dragging a Tab Item – Code Example
+
+[[_Ref327344209]]
+
+=== Description
+
+The code example below shows how to create and add a tab item to the  _IGSlideTabView_    __allow__  __ing__   __the__   __dragging of__   __tab__   __item__  __;__   __regardless__  __,__   __of__   __the__   __tab__   __being__   __open__  __ed__   __or closed__ .
+
+[[_Ref327523606]]
+
+=== Prerequisites
+
+This code example requires the inclusion of the  __IG__  framework; details about how to add this framework are available in the link:iggridview-adding-the-ig-framework-file.html[Adding the IG Framework File] topic.
+
+[[_Ref327344217]]
+
+=== Code
+
+*In Objective-C:*
+
+[source,csharp]
+----
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    self.view.backgroundColor = [UIColor whiteColor];
+    IGSlideTabView *slideTabView = [[IGSlideTabView alloc] initWithFrame:self.view.bounds];
+    slideTabView.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
+    [self.view addSubview:slideTabView];
+    IGSlideTabItem *tabItem = [IGSlideTabItem tabWithLocation:IGSlideTabLocationBottom title:@"Example" tabView:nil contentView:nil];
+    tabItem.isDraggable = IGSlideTabDragOpenedOrClosed;
+    tabItem.contentSize = [IGSlideTabContentSize sizeWithPercentageWidth:0.3 percentageHeight:0.3];
+    [slideTabView addTab:tabItem];
+}
+----
+
+*In C#:*
+
+[source,csharp]
+----
+public override void ViewDidLoad ()
+{
+      base.ViewDidLoad ();
+      this.View.BackgroundColor = UIColor.White;
+      IGSlideTabView slideTabView = new IGSlideTabView ();
+      slideTabView.Frame = this.View.Bounds;
+      slideTabView.AutoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleHeight;
+      this.View.Add (slideTabView);
+      IGSlideTabItem tabItem = new IGSlideTabItem ();
+      tabItem.TabLocation = IGSlideTabLocation.IGSlideTabLocationBottom;
+      tabItem.Title = "Example";
+      tabItem.IsDraggable = IGSlideTabDrag.IGSlideTabDragOpenedOrClosed;
+      tabItem.ContentSize = IGSlideTabContentSize.CreatePercentageSize (0.3f, 0.3f);
+      slideTabView.AddTab(tabItem);
+}
+----
+
+[[_Ref215823716]]
+== Related Content
+
+=== Topics
+
+The following topic provides additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:igslidetabview.html[IGSlideTabView]
+|The topics in this group cover enabling, configuring, and using the _IGSlideTabView_ control’s supported features.
+
+|====

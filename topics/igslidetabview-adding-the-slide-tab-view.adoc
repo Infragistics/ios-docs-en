@@ -1,0 +1,160 @@
+﻿////
+
+|metadata|
+{
+    "name": "igslidetabview-adding-the-slide-tab-view",
+    "tags": ["Getting Started","How Do I"],
+    "controlName": ["IGSlideTabView"],
+    "guid": "9631a767-6301-4950-a279-27eb3f724fe3",  
+    "buildFlags": [],
+    "createdOn": "2014-03-18T13:17:12.3027665Z"
+}
+|metadata|
+////
+
+= Adding the Slide Tab View to a View
+
+== Topic Overview
+
+=== Purpose
+
+This topic explains, with a code example how to create an instance of the  _IGSlideTabView_™ control and show it on a view.
+
+=== Required background
+
+The following table lists the prerequisite topics required to understanding this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:iggridview-adding-the-ig-framework-file.html[Adding the IG Framework File]
+|This topic explains how to add the IG framework file to a project.
+
+|====
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref328621638, Displaying the IGSlideTabView – Code Example >>
+
+** <<_Ref323199287,Description>>
+** <<_Ref357071611,Preview>>
+** <<_Ref323199293,Code>>
+
+* <<_Ref323199323, Related Content >>
+
+[[_Ref323199279]]
+[[_Ref328621638]]
+[[_Ref323111244]]
+== Displaying the  _IGSlideTabView_   – Code Example
+
+[[_Ref323199287]]
+
+=== Description
+
+This code example illustrates the creation of a slide tab item with the content area set to 200x200. After which, it is added to a slide tab view.
+
+[[_Ref357071611]]
+
+=== Preview
+
+image::images/IGSlideTabView_-_Adding_the_Slide_Tab_View_to_a_View_1.png[]
+
+[[_Ref323199293]]
+
+=== Code
+
+To start, set the background color of the view controller’s to white.
+
+*In Objective-C:*
+
+[source,csharp]
+----
+self.view.backgroundColor = [UIColor whiteColor];
+----
+
+*In C#:*
+
+[source,csharp]
+----
+this.View.BackgroundColor = UIColor.White;
+----
+
+Next, create an instance of the  _IGSlideTabView_   that takes the size of the view controller’s bounds and add the view as a subview.
+
+*In Objective-C:*
+
+[source,csharp]
+----
+IGSlideTabView *slideTabView = [[IGSlideTabView alloc] init];
+slideTabView.frame = self.view.bounds;
+slideTabView.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
+[self.view addSubview:slideTabView];
+----
+
+*In C#:*
+
+[source,csharp]
+----
+IGSlideTabView slideTabView = new IGSlideTabView ();
+slideTabView.Frame = this.View.Bounds;
+slideTabView.AutoresizingMask = UIViewAutoresizing.FlexibleHeight | UIViewAutoresizing.FlexibleWidth;
+this.View.Add (slideTabView);
+----
+
+Next, use the `tabWithLocation:title:tabView:contentView:` static method to create an  _IGSlideTabItem_   instance that has a content size of 200x200.
+
+*In Objective-C:*
+
+[source,csharp]
+----
+IGSlideTabItem *slideTabItem = [IGSlideTabItem tabWithLocation:IGSlideTabLocationBottom
+                                               title:@"Getting Started"
+                                               tabView:nil
+                                               contentView:nil];
+slideTabItem.contentSize = [IGSlideTabContentSize sizeWithWidth:200 height:200];
+----
+
+*In C#:*
+
+[source,csharp]
+----
+IGSlideTabItem slideTabItem = new IGSlideTabItem ();
+slideTabItem.TabLocation = IGSlideTabLocation.IGSlideTabLocationBottom;
+slideTabItem.Title = "Getting Started";
+slideTabItem.ContentSize = IGSlideTabContentSize.CreateFixedSize (200, 200);
+----
+
+Finally, add the slide tab item to the slide tab view.
+
+*In Objective-C:*
+
+[source,csharp]
+----
+ [slideTabView addTab:slideTabItem];
+----
+
+*In C#:*
+
+[source,csharp]
+----
+slideTabView.AddTab (slideTabItem);
+----
+
+[[_Ref323199323]]
+== Related Content
+
+=== Topics
+
+The following topic provides additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:igslidetabview.html[IGSlideTabView]
+|This topic provides a conceptual overview of the _IGSlideTabView_ control and its key features.
+
+|====

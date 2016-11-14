@@ -1,0 +1,93 @@
+﻿////
+
+|metadata|
+{
+    "name": "igchartview-configuring-initial-animation",
+    "controlName": [],
+    "tags": [],
+    "guid": "c0a2a5ed-50a7-4d97-8675-ea9c1bd3ecec",  
+    "buildFlags": [],
+    "createdOn": "2015-03-30T12:32:55.2782407Z"
+}
+|metadata|
+////
+
+= Configuring Initial Animation
+
+== Topic Overview
+
+=== Purpose
+
+This topic provides an introductory overview of configuring the initial animation on the  _IGChartView_™ control.
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref324841248, Introduction >>
+* <<_Ref215823716, Related Content >>
+
+[[_Ref324841248]]
+== Introduction
+
+=== Initial animation summary
+
+Initial animation occurs during the rendering of data and allows your data points to animate into their value positions. This feature requires the category series and uses an existing `transitionDuration` property value and has to be enabled by setting `isTransition``InEnabled` to `YES`. To set the initial animation the series `transitionInMode` property uses an enumeration of possible ways to perform this animation. The `transitionInMode` property supports the following animation enumerations.
+
+* `IGCategoryTransitionInModeAuto`
+* `IGCategoryTransitionInModeFromZero`
+* `IGCategoryTransitionInModeSweepFromLeft`
+* `IGCategoryTransitionInModeSweepFromRight`
+* `IGCategoryTransitionInModeSweepFromTop`
+* `IGCategoryTransitionInModeSweepFromBottom`
+* `IGCategoryTransitionInModeSweepFromCenter`
+* `IGCategoryTransitionInModeAccordionFromLeft`
+* `IGCategoryTransitionInModeAccordionFromRight`
+* `IGCategoryTransitionInModeAccordionFromTop`
+* `IGCategoryTransitionInModeAccordionFromBottom`
+* `IGCategoryTransitionInModeExpand`
+* `IGCategoryTransitionInModeSweepFromCategoryAxisMinimum`
+* `IGCategoryTransitionInModeSweepFromCategoryAxisMaximum`
+* `IGCategoryTransitionInModeSweepFromValueAxisMinimum`
+* `IGCategoryTransitionInModeSweepFromValueAxisMaximum`
+* `IGCategoryTransitionInModeAccordionFromCategoryAxisMinimum`
+* `IGCategoryTransitionInModeAccordionFromCategoryAxisMaximum`
+* `IGCategoryTransitionInModeAccordionFromValueAxisMinimum`
+* `IGCategoryTransitionInModeAccordionFromValueAxisMaximum`
+
+*In Objective-C:*
+
+[source,csharp]
+----
+IGAnchoredCategorySeries *series = [_chart findSeriesByKey:@"series"];
+series.transitionDuration = 1;
+series.transitionInMode = IGCategoryTransitionInModeAccordionFromBottom;
+series.isTransitionInEnabled = YES;
+----
+
+*In C#:*
+
+[source,csharp]
+----
+IGAnchoredCategorySeries series = _chart.FindSeriesByKey ("series");
+series.TransitionDuration = 1;
+series.TransitionInMode = IGCategoryTransitionInMode.IGCategoryTransitionInModeAccordionFromBottom;
+series.IsTransitionInEnabled = true;
+----
+
+[[_Ref324841253]]
+[[_Ref215823716]]
+== Related Content
+
+=== Topics
+
+The following topic provides additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:igchartview.html[IGChartView]
+|The topics in this group cover enabling, configuring, and using the _IGChartView_ control’s supported features.
+
+|====

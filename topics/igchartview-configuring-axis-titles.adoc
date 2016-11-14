@@ -1,0 +1,84 @@
+﻿////
+
+|metadata|
+{
+    "name": "igchartview-configuring-axis-titles",
+    "controlName": [],
+    "tags": [],
+    "guid": "d5a7d05e-0a92-460a-bb71-7e16e54777d5",  
+    "buildFlags": [],
+    "createdOn": "2015-03-30T12:24:52.1469324Z"
+}
+|metadata|
+////
+
+= Configuring Axis Titles
+
+== Topic Overview
+
+=== Purpose
+
+This topic provides an introductory overview of configuring axis titles on the  _IGChartView_™ control.
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref324841248, Introduction >>
+* <<_Ref215823716, Related Content >>
+
+[[_Ref324841248]]
+== Introduction
+
+=== Axis titles summary
+
+Axis titles can be set on the X-axis and Y-axis through the `title` property found on the axis class instance. The title appearance can be customized through the following properties.
+
+* `titleAngle` – (double) rotation angle
+* `titleFont` - (UIFont) title font
+* `titleTextColor` – (IGBrush) text color
+* `titleVisible` – (BOOL) visibility of the title text
+
+.Note:
+[NOTE]
+====
+When setting the `labelsVisible` property on the axis to `NO` both the axis labels and the title will be hidden.
+====
+
+*In Objective-C:*
+
+[source,csharp]
+----
+_xAxis = [_chart findAxisByKey:@"x"];
+_yAxis = [_chart findAxisByKey:@"y"];
+_yAxis.title = @"Y Axis title";
+_xAxis.title = @"X Axis title";
+_yAxis.titleAngle = 45;
+_yAxis.titleFont = [UIFont fontWithName:@"Helvetica" size:12];
+_yAxis.titleTextColor = [[IGBrush alloc]initWithColor:[UIColor greenColor]];
+_yAxis.titleVisible = YES;
+----
+
+*In C#:*
+
+[source,csharp]
+----
+_xAxis = _chartView.FindAxisByKey ("x");_yAxis = _chartView.FindAxisByKey ("y");_yAxis.Title = "Y Axis title";_xAxis.Title = "X Axis title";_yAxis.TitleAngle = 45;_yAxis.TitleFont = UIFont.FromName ("Helvetica", 12);_yAxis.TitleTextColor = new IGBrush (UIColor.Green);_yAxis.TitleVisible = true;
+----
+
+[[_Ref324841253]]
+[[_Ref215823716]]
+== Related Content
+
+=== Topics
+
+The following topic provides additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:igchartview.html[IGChartView]
+|The topics in this group cover enabling, configuring, and using the _IGChartView_ control’s supported features.
+
+|====

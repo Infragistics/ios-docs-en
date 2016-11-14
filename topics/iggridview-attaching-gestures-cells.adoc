@@ -1,0 +1,130 @@
+﻿////
+
+|metadata|
+{
+    "name": "iggridview-attaching-gestures-cells",
+    "controlName": ["IGGridView"],
+    "tags": ["Grids","How Do I"],
+    "guid": "1a56aad9-1a79-47f0-a525-b9a384b332c7",  
+    "buildFlags": [],
+    "createdOn": "2012-07-16T14:16:49.0178909Z"
+}
+|metadata|
+////
+
+= Attaching Gestures to Cells
+
+== Topic Overview
+
+=== Purpose
+
+This topic provides a conceptual overview and uses code to demonstrate attaching gestures to cells on the  _IGGridView_™ control.
+
+=== Required background
+
+The following table lists the topics required as a prerequisite to understanding this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:iggridview-adding-the-ig-framework-file.html[Adding the Grid Framework File]
+|This topic explains the requirements for adding the grid framework file to an Xcode project; a requirement for using the _IGGridView™_ control.
+
+|====
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref324841248, Introduction >>
+* <<_Ref329330892, Registering Gestures on a Cell – Code Example >>
+
+** <<_Ref323199287,Description>>
+** <<_Ref329331375,Code>>
+
+* <<_Ref323199323, Related Content >>
+
+[[_Ref324841248]]
+[[_Ref323199279]]
+[[_Ref324505001]]
+[[_Ref323111244]]
+== Introduction
+
+[[_Ref327859845]]
+
+=== Gestures summary
+
+Gestures recognize user screen-drawn patterns, and pass this information to your application so it can perform the action associated with your gesture. The  _IGGridViewCell_   object exposes two methods for attaching your own custom  _UIGestures_   to a cell.
+
+* `-(void)registerGestures:(NSArray$$* $$)gestures;`
+* `-(void)registerTemporaryGestures:(NSArray$$* $$)gestures;`
+
+The `registerGestures` method, called when first creating or initializing a cell. This method hooks the gestures you assign until you call the `unregisterGestures` method. The  _IGGridViewDelegate_   protocol contains the following cell initialization methods.
+
+* `-(void)gridView:(IGGridView$$*$$)gridView initializeCell:(IGGridViewCell$$* $$)cell;`
+
+As soon as a cell is out of view, the `registerTemporaryGestures` method automatically removes the registered gesture, which needs to reassign the temporary gesture, should the cell come back into view. The `registerTemporaryGestures` method can be applied in either the  _IGGridViewDataSource’s_   `cellAt` method or in the  _IGGridViewDelegate’s_   `willDisplayCell` method.
+
+* `-(void)gridView:(IGGridView$$*$$)gridView willDisplayCell:(IGGridViewCell>$$*$$)cell forPath:(IGCellPath$$* $$)path;`
+
+[[_Ref329330892]]
+== Registering Gestures on a Cell – Code Example
+
+[[_Ref323199287]]
+
+=== Description
+
+This code sample uses the  _IGGridViewCell_   object’s `registerGestures` method, to registers a swipe-up/swipe-down gesture and uses the  _IGGridViewDelegate’s_   `initializeCell` method to initialize a cell. Once registered, gestures are hooked until the `unregisterGestures` method is called.
+
+[[_Ref323199293]]
+
+=== Code
+
+*In Objective-C:*
+
+[source,csharp]
+----
+-(void)gridView:(IGGridView *)gridView initializeCell:(IGGridViewCell * )cell
+{
+    UISwipeGestureRecognizer* swipe = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(toggleDisplay)];
+    swipe.direction = UISwipeGestureRecognizerDirectionUp; 
+    UISwipeGestureRecognizer* swipe2 = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(toggleDisplay)];
+    swipe2.direction = UISwipeGestureRecognizerDirectionDown; 
+    NSMutableArray* gestures = [NSMutableArray arrayWithObjects:swipe, swipe2, nil];
+    [cell registerGestures:gestures];
+}
+----
+
+*In C#:*
+
+[source,csharp]
+----
+public override void InitializeCell (IGGridView gridView, IGGridViewCell cell)
+{
+   UISwipeGestureRecognizer swipe = new UISwipeGestureRecognizer(this.HandleSwipe);
+   swipe.Direction = UISwipeGestureRecognizerDirection.Up;
+ UISwipeGestureRecognizer swipe2 = new UISwipeGestureRecognizer(this.HandleSwipe);
+   swipe.Direction = UISwipeGestureRecognizerDirection.Down;
+ cell.RegisterGestures(new NSObject[]{swipe, swipe2});
+}
+----
+
+[[_Ref323199323]]
+== Related Content
+
+=== Topics
+
+The following topics provide additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:iggridview-adding-the-iggridview-uiview.html[Adding the IGGridView to a UIView]
+|This topic provides basic information about creating an instance of the _IGGridView_ and displaying data to help you with getting up and running with using the control.
+
+| link:iggridview.html[IGGridView]
+|This section serves as an introduction to the _IGGridView’s_ key features and functionalities.
+
+|====

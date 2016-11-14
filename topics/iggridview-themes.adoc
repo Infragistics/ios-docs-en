@@ -1,0 +1,148 @@
+﻿////
+|metadata|
+{
+    "name": "iggridview-themes",
+    "controlName": ["IGGridView"],
+    "tags": ["Grids","How Do I","Styling","Theming"],
+    "guid": "37a1c97a-e124-4b9c-964c-e7aa0be15b60",  
+    "buildFlags": [],
+    "createdOn": "2013-02-11T19:51:44.6136179Z"
+}
+|metadata|
+////
+
+= Themes
+
+== Topic Overview
+
+=== Purpose
+
+This topic provides a conceptual overview of the supported themes available in the  _IGGridView_™ control.
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref324841248, Introduction >>
+
+** <<_Ref327859845,Theme summary>>
+** <<_Ref327864136,Theme types>>
+
+* <<_Ref329853754, Creating a Custom Theme – Code Example >>
+
+** <<_Ref323199287,Description>>
+** <<_Ref323199293,Code>>
+
+* <<_Ref324841253, Related Content >>
+
+[[_Ref324841248]]
+== Introduction
+
+[[_Ref327859845]]
+
+=== Theme summary
+
+Chart themes allow you to apply a consistent, color coordinated, look and feel to your charts. Simply set the  _IGGridView_   `theme` property to one of the predefined themes.
+
+*In C#:*
+
+[source,csharp]
+----
+_gridView.theme = new IGGridViewLightTheme();
+----
+
+*In Objective-C:*
+
+[source,csharp]
+----
+_gridView.theme = [[IGGridViewLightTheme alloc] init];
+----
+
+[[_Ref327864136]]
+
+=== Theme types
+
+The following table contains the names associated with the supported themes type and a preview of its rendering.
+
+[options="header", cols="a,a"]
+|====
+|Theme Name|Preview
+
+| _IGGridViewDarkTheme_ 
+|image::images/IGGridView_-_Themes_1.png[]
+
+| _IGGridViewLightTheme_ 
+|image::images/IGGridView_-_Themes_2.png[]
+
+|====
+
+[[_Ref329330892]]
+[[_Ref329853754]]
+== Creating a Custom Theme – Code Example
+
+[[_Ref323199287]]
+
+=== Description
+
+The following code defines a new  _IGGridViewThemeDefinition_  . After initializing an instance of  _CustomTheme_  , assign it to the  _IGGridView_   control’s `theme` property.
+
+[[_Ref323199293]]
+
+=== Code
+
+*In Objective-C:*
+
+[source,csharp]
+----
+@interface CustomTheme : NSObject <IGGridViewThemeDefinition>
+@end
+@implementation CustomTheme
+-(UIColor *)cellBackgroundColor
+{
+    return [UIColor blueColor];
+}
+-(UIColor *)selectedCellColor
+{
+    return [UIColor redColor];
+}
+@end
+----
+
+*In C#:*
+
+[source,csharp]
+----
+public class CustomTheme :IGGridViewThemeDefinition
+{
+  public override UIColor CellBackgroundColor 
+  {
+    get 
+    {
+      return UIColor.Blue;
+    }
+  }
+ public override UIColor SelectedCellColor 
+  {
+    get 
+    {
+      return UIColor.Red;
+    }
+  }
+}
+----
+
+[[_Ref324841253]]
+== Related Content
+
+=== Topics
+
+The following topic provides additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:iggridview.html[IGGridView]
+|This topic serves as a gateway to the features and functionality of the _IGGridView_ control.
+
+|====

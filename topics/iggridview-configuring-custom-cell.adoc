@@ -1,0 +1,195 @@
+﻿////
+
+|metadata|
+{
+    "name": "iggridview-configuring-custom-cell",
+    "controlName": ["IGGridView"],
+    "tags": ["Grids","How Do I","Layouts"],
+    "guid": "a8e7d47a-96c0-4395-b45f-64ada826c598",  
+    "buildFlags": [],
+    "createdOn": "2012-07-16T14:18:24.8244706Z"
+}
+|metadata|
+////
+
+= Configuring a Custom Cell
+
+== Topic Overview
+
+=== Purpose
+
+This topic provides a conceptual overview, with code, on creating and configuring a custom cell on the  _IGGridView_™ control.
+
+=== Required background
+
+The following table lists the topics required as a prerequisite to understanding this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:iggridview-adding-the-ig-framework-file.html[Adding the Grid Framework File]
+|This topic explains how to add the grid framework file to the project.
+
+|====
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref324841248, Introduction >>
+* <<_Ref329330892, Creating a Custom Cell – Code Example >>
+
+** <<_Ref323199287,Description>>
+** <<_Ref329331375,Code>>
+** <<_Ref329846176,Implementation>>
+
+* <<_Ref323199323, Related Content >>
+
+[[_Ref324841248]]
+[[_Ref323199279]]
+[[_Ref324505001]]
+[[_Ref323111244]]
+== Introduction
+
+[[_Ref327859845]]
+
+=== Custom cell summary
+
+The  _IGGridView_   is extremely flexible; able to display an infinite number of layouts. This is possible by creating a derived  _IGGridViewCell_   for customization. When doing so, override the `setupSize` method (recommended). Use this method to setup and size your content.
+
+* `-(void)``setupSize``:(``CGSize``)size;`
+
+Useful for cleanup, the optional and configurable `cellDetached` method fires whenever a cell recycles.
+
+* `-(void)``cellDetached``;`
+
+[[_Ref329330892]]
+== Creating a Custom Cell – Code Example
+
+[[_Ref323199287]]
+
+=== Description
+
+The following code derives from  _IGGridViewCell_   and overrides `setupSize` to size its content. This example uses the `initWithReuseIdentifier` method to initialize the cell’s content.
+
+[[_Ref323199293]]
+
+=== Code
+
+*In Objective-C:*
+
+[source,csharp]
+----
+@interface SampleCell : IGGridViewCell
+{
+    UIImageView* _rootImage;
+}
+-(void)setImage:(NSString*)imgName withTitle:(NSString* )title;
+@end
+@implementation SampleCell
+-(id)initWithReuseIdentifier:(NSString *)identifier
+{
+    self = [super initWithReuseIdentifier:identifier];
+    if(self)
+    {
+        _rootImage = [[UIImageView alloc]init];
+        _rootImage.contentMode = UIViewContentModeScaleAspectFit;
+        _textLabel.textAlignment = UITextAlignmentCenter;
+        _textLabel.textColor = [UIColor whiteColor];
+        _textLabel.font = [UIFont fontWithName:@"Marker Felt" size:14];
+        [self addSubview:_rootImage];
+        self.clipsToBounds = YES;
+    }
+    return self;
+}
+-(void)setImage:(NSString*)imgName withTitle:(NSString* )title
+{
+    UIImage* normalImage = [UIImage imageNamed:imgName];
+       _rootImage.image = normalImage;
+    _textLabel.text = title;
+}
+-(void)setupSize:(CGSize)size
+{
+    _rootImage.frame = CGRectMake(10, 5, size.width - 20, size.height - 30);
+    _textLabel.frame = CGRectMake(10, size.height - 20, size.width - 20, 15); 
+}
+@end
+----
+
+*In C#:*
+
+[source,csharp]
+----
+public class SampleCell :IGGridViewCell
+ {
+  UIImageView _rootImage;
+public SampleCell(string identifier) :base (identifier)
+  {
+      _rootImage = new UIImageView();
+this.TextLabel.TextAlignment = UITextAlignment.Center;
+      this.TextLabel.TextColor = UIColor.White;
+      this.TextLabel.Font = UIFont.FromName("Marker Felt", 14);
+this.AddSubview(_rootImage);
+      this.ClipsToBounds = true;
+  }
+  public void SetImage(string imageName, string title)
+  {
+      _rootImage.Image = new UIImage(imageName);
+      this.TextLabel.Text = title;
+  }
+public override void SetupSize (SizeF size)
+  {
+      _rootImage.Frame = new RectangleF(10, 5, size.Width - 20, size.Height - 30);
+      this.TextLabel.Frame = new RectangleF(10, size.Height - 20, size.Width - 20, 15);
+  }
+ }
+----
+
+[[_Ref329846176]]
+
+=== Implementation
+
+The implementation of the custom  _IGGridViewCell_   involves creating an instance of the cell in the  _IGGridViewDataSource’s_   `cellAt` method.
+
+*In Objective-C:*
+
+[source,csharp]
+----
+ SampleCell* cell = [gridView dequeueReusableCellWithIdentifier:@"cell"];
+    if(cell == nil)
+        cell = [[SampleCell alloc]initWithReuseIndentifier:@"cell"];
+    NavigationItem* item = [self resolveDataObjectForRow:path];
+    [cell setImage:item.imgPath withTitle:item.displayName];
+    return cell;
+----
+
+*In C#:*
+
+[source,csharp]
+----
+ SampleCell cell = (IGGridViewCell)grid.DequeueReusableCell("Cell");
+   if(cell == null)
+     cell = new SampleCell("Cell");
+   cell.SetImage("imgName", path.RowIndex.ToString());
+   return cell;
+----
+
+[[_Ref323199323]]
+== Related Content
+
+=== Topics
+
+The following topics provide additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:iggridview-adding-the-iggridview-uiview.html[Adding the IGGridView to a UIView]
+|This topic provides basic information about creating an instance of the _IGGridView_ and displaying data to help you with getting up and running with using the control.
+
+| link:iggridview.html[IGGridView]
+|This section serves as an introduction to the _IGGridView’s_ key features and functionalities.
+
+|====

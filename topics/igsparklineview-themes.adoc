@@ -1,0 +1,114 @@
+﻿////
+
+|metadata|
+{
+    "name": "igsparklineview-themes",
+    "tags": ["Charting","Getting Started","How Do I","Styling"],
+    "controlName": ["IGSparklineView"],
+    "guid": "5bb4c303-480d-4656-ac49-ad96794d203c",  
+    "buildFlags": [],
+    "createdOn": "2013-08-26T18:30:21.4213883Z"
+}
+|metadata|
+////
+
+= Themes
+
+== Topic Overview
+
+=== Purpose
+
+This topic provides an introductory overview of the supported themes available in the  _IGSparklineView_™ control.
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref324841248, Introduction >>
+
+** <<_Ref327859845,Theme summary>>
+** <<_Ref327864136,Theme types>>
+
+* <<_Ref324841253, Related Content >>
+
+[[_Ref324841248]]
+== Introduction
+
+[[_Ref327859845]]
+
+=== Theme summary
+
+Funnel themes allow you to give a gauge a consistent, color-coordinated look and feel. Simply set the  _IGSparklineView_   `theme` property to one of the predefined themes shown in the following section.
+
+*In C#:*
+
+[source,csharp]
+----
+IGSparklineView theSparkline = new IGSparklineView();
+//configure the sparkline...
+theSparkline.theme = new IGSparklineViewDefaultTheme();
+----
+
+*In Objective-C:*
+
+[source,csharp]
+----
+IGSparklineView *theSparkline = [[IGSparklineView alloc] init];
+//configure the sparkline...
+theSparkline.theme = [[IGSparklineViewDefaultTheme alloc] init];
+----
+
+[[_Ref327864136]]
+
+=== Theme types
+
+The following table contains the supported themes and their associated type name.
+
+[options="header", cols="a,a"]
+|====
+|Theme Name|Preview
+
+| _IGSparklineViewDefaultTheme_ 
+|image::images/IGSparklineView_-_Themes_1.png[]
+
+| _IGSparklineViewDarkTheme1_ 
+|image::images/IGSparklineView_-_Themes_2.png[]
+
+| _IGSparklineViewDarkTheme2_ 
+|image::images/IGSparklineView_-_Themes_3.png[]
+
+| _IGSparklineViewDarkTheme3_ 
+|image::images/IGSparklineView_-_Themes_4.png[]
+
+| _IGSparklineViewDarkTheme4_ 
+|image::images/IGSparklineView_-_Themes_5.png[]
+
+| _IGSparklineViewLightTheme1_ 
+|image::images/IGSparklineView_-_Themes_6.png[]
+
+| _IGSparklineViewLightTheme2_ 
+|image::images/IGSparklineView_-_Themes_7.png[]
+
+| _IGSparklineViewLightTheme3_ 
+|image::images/IGSparklineView_-_Themes_8.png[]
+
+| _IGSparklineViewLightTheme4_ 
+|image::images/IGSparklineView_-_Themes_9.png[]
+
+|====
+
+[[_Ref324841253]]
+== Related Content
+
+=== Topics
+
+The following topic provides additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:igsparklineview.html[IGSparklineView]
+|This topic serves as a gateway to the features and functionality of the _IGSparklineView_ control.
+
+|====

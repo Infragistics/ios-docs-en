@@ -1,0 +1,179 @@
+﻿////
+
+|metadata|
+{
+    "name": "iglabel-configuring-text-styling-attributes",
+    "controlName": ["IGLabel"],
+    "tags": ["How Do I","Styling"],
+    "guid": "6cdb1af4-ec06-4e97-a1b9-aa5f1127561d",  
+    "buildFlags": [],
+    "createdOn": "2013-02-05T13:16:11.9278732Z"
+}
+|metadata|
+////
+
+= Configuring Text Styling Attributes
+
+== Topic Overview
+
+=== Purpose
+
+This topic provides a conceptual overview of the text styling attributes in the  _IGLabel_   control and demonstrates how to configure it using a code example.
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref324841248, Introduction >>
+* <<_Ref216844518, Text Styling Attributes Reference >>
+
+** <<_Ref216844529,Introduction>>
+** <<_Ref216844537,Text styling attributes reference chart>>
+
+* <<_Ref216844576, Adding Text Styling to Text Displayed on the IGLabel – Code Example >>
+
+** <<_Ref327344209,Description>>
+** <<_Ref327523606,Prerequisites>>
+** <<_Ref327344217,Code>>
+
+* <<_Ref215823716, Related Content >>
+
+[[_Ref324841248]]
+== Introduction
+
+[[_Ref215796828]]
+
+=== Text styling summary
+
+Text attributes are used to decorate the displayed text using an  _NSRange_   or a regular expression search string through these two methods; `addAttributes:range:`, and `addAttributes:forRegEx:error:`. Attributes allow you to adjust these text characteristics; bold appearance; font used; text foreground color; italic appearance; kern spacing; text stroke color and width; interaction of text through tap; and underline appearance and color.
+
+[[_Ref324841253]]
+[[_Ref216844518]]
+[[_Ref324842387]]
+[[_Ref327936206]]
+== Text Styling Attributes Reference
+
+[[_Ref216844529]]
+
+=== Introduction
+
+Text attributes are key/value pairs added to an  _NSDictionary_   where the key defines the text attribute and the value contains the specific setting for that key. The following code snippet exemplifies an  _NSDictionary_  .
+
+*In C#:*
+
+[source,csharp]
+----
+NSMutableDictionary attributes = new NSMutableDictionary();
+attributes.Add(IGLabelConstants.IGTextStyleBoldAttributeName, UIFont.SystemFontOfSize(24.0f));
+attributes.Add(IGLabelConstants.IGTextStyleForegroundColorAttributeName, UIColor.DarkTextColor);
+attributes.Add(IGLabelConstants.IGTextStyleTapAttributeName, new NSString("http://infragistics.com"));
+----
+
+*In Objective-C:*
+
+[source,csharp]
+----
+NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:
+                [UIFont systemFontOfSize:24], IGTextStyleBoldAttributeName,
+                [UIColor darkTextColor], IGTextStyleForegroundColorAttributeName,
+                @"http://infragistics.com", IGTextStyleTapAttributeName, nil];
+----
+
+[[_Ref216844537]]
+
+=== Text styling attributes reference chart
+
+The following table summarizes the text styling attributes and a description of their expected value.
+
+[options="header", cols="a,a"]
+|====
+|Text Attribute|Description
+
+|`IGTextStyleBoldAttributeName`
+|The value used with this key is a _UIFont_ .
+
+|`IGTextStyleFontAttributeName`
+|The value used with this key is a _UIFont_ .
+
+|`IGTextStyleForegroundColorAttributeName`
+|The value used with this key is a _UIColor_ .
+
+|`IGTextStyleItalicAttributeName`
+|The value used with this key is a _UIFont_ .
+
+|`IGTextStyleKernAttributeName`
+|The value used with this key is an _NSNumber_ with _float_ .
+
+|`IGTextStyleStrokeColorAttributeName`
+|The value used with this key is a _UIColor_ .
+
+|`IGTextStyleStrokeWidthAttributeName`
+|The value used with this key is an _NSNumber_ with _float_ .
+
+|`IGTextStyleTapAttributeName`
+|The value used with this key is an _NSObject_ .
+
+|`IGTextStyleUnderlineAttributeName`
+|The value used with this key is an _NSNumber_ with int where an _int_ value of 1 means on, 0 means off.
+
+|`IGTextStyleUnderlineColorAttributeName`
+|The value used with this key is a _UIColor_ .
+
+|====
+
+[[_Ref216844576]]
+== Adding Text Styling to Text Displayed on the  _IG_  _Label_  – Code Example
+
+[[_Ref327344209]]
+
+=== Description
+
+The code below adds text style and tap attributes which apply a bold and dark text appearance to the word “fox,” and causes the  *IGLabelDelegate*  if used, to call the `labelTap:tapValue:` method whenever the user taps the word.
+
+[[_Ref327523606]]
+
+=== Prerequisites
+
+This code example requires the inclusion of the  _IG_   framework, detail about how to add this framework can be found in the link:iglabel-adding-the-label-framework-file.html[Adding the Label Framework File] topic.
+
+[[_Ref327344217]]
+
+=== Code
+
+*In C#:*
+
+[source,csharp]
+----
+label.Text = "The quick brown fox jumped over the lazy dogs.";
+NSMutableDictionary attributes = new NSMutableDictionary();
+attributes.Add(IGLabelConstants.IGTextStyleBoldAttributeName, UIFont.SystemFontOfSize(24.0f));
+attributes.Add(IGLabelConstants.IGTextStyleForegroundColorAttributeName, UIColor.DarkTextColor);
+attributes.Add(IGLabelConstants.IGTextStyleTapAttributeName, new NSString("The word 'fox' was tapped."));
+NSError error;
+label.AddAttributes(attributes, "fox", out error);
+----
+
+*In Objective-C:*
+
+[source,csharp]
+----
+label.text = @"The quick brown fox jumped over the lazy dogs.";
+NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:    [UIFont systemFontOfSize:24], IGTextStyleBoldAttributeName,    [UIColor darkTextColor], IGTextStyleForegroundColorAttributeName,    @"The word 'fox' was tapped.", IGTextStyleTapAttributeName, nil];
+NSError *error;[label addAttributes:attributes forRegEx:@"fox" error:&error];
+----
+
+[[_Ref215823716]]
+== Related Content
+
+=== Topics
+
+The following topics provide additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:iglabel-configuring-iglabel.html[Configuring IGLabel]
+|The topics in this group cover enabling, configuring, and using the _IGLabel_ control’s supported features.
+
+|====

@@ -1,0 +1,60 @@
+﻿////
+
+|metadata|
+{
+    "name": "igchartview-configuring-igchartview",
+    "tags": ["Charting","Getting Started"],
+    "controlName": ["IGChartView"],
+    "guid": "3e3f2436-6699-4a44-ba99-2ea4fdff09f1",  
+    "buildFlags": [],
+    "createdOn": "2013-08-26T17:10:37.5150455Z"
+}
+|metadata|
+////
+
+= Configuring IGChartView
+
+=== Introduction
+
+The topics in this group cover enabling, configuring and using the  _IGChartView™_   control’s supported features.
+
+=== Topics
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:igchartview-configuring-axis-titles.html[Configuring Axis Titles]
+|This topic provides an introductory overview of configuring axis titles on the _IGChartView_ control.
+
+| link:igchartview-configuring-category-axis-clustering-mode.html[Configuring Category Axis Clustering Mode]
+|This topic provides an introductory overview of configuring category axis clustering mode on the _IGChartView_ control.
+
+| link:igchartview-configuring-custom-highlighting.html[Configuring Custom Highlighting]
+|This topic provides a brief overview of custom highlighting on the _IGChartView_ control and demonstrates their use with a code example.
+
+| link:igchartview-configuring-highlighting-layers.html[Configuring Highlighting Layers]
+|This topic provides an overview of configuring highlighting layers on the _IGChartView_ control and demonstrates their use with a code example.
+
+| link:igchartview-configuring-initial-animation.html[Configuring Initial Animation]
+|This topic provides an introductory overview of configuring the initial animation on the _IGChartView_ control.
+
+| link:igchartview-configuring-rounded-corners.html[Configuring Rounded Corners]
+|This topic provides a conceptual overview of configuring rounded corners on the _IGChartView_ control.
+
+| link:igchartview-configuring-single-axis-zoom.html[Configuring Single Axis Zoom]
+|This topic provides a conceptual overview of configuring single axis zoom on the _IGChartView_ control.
+
+| link:igchartview-configuring-smart-axis-label-panel.html[Configuring the Smart Axis Label Panel]
+|This topic provides a conceptual overview of the smart axis label panel on the _IGChartView_ control and demonstrates the configuration using a code example.
+
+| link:igchartview-hiding-invalid-data-financial-price-series.html[Hiding Invalid Data in the Financial Price Series]
+|This topic provides an introductory overview of hiding invalid data in the financial price series on the _IGChartView_ control.
+
+| link:igchartview-using-asynchronous-category-data-source.html[Using Asynchronous Category Data Source]
+|This topic provides an overview of using the asynchronous category data source on the _IGChartView_ control and demonstrates their use with a code example.
+
+| link:igchartview-using-custom-markers.html[Using Custom Markers]
+|This topic provides an introductory overview of using custom markers on the _IGChartView_ control and provides a code example demonstrating its configuration.
+
+|====

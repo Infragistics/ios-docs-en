@@ -1,0 +1,93 @@
+﻿////
+
+|metadata|
+{
+    "name": "iglineargaugeview-themes",
+    "tags": ["Getting Started","How Do I","Styling"],
+    "controlName": ["IGLinearGaugeView"],
+    "guid": "238f8f46-98b8-418a-b817-3b195858cdf5",  
+    "buildFlags": [],
+    "createdOn": "2013-09-10T14:38:56.0500687Z"
+}
+|metadata|
+////
+
+= Themes
+
+== Topic Overview
+
+=== Purpose
+
+This topic provides an introductory overview of the supported themes available in the  _IGLinearGaugeView_™ control.
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref324841248, Introduction >>
+
+** <<_Ref327859845,Theme summary>>
+** <<_Ref327864136,Theme types>>
+
+* <<_Ref324841253, Related Content >>
+
+[[_Ref324841248]]
+== Introduction
+
+[[_Ref327859845]]
+
+=== Theme summary
+
+Linear gauge themes allow you to give the gauge a consistent, color coordinated look and feel. Simply set the  _IGLinearGaugeView_   `theme` property to one of the predefined themes:  _IGLinearGaugeDarkTheme_   or  _IGLinearGaugeLightTheme_  .
+
+*In C#:*
+
+[source,csharp]
+----
+IGLinearGaugeView theGauge = new IGLinearGaugeView();
+//configure the gauge...
+theGauge.theme = new IGLinearGaugeLightTheme();
+----
+
+*In Objective-C:*
+
+[source,csharp]
+----
+IGLinearGaugeView *theGauge = [[IGLinearGaugeView alloc] init];
+//configure the gauge...
+theGauge.theme = [[IGLinearGaugeLightTheme alloc] init];
+----
+
+[[_Ref327864136]]
+
+=== Theme types
+
+The following table contains the supported themes and their associated type name.
+
+[options="header", cols="a,a"]
+|====
+|Theme Name|Preview
+
+| _IGLinearGaugeDarkTheme_ 
+|image::images/IGLinearGaugeView_-_Themes_1.png[]
+
+| _IGLinearGaugeLightTheme_ 
+|image::images/IGLinearGaugeView_-_Themes_2.png[]
+
+|====
+
+[[_Ref324841253]]
+== Related Content
+
+=== Topics
+
+The following topic provides additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:iglineargaugeview.html[IGLinearGaugeView]
+|This topic serves as a gateway to the features and functionality of the _IGLinearGaugeView_ control.
+
+|====

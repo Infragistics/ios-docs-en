@@ -1,0 +1,99 @@
+﻿////
+
+|metadata|
+{
+    "name": "iggridview-reordering-cells-rows",
+    "controlName": ["IGGridView"],
+    "tags": ["Grids","How Do I","Layouts"],
+    "guid": "d03ed0a4-c8e3-4086-8ade-fdbd42089792",  
+    "buildFlags": [],
+    "createdOn": "2012-07-16T14:26:00.2530089Z"
+}
+|metadata|
+////
+
+= Reordering Cells and Rows
+
+== Topic Overview
+
+=== Purpose
+
+This topic provides a conceptual overview for reordering cells and rows on the  _IGGridView_™ control.
+
+=== Required background
+
+The following table lists the topics required as a prerequisite to understanding this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:iggridview-adding-the-ig-framework-file.html[Adding the Grid Framework File]
+|This topic explains the requirements for adding the grid framework file to an Xcode project; a requirement for using the _IGGridView_ control.
+
+|====
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref324841248, Introduction >>
+* <<_Ref323199323, Related Content >>
+
+[[_Ref324841248]]
+[[_Ref323199279]]
+[[_Ref324505001]]
+[[_Ref323111244]]
+== Introduction
+
+[[_Ref327859845]]
+
+=== Reordering summary
+
+The  _IGGridView_   supports both cell and row reordering. Movable cells and columns give the user the flexibility to move and rearrange presented data.
+
+Cell reordering is turned on through the  _IGGridViewSingleFieldMultiColumnDataSourceHelper_   or  _IGGridViewSingleRowSingleFieldDataSourceHelper_   by setting the `allowCellReordering` property. To enable cell reordering when using the IGGridViewDataSource protocol, implement the following method.
+
+* `-(BOOL)gridView:(IGGridView$$*$$)gridView canMoveCellAtPath:(IGCellPath $$* $$)path`
+
+When turned on, cell reordering allows you to touch select a cell and drag it to the desired position.
+
+Use the  _IGGridView’s_   `rowReordering` property to enable row-reordering. Although the  _IGGridViewDataSourceHelper’s_   `allowRowReordering` property exists, use the  _IGGridView’s_   `rowReordering` property because of its reordering column UI capabilities. Additionally, there is a `setRowReordering` method used for enabling row reordering that includes animation parameters. Enabling row reordering displays results in a row reordering column on the right side of the row. Use the  _IGGridView’s_   `rowReorderingColumnWidth` property to configure the reordering column’s width. Finally, it is important to note that the entire reordering cell can be customized by implementing the  _IGGridViewDataSource’s_   following method and placing a custom view inside of it.
+
+* `-(IGGridViewReorderCell$$*$$) gridView:(IGGridView$$*$$)gridView cellForReorderingAtPath:(IGCellPath$$* $$)path;`
+
+.Note:
+[NOTE]
+====
+Using the  _IGGridViewDataSource’s_   `canMoveRowAtPath` method  *and*  return NO for a particular row results in that row not having a row reordering indicator.
+====
+
+Cells and rows can be moved from code behind by using the following  _IGGridView’s_   methods.
+
+* `-(void)moveRowAtPath:(IGRowPath$$*$$)path toPath:(IGRowPath$$* $$)newPath;`
+* `-(void)moveCellAtPath:(IGCellPath$$*$$)path toPath:(IGCellPath$$* $$)newPath;`
+
+.Note:
+[NOTE]
+====
+Before using either of these two methods above, update your data source with the changes, then call either `moveRowAtPath` or `moveCellAtPath` to animate the cell or row’s movement to their new position.
+====
+
+[[_Ref323199323]]
+== Related Content
+
+=== Topics
+
+The following topics provide additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:iggridview-adding-the-iggridview-uiview.html[Adding the IGGridView to a UIView]
+|This topic provides basic information about creating an instance of the _IGGridView_ and displaying data to help you with getting up and running with using the control.
+
+| link:iggridview.html[IGGridView]
+|This section serves as an introduction to the _IGGridView’s_ key features and functionalities.
+
+|====

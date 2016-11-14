@@ -1,0 +1,180 @@
+﻿////
+
+|metadata|
+{
+    "name": "igcalendarview-data-source-helper",
+    "tags": ["Appointments","Getting Started","How Do I"],
+    "controlName": ["IGCalendarView"],
+    "guid": "ff1f10f3-4592-464f-8b0e-9bee4d9c49c2",  
+    "buildFlags": [],
+    "createdOn": "2013-09-25T13:12:58.5947434Z"
+}
+|metadata|
+////
+
+= Data Source Helper
+
+== Topic Overview
+
+=== Purpose
+
+This topic provides a conceptual overview of data source helper in the  _IGCalendarView_™ and demonstrates how to configure it using a code example.
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref324841248, Introduction >>
+* <<_Ref241285528, IGCalendarView Data Source Helper – Code Example >>
+
+** <<_Ref327344209,Description>>
+** <<_Ref327523606,Prerequisites>>
+** <<_Ref327344217,Code>>
+
+* <<_Ref215823716, Related Content >>
+
+[[_Ref324841248]]
+== Introduction
+
+[[_Ref215796828]]
+
+=== Data source helper summary
+
+Use the data source helper to provide a data source for displaying  _EKEventStore_   appointments stored on your iOS device. Additionally, the data source helper knows how to make appointment requests for you. The  _IGCalendarView_   provides a data source helper. When you create a reference to the  _EKEventStore_  , you will need to retain this reference as the  _IGCalendarEKDataSourceHelper_   only holds a weak reference. The data source helper pulls the appointment color from the  _EKCalendar_   as well as the appointment information to display. When a user taps one of the displayed appointments call an optional IGCalendarViewDelegate method, `calendarView:appointmentTapped:fromDataSource:withBounds:forDay:`, you can retrieve the  _EKEvent_   reference by using the following code.
+
+*In Objective-C:*
+
+[source,csharp]
+----
+-(void)calendarView:(IGCalendarView *)calView appointmentTapped:(IGCalendarAppointment *)appt fromDataSource:(id<IGCalendarAppointmentDataSource>)dataSource withBounds:(CGRect)rect forDay:(NSDate * )date
+{
+     IGCalendarEKDataSourceHelper *ds = (IGCalendarEKDataSourceHelper * )dataSource;       
+     EKEvent *ekEvent = [ds resolveEventFromAppointment:appt];
+}
+----
+
+*In C#:*
+
+[source,csharp]
+----
+public override void AppointmentTapped (IGCalendarView calView, IGCalendarAppointment appt, IGCalendarAppointmentDataSource dataSource, RectangleF rect, NSDate date)
+{
+      IGCalendarEKDataSourceHelper ds = dataSource as IGCalendarEKDataSourceHelper;
+      EKEvent ekEvent = ds.ResolveEventFromAppointment(appt);
+}
+----
+
+[[_Ref241285528]]
+[[_Ref324841253]]
+== IGCalendarView Data Source Helper – Code Example
+
+[[_Ref327344209]]
+
+=== Description
+
+The code below creates an instance of the  _IGCalendarView_   and populates the displayed appointments by using all the calendars found through  _EKEventStore_  .
+
+[[_Ref327523606]]
+
+=== Prerequisites
+
+This code example requires the inclusion of the  _IG_   framework, detail about how to add this framework can be found in the link:iggridview-adding-the-ig-framework-file.html[Adding the IG Framework File] topic.
+
+[[_Ref327344217]]
+
+=== Code
+
+*In Objective-C:*
+
+[source,csharp]
+----
+@interface igViewController ()
+{
+    EKEventStore *_store;
+    NSMutableArray *_dataSources;
+}
+@end
+@implementation igViewController
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    self.view.backgroundColor = [UIColor whiteColor];
+    _dataSources = [[NSMutableArray alloc] init];
+    _store = [[EKEventStore alloc] init];
+    [_store requestAccessToEntityType:EKEntityTypeEvent completion:^(BOOL granted, NSError *error)
+    {
+        if(granted)
+        {
+            NSArray *cals = [_store calendarsForEntityType:EKEntityTypeEvent];
+            int index = 0;
+            for(EKCalendar* cal in cals)
+            {
+                IGCalendarEKDataSourceHelper *ds = [[IGCalendarEKDataSourceHelper alloc] initWithCalendar:cal forStore:_store];
+                [_dataSources addObject:ds];
+                index++;
+            }
+        }
+    }];
+    IGCalendarView *calendar = [[IGCalendarView alloc] initWithFrame:CGRectInset(self.view.bounds, 10, 10)];
+    calendar.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
+    calendar.appointmentDataSources = _dataSources;
+    [self.view addSubview:calendar];
+}
+@end
+----
+
+*In C#:*
+
+[source,csharp]
+----
+public partial class CalendarDataSourceHelper_CSViewController : UIViewController
+{
+      EKEventStore _store;
+      List<NSObject> _dataSources;
+      public CalendarDataSourceHelper_CSViewController ()
+      {
+      }
+      public override void ViewDidLoad ()
+      {
+            base.ViewDidLoad ();
+            this.View.BackgroundColor = UIColor.White;
+            _dataSources = new List<NSObject>();
+            _store = new EKEventStore();
+            _store.RequestAccess (EKEntityType.Event, (bool granted, NSError NSError) => {
+                  if(granted)
+                  {
+                        EKCalendar[] cals = _store.GetCalendars(EKEntityType.Event);
+                        int index = 0;
+                        foreach(EKCalendar cal in cals)
+                        {
+                              IGCalendarEKDataSourceHelper ds = new IGCalendarEKDataSourceHelper(cal, _store);
+                              _dataSources.Add(ds);
+                              index++;
+                        }
+                  }
+            });
+            IGCalendarView calendar = new IGCalendarView();
+            calendar.Frame = this.View.Bounds;
+            calendar.Frame.Inflate (-10, -10);
+            calendar.AutoresizingMask = UIViewAutoresizing.FlexibleWidth|UIViewAutoresizing.FlexibleHeight;
+            calendar.AppointmentDataSources = _dataSources.ToArray();
+            this.View.Add (calendar);
+      }
+}
+----
+
+[[_Ref215823716]]
+== Related Content
+
+=== Topics
+
+The following topic provides additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:igcalendarview.html[IGCalendarView]
+|This section serves as an introduction to the _IGCalendarView_ key features and functionalities.
+
+|====

@@ -1,0 +1,82 @@
+﻿////
+
+|metadata|
+{
+    "name": "iggridview-sorting-columns",
+    "controlName": ["IGGridView"],
+    "tags": ["Grids","How Do I","Sorting"],
+    "guid": "77e09883-ed53-4a20-b0ed-c0cc07295497",  
+    "buildFlags": [],
+    "createdOn": "2013-02-28T15:53:14.9725269Z"
+}
+|metadata|
+////
+
+= Sorting Columns
+
+== Topic Overview
+
+=== Purpose
+
+This topic provides a conceptual overview of sorting columns in the  _IGGridView_™ control.
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref324841248, Introduction >>
+* <<_Ref324841253, Related Content >>
+
+[[_Ref324841248]]
+== Introduction
+
+[[_Ref215022102]]
+
+=== Swipe row summary
+
+The  _IGGridView_   control’s data source helper classes allow you to use the `sortedColumns` property to sort columns in ascending or descending order. To use the `sortedColumns` collection, first create an  _IGGridViewSortedColumn_   object, initialize field names and declare sort direction.
+
+*In C#:*
+
+[source,csharp]
+----
+IGGridViewSortedColumn sortCol = new IGGridViewSortedColumn("firstName", IGGridViewSortedColumnDirection.IGGridViewSortedColumnDirectionAscending);
+_dataSource.SortedColumns.Add(sortCol);
+----
+
+*In Objective-C:*
+
+[source,csharp]
+----
+IGGridViewSortedColumn* sortCol = [[IGGridViewSortedColumn alloc]initWithField:@"firstName" forDirection:IGGridViewSortedColumnDirectionAscending];
+[_dataSource.sortedColumns addObject:sortCol];
+----
+
+The sort direction supplied with the  _IGGridViewSortedColumn_   initialization method supports these enumerations.
+
+* `IGGridViewSortedColumnDirectionAscending`
+* `IGGridViewSortedColumnDirectionDescending`
+* `IGGridViewSortedColumnDirectionNone`
+
+.Note:
+[NOTE]
+====
+The order in which the columns are added to the `sortedColumns` collection determines the sort order priority, with the first column added having the highest priority and so on.
+====
+
+[[_Ref324841253]]
+== Related Content
+
+=== Topics
+
+[[_Ref215021884]]
+The following topic provides additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:iggridview.html[IGGridView]
+|This section serves as an introduction to the _IGGridView’s_ key features and functionalities.
+
+|====

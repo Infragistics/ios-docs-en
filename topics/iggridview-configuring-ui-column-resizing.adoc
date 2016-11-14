@@ -1,0 +1,85 @@
+﻿////
+
+|metadata|
+{
+    "name": "iggridview-configuring-ui-column-resizing",
+    "controlName": ["IGGridView"],
+    "tags": ["Grids","How Do I","Layouts"],
+    "guid": "483eea14-9bd7-457d-99e4-cf3e6388fac2",  
+    "buildFlags": [],
+    "createdOn": "2013-02-11T19:33:37.5406179Z"
+}
+|metadata|
+////
+
+= Configuring UI Column Resizing
+
+== Topic Overview
+
+=== Purpose
+
+This topic provides a conceptual overview on configuring UI column resizing on the  _IGGridView_™ control.
+
+=== Required background
+
+The following table lists the topics required as a prerequisite to understanding this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:iggridview-adding-the-ig-framework-file.html[Adding the Grid Framework File]
+|This topic explains the requirements for adding the grid framework file to an Xcode project; a requirement for using the _IGGridView_ control.
+
+|====
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref324841248, Introduction >>
+* <<_Ref323199323, Related Content >>
+
+[[_Ref324841248]]
+[[_Ref323199279]]
+[[_Ref324505001]]
+[[_Ref323111244]]
+== Introduction
+
+[[_Ref327859845]]
+
+=== UI column resizing summary
+
+The user interface (UI) supports column resizing a column by setting the `columnResizing` property. Listed below are the `columnResizing` property’s supported enumerations.
+
+* `IGGridViewColumnResizingActionAdorner` – Tapping a column header of displays the adorner used to resize the column. Tapping anywhere outside of the column causes the adorner to disappear.
+* `IGGridViewColumnResizingActionPinch` – Pinching a column causes the column to grow or shrink.
+* `IGGridViewColumnResizingActionNone` – Prohibits column resizing through the UI.
+
+The  _IGGridViewDelegate_   has methods available for columns resized using the UI. These methods provide the column index, its old and new widths.
+
+* `-(void)gridView:(IGGridView $$*$$)gridView resizeColumnAtIndex:(int) index withWidth:(IGColumnWidth $$* $$)newWidth;`
+* `-(void)gridView:(IGGridView $$*$$)gridView resizeFixedLeftColumnAtIndex:(int) index withWidth:(IGColumnWidth $$* $$)newWidth;`
+* `-(void)gridView:(IGGridView $$*$$)gridView resizeFixedRightColumnAtIndex:(int) index withWidth:(IGColumnWidth $$* $$)newWidth;`
+
+The following  _IGGridViewDataSource_   control’s methods are configurable to toggle on and off column resizing through the UI column resizing. These methods return a BOOL that instruct the  _IGGridView_   to either allow or disallow column resizing for a given column, or fixed column, at a particular index.
+
+* `-(BOOL)gridView:(IGGridView $$* $$)gridView canResizeColumnAtIndex:(int)index;`
+* `-(BOOL)gridView:(IGGridView $$* $$)gridView canResizeFixedLeftColumnAtIndex:(int)index;`
+* `-(BOOL)gridView:(IGGridView $$* $$)gridView canResizeFixedRightColumnAtIndex:(int)index;`
+
+[[_Ref323199323]]
+== Related Content
+
+=== Topics
+
+The following topics provide additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:iggridview.html[IGGridView]
+|This section serves as an introduction to the _IGGridView’s_ key features and functionalities.
+
+|====

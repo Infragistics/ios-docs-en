@@ -1,0 +1,67 @@
+﻿////
+
+|metadata|
+{
+    "name": "iggridview-configuring-expandable-sections",
+    "tags": ["How Do I","Getting Started"],
+    "controlName": ["IGGridView"],
+    "guid": "f9d47c27-ee9d-4c37-96bd-a47ca46edbc2",  
+    "buildFlags": [],
+    "createdOn": "2014-03-18T17:08:32.9946967Z"
+}
+|metadata|
+////
+
+= Configuring Expandable Sections
+
+== Topic Overview
+
+=== Purpose
+
+This topic provides an overview of configuring expandable sections on the  _IGGridView_™ control.
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref324841248, Introduction >>
+* <<_Ref215823716, Related Content >>
+
+[[_Ref324841248]]
+== Introduction
+
+=== Expandable sections summary
+
+Expandable sections are a data source helper feature that allows the expanding and collapsing of rows in a section. To enable this feature, set the `allowSectionExpansion` property, found on the  _IGGridViewDataSourceHelper_   instance, to `YES`. The subsequent illustration demonstrates expandable sections.
+
+image::images/IGGridView_-_Configuring_Expandable_Sections_1.gif[]
+
+Section headers are an instance of  _IGGridViewSectionHeaderCell_  , which behaves like a  _UIButton_   when expanded. This type of cell has properties to programmatically interact with expandable sections.
+
+* `expandable` – determines whether or not the section header can expanded or collapsed through user interaction
+* `expand` – enlarges the rows of a section
+* `collapse` – diminishes the rows of a section
+* `pressedBackgroundColor` – section header color when tapping
+
+When using the  _IGGridViewDataSource_   protocol instead of the data source helper, use the `gridView:cellForSectionHeader:` method for customizing the  _IGGridViewSectionHeaderCell_  . Additionally, the  _IGGridViewDataSource_   provides methods for managing a sections expansion and collapse.
+
+* `gridView:sectionExpanded:` - asks the data source if a particular section is expanded or collapsed, and is called whenever the `updateData` or `reloadData` method is invoked on the  _IGGridView_  
+* `gridView:collapseSection:` - invoked when the section header cell is instructed to collapse
+* `gridView:expandSection:` - invoked when the section header cell is instructed to expand
+
+[[_Ref324841253]]
+[[_Ref215823716]]
+== Related Content
+
+=== Topics
+
+The following topic provides additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:iggridview.html[IGGridView]
+|The topics in this group cover enabling, configuring, and using the _IGGridView_ control’s supported features.
+
+|====
